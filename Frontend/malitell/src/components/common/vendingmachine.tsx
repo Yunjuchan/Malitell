@@ -23,19 +23,20 @@ export default function Vendingmachine() {
       {gachaClose ? null : (
         <s.Box>
           <s.Close onClick={closeGacha}>
-            <FontAwesomeIcon
-              icon={faXmark}
-              style={{ color: "#B197FC" }}
-              size="2x"
-            />
+            <FontAwesomeIcon icon={faXmark} size="2x" />
           </s.Close>
-          <img onClick={clickGacha} src="./images/gachamachineMain.gif" />
+          <img
+            onClick={clickGacha}
+            src="./images/components/gachamachineMain.gif"
+          />
         </s.Box>
       )}
       {gachaClick ? (
         <g.Background>
           <s.GachaBox>
-            <div style={{ display: "flex", width: "100%", justifyContent: "end" }}>
+            <div
+              style={{ display: "flex", width: "100%", justifyContent: "end" }}
+            >
               <s.GachaClose onClick={clickGacha}>
                 <FontAwesomeIcon
                   icon={faXmark}
@@ -44,7 +45,12 @@ export default function Vendingmachine() {
                 />
               </s.GachaClose>
             </div>
-            <img src="./images/fast.gif" />
+            {/* <img src="./images/components/fast.gif" /> */}
+            <div style={{width: "100%", marginTop: "80px"}}>
+              <video autoPlay style={{width: "100%"}}>
+                <source src="/videos/gacha.mp4" type="video/mp4" />
+              </video>
+            </div>
           </s.GachaBox>
         </g.Background>
       ) : null}

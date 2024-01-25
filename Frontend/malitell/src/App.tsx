@@ -27,6 +27,7 @@ import CounselingNotice from "./components/counsel/counselingNotice";
 import CounselingCounselor from "./components/counsel/counselingCounselor";
 import CounselingClient from "./components/counsel/counselingClient";
 import Vendingmachine from "./components/common/vendingmachine";
+import ComingSoon from "./components/ppt/comingSoon";
 
 // 중첩라우팅
 const router = createBrowserRouter([
@@ -138,6 +139,10 @@ const router = createBrowserRouter([
   {
     path: "/counseling/:counselId/client",
     element: <CounselingClient />,
+  },
+  {
+    path: "/comingsoon",
+    element: <ComingSoon />,
   },
 ]);
 

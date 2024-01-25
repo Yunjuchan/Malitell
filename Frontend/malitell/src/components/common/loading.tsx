@@ -9,7 +9,7 @@ export default function Loading() {
         <s.Spinner>O</s.Spinner>
         <s.Message>You can do it!</s.Message>
         <s.Image>
-          <img src="./images/malitell.png" alt="malitell" />
+          <img src="./images/malitell/malitell.png" alt="malitell" />
         </s.Image>
       </s.LoadingBox>
     </g.Grid>
