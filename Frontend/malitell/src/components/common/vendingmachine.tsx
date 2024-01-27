@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import * as s from "../../styles/common/vendingmachine";
 import * as g from "../../styles/grid";
+import normal from '../../assets/images/vendingMachine/normal.gif'
+import fast from '../../assets/images/vendingMachine/fast.gif'
 
 export default function Vendingmachine() {
   const [gachaClose, setGachaClose] = useState(false);
@@ -27,7 +29,7 @@ export default function Vendingmachine() {
           </s.Close>
           <img
             onClick={clickGacha}
-            src="./images/components/gachamachineMain.gif"
+            src={normal}
           />
         </s.Box>
       )}
@@ -45,12 +47,7 @@ export default function Vendingmachine() {
                 />
               </s.GachaClose>
             </div>
-            {/* <img src="./images/components/fast.gif" /> */}
-            <div style={{width: "100%", marginTop: "80px"}}>
-              <video autoPlay style={{width: "100%"}}>
-                <source src="/videos/gacha.mp4" type="video/mp4" />
-              </video>
-            </div>
+            <img src={fast} />
           </s.GachaBox>
         </g.Background>
       ) : null}

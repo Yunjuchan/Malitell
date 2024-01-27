@@ -1,5 +1,5 @@
 import React from 'react'
-import * as g from '../styles/grid';
+import * as g from '../../styles/grid';
 
 export default function NotFound() {
   return (

@@ -1,18 +1,17 @@
-import React from 'react'
+import React from "react";
 import * as g from "../../styles/grid";
 
 export default function ArticleCreate() {
   return (
-    <g.GridNav>
-      <g.Box col="2/12" row="1/2">
-        분류 / 제목
-      </g.Box>
-      <g.Box col="2/12" row="3/10">
-        content
-      </g.Box>
-      <g.Box col="10/12" row="10/11">
-        create
-      </g.Box>
-    </g.GridNav>
-  )
+    <g.Back>
+      <g.Grid>
+        <g.Box col="1/13" row="1/3">
+          게시글 작성
+        </g.Box>
+        <g.Box col="1/13" row="3/12">
+          content
+        </g.Box>
+      </g.Grid>
+    </g.Back>
+  );
 }

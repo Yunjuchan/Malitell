@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Nav from "./components/common/nav";
-import Home from "./routes/home";
-import Loading from "./components/common/loading";
+import Home from "./routes/home/home";
+import Loading from "./routes/etc/loading";
 import Profile from "./routes/auth/profile";
 import Articles from "./routes/article/articleList";
 import ArticleDetail from "./routes/article/articleDetail";
@@ -15,7 +15,7 @@ import ReservationFirst from "./routes/counsel/reservation/reservationFirst";
 import ReservationSecond from "./routes/counsel/reservation/reservationSecond";
 import ReservationConfirm from "./routes/counsel/reservation/reservationConfirm";
 import Notification from "./components/common/notification";
-import NotFound from "./routes/notFound";
+import NotFound from "./routes/etc/notFound";
 import ModalTest from "./routes/test";
 import Signup from "./routes/auth/signup/signup";
 import Agree from "./routes/auth/signup/agree";
@@ -48,23 +48,23 @@ const router = createBrowserRouter([
             path: "profile/:name",
             element: <Profile />,
           },
-          {
-            path: "/signup",
-            element: <Selection />,
-          },
-          {
-            path: "/signup/agree",
-            element: <Agree />,
-          },
-          {
-            path: "/signup/information",
-            element: <Information />,
-          },
-          {
-            path: "/signup/complete",
-            element: <Signup />,
-          },
-          // counsel
+          // {
+          //   path: "/signup",
+          //   element: <Selection />,
+          // },
+          // {
+          //   path: "/signup/agree",
+          //   element: <Agree />,
+          // },
+          // {
+          //   path: "/signup/information",
+          //   element: <Information />,
+          // },
+          // {
+          //   path: "/signup/complete",
+          //   element: <Signup />,
+          // },
+          // // counsel
           {
             path: "counselors",
             element: <CounselorList />,
@@ -77,19 +77,19 @@ const router = createBrowserRouter([
             path: "counselors/:name/reservation/first",
             element: <ReservationFirst />,
           },
-          {
-            path: "counselors/:name/reservation/second",
-            element: <ReservationSecond />,
-          },
-          {
-            path: "counselors/:name/reservation/confirm",
-            element: <ReservationConfirm />,
-          },
-          {
-            path: "counselors/:name/evaluation",
-            element: <CounselorEvaluation />,
-          },
-          // article
+          // {
+          //   path: "counselors/:name/reservation/second",
+          //   element: <ReservationSecond />,
+          // },
+          // {
+          //   path: "counselors/:name/reservation/confirm",
+          //   element: <ReservationConfirm />,
+          // },
+          // {
+          //   path: "counselors/:name/evaluation",
+          //   element: <CounselorEvaluation />,
+          // },
+          // // article
           {
             path: "/articles",
             element: <Articles />,
@@ -102,15 +102,15 @@ const router = createBrowserRouter([
             path: "/articles/create",
             element: <ArticleCreate />,
           },
-          {
-            path: "/articles/update",
-            element: <ArticleUpdate />,
-          },
-          // etc
-          {
-            path: "self-test",
-            element: <SelfTest />,
-          },
+          // {
+          //   path: "/articles/update",
+          //   element: <ArticleUpdate />,
+          // },
+          // // etc
+          // {
+          //   path: "self-test",
+          //   element: <SelfTest />,
+          // },
           {
             path: "bamboo",
             element: <Bamboo />,
@@ -123,27 +123,27 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/test",
-    element: <ModalTest />,
-  },
-  // pop-up 이놈은 라우터로 받을 거는 아닌데 확인은 해봐야하니깐 그냥 만들어 봤음용
-  {
-    path: "/counseling/:counselId/notice",
-    element: <CounselingNotice />,
-  },
-  {
-    path: "/counseling/:counselId/counselor",
-    element: <CounselingCounselor />,
-  },
-  {
-    path: "/counseling/:counselId/client",
-    element: <CounselingClient />,
-  },
-  {
-    path: "/comingsoon",
-    element: <ComingSoon />,
-  },
+  // {
+  //   path: "/test",
+  //   element: <ModalTest />,
+  // },
+  // // pop-up 이놈은 라우터로 받을 거는 아닌데 확인은 해봐야하니깐 그냥 만들어 봤음용
+  // {
+  //   path: "/counseling/:counselId/notice",
+  //   element: <CounselingNotice />,
+  // },
+  // {
+  //   path: "/counseling/:counselId/counselor",
+  //   element: <CounselingCounselor />,
+  // },
+  // {
+  //   path: "/counseling/:counselId/client",
+  //   element: <CounselingClient />,
+  // },
+  // {
+  //   path: "/comingsoon",
+  //   element: <ComingSoon />,
+  // },
 ]);
 
 function App() {
