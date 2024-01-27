@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 export const Carousel = styled.div`
+  width: 100%;
+  height: 300px;
+  /* margin-top: 30px; */
+  text-align: center;
+  background-color: #bf94e4;
   img {
     width: 100%;
     height: 300px;
@@ -10,8 +15,35 @@ export const Carousel = styled.div`
 export const Items = styled.div`
   /* box-shadow: 0 0 0 1px black inset; */
   margin: auto;
+  display: flex;
+  justify-content: space-between;
   width: 62%;
-  height: 17vh;
+  height: 130px;
+  @media screen and (max-width: 1023px) {
+    width: 100% 
+  }
+`;
+
+export const Item = styled.div`
+  width: 20%;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    margin-top: 20px;
+    width: 30%;
+    height: 50%;
+  }
+  a {
+    display: block;
+    text-decoration: none;
+  }
+`;
+
+export const ItemName = styled.div`
+  margin-top: 5px;
+  font-weight: bold;
+  color: black;
 `;
 
 export const Background = styled.div`
@@ -96,15 +128,21 @@ export const ArticleBox = styled.div`
 
 export const Article = styled.div`
   box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
-  padding: 20px;
-  width: 29%;
-  height: 60%;
+  /* padding: 20px; */
+  width: 32%;
+  height: 50%;
   border-radius: 10px;
   background-color: white;
   @media screen and (max-width: 1023px) {
     width: 100%;
     height: 23%;
     margin-bottom: 10px;
+  }
+
+  /* 발표용 */
+  img {
+    width: 100%;
+    height: 100%;
   }
 `;
 

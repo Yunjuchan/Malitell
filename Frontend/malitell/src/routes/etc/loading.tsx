@@ -1,6 +1,6 @@
 import React from "react";
 import * as g from "../../styles/grid";
-import * as s from "../../styles/common/loading";
+import * as s from "../../styles/etc/loading";
 
 export default function Loading() {
   return (

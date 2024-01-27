@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Nav = styled.div`
   background-color: white;
-  height: 9vh;
+  height: 80px;
   position: sticky;
   top: 0;
 `;
@@ -67,6 +67,16 @@ export const NavItem = styled.div<{
     text-decoration: none;
     color: black;
   }
+`;
+
+export const Background = styled.div`
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;
 
 export const Item = styled.div``;
