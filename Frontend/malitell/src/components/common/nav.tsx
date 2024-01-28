@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faComment } from "@fortawesome/free-regular-svg-icons";
 import * as s from "../../styles/common/nav";
 import * as g from "../../styles/grid";
-import Login from "../auth/login";
+import Login from "../auth/login/login";
 import logo from "../../assets/images/nav/logo.png"
 
 export default function Nav() {
@@ -19,7 +19,7 @@ export default function Nav() {
       {login ? (
         <g.Background onClick={handleLogin}>
           <div onClick={(e) => e.stopPropagation()}>
-            <Login />
+            <Login handleLogin={handleLogin} />
           </div>
         </g.Background>
       ) : null}
