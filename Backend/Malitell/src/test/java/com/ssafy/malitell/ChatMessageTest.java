@@ -1,6 +1,6 @@
 package com.ssafy.malitell;
 
-import com.ssafy.malitell.domain.chatMessage.ChatMessage;
+import com.ssafy.malitell.domain.chat.ChatMessage;
 import com.ssafy.malitell.repository.RedisRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

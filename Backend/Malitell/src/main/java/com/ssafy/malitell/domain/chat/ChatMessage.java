@@ -1,5 +1,7 @@
-package com.ssafy.malitell.domain.chatMessage;
+package com.ssafy.malitell.domain.chat;
 
+import com.ssafy.malitell.domain.User;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
@@ -14,7 +16,8 @@ public class ChatMessage {
     @Id
     private Long chatMessageSeq;
     private int chatRoomSeq;
-    private int userSeq;
+    @ManyToOne
+    private User user;
     private String messageContent;
     private LocalTime spentTime;
     private boolean isRead;
