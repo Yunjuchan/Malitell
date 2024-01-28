@@ -1,4 +1,4 @@
-package com.ssafy.malitell.domain.chatMessage;
+package com.ssafy.malitell.domain.chat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,9 +8,8 @@ import org.springframework.data.redis.core.RedisHash;
 import java.time.LocalTime;
 
 @Getter
-@RedisHash(value = "chat_message")
 @AllArgsConstructor
-public class ChatMessage {
+public class CounselingChatMessage {
     @Id
     private Long chatMessageSeq;
     private int chatRoomSeq;
