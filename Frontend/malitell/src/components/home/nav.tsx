@@ -5,7 +5,7 @@ import { Icon, Name, Wrapper } from "../../styles/home/nav";
 export default function Nav() {
   return (
     <Wrapper>
-      <NavLink to={"/asd"}>
+      <NavLink to={"/counselors"}>
         <Icon src="./images/home/nav/counsel.png" alt="counsel" />
         <Name>상담</Name>
       </NavLink>
