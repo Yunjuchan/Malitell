@@ -15,4 +15,18 @@ public class JoinDTO {
     private String phone; // 핸드폰 번호
     private String birth; // 생년월일
     private String role; // 권한 (counselor, client, admin)
+
+    @Override
+    public String toString() {
+        return "JoinDTO{" +
+                "userId='" + userId + '\'' +
+                ", name='" + name + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", birth='" + birth + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 }
