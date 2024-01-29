@@ -19,7 +19,7 @@ import NotFound from "./routes/etc/notFound";
 import ModalTest from "./routes/test";
 import Signup from "./routes/auth/signup/signup";
 import Agree from "./routes/auth/signup/agree";
-import Information from "./routes/auth/signup/information";
+import SignupClient from "./routes/auth/signup/signupClient";
 import Selection from "./routes/auth/signup/selection";
 import SelfTest from "./routes/etc/selfTest";
 import Bamboo from "./routes/etc/bamboo";
@@ -48,18 +48,18 @@ const router = createBrowserRouter([
             path: "profile/:name",
             element: <Profile />,
           },
-          // {
-          //   path: "/signup",
-          //   element: <Selection />,
-          // },
+          {
+            path: "/signup",
+            element: <Selection />,
+          },
           // {
           //   path: "/signup/agree",
           //   element: <Agree />,
           // },
-          // {
-          //   path: "/signup/information",
-          //   element: <Information />,
-          // },
+          {
+            path: "/signup/client",
+            element: <SignupClient />,
+          },
           // {
           //   path: "/signup/complete",
           //   element: <Signup />,

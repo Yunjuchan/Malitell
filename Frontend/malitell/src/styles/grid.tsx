@@ -19,6 +19,14 @@ export const Back = styled.div`
   background-color: #F7F7F7;
 `
 
+export const BackCounsel = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #F7F7F7;
+`
+
 // 그리드 이걸로 통일(갭은 디자인 구성 볼려고 일부러 넣어둠 나중에 뺼 것!!)
 export const Grid = styled.div`
   display: grid;
@@ -52,7 +60,7 @@ export const GridNav = styled.div`
 
 // 그리드 안쪽 컴포넌트들 사이즈 잡는 용도
 export const Box = styled.div<{ col?: string; row?: string; display?: string }>`
-  box-shadow: 0 0 0 1px black inset;
+  /* box-shadow: 0 0 0 1px black inset; */
   grid-column: ${({ col }) => col};
   grid-row: ${({ row }) => row};
   display: ${({ display }) => display};

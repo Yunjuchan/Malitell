@@ -11,9 +11,10 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faXmark, faUser } from "@fortawesome/free-solid-svg-icons";
 import malitell from "../../../assets/images/malitell.png";
-import kakao from "../../../assets/images/login/kakao.png";
-import naver from "../../../assets/images/login/naver.png";
+import kakao from "../../../assets/images/auth/login/kakao.png";
+import naver from "../../../assets/images/auth/login/naver.png";
 import LoginEmail from "./loginEmail";
+import { NavLink } from "react-router-dom";
 
 interface LoginProps {
   handleLogin: (event: React.MouseEvent) => void;
@@ -47,29 +48,29 @@ export default function Login({ handleLogin }: LoginProps) {
             </LoginBtn>
             <LoginBtn color="#00BF6C">
               <MethodIcon src={naver} />
-              <MethodText>네이버로 계속하기</MethodText>{" "}
-            </LoginBtn>{" "}
+              <MethodText>네이버로 계속하기</MethodText>
+            </LoginBtn>
             <LoginBtn color="white" onClick={handleEmail}>
-              {" "}
               <FontAwesomeIcon
                 icon={faEnvelope}
                 style={{ color: "#b098ff" }}
                 size="2x"
               />
               <MethodText>이메일로 계속하기</MethodText>
-            </LoginBtn>{" "}
-            <LoginBtn color="#FBF3FD">
-              {" "}
-              <FontAwesomeIcon
-                icon={faUser}
-                style={{ color: "#bf94e4", marginLeft: "2px" }}
-                size="2x"
-              />{" "}
-              <MethodText margin="50px">회원가입</MethodText>{" "}
-            </LoginBtn>{" "}
-          </BtnBox>{" "}
+            </LoginBtn>
+            <NavLink to={"/signup"}>
+              <LoginBtn onClick={handleLogin} color="#FBF3FD">
+                <FontAwesomeIcon
+                  icon={faUser}
+                  style={{ color: "#bf94e4", marginLeft: "2px" }}
+                  size="2x"
+                />
+                <MethodText margin="50px">회원가입</MethodText>
+              </LoginBtn>
+            </NavLink>
+          </BtnBox>
         </LoginBox>
-      )}{" "}
+      )}
     </>
   );
 }

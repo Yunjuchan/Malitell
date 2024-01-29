@@ -35,6 +35,10 @@ export const BtnBox = styled.div`
   margin-top: -15px;
   width: 100%;
   height: 200px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
 `;
 
 export const LoginBtn = styled.div`
