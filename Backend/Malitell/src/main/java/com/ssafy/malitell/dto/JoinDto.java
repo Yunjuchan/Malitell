@@ -2,11 +2,10 @@ package com.ssafy.malitell.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Setter
 @Getter
-public class JoinDTO {
+public class JoinDto {
     private String userId; // 아이디
     private String name; // 이름
     private String nickname; // 닉네임
