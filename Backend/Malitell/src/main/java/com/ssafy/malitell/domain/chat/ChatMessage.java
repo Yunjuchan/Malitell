@@ -1,4 +1,4 @@
-package com.ssafy.malitell.domain.chatMessage;
+package com.ssafy.malitell.domain.chat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
