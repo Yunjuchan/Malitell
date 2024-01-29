@@ -6,25 +6,20 @@ export const Wrapper = styled.div`
   margin: auto;
   display: flex;
   justify-content: space-between;
-  a {
-    width: 45%;
-    text-decoration: none;
-    color: white;
-  }
+
   @media screen and (max-width: 1023px) {
-    width: 98%;
+    width: 120%;
+    margin: auto -10%;
     align-items: center;
     flex-direction: column;
-    justify-content: space-around;
-    a {
-      width: 55%;
-    }
   }
 `;
 
 export const Btn = styled.div`
-  width: 100%;
-  height: 100%;
+  cursor: pointer;
+  width: 45%;
+  height: 80%;
+  margin-top: 10%;
   text-align: center;
   align-items: center;
   display: flex;
@@ -33,11 +28,20 @@ export const Btn = styled.div`
   border-radius: 10px;
   background-color: ${({ color }) => color};
   box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
+  @media screen and (max-width: 1023px) {
+    margin: auto;
+    width: 80%;
+    height: 45%;
+    img {
+      margin: 2% 0;
+      width: 15%;
+    }
+  }
 `;
 
 export const Text = styled.div`
-margin-top: 60px;
-font-size: 30px;
+  margin-top: 60px;
+  font-size: 30px;
   font-weight: bold;
   color: white;
 `;

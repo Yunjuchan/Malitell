@@ -6,7 +6,7 @@ export const Box = styled.div`
   width: 15%;
   top: 40vh;
   right: 0;
-  z-index: 10;
+  z-index: 1;
   img {
     margin-left: 35px;
     width: 70%;
