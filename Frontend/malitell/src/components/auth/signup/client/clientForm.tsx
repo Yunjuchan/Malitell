@@ -1,19 +1,9 @@
-// // 들어갈 정보
-// 1. ID
-// 2. PW
-// 3. 이메일
-
-// 이름
-// 성별
-// 닉네임
-// 생년월일 8자리
-// 핸드폰번호
-
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
   Wrapper,
   InputBox,
   Input,
+  Message,
   Submit,
 } from "../../../../styles/auth/signup/client/clientForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -36,8 +26,8 @@ export default function ClientForm() {
     name: string;
     gender: string;
     nickname: string;
-    birthday: number;
-    phone: number;
+    birthday: string;
+    phone: string;
   }
   const {
     register,
@@ -60,10 +50,11 @@ export default function ClientForm() {
   const passwordRegex =
     /^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()])[\da-zA-Z!@#]{8,16}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const nameRegex = /^[A-Za-zㄱ-ㅎ가-힣]{1,30}$/;
+  const nameRegex = /^[ㄱ-ㅎ가-힣]{2,30}$/;
   const nicknameRegex = /^[ㄱ-ㅎ가-힣]{2,10}$/;
-  const birthdayRegex = /^[19000101-20240101]$/;
-  const phoneRegex = /^[010]+[0000-9999]+[0000-9999]$/;
+  const birthdayRegex =
+    /^(19[0-9]{2}|20[0-1][0-9]|2020|2021|2022|2023|2024)(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])$/;
+  const phoneRegex = /^(010[0-9]{8})$/;
 
   // 폼 제출 체크
   const onSubmit = (data: FormData) => {
@@ -191,7 +182,7 @@ export default function ClientForm() {
           type="text"
         />
       </InputBox>
-      <hr />
+      <hr style={{width: "51%", border:"1px solid #f2d4f9"}} />
       <InputBox className={nameFocus ? "focus" : "normal"}>
         <FontAwesomeIcon
           icon={faUser}
@@ -221,7 +212,7 @@ export default function ClientForm() {
           {...register("nickname", {
             pattern: {
               value: nicknameRegex,
-              message: "닉네임: 닉네임은 2-10자 한글만 입력 가능합니다."
+              message: "닉네임: 닉네임은 2-10자 한글만 입력 가능합니다.",
             },
           })}
           onFocus={onFocusNickname}
@@ -241,8 +232,8 @@ export default function ClientForm() {
             required: "생년월일은 필수 입력 항목입니다.",
             pattern: {
               value: birthdayRegex,
-              message: "생년월일: 생년월일이 정확한지 확인해 주세요."
-            }
+              message: "생년월일: 생년월일이 정확한지 확인해 주세요.",
+            },
           })}
           onFocus={onFocusBirthday}
           onBlur={onFocusBirthday}
@@ -257,22 +248,40 @@ export default function ClientForm() {
           color={phoneFocus ? "#bf94e4" : "#D3D3D3"}
         />
         <Input
-        {...register("phone", {
-          required: "핸드폰 번호는 필수 입력 항목입니다.",
-          pattern: {
-            value: phoneRegex,
-            message: "핸드폰 번호: 핸드폰 번호가 정확한지 확인해 주세요."
-          }
-        })}
+          {...register("phone", {
+            required: "핸드폰 번호는 필수 입력 항목입니다.",
+            pattern: {
+              value: phoneRegex,
+              message: "핸드폰 번호: 핸드폰 번호가 정확한지 확인해 주세요.",
+            },
+          })}
           onFocus={onFocusPhone}
           onBlur={onFocusPhone}
-          name="id"
+          name="phone"
           placeholder="휴대전화번호"
-          type="id"
+          type="text"
         />
       </InputBox>
-
-      <Submit type="submit" value="인증요청" />
+      <Submit type="submit" value={"인증하기"} />
+      <Message>
+        {errors.id ? (
+          <>{errors.id.message}</>
+        ) : errors.password ? (
+          <>{errors.password.message}</>
+        ) : errors.passwordCheck ? (
+          <>{errors.passwordCheck.message}</>
+        ) : errors.email ? (
+          <>{errors.email.message}</>
+        ) : errors.name ? (
+          <>{errors.name.message}</>
+        ) : errors.nickname ? (
+          <>{errors.nickname.message}</>
+        ) : errors.birthday ? (
+          <>{errors.birthday.message}</>
+        ) : errors.phone ? (
+          <>{errors.phone.message}</>
+        ) : <></>}
+      </Message>
     </Wrapper>
   );
 }

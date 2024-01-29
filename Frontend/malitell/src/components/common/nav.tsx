@@ -5,24 +5,24 @@ import { faUser, faComment } from "@fortawesome/free-regular-svg-icons";
 import * as s from "../../styles/common/nav";
 import * as g from "../../styles/grid";
 import Login from "../auth/login/login";
-import logo from "../../assets/images/nav/logo.png"
+import logo from "../../assets/images/nav/logo.png";
 
 export default function Nav() {
+  const [back, setBack] = useState(false);
   const [login, setLogin] = useState(false);
 
+  const handleBack = (e: React.MouseEvent): void => {
+    document.body.style.overflow = 'hidden';
+    setBack(!back);
+  };
   const handleLogin = (e: React.MouseEvent): void => {
     setLogin(!login);
   };
 
   return (
     <>
-      {login ? (
-        <g.Background onClick={handleLogin}>
-          <div onClick={(e) => e.stopPropagation()}>
-            <Login handleLogin={handleLogin} />
-          </div>
-        </g.Background>
-      ) : null}
+      {back ? <g.Background></g.Background> : null}
+      {login ? <Login handleLogin={handleLogin} handleBack={handleBack} /> : null}
       <s.Nav>
         <s.Line></s.Line>
 
@@ -37,7 +37,13 @@ export default function Nav() {
           {/* 네브바 상단부분 */}
           <s.NavItems col="11/13" row="1/2" align="end">
             <s.NavItem width="70px" size="15px">
-              <div onClick={handleLogin} style={{ cursor: "pointer" }}>
+              <div
+                onClick={(e) => {
+                  handleLogin(e);
+                  handleBack(e);
+                }}
+                style={{ cursor: "pointer" }}
+              >
                 로그인
               </div>
             </s.NavItem>
@@ -49,14 +55,10 @@ export default function Nav() {
           {/* 네브바 하단부분 */}
           <s.NavItems col="4/10" row="2/4" align="space-between">
             <s.NavItem width="150px" size="20px">
-              <Link to="/comingsoon">
-                메타버스
-              </Link>
+              <Link to="/comingsoon">메타버스</Link>
             </s.NavItem>
             <s.NavItem width="150px" size="20px">
-              <Link to="/articles">
-                커뮤니티
-              </Link>
+              <Link to="/articles">커뮤니티</Link>
             </s.NavItem>
             <s.NavItem width="150px" size="20px">
               <Link to="/counselors">전문가 찾기</Link>
