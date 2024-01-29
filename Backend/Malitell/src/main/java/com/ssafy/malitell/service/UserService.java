@@ -1,8 +1,9 @@
 package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.User;
-import com.ssafy.malitell.dto.JoinDTO;
+import com.ssafy.malitell.dto.JoinDto;
 import com.ssafy.malitell.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public void join(JoinDTO joinDTO) {
+    public void join(JoinDto joinDTO) {
         String userId = joinDTO.getUserId();
         String name = joinDTO.getName();
         String nickname = joinDTO.getNickname();
@@ -48,7 +49,4 @@ public class UserService {
 
         userRepository.save(user);
     }
-
-
-
 }

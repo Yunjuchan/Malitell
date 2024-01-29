@@ -18,7 +18,7 @@ import lombok.Setter;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id; // idx
+    private int userSeq; // idx
     private String userId; // 아이디
     private String name; // 이름
     private String nickname; // 닉네임

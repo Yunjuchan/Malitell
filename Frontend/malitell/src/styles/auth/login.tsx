@@ -5,7 +5,7 @@ export const LoginBox = styled.div`
   text-align: center;
   width: 376px;
   height: 624px;
-  z-index: 100;
+  z-index: 3;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -35,6 +35,11 @@ export const BtnBox = styled.div`
   margin-top: -15px;
   width: 100%;
   height: 200px;
+  a {
+    margin: auto;
+    text-decoration: none;
+    color: black;
+  }
 `;
 
 export const LoginBtn = styled.div`
@@ -47,6 +52,7 @@ export const LoginBtn = styled.div`
   border-radius: 10px;
   box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
   background-color: ${({ color }) => color};
+  cursor: pointer;
   svg,
   img {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));

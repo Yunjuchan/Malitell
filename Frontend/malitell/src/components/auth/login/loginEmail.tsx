@@ -1,18 +1,19 @@
 import { Background } from "../../../styles/grid";
-import {
-  Text,
-  ToolBox,
-  Wrapper,
-} from "../../../styles/auth/loginEmail";
+import { Text, ToolBox, Wrapper } from "../../../styles/auth/loginEmail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBackward, faXmark } from "@fortawesome/free-solid-svg-icons";
 
-interface EmailProps {
+interface LoginProps {
   handleLogin: (event: React.MouseEvent) => void;
   handleEmail: (event: React.MouseEvent) => void;
+  handleBack: (event: React.MouseEvent) => void;
 }
 
-export default function LoginEmail({ handleLogin, handleEmail }: EmailProps) {
+export default function LoginEmail({
+  handleLogin,
+  handleEmail,
+  handleBack,
+}: LoginProps) {
   return (
     <Wrapper>
       <ToolBox>
@@ -23,7 +24,11 @@ export default function LoginEmail({ handleLogin, handleEmail }: EmailProps) {
           size="2x"
         />
         <FontAwesomeIcon
-          onClick={handleLogin}
+          onClick={(e) => {
+            handleLogin(e);
+            handleEmail(e);
+            handleBack(e);
+          }}
           icon={faXmark}
           style={{ color: "#bf94e4" }}
         />
