@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -17,9 +18,13 @@ public class BoardListResponseDto {
 
     // 작성자 닉네임
     private String username;
+    private int hit;
+    private Timestamp time;
 
     public BoardListResponseDto(Board board) {
         this.title = board.getTitle();
         this.username = board.getUser().getNickname();
+        this.hit = board.getHit();
+        this.time = board.getTime();
     }
 }

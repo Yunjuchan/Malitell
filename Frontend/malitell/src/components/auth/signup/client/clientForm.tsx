@@ -1,7 +1,9 @@
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import {
-  Wrapper,
+  Form,
   InputBox,
+  Select,
+  Option,
   Input,
   Message,
   Submit,
@@ -14,6 +16,7 @@ import {
   faIdCard,
   faCalendar,
   faPhone,
+  faVenusMars,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { HTMLInputTypeAttribute, useState } from "react";
 
@@ -51,6 +54,7 @@ export default function ClientForm() {
     /^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()])[\da-zA-Z!@#]{8,16}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const nameRegex = /^[ㄱ-ㅎ가-힣]{2,30}$/;
+  const genderRegex = /^(남자|여자)$/;
   const nicknameRegex = /^[ㄱ-ㅎ가-힣]{2,10}$/;
   const birthdayRegex =
     /^(19[0-9]{2}|20[0-1][0-9]|2020|2021|2022|2023|2024)(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])$/;
@@ -89,6 +93,9 @@ export default function ClientForm() {
   const onFocusName = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
     setNameFocus(!nameFocus);
   };
+  const onFocusGender = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
+    setGenderFocus(!genderFocus);
+  };
   const onFocusNickname = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
     setNicknameFocus(!nicknameFocus);
   };
@@ -99,8 +106,15 @@ export default function ClientForm() {
     setPhoneFocus(!phoneFocus);
   };
 
+  // 셀렉트박스 css용
+  const [placeholder, setPlaceholder] = useState(true);
+
+  const handlePlaceholder = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setPlaceholder(false);
+  };
+
   return (
-    <Wrapper onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <InputBox className={idFocus ? "focus" : "normal"}>
         <FontAwesomeIcon
           icon={faUser}
@@ -182,26 +196,55 @@ export default function ClientForm() {
           type="text"
         />
       </InputBox>
-      <hr style={{width: "51%", border:"1px solid #f2d4f9"}} />
-      <InputBox className={nameFocus ? "focus" : "normal"}>
-        <FontAwesomeIcon
-          icon={faUser}
-          color={nameFocus ? "#bf94e4" : "#D3D3D3"}
-        />
-        <Input
-          {...register("name", {
-            required: "이름은 필수 입력 항목입니다.",
-            pattern: {
-              value: nameRegex,
-              message: "이름: 이름은 1-30자 한글만 입력 가능합니다.",
-            },
-          })}
-          onFocus={onFocusName}
-          onBlur={onFocusName}
-          name="name"
-          placeholder="이름"
-          type="text"
-        />
+      <hr style={{ width: "51%", border: "1px solid #f2d4f9" }} />
+      <InputBox id="genderBox">
+        <InputBox className={nameFocus ? "focus" : "normal"} id="name">
+          <FontAwesomeIcon
+            icon={faUser}
+            color={nameFocus ? "#bf94e4" : "#D3D3D3"}
+          />
+          <Input
+            {...register("name", {
+              required: "이름은 필수 입력 항목입니다.",
+              pattern: {
+                value: nameRegex,
+                message: "이름: 이름은 1-30자 한글만 입력 가능합니다.",
+              },
+            })}
+            onFocus={onFocusName}
+            onBlur={onFocusName}
+            name="name"
+            placeholder="이름"
+            type="text"
+          />
+        </InputBox>
+        <InputBox className={genderFocus ? "focus" : "normal"} id="gender">
+          <FontAwesomeIcon
+            icon={faVenusMars}
+            color={genderFocus ? "#bf94e4" : "#D3D3D3"}
+          />
+          <Select
+            className={placeholder ? "placeholder" : ""}
+            {...register("gender", {
+              required: "성별은 필수 선택 항목입니다.",
+              pattern: {
+                value: genderRegex,
+                message: "성별: 성별을 선택해 주세요.",
+              },
+            onChange(event) {
+              handlePlaceholder(event);
+            }
+            })}
+            onFocus={onFocusGender}
+            onBlur={onFocusGender}
+          >
+            <Option value="" hidden>
+              선택해 주세요.
+            </Option>
+            <Option value="남자">남자</Option>
+            <Option value="여자">여자</Option>
+          </Select>
+        </InputBox>
       </InputBox>
       <InputBox className={nicknameFocus ? "focus" : "normal"}>
         <FontAwesomeIcon
@@ -274,14 +317,18 @@ export default function ClientForm() {
           <>{errors.email.message}</>
         ) : errors.name ? (
           <>{errors.name.message}</>
+        ) : errors.gender ? (
+          <>{errors.gender.message}</>
         ) : errors.nickname ? (
           <>{errors.nickname.message}</>
         ) : errors.birthday ? (
           <>{errors.birthday.message}</>
         ) : errors.phone ? (
           <>{errors.phone.message}</>
-        ) : <></>}
+        ) : (
+          <></>
+        )}
       </Message>
-    </Wrapper>
+    </Form>
   );
 }

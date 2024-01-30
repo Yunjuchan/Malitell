@@ -53,8 +53,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors(cors -> cors
-                .configurationSource(corsConfigurationSource()));
+        http.cors(cors -> cors.configurationSource(corsConfigurationSource()));
 
         // csrf disable
         http.csrf(AbstractHttpConfigurer::disable);
@@ -67,20 +66,18 @@ public class SecurityConfig {
 
         // 경로별 인가 작업
         http.authorizeHttpRequests((auth) -> auth
-                .requestMatchers("/", "/user/join", "/login", "/oauth2/**", "/user/reissue", "/room/chat").permitAll()
+                .requestMatchers("/", "/user/join", "/login", "/oauth2/**", "/user/reissue", "/chat/**", "/ws-stomp").permitAll()
+                .requestMatchers("/reserve", "/board").hasRole("CLIENT")
+//                .requestMatchers("/board").hasRole("COUNSELOR") // 상담자, 관리자 권한 처리하기
                 .anyRequest().authenticated());
 
         // OAuth2
-        http.oauth2Login(oauth2 -> oauth2
-                .authorizationEndpoint(endpoint -> endpoint.baseUri("/api/v1/auth/oauth2"))
-                .redirectionEndpoint(endpoint -> endpoint.baseUri("/oauth2/callback/*"))
-                .userInfoEndpoint(endpoint -> endpoint.userService(oAuth2UserService)));
+        http.oauth2Login(oauth2 -> oauth2.authorizationEndpoint(endpoint -> endpoint.baseUri("/api/v1/auth/oauth2")).redirectionEndpoint(endpoint -> endpoint.baseUri("/oauth2/callback/*")).userInfoEndpoint(endpoint -> endpoint.userService(oAuth2UserService)));
 
         // JWT 검증 필터 등록 (LoginFilter 앞에)
         http.addFilterBefore(new JWTFilter(jwtUtil), LoginFilter.class);
 
-        http.exceptionHandling(exceptionHandling -> exceptionHandling
-                .authenticationEntryPoint(new FailedAuthenticationEntryPoint()));
+        http.exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(new FailedAuthenticationEntryPoint()));
 
         // 커스텀 필터 등록
         // (생성한 커스텀 필터, 필터를 넣을 위치)
@@ -88,8 +85,7 @@ public class SecurityConfig {
 
         // 세션 설정 (가장 중요!)
         // JWT 방식에서는 세션을 항상 stateless 상태로 유지함
-        http.sessionManagement((session) -> session
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        http.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return http.build();
     }

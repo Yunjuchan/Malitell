@@ -12,6 +12,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BoardService {
 
     private final UserRepository userRepository;
@@ -34,9 +36,9 @@ public class BoardService {
         return board.getBoardSeq();
     }
 
-    // 게시판 목록 가져오기
+    // 게시판 목록 가져오기x
     public List<BoardListResponseDto> findAllBoard() {
-        try{
+        try {
             List<Board> boardList = boardRepository.findAll();
 
             List<BoardListResponseDto> responseDtoList = new ArrayList<>();
@@ -47,8 +49,8 @@ public class BoardService {
                 );
             }
             return responseDtoList;
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            log.error(exception.getMessage());
         }
         return null;
     }

@@ -1,4 +1,3 @@
-import { Background } from "../../../styles/grid";
 import { Text, ToolBox, Wrapper } from "../../../styles/auth/loginEmail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBackward, faXmark } from "@fortawesome/free-solid-svg-icons";

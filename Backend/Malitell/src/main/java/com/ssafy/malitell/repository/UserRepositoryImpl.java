@@ -3,12 +3,14 @@ package com.ssafy.malitell.repository;
 import com.ssafy.malitell.domain.User;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
-public class UserRepositoryImpl implements UserRepositoryCustom{
+@Slf4j
+public class UserRepositoryImpl implements UserRepositoryCustom {
 
     @Autowired
     EntityManager entityManager;
@@ -26,7 +28,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom{
             // 엔터티 저장
             entityManager.persist(findUser);
         } catch (Exception exception) {
-            exception.printStackTrace();
+            log.error(exception.getMessage());
         }
     }
 

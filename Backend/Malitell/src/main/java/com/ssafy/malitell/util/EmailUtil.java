@@ -2,12 +2,14 @@ package com.ssafy.malitell.util;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class EmailUtil {
 
     private final JavaMailSender javaMailSender;
@@ -26,8 +28,8 @@ public class EmailUtil {
             messageHelper.setText(htmlContent, true);
 
             javaMailSender.send(message);
-        } catch (MessagingException e) {
-            e.printStackTrace();
+        } catch (MessagingException exception) {
+            log.error(exception.getMessage());
             return false;
         }
 

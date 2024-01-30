@@ -13,6 +13,7 @@ import com.ssafy.malitell.repository.UserRepository;
 import com.ssafy.malitell.service.AuthService;
 import com.ssafy.malitell.util.EmailUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AuthServiceImplement implements AuthService {
 
     private final UserRepository userRepository;
@@ -40,7 +42,7 @@ public class AuthServiceImplement implements AuthService {
 
 
         } catch (Exception exception) {
-            exception.printStackTrace();
+            log.error(exception.getMessage());
             return ResponseDto.databaseError();
         }
 
@@ -65,7 +67,7 @@ public class AuthServiceImplement implements AuthService {
             certificationRepository.save(certificationEntity);
 
         } catch (Exception exception) {
-            exception.printStackTrace();
+            log.error(exception.getMessage());
             return ResponseDto.databaseError();
         }
 
@@ -89,7 +91,7 @@ public class AuthServiceImplement implements AuthService {
             if (!isMatched) return CheckCertificationResponseDto.certificationFail();
 
         } catch (Exception exception) {
-            exception.printStackTrace();
+            log.error(exception.getMessage());
             return ResponseDto.databaseError();
         }
 
@@ -122,7 +124,7 @@ public class AuthServiceImplement implements AuthService {
             certificationRepository.deleteByUserId(userId);
 
         } catch (Exception exception) {
-            exception.printStackTrace();
+            log.error(exception.getMessage());
             return ResponseDto.databaseError();
         }
 

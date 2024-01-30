@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   position: absolute;
   text-align: center;
+  overflow-y: auto;
+  overflow-x: hidden;
   width: 900px;
   height: 70%;
   z-index: 3;

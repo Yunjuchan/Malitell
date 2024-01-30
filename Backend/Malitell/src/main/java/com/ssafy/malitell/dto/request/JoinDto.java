@@ -1,4 +1,4 @@
-package com.ssafy.malitell.dto;
+package com.ssafy.malitell.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +13,7 @@ public class JoinDto {
     private String email; // 이메일
     private String phone; // 핸드폰 번호
     private String birth; // 생년월일
+    private String gender; // 성별
     private String role; // 권한 (counselor, client, admin)
 
     @Override
@@ -25,6 +26,7 @@ public class JoinDto {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", birth='" + birth + '\'' +
+                ", gender='" + gender + '\'' +
                 ", role='" + role + '\'' +
                 '}';
     }

@@ -8,26 +8,32 @@ import com.ssafy.malitell.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ChatService {
     private final ChatRoomRepository chatRoomRepository;
     private final UserRepository userRepository;
 
-    public void createChatRoom(ChatRequestDto chatRequestDto) {
+    public ChatRoom createChatRoom(ChatRequestDto chatRequestDto) {
         int counselorSeq = chatRequestDto.getCounselorSeq();
         int clientSeq = chatRequestDto.getClientSeq();
 
         User counselor = userRepository.findByUserSeq(counselorSeq);
         User client = userRepository.findByUserSeq(clientSeq);
 
-        ChatRoom chatRoom = chatRoomRepository.findRoomCounselorAndClient(counselor, client);
+        ChatRoom chatRoom = chatRoomRepository.createChatRoom(counselor, client);
 
-        if (chatRoom == null) {
-            chatRoom = chatRoomRepository.createChatRoom(counselor, client);
-            chatRoomRepository.save(chatRoom);
-        } else {
-            return;
-        }
+        chatRoomRepository.save(chatRoom);
+        return chatRoom;
+    }
+
+    public List<ChatRoom> chatRoomList() {
+        return chatRoomRepository.findAllRoomByLastSpentTimeDesc();
+    }
+
+    public ChatRoom findRoom(String chatRoomSeq) {
+        return chatRoomRepository.findRoomByChatRoomSeq(chatRoomSeq);
     }
 }

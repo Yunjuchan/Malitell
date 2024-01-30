@@ -13,23 +13,23 @@ export default function home() {
       <g.BackHome />
       <g.Grid>
         {/* 홈 네브 */}
-        <g.Box col="1/13" row="1/3">
+        <g.Box $col="1/13" $row="1/3">
           <Nav />
         </g.Box>
 
         {/* 배너 */}
-        <g.Box col="1/6" row="3/8">
+        <g.Box $col="1/6" $row="3/8">
           <Metaverse />
           <Bamboo />
         </g.Box>
 
         {/* 상담하기 디자인 구상 중 */}
-        <g.Box col="6/13" row="3/8">
+        <g.Box $col="6/13" $row="3/8">
           <Counsel />
         </g.Box>
 
         {/* 게시글 */}
-        <g.Box col="1/13" row="8/13">
+        <g.Box $col="1/13" $row="8/13">
           <Articles />
         </g.Box>
       </g.Grid>
