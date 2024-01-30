@@ -4,6 +4,7 @@ import com.ssafy.malitell.domain.User;
 import com.ssafy.malitell.domain.chat.ChatRoom;
 import com.ssafy.malitell.dto.request.ChatRequestDto;
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,7 @@ public class ChatRoomRepository {
     @Autowired
     EntityManager em;
 
+    @Transactional
     public void save(ChatRoom chatRoom) {
         em.persist(chatRoom);
     }

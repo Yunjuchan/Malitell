@@ -1,11 +1,13 @@
 package com.ssafy.malitell.controller;
 
 import com.ssafy.malitell.domain.User;
-import com.ssafy.malitell.dto.JoinDto;
+import com.ssafy.malitell.dto.request.JoinDto;
 import com.ssafy.malitell.jwt.JWTUtil;
 import com.ssafy.malitell.repository.UserRepository;
 import com.ssafy.malitell.service.UserService;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/user")
@@ -13,7 +15,6 @@ public class UserController {
 
     private final UserService userService;
     private final UserRepository userRepository;
-
     private final JWTUtil jwtUtil;
 
     public UserController(UserService userService, UserRepository userRepository, JWTUtil jwtUtil) {
@@ -42,7 +43,6 @@ public class UserController {
         String userId = jwtUtil.getUserId(refreshToken);
 
         // user pk로 유저 검색 / repository에 저장된 refreshToken이 없음
-        System.out.println(userRepository.findByUserId(userId));
         User findUser = userRepository.findByUserId(userId);
         if (findUser == null) {
             throw new Exception("유저가 없음 // 다시 로그인");
@@ -62,9 +62,8 @@ public class UserController {
         return jwtUtil.createAccessToken(userId, role);
     }
 
-
     @GetMapping("/mypage")
-    public String mypage() {
-        return "mypage";
+    public User mypage(Principal principal) {
+        return userService.findUserInfo(principal);
     }
 }

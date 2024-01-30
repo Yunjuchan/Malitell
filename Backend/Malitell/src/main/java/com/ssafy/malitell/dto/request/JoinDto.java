@@ -1,4 +1,4 @@
-package com.ssafy.malitell.dto;
+package com.ssafy.malitell.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;
