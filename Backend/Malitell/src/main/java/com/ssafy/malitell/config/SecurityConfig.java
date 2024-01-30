@@ -66,7 +66,7 @@ public class SecurityConfig {
 
         // 경로별 인가 작업
         http.authorizeHttpRequests((auth) -> auth
-                .requestMatchers("/", "/join", "/login", "/oauth2/**", "/user/reissue").permitAll()
+                .requestMatchers("/", "/join", "/login", "/oauth2/**", "/user/reissue", "/ws-stomp", "/reserve", "/reserve").permitAll()
                 .anyRequest().authenticated());
 
         // OAuth2

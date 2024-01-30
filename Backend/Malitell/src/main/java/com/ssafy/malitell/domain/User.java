@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,15 +19,23 @@ import lombok.Setter;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id; // idx
+    @NotNull
+    private int id; // idx
+    @NotNull
     private String userId; // 아이디
+    @NotNull
     private String name; // 이름
     private String nickname; // 닉네임
     private String password; // 비밀번호
+    @NotNull
     private String email; // 이메일
+    @NotNull
     private String phone; // 핸드폰 번호
+    @NotNull
     private String birth; // 생년월일
+    @NotNull
     private String gender; // 성별
+    @NotNull
     private String role; // 권한 (counselor, client, admin)
     private String refreshToken; // refresh token
     private String profileImg; // 프로필 사진
