@@ -25,7 +25,6 @@ public class UserController {
     @PostMapping("/join")
     public String join(@RequestBody JoinDto joinDTO) {
         userService.join(joinDTO);
-        System.out.println(joinDTO  );
         return "join success";
     }
 
