@@ -1,11 +1,30 @@
-import { Text, ToolBox, Wrapper } from "../../../styles/auth/loginEmail";
+import React, { useState } from "react";
+import {
+  ToolBox,
+  Wrapper,
+  Image,
+  Form,
+  InputBox,
+  Input,
+  Submit,
+  Message,
+} from "../../../styles/auth/loginEmail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBackward, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBackward, faLock, faXmark } from "@fortawesome/free-solid-svg-icons";
+import malitell from "../../../assets/images/malitell.png";
+import { useForm } from "react-hook-form";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
 
+// 로그인 선택 모달에서 전달받은 Props(백그라운드 제어, 모달제어)
 interface LoginProps {
   handleLogin: (event: React.MouseEvent) => void;
   handleEmail: (event: React.MouseEvent) => void;
   handleBack: (event: React.MouseEvent) => void;
+}
+
+interface FormData {
+  id: string;
+  password: string;
 }
 
 export default function LoginEmail({
@@ -13,6 +32,28 @@ export default function LoginEmail({
   handleEmail,
   handleBack,
 }: LoginProps) {
+  const {
+    register,
+    getValues,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
+
+  const onSubmit = (data: FormData) => {
+    console.log("데이터: ", data);
+  };
+
+  // input CSS용 state 및 함수
+  const [focusId, setFocusId] = useState(false);
+  const [focusPw, setFocusPw] = useState(false);
+
+  const handleFocusId = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
+    setFocusId(!focusId);
+  };
+  const handleFocusPw = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
+    setFocusPw(!focusPw);
+  };
+
   return (
     <Wrapper>
       <ToolBox>
@@ -32,7 +73,49 @@ export default function LoginEmail({
           style={{ color: "#bf94e4" }}
         />
       </ToolBox>
-      <Text>이메일로 계속하기</Text>
+      <Image src={malitell} />
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <InputBox className={focusId ? "focus" : "normal"}>
+          <FontAwesomeIcon
+            icon={faUser}
+            color={focusId ? "#bf94e4" : "#D3D3D3"}
+          />
+          <Input
+            {...register("id", {
+              required: "아이디를 입력해 주세요.",
+            })}
+            onFocus={handleFocusId}
+            onBlur={handleFocusId}
+            placeholder="아이디"
+          />
+        </InputBox>
+        <InputBox className={focusPw ? "focus" : "normal"}>
+          <FontAwesomeIcon
+            icon={faLock}
+            color={focusPw ? "#bf94e4" : "#D3D3D3"}
+          />
+          <Input
+            {...register("password", {
+              required: "비밀번호를 입력해 주세요.",
+            })}
+            onFocus={handleFocusPw}
+            onBlur={handleFocusPw}
+            placeholder="비밀번호"
+          />
+        </InputBox>
+        <Submit type="submit" value="로그인" />
+        <Message>
+          <>
+            {errors.id ? (
+              <>{errors.id.message}</>
+            ) : errors.password ? (
+              <>{errors.password}</>
+            ) : (
+              <></>
+            )}
+          </>
+        </Message>
+      </Form>
     </Wrapper>
   );
 }

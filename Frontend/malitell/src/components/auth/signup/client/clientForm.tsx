@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import React, { HTMLInputTypeAttribute, useState } from "react";
 import {
   Form,
   InputBox,
@@ -18,7 +19,6 @@ import {
   faPhone,
   faVenusMars,
 } from "@fortawesome/free-solid-svg-icons";
-import React, { HTMLInputTypeAttribute, useState } from "react";
 
 export default function ClientForm() {
   interface FormData {
