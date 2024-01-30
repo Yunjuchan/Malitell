@@ -22,8 +22,11 @@ public class ChatService {
 
         User counselor = userRepository.findByUserSeq(counselorSeq);
         User client = userRepository.findByUserSeq(clientSeq);
-        
-        return chatRoomRepository.createChatRoom(counselor, client);
+
+        ChatRoom chatRoom = chatRoomRepository.createChatRoom(counselor, client);
+
+        chatRoomRepository.save(chatRoom);
+        return chatRoom;
     }
 
     public List<ChatRoom> chatRoomList() {

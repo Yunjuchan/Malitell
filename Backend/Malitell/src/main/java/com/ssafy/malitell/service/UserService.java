@@ -1,11 +1,13 @@
 package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.User;
-import com.ssafy.malitell.dto.JoinDto;
+import com.ssafy.malitell.dto.request.JoinDto;
 import com.ssafy.malitell.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.security.Principal;
 
 @Service
 @RequiredArgsConstructor
@@ -48,5 +50,10 @@ public class UserService {
 
         userRepository.save(user);
         userRepository.flush();
+    }
+
+    public User findUserInfo(Principal principal) {
+        String name = principal.getName();
+        return userRepository.findByUserId(name);
     }
 }

@@ -22,10 +22,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         // 로그인한 사용자 검증
         if(user != null) {
-            System.out.println("회원가입 되어있는 유저임");
-
             CustomUserDetails customUser = new CustomUserDetails(user);
-            // System.out.println(customUser);
             return customUser;
         }
         return null;

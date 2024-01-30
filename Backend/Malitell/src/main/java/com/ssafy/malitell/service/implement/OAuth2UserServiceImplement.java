@@ -64,7 +64,6 @@ public class OAuth2UserServiceImplement extends DefaultOAuth2UserService {
 
             type = "kakao";
             user = new User(userId, name, nickname, email, phone, birth, gender, role, type);
-            System.out.println("kakao 로그인");
         }
 
         if (oauthClientName.equals("naver")) {
@@ -77,7 +76,6 @@ public class OAuth2UserServiceImplement extends DefaultOAuth2UserService {
             birth = responseMap.get("birthyear") + responseMap.get("birthday").substring(0, 2) + responseMap.get("birthday").substring(3, 5);
             type = "naver";
             user = new User(userId, name, nickname, email, phone, birth, gender, role, type);
-            System.out.println("naver 로그인");
         }
 
         assert user != null;
