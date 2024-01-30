@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.form`
-  width: 80%;
+export const Form = styled.form`
+  width: 100%;
   margin: 3% auto;
   justify-content: space-around;
   .focus {
@@ -10,7 +10,33 @@ export const Wrapper = styled.form`
   .normal {
     border: 1px solid lightgray;
   }
-  @media screen and (max-width: 1023px){
+  #genderBox {
+    padding: 0 0;
+    margin: 0% auto;
+    margin-bottom: -1%;
+  }
+  #name {
+    width: 45%;
+    height: 100%;
+    margin: 0 -7%;
+    @media screen and (max-width: 1023px) {
+      margin-bottom: 1.5%;
+    }
+    svg {
+      margin-left: 12px;
+    }
+  }
+  #gender {
+    width: 50%;
+    margin-right: -7%;
+    @media screen and (max-width: 1023px) {
+      margin-bottom: 2.5%;
+    }
+    svg {
+      margin-left: 15px;
+    }
+  }
+  @media screen and (max-width: 1023px) {
     margin: auto -42.5%;
     width: 185%;
   }
@@ -25,8 +51,19 @@ export const InputBox = styled.div`
   padding: 10px 3%;
   border-radius: 5px;
   background-color: white;
-  @media screen and (max-width: 1023px){
+  @media screen and (max-width: 1023px) {
     margin: 1% auto;
+  }
+  select:invalid {
+    color: lightgray;
+    font-weight: bold;
+  }
+
+  .placeholder {
+    color: lightgray;
+    option {
+      color: black;
+    }
   }
 `;
 
@@ -43,16 +80,28 @@ export const Input = styled.input`
   }
 `;
 
+export const Select = styled.select`
+  border: none;
+  width: 100%;
+  font-size: 16px;
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const Option = styled.option`
+
+`
+
 export const Message = styled.div`
   width: 45%;
-  margin: 3% auto;
+  margin: 2% auto;
   font-size: 12px;
   color: red;
   @media screen and (max-width: 1023px) {
     margin: 1% auto;
   }
-`
-
+`;
 export const Submit = styled.input`
   transition: all 0.2s;
   width: 51.5%;

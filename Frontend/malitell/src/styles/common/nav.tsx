@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Nav = styled.div`
   background-color: white;
-  height: 80px;
+  height: 8.5vh;
   position: sticky;
   top: 0;
 `;
@@ -39,30 +39,30 @@ export const Logo = styled.div`
 `;
 
 export const NavItems = styled.div<{
-  col?: string;
-  row?: string;
-  align?: string;
-  paddingLeft?: string;
+  $col?: string;
+  $row?: string;
+  $align?: string;
+  $paddingLeft?: string;
 }>`
   /* box-shadow: 0 0 0 1px inset; */
-  grid-column: ${({ col }) => col};
-  grid-row: ${({ row }) => row};
+  grid-column: ${({$col}) => $col};
+  grid-row: ${({$row}) => $row};
   display: flex;
-  justify-content: ${({ align }) => align};
+  justify-content: ${({$align}) => $align};
   margin: auto 0;
 `;
 
 export const NavItem = styled.div<{
-  size?: string;
-  width?: string;
-  weight?: string;
+  $size?: string;
+  $width?: string;
+  $weight?: string;
 }>`
   text-align: center;
   justify-content: center;
   margin: auto 0;
-  width: ${({ width }) => width};
-  font-size: ${({ size }) => size};
-  font-weight: ${({ weight }) => weight};
+  width: ${({$width}) => $width};
+  font-size: ${({$size}) => $size};
+  font-weight: ${({$weight}) => $weight};
   a {
     text-decoration: none;
     color: black;

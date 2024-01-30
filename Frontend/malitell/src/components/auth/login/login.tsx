@@ -89,7 +89,7 @@ export default function Login({ handleLogin, handleBack }: NavProps) {
                 style={{ color: "#bf94e4", marginLeft: "2px" }}
                 size="2x"
               />
-              <MethodText margin="50px">회원가입</MethodText>
+              <MethodText $margin="50px">회원가입</MethodText>
             </LoginBtn>
           </BtnBox>
         </LoginBox>

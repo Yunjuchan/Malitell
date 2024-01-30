@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const LoginBox = styled.div`
-  position: absolute;
+  position: fixed;
   text-align: center;
   width: 376px;
   height: 624px;
@@ -65,8 +65,8 @@ export const MethodIcon = styled.img`
   text-align: center;
 `;
 
-export const MethodText = styled.div<{ margin?: string }>`
+export const MethodText = styled.div<{ $margin?: string }>`
   font-size: 14px;
   font-weight: bold;
-  margin-left: ${({ margin }) => (margin ? margin : "30px")};
+  margin-left: ${({ $margin }) => ($margin ? $margin : "30px")};
 `;

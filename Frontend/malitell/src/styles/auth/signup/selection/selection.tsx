@@ -34,7 +34,7 @@ export const Btn = styled.div`
     height: 45%;
     img {
       margin: 2% 0;
-      width: 15%;
+      width: 10%;
     }
   }
 `;
@@ -44,6 +44,9 @@ export const Text = styled.div`
   font-size: 30px;
   font-weight: bold;
   color: white;
+  @media screen and (max-width: 1023px) {
+    margin-top: 30px;
+  }
 `;
 
 export const Img = styled.img`
