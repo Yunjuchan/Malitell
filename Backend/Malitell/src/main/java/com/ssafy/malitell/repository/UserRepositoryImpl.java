@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
-public class UserRepositoryImpl implements UserRepositoryCustom{
+public class UserRepositoryImpl implements UserRepositoryCustom {
 
     @Autowired
     EntityManager entityManager;

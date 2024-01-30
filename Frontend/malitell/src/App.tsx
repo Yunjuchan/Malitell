@@ -17,10 +17,6 @@ import ReservationConfirm from "./routes/counsel/reservation/reservationConfirm"
 import Notification from "./components/common/notification";
 import NotFound from "./routes/etc/notFound";
 import ModalTest from "./routes/test";
-import Signup from "./routes/auth/signup/signup";
-import Agree from "./routes/auth/signup/agree";
-import SignupClient from "./routes/auth/signup/signupClient";
-import Selection from "./routes/auth/signup/selection";
 import SelfTest from "./routes/etc/selfTest";
 import Bamboo from "./routes/etc/bamboo";
 import CounselingNotice from "./components/counsel/counselingNotice";
@@ -48,22 +44,6 @@ const router = createBrowserRouter([
             path: "profile/:name",
             element: <Profile />,
           },
-          {
-            path: "/signup",
-            element: <Selection />,
-          },
-          // {
-          //   path: "/signup/agree",
-          //   element: <Agree />,
-          // },
-          {
-            path: "/signup/client",
-            element: <SignupClient />,
-          },
-          // {
-          //   path: "/signup/complete",
-          //   element: <Signup />,
-          // },
           // // counsel
           {
             path: "counselors",

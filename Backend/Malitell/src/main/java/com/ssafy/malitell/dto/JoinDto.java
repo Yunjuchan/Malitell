@@ -26,6 +26,7 @@ public class JoinDto {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", birth='" + birth + '\'' +
+                ", gender='" + gender + '\'' +
                 ", role='" + role + '\'' +
                 '}';
     }

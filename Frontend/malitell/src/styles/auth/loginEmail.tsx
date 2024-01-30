@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   height: 400px;
   top: 50%;
   left: 50%;
+  z-index: 3;
   transform: translate(-50%, -50%);
   border-radius: 10px;
   background-color: white;

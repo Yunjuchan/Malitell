@@ -65,7 +65,9 @@ public class SecurityConfig {
         http.httpBasic(AbstractHttpConfigurer::disable);
 
         // 경로별 인가 작업
-        http.authorizeHttpRequests((auth) -> auth.requestMatchers("/", "/user/join", "/login", "/oauth2/**", "/user/reissue", "/room/chat").permitAll().anyRequest().authenticated());
+        http.authorizeHttpRequests((auth) -> auth
+                .requestMatchers("/", "/user/join", "/login", "/oauth2/**", "/user/reissue", "/room/chat", "/ws-stomp", "/reserve", "/reserve").permitAll()
+                .anyRequest().authenticated());
 
         // OAuth2
         http.oauth2Login(oauth2 -> oauth2.authorizationEndpoint(endpoint -> endpoint.baseUri("/api/v1/auth/oauth2")).redirectionEndpoint(endpoint -> endpoint.baseUri("/oauth2/callback/*")).userInfoEndpoint(endpoint -> endpoint.userService(oAuth2UserService)));

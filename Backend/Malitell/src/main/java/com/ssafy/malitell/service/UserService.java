@@ -22,6 +22,7 @@ public class UserService {
         String email = joinDTO.getEmail();
         String phone = joinDTO.getPhone();
         String birth = joinDTO.getBirth();
+        String gender = joinDTO.getGender();
         String role = joinDTO.getRole();
         String gender = joinDTO.getGender();
 
@@ -42,6 +43,7 @@ public class UserService {
         user.setEmail(email);
         user.setPhone(phone);
         user.setBirth(birth);
+        user.setGender(gender);
         user.setRole(role);
         user.setGender(gender);
 
