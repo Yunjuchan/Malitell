@@ -19,14 +19,6 @@ public class ReserveController {
     @PostMapping("/reserve")
     public void reserve(@RequestBody ReserveDto reserveDto) {
         reserveService.reserve(reserveDto);
-
-//        if(flag) {
-//            System.out.println("[상담 예약 완료]");
-//            return "상담 예약 완료";
-//        } else {
-//            System.out.println("[상담 예약 실패]");
-//            return "상담 예약 실패";
-//        }
     }
 
 }
