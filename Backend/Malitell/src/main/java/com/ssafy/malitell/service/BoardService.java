@@ -34,7 +34,7 @@ public class BoardService {
         return board.getBoardSeq();
     }
 
-    // 게시판 목록 가져오기
+    // 게시판 목록 가져오기x
     public List<BoardListResponseDto> findAllBoard() {
         try{
             List<Board> boardList = boardRepository.findAll();

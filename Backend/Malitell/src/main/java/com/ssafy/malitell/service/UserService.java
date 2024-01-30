@@ -8,15 +8,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userRepository = userRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
 
     public void join(JoinDto joinDTO) {
         String userId = joinDTO.getUserId();
@@ -26,7 +22,9 @@ public class UserService {
         String email = joinDTO.getEmail();
         String phone = joinDTO.getPhone();
         String birth = joinDTO.getBirth();
+        String gender = joinDTO.getGender();
         String role = joinDTO.getRole();
+        String gender = joinDTO.getGender();
 
         Boolean isExist = userRepository.existsByUserId(userId);
 
@@ -45,8 +43,11 @@ public class UserService {
         user.setEmail(email);
         user.setPhone(phone);
         user.setBirth(birth);
+        user.setGender(gender);
         user.setRole(role);
+        user.setGender(gender);
 
         userRepository.save(user);
+        userRepository.flush();
     }
 }
