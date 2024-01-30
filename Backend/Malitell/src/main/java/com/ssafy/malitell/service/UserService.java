@@ -24,7 +24,6 @@ public class UserService {
         String birth = joinDTO.getBirth();
         String gender = joinDTO.getGender();
         String role = joinDTO.getRole();
-        String gender = joinDTO.getGender();
 
         Boolean isExist = userRepository.existsByUserId(userId);
 
