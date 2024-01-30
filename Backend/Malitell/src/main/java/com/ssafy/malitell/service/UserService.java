@@ -26,6 +26,7 @@ public class UserService {
         String email = joinDTO.getEmail();
         String phone = joinDTO.getPhone();
         String birth = joinDTO.getBirth();
+        String gender = joinDTO.getGender();
         String role = joinDTO.getRole();
 
         Boolean isExist = userRepository.existsByUserId(userId);
@@ -45,6 +46,7 @@ public class UserService {
         user.setEmail(email);
         user.setPhone(phone);
         user.setBirth(birth);
+        user.setGender(gender);
         user.setRole(role);
 
         userRepository.save(user);
