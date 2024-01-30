@@ -1,7 +1,7 @@
 package com.ssafy.malitell.controller;
 
 import com.ssafy.malitell.domain.User;
-import com.ssafy.malitell.dto.JoinDTO;
+import com.ssafy.malitell.dto.JoinDto;
 import com.ssafy.malitell.jwt.JWTUtil;
 import com.ssafy.malitell.repository.UserRepository;
 import com.ssafy.malitell.service.UserService;
@@ -23,9 +23,9 @@ public class UserController {
     }
 
     @PostMapping("/join")
-    public String join(@RequestBody JoinDTO joinDTO) {
+    public String join(@RequestBody JoinDto joinDTO) {
         userService.join(joinDTO);
-
+        System.out.println(joinDTO  );
         return "join success";
     }
 

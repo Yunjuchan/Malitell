@@ -19,8 +19,7 @@ import lombok.Setter;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
-    private int id; // idx
+    private int userSeq; // idx
     @NotNull
     private String userId; // 아이디
     @NotNull

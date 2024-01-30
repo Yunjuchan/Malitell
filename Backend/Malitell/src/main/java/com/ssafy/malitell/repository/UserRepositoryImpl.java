@@ -30,17 +30,12 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         }
     }
 
-    /**
-     * TypedQuery 공부
-     * u.refreshToken으로 받는 이유가 뭐지
-     */
     @Override
     public String getRefreshTokenByUserId(String userId) {
         return entityManager.createQuery("SELECT u FROM User u WHERE u.userId = :userId", User.class).
                 setParameter("userId", userId)
                 .getSingleResult()
                 .getRefreshToken();
-
     }
 
 }

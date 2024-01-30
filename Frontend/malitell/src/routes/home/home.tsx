@@ -1,7 +1,10 @@
-import React from "react";
 import Carousel from "../../components/home/carousel";
 import * as g from "../../styles/grid";
 import Nav from "../../components/home/nav";
+import Metaverse from "../../components/common/banners/metaverse";
+import Bamboo from "../../components/common/banners/bamboo";
+import Counsel from "../../components/home/counsel";
+import Articles from "../../components/home/articles";
 
 export default function home() {
   return (
@@ -15,15 +18,19 @@ export default function home() {
         </g.Box>
 
         {/* 배너 */}
-        <g.Box col="1/6" row="3/7">
-          
+        <g.Box col="1/6" row="3/8">
+          <Metaverse />
+          <Bamboo />
         </g.Box>
-        <g.Box col="6/13" row="3/7">
+
+        {/* 상담하기 디자인 구상 중 */}
+        <g.Box col="6/13" row="3/8">
+          <Counsel />
         </g.Box>
 
         {/* 게시글 */}
-        <g.Box col="1/13" row="7/13">
-
+        <g.Box col="1/13" row="8/13">
+          <Articles />
         </g.Box>
       </g.Grid>
     </>

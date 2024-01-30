@@ -1,6 +1,10 @@
 package com.ssafy.malitell;
 
+<<<<<<< HEAD
 import com.ssafy.malitell.domain.chat.CounselingChatMessage;
+=======
+import com.ssafy.malitell.domain.chat.ChatMessage;
+>>>>>>> bbed58794e6e89ac38a8de8630be08f63c68e277
 import com.ssafy.malitell.repository.RedisRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

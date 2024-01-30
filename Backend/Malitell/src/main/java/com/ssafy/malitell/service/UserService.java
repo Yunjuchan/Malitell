@@ -1,8 +1,9 @@
 package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.User;
-import com.ssafy.malitell.dto.JoinDTO;
+import com.ssafy.malitell.dto.JoinDto;
 import com.ssafy.malitell.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public void join(JoinDTO joinDTO) {
+    public void join(JoinDto joinDTO) {
         String userId = joinDTO.getUserId();
         String name = joinDTO.getName();
         String nickname = joinDTO.getNickname();
@@ -25,6 +26,7 @@ public class UserService {
         String email = joinDTO.getEmail();
         String phone = joinDTO.getPhone();
         String birth = joinDTO.getBirth();
+        String gender = joinDTO.getGender();
         String role = joinDTO.getRole();
 
         Boolean isExist = userRepository.existsByUserId(userId);
@@ -44,11 +46,9 @@ public class UserService {
         user.setEmail(email);
         user.setPhone(phone);
         user.setBirth(birth);
+        user.setGender(gender);
         user.setRole(role);
 
         userRepository.save(user);
     }
-
-
-
 }

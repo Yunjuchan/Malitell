@@ -1,16 +1,15 @@
 package com.ssafy.malitell.domain.board;
 
 import com.ssafy.malitell.domain.User;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import com.ssafy.malitell.dto.request.BoardRequestDto;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Entity
 @Setter
@@ -18,7 +17,8 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Board {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private int boardSeq;
 
     @ManyToOne
@@ -29,6 +29,25 @@ public class Board {
 
     private Timestamp time;
     private int hit;
+
+    @Convert(converter = BoardTypedConverter.class)
+    @Enumerated(value = EnumType.STRING)
     private BoardType type;
+
+    // 게시판 엔티티
+    public Board(BoardRequestDto requestDto, BoardType type, User user) {
+        this.user = user;
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+        this.time = new Timestamp(System.currentTimeMillis());
+        this.hit = 0;
+        this.type = type;
+    }
+
+    public void update(BoardRequestDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+        this.time = new Timestamp(System.currentTimeMillis());
+    }
 
 }

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// 홈 화면 뒷배경
 export const BackHome = styled.div`
   position: absolute;
   top: 420px;
@@ -8,10 +9,20 @@ export const BackHome = styled.div`
   z-index: -1;
   background-color: #FBF3FD;
 `
+
+// 나머지 페이지들 네브바와 페이지 구분감 목적
 export const Back = styled.div`
   position: absolute;
   top: 80px;
   width: 100%;
+  z-index: -1;
+  background-color: #F7F7F7;
+`
+
+export const BackCounsel = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
   z-index: -1;
   background-color: #F7F7F7;
 `
@@ -47,18 +58,20 @@ export const GridNav = styled.div`
   }
 `;
 
+// 그리드 안쪽 컴포넌트들 사이즈 잡는 용도
 export const Box = styled.div<{ col?: string; row?: string; display?: string }>`
-  box-shadow: 0 0 0 1px black inset;
+  /* box-shadow: 0 0 0 1px black inset; */
   grid-column: ${({ col }) => col};
   grid-row: ${({ row }) => row};
   display: ${({ display }) => display};
 `;
 
+// 모달 컴포넌트 사용시 뒷 배경 어둡게 하는 용도
 export const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   width: 100vw;
   height: 100vh;
-  z-index: 10;
+  z-index: 2;
   position: fixed;
   top: 0;
   left: 0;

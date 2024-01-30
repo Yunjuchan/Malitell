@@ -1,17 +1,11 @@
 import styled from "styled-components";
 
-export const Banner = styled.div`
-  width: 98%;
+export const Wrapper = styled.div`
+  width: 97%;
   height: 47%;
+  margin-left: 1%;
+  margin-bottom: 10px;
   border-radius: 10px;
   box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
   background-color: ${({color}) => color};
-`
-
-export const BigBanner = styled.div`
-  width: 100%;
-  height: 97%;
-  border-radius: 10px;
-  box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
-  background-color: white;
 `
