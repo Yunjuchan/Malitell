@@ -13,17 +13,24 @@ public class PlayerMovement : MonoBehaviourPun
     private Animator animator;
     private bool isSitting = false;
     private bool isSleeping = false;
-    public TMP_Text nicknameText;
-    public Transform headTransform;
-    public float yOffset = 0.1f;
     public GameObject mainScene;
-
+    public TMP_Text nicknameText;
     public void Start()
     {
         mainScene = GameObject.Find("MainScene");
     }
     private void Awake()
     {
+        if (photonView.IsMine)
+        {
+            nicknameText.text = PhotonNetwork.NickName;
+            nicknameText.color = Color.white;
+        }
+        else
+        {
+            nicknameText.text = photonView.Owner.NickName;
+            nicknameText.color = Color.red;
+        }
         // Animator 컴포넌트
         animator = GetComponent<Animator>();
     }
@@ -32,13 +39,6 @@ public class PlayerMovement : MonoBehaviourPun
     {
         if (photonView.IsMine && mainScene)
         {
-            if (nicknameText != null && headTransform != null)
-            {
-                // 캐릭터 머리의 위치에 닉네임 텍스트를 업데이트
-                Vector3 nicknamePos = headTransform.position + Vector3.up * yOffset;
-                nicknameText.transform.position = Camera.main.WorldToScreenPoint(nicknamePos);
-            }
-
             // Left, a 키를 누르면 -1 / Right, d 키를 누르면 + 1 / 아무키도 누르지 않으면 0
             float moveX = Input.GetAxisRaw("Horizontal");
             // Down, s 키를 누르면 -1 / Up, w 키를 누르면 + 1 / 아무키도 누르지 않으면 0
@@ -63,11 +63,15 @@ public class PlayerMovement : MonoBehaviourPun
                 if (moveX < 0)
                 {
                     transform.localScale = new Vector3(1f, 1f, 1f);
+                    // 플레이어가 왼쪽을 바라볼 때, 닉네임 텍스트만 왼쪽으로 회전하도록 설정
+                    nicknameText.rectTransform.localRotation = Quaternion.Euler(0f, 0f, 0f);
                 }
                 // 오른쪽으로 이동할 때 오른쪽 바라보기
                 else if (moveX > 0)
                 {
                     transform.localScale = new Vector3(-1f, 1f, 1f);
+                    // 플레이어가 오른쪽을 바라볼 때, 닉네임 텍스트만 오른쪽으로 회전하도록 설정
+                    nicknameText.rectTransform.localRotation = Quaternion.Euler(0f, 180f, 0f);
                 }
                 // 왼쪽 쉬프트 누를 때 runNumber 변수 변경, moveSpeed 변경
                 if (Input.GetKey(KeyCode.LeftShift))
