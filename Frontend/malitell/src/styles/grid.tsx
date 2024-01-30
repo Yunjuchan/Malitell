@@ -7,8 +7,8 @@ export const BackHome = styled.div`
   width: 100%;
   min-height: 80vh;
   z-index: -1;
-  background-color: #FBF3FD;
-`
+  background-color: #fbf3fd;
+`;
 
 // 나머지 페이지들 네브바와 페이지 구분감 목적
 export const Back = styled.div`
@@ -16,16 +16,16 @@ export const Back = styled.div`
   top: 80px;
   width: 100%;
   z-index: -1;
-  background-color: #F7F7F7;
-`
+  background-color: #f7f7f7;
+`;
 
 export const BackCounsel = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: #F7F7F7;
-`
+  background-color: #f7f7f7;
+`;
 
 // 그리드 이걸로 통일(갭은 디자인 구성 볼려고 일부러 넣어둠 나중에 뺼 것!!)
 export const Grid = styled.div`
@@ -59,11 +59,15 @@ export const GridNav = styled.div`
 `;
 
 // 그리드 안쪽 컴포넌트들 사이즈 잡는 용도
-export const Box = styled.div<{ col?: string; row?: string; display?: string }>`
+export const Box = styled.div<{
+  $col?: string;
+  $row?: string;
+  $display?: string;
+}>`
   /* box-shadow: 0 0 0 1px black inset; */
-  grid-column: ${({ col }) => col};
-  grid-row: ${({ row }) => row};
-  display: ${({ display }) => display};
+  grid-column: ${({ $col }) => $col};
+  grid-row: ${({ $row }) => $row};
+  display: ${({ $display }) => $display};
 `;
 
 // 모달 컴포넌트 사용시 뒷 배경 어둡게 하는 용도
