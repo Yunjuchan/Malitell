@@ -61,5 +61,6 @@ public class User {
         this.gender = gender;
         this.role = role;
         this.type = type;
+        this.gender = gender;
     }
 }

@@ -10,8 +10,9 @@ import org.springframework.data.redis.core.RedisHash;
 import java.time.LocalTime;
 
 @Getter
+@RedisHash(value = "chat_message")
 @AllArgsConstructor
-public class CounselingChatMessage {
+public class ChatMessage {
     @Id
     private Long chatMessageSeq;
     private int chatRoomSeq;
