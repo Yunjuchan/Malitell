@@ -28,8 +28,8 @@ public class EmailUtil {
             messageHelper.setText(htmlContent, true);
 
             javaMailSender.send(message);
-        } catch (MessagingException e) {
-            e.printStackTrace();
+        } catch (MessagingException exception) {
+            log.error(exception.getMessage());
             return false;
         }
 

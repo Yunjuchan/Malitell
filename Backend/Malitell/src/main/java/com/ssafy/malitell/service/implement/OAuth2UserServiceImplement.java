@@ -6,6 +6,7 @@ import com.ssafy.malitell.domain.CustomOAuth2User;
 import com.ssafy.malitell.domain.User;
 import com.ssafy.malitell.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -16,6 +17,7 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class OAuth2UserServiceImplement extends DefaultOAuth2UserService {
 
     private final UserRepository userRepository;
@@ -28,7 +30,7 @@ public class OAuth2UserServiceImplement extends DefaultOAuth2UserService {
         try {
             System.out.println(new ObjectMapper().writeValueAsString(oAuth2User.getAttributes()));
         } catch (JsonProcessingException exception) {
-            exception.printStackTrace();
+            log.error(exception.getMessage());
         }
 
         User user = null;
