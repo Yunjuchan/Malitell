@@ -3,7 +3,7 @@ package com.ssafy.malitell.domain.board;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
-@Converter(autoApply = true)
+@Converter
 public class BoardTypedConverter implements AttributeConverter<String, Integer> {
     @Override
     public Integer convertToDatabaseColumn(String attr) {
