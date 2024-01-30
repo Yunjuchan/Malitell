@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 public interface ReserveService {
 
     // 상담 예약
-    public boolean reserve(ReserveDto reserveDto);
+    public void reserve(ReserveDto reserveDto);
 
 }

@@ -47,6 +47,5 @@ public class UserService {
         user.setGender(gender);
 
         userRepository.save(user);
-        userRepository.flush();
     }
 }
