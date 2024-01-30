@@ -24,7 +24,6 @@ import java.util.List;
 @RequestMapping("/board")
 public class BoardController {
 
-    private final UserRepository userRepository;
     private final BoardService boardService;
 
     // 게시물 등록
@@ -53,7 +52,7 @@ public class BoardController {
 
     // 게시물 수정
     @PutMapping("/Gatherings/{boardSeq}")
-    public ResponseEntity<Integer> updateBoard(@PathVariable int boardSeq, BoardRequestDto requestDto) {
+    public ResponseEntity<Integer> updateBoard(@PathVariable int boardSeq, @RequestBody BoardRequestDto requestDto) {
         return new ResponseEntity<>(boardService.updateBoard(boardSeq, requestDto), HttpStatus.OK);
     }
 }

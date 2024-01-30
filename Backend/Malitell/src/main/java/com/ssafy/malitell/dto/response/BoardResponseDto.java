@@ -12,12 +12,14 @@ import java.time.LocalDateTime;
 public class BoardResponseDto {
 
     private String title;
+    private String name;
     private String content;
     private int hit;
     private Timestamp time;
 
     public BoardResponseDto(Board board) {
         this.title = board.getTitle();
+        this.name = board.getUser().getName();
         this.content = board.getContent();
         this.hit = board.getHit();
         this.time = board.getTime();
