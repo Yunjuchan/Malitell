@@ -1,6 +1,7 @@
 package com.ssafy.malitell.domain;
 
 import com.ssafy.malitell.domain.board.Board;
+import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
 import com.ssafy.malitell.dto.request.auth.SignUpRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorRequestDto;
@@ -47,6 +48,10 @@ public class User {
     private String type; // 타입 (kakao, naver)
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     List<Board> boards = new ArrayList<>();
+
+    // 참가하고 있는 자조모임
+    @OneToMany(mappedBy = "user")
+    private List<SelfHelpGroupUser> SelfHelpGroupUsers = new ArrayList<>();
 
     public User(SignUpRequestDto dto) {
         this.userId = dto.getId();
