@@ -5,6 +5,8 @@ import com.ssafy.malitell.dto.request.JoinDto;
 import com.ssafy.malitell.jwt.JWTUtil;
 import com.ssafy.malitell.repository.UserRepository;
 import com.ssafy.malitell.service.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -62,8 +64,20 @@ public class UserController {
         return jwtUtil.createAccessToken(userId, role);
     }
 
+    // 회원 정보 조회
     @GetMapping("/mypage")
-    public User mypage(Principal principal) {
-        return userService.findUserInfo(principal);
+    public ResponseEntity<?> userInfo(Principal principal) {
+        String userId = principal.getName();
+        User user = userService.findUser(userId);
+
+        if (user.getRole().equals("ROLE_CLIENT")) {
+            return new ResponseEntity<>(userService.findClientInfo(principal), HttpStatus.OK);
+        } else if (user.getRole().equals("ROLE_COUNSELOR")) {
+            return new ResponseEntity<>(userService.findCounselorInfo(principal), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // 관리자나 비회원일 경우
+        }
     }
+
+
 }
