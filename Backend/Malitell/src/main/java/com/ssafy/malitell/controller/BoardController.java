@@ -28,7 +28,7 @@ public class BoardController {
 
     // 게시물 등록
     @PostMapping("/Gatherings")
-    public ResponseEntity<Integer> createBoard(@RequestBody BoardRequestDto requestDto, Principal principal) {
+    public ResponseEntity<Integer> createBoard(BoardRequestDto requestDto, Principal principal) {
         return new ResponseEntity<>(boardService.createBoard(requestDto, BoardType.Gathering, principal), HttpStatus.OK);
     }
 
@@ -52,7 +52,7 @@ public class BoardController {
 
     // 게시물 수정
     @PutMapping("/Gatherings/{boardSeq}")
-    public ResponseEntity<Integer> updateBoard(@PathVariable int boardSeq, @RequestBody BoardRequestDto requestDto) {
+    public ResponseEntity<Integer> updateBoard(@PathVariable int boardSeq, BoardRequestDto requestDto) {
         return new ResponseEntity<>(boardService.updateBoard(boardSeq, requestDto), HttpStatus.OK);
     }
 }
