@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.context.annotation.Lazy;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -22,7 +23,7 @@ public class Board {
     @GeneratedValue
     private int boardSeq;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     private String title;
@@ -51,5 +52,4 @@ public class Board {
         this.content = requestDto.getContent();
         this.time = new Timestamp(System.currentTimeMillis());
     }
-
 }

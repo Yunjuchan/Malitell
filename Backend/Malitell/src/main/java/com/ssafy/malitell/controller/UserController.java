@@ -100,6 +100,12 @@ public class UserController {
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // COUNSELOR가 아닐 경우
         }
+    }
 
+    @DeleteMapping("/mypage/user")
+    public ResponseEntity<?> deleteUser(Principal principal) {
+        userService.deleteUser(principal.getName());
+        System.out.println(principal.getName());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
