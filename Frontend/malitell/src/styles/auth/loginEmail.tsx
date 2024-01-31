@@ -28,9 +28,10 @@ export const ToolBox = styled.div`
 `
 
 export const Image = styled.img`
-  width: 200px;
-  height: 200px;
-  margin-top: -5%;
+  width: 160px;
+  height: 150px;
+  margin-top: 1%;
+  margin-bottom: 5%;
 `
 
 export const Form = styled.form`

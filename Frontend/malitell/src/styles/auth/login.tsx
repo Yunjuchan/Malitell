@@ -25,6 +25,7 @@ export const Close = styled.div`
 
 export const Img = styled.img`
   margin-top: 30px;
+  margin-bottom: 30px;
   width: 60%;
 `;
 
