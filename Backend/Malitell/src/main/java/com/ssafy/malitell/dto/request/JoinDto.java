@@ -16,18 +16,15 @@ public class JoinDto {
     private String gender; // 성별
     private String role; // 권한 (counselor, client, admin)
 
-    @Override
-    public String toString() {
-        return "JoinDTO{" +
-                "userId='" + userId + '\'' +
-                ", name='" + name + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", birth='" + birth + '\'' +
-                ", gender='" + gender + '\'' +
-                ", role='" + role + '\'' +
-                '}';
+    public JoinDto(String userId, String name, String nickname, String password, String email, String phone, String birth, String gender, String role) {
+        this.userId = userId;
+        this.name = name;
+        this.nickname = nickname;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.birth = birth;
+        this.gender = gender;
+        this.role = role;
     }
 }
