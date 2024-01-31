@@ -107,4 +107,8 @@ public class UserService {
         int userSeq = user.getUserSeq();
         userRepository.deleteById(userSeq);
     }
+
+    public boolean checkIdDuplicate(String userId) {
+        return userRepository.findByUserId(userId) != null;
+    }
 }

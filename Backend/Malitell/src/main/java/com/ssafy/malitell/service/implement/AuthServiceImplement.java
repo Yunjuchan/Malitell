@@ -2,7 +2,7 @@ package com.ssafy.malitell.service.implement;
 
 
 import com.ssafy.malitell.common.CertificationNumber;
-import com.ssafy.malitell.domain.user.CertificationEntity;
+import com.ssafy.malitell.domain.auth.CertificationEntity;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.auth.*;
 import com.ssafy.malitell.dto.response.ResponseDto;

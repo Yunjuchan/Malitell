@@ -1,4 +1,4 @@
-package com.ssafy.malitell.domain.user;
+package com.ssafy.malitell.domain.auth;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
