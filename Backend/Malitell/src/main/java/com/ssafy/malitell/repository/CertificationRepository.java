@@ -1,6 +1,6 @@
 package com.ssafy.malitell.repository;
 
-import com.ssafy.malitell.domain.CertificationEntity;
+import com.ssafy.malitell.domain.user.CertificationEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 

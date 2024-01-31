@@ -1,4 +1,4 @@
-package com.ssafy.malitell.dto.request;
+package com.ssafy.malitell.dto.request.chat;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

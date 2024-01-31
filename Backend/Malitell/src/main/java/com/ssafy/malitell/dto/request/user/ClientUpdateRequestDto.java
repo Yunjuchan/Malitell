@@ -13,5 +13,4 @@ public class ClientUpdateRequestDto {
     private String email;
     @NotNull
     private String phone;
-
 }

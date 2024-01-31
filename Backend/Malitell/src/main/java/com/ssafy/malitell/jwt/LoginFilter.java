@@ -1,8 +1,7 @@
 package com.ssafy.malitell.jwt;
 
-import com.ssafy.malitell.dto.CustomUserDetails;
-import com.ssafy.malitell.repository.UserRepository;
-import io.jsonwebtoken.Jwts;
+import com.ssafy.malitell.dto.response.user.CustomUserDetails;
+import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

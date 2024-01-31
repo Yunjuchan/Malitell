@@ -1,6 +1,6 @@
 package com.ssafy.malitell.domain.selfhelpgroup;
 
-import com.ssafy.malitell.domain.User;
+import com.ssafy.malitell.domain.user.User;
 import jakarta.persistence.*;
 
 @Entity

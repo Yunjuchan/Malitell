@@ -1,12 +1,12 @@
 package com.ssafy.malitell.controller;
 
-import com.ssafy.malitell.domain.User;
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import com.ssafy.malitell.jwt.JWTUtil;
-import com.ssafy.malitell.repository.UserRepository;
+import com.ssafy.malitell.repository.user.UserRepository;
 import com.ssafy.malitell.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.ssafy.malitell.domain;
+package com.ssafy.malitell.domain.user;
 
 import com.ssafy.malitell.domain.board.Board;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
@@ -78,7 +78,6 @@ public class User {
         this.email = clientUpdateRequestDto.getEmail();
         this.phone = clientUpdateRequestDto.getPhone();
     }
-
     public void updateCounselor(CounselorUpdateRequestDto counselorUpdateRequestDto) {
         this.name = counselorUpdateRequestDto.getName();
         this.email = counselorUpdateRequestDto.getEmail();

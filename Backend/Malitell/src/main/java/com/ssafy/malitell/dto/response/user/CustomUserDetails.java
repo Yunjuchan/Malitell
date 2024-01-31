@@ -1,6 +1,6 @@
-package com.ssafy.malitell.dto;
+package com.ssafy.malitell.dto.response.user;
 
-import com.ssafy.malitell.domain.User;
+import com.ssafy.malitell.domain.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

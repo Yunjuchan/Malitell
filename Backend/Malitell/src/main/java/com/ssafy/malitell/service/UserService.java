@@ -1,13 +1,13 @@
 package com.ssafy.malitell.service;
 
-import com.ssafy.malitell.domain.User;
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import com.ssafy.malitell.dto.response.user.ClientResponseDto;
 import com.ssafy.malitell.dto.response.user.CounselorResponseDto;
-import com.ssafy.malitell.repository.UserRepository;
+import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

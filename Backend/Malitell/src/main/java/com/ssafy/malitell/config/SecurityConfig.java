@@ -3,7 +3,7 @@ package com.ssafy.malitell.config;
 import com.ssafy.malitell.jwt.JWTFilter;
 import com.ssafy.malitell.jwt.JWTUtil;
 import com.ssafy.malitell.jwt.LoginFilter;
-import com.ssafy.malitell.repository.UserRepository;
+import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

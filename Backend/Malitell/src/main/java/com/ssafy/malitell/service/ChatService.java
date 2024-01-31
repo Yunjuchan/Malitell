@@ -1,10 +1,10 @@
 package com.ssafy.malitell.service;
 
-import com.ssafy.malitell.domain.User;
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.domain.chat.ChatRoom;
-import com.ssafy.malitell.dto.request.ChatRequestDto;
+import com.ssafy.malitell.dto.request.chat.ChatRequestDto;
 import com.ssafy.malitell.repository.ChatRoomRepository;
-import com.ssafy.malitell.repository.UserRepository;
+import com.ssafy.malitell.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
