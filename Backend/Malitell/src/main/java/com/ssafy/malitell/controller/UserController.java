@@ -1,9 +1,10 @@
 package com.ssafy.malitell.controller;
 
 import com.ssafy.malitell.domain.User;
-import com.ssafy.malitell.dto.request.JoinDto;
-import com.ssafy.malitell.dto.request.user.ClientRequestDto;
-import com.ssafy.malitell.dto.request.user.CounselorRequestDto;
+import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
+import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
+import com.ssafy.malitell.dto.request.user.CounselorJoinRequestDto;
+import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import com.ssafy.malitell.jwt.JWTUtil;
 import com.ssafy.malitell.repository.UserRepository;
 import com.ssafy.malitell.service.UserService;
@@ -26,12 +27,21 @@ public class UserController {
         this.jwtUtil = jwtUtil;
     }
 
-    @PostMapping("/user/join")
-    public String join(@RequestBody JoinDto joinDTO) {
-        userService.join(joinDTO);
-        return "join success";
+    // 상담자 히원가입
+    @PostMapping("/user/join/counselor")
+    public String joinCounselor(@RequestBody CounselorJoinRequestDto counselorJoinRequestDto) {
+        userService.joinCounselor(counselorJoinRequestDto);
+        return "Join Success";
     }
 
+    // 내담자 회원가입
+    @PostMapping("/user/join/client")
+    public String joinClient(@RequestBody ClientJoinRequestDto clientJoinRequestDto) {
+        userService.joinClient(clientJoinRequestDto);
+        return "Join Success";
+    }
+
+    // token 검증
     @PostMapping("/user/reissue")
     public String token(String refreshToken) throws Exception {
 
@@ -82,10 +92,10 @@ public class UserController {
 
     // 내담자 정보 수정
     @PutMapping("/mypage/user/client")
-    public ResponseEntity<Integer> updateClientInfo(Principal principal, ClientRequestDto clientRequestDto) {
+    public ResponseEntity<?> updateClientInfo(Principal principal, ClientUpdateRequestDto clientUpdateRequestDto) {
         String userId = principal.getName();
         if (userService.findUser(userId).getRole().equals("ROLE_CLIENT")) {
-            return new ResponseEntity<>(userService.updateClientInfo(userId, clientRequestDto), HttpStatus.OK);
+            return new ResponseEntity<>(userService.updateClientInfo(userId, clientUpdateRequestDto), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // CLIENT가 아닐 경우
         }
@@ -93,7 +103,7 @@ public class UserController {
 
     // 상담자 정보 수정
     @PutMapping("/mypage/user/counselor")
-    public ResponseEntity<Integer> updateCounselorInfo(Principal principal, CounselorRequestDto counselorRequestDto) {
+    public ResponseEntity<?> updateCounselorInfo(Principal principal, CounselorUpdateRequestDto counselorRequestDto) {
         String userId = principal.getName();
         if (userService.findUser(userId).getRole().equals("ROLE_COUNSELOR")) {
             return new ResponseEntity<>(userService.updateCounselorInfo(userId, counselorRequestDto), HttpStatus.OK);
