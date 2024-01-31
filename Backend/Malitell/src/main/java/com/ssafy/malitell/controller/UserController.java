@@ -78,6 +78,4 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // 관리자나 비회원일 경우
         }
     }
-
-
 }
