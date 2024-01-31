@@ -11,6 +11,8 @@ public class BoardRequestDto {
 
     private String content;
 
-    private User user;
-
+    public BoardRequestDto(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }

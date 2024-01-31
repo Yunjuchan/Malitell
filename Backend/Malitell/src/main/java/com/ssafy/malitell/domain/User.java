@@ -59,7 +59,6 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.birth = birth;
-        this.gender = gender;
         this.role = role;
         this.type = type;
         this.gender = gender;
