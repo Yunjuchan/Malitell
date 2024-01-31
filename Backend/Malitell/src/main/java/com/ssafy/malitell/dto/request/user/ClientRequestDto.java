@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
+@AllArgsConstructor
 public class ClientRequestDto {
     @NotNull
     private String name;
@@ -15,18 +15,4 @@ public class ClientRequestDto {
     @NotNull
     private String phone;
 
-    public ClientRequestDto(String name, String email, String phone) {
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-    }
-
-    @Override
-    public String toString() {
-        return "ClientRequestDto{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
-    }
 }

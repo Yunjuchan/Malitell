@@ -1,17 +1,18 @@
 package com.ssafy.malitell.domain;
 
+import com.ssafy.malitell.domain.board.Board;
 import com.ssafy.malitell.dto.request.auth.SignUpRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorRequestDto;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
@@ -44,6 +45,8 @@ public class User {
     private int careerPeriod; // 경력
     private double grade; // 평점
     private String type; // 타입 (kakao, naver)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    List<Board> boards = new ArrayList<>();
 
     public User(SignUpRequestDto dto) {
         this.userId = dto.getId();
