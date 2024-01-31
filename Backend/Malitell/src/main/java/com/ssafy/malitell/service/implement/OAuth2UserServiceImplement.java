@@ -2,7 +2,7 @@ package com.ssafy.malitell.service.implement;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ssafy.malitell.domain.user.CustomOAuth2User;
+import com.ssafy.malitell.domain.auth.CustomOAuth2User;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;

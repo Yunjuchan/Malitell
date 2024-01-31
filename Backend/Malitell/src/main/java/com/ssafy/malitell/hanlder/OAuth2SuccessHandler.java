@@ -1,6 +1,6 @@
 //package com.ssafy.malitell.hanlder;
 //
-//import com.ssafy.malitell.domain.user.CustomOAuth2User;
+//import com.ssafy.malitell.domain.auth.CustomOAuth2User;
 //import com.ssafy.malitell.jwt.JWTUtil;
 //import jakarta.servlet.ServletException;
 //import jakarta.servlet.http.HttpServletRequest;

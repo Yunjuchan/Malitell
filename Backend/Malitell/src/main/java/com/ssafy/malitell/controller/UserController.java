@@ -41,6 +41,12 @@ public class UserController {
         return "Join Success";
     }
 
+    // 아이디 중복 검증
+    @GetMapping("/user/exists/{userId}")
+    public ResponseEntity<Boolean> checkIdDuplicate(@PathVariable String userId) {
+        return new ResponseEntity<>(userService.checkIdDuplicate(userId), HttpStatus.OK);
+    }
+
     // token 검증
     @PostMapping("/user/reissue")
     public String token(String refreshToken) throws Exception {
@@ -112,10 +118,16 @@ public class UserController {
         }
     }
 
+    // 회원 탈퇴
     @DeleteMapping("/mypage/user")
     public ResponseEntity<?> deleteUser(Principal principal) {
         userService.deleteUser(principal.getName());
         System.out.println(principal.getName());
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+//    @PostMapping("/find/id")
+//    public ResponseEntity<Integer> findId() {
+//
+//    }
 }
