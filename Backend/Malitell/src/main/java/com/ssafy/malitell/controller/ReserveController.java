@@ -1,7 +1,7 @@
 package com.ssafy.malitell.controller;
 
-import com.ssafy.malitell.dto.request.ReserveRequestDto;
-import com.ssafy.malitell.dto.response.ReservationListResponseDto;
+import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
+import com.ssafy.malitell.dto.response.reserve.ReservationListResponseDto;
 import com.ssafy.malitell.service.ReserveService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
