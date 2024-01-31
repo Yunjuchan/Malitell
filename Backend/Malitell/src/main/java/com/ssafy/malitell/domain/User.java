@@ -1,6 +1,8 @@
 package com.ssafy.malitell.domain;
 
 import com.ssafy.malitell.dto.request.auth.SignUpRequestDto;
+import com.ssafy.malitell.dto.request.user.ClientRequestDto;
+import com.ssafy.malitell.dto.request.user.CounselorRequestDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +19,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userSeq; // idx
@@ -59,9 +60,21 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.birth = birth;
-        this.gender = gender;
         this.role = role;
         this.type = type;
         this.gender = gender;
+    }
+
+    public void updateClient(ClientRequestDto clientRequestDto) {
+        this.name = clientRequestDto.getName();
+        this.email = clientRequestDto.getEmail();
+        this.phone = clientRequestDto.getPhone();
+    }
+
+    public void updateCounselor(CounselorRequestDto counselorRequestDto) {
+        this.name = counselorRequestDto.getName();
+        this.email = counselorRequestDto.getEmail();
+        this.phone = counselorRequestDto.getPhone();
+        this.careerPeriod = counselorRequestDto.getCareerPeriod();
     }
 }

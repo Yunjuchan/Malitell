@@ -25,6 +25,7 @@ export const Close = styled.div`
 
 export const Img = styled.img`
   margin-top: 30px;
+  margin-bottom: 30px;
   width: 60%;
 `;
 
@@ -34,7 +35,7 @@ export const BtnBox = styled.div`
   justify-content: space-between;
   margin-top: -15px;
   width: 100%;
-  height: 200px;
+  height: 230px;
   a {
     margin: auto;
     text-decoration: none;
@@ -46,7 +47,7 @@ export const LoginBtn = styled.div`
   display: flex;
   align-items: center;
   width: 212px;
-  height: 38px;
+  height: 45px;
   margin: auto;
   padding: 0 20px;
   border-radius: 10px;
@@ -67,6 +68,6 @@ export const MethodIcon = styled.img`
 
 export const MethodText = styled.div<{ $margin?: string }>`
   font-size: 14px;
-  font-weight: bold;
+  /* font-weight: bold; */
   margin-left: ${({ $margin }) => ($margin ? $margin : "30px")};
 `;

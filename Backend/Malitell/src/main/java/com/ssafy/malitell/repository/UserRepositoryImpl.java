@@ -1,6 +1,8 @@
 package com.ssafy.malitell.repository;
 
 import com.ssafy.malitell.domain.User;
+import com.ssafy.malitell.dto.response.user.ClientResponseDto;
+import com.ssafy.malitell.dto.response.user.CounselorResponseDto;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -40,4 +42,20 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
                 .getRefreshToken();
     }
 
+    @Override
+    public ClientResponseDto findClientByUserId(String userId) {
+        User user = entityManager.createQuery("SELECT u FROM User u WHERE u.userId = :userId", User.class)
+                .setParameter("userId", userId)
+                .getSingleResult();
+
+        return new ClientResponseDto(user);
+    }
+
+    @Override
+    public CounselorResponseDto findCounselorByUserId(String userId) {
+        User user = entityManager.createQuery("SELECT u FROM User u WHERE u.userId = :userId", User.class)
+                .setParameter("userId", userId)
+                .getSingleResult();
+        return new CounselorResponseDto(user);
+    }
 }

@@ -2,7 +2,12 @@ package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.User;
 import com.ssafy.malitell.dto.request.JoinDto;
+import com.ssafy.malitell.dto.request.user.ClientRequestDto;
+import com.ssafy.malitell.dto.request.user.CounselorRequestDto;
+import com.ssafy.malitell.dto.response.user.ClientResponseDto;
+import com.ssafy.malitell.dto.response.user.CounselorResponseDto;
 import com.ssafy.malitell.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -51,8 +56,36 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public User findUserInfo(Principal principal) {
-        String name = principal.getName();
-        return userRepository.findByUserId(name);
+    public ClientResponseDto findClientInfo(Principal principal) {
+        return userRepository.findClientByUserId(principal.getName());
+    }
+
+    public CounselorResponseDto findCounselorInfo(Principal principal) {
+        return userRepository.findCounselorByUserId(principal.getName());
+    }
+
+    public User findUser(String userId) {
+        return userRepository.findByUserId(userId);
+    }
+
+    @Transactional
+    public int updateClientInfo(String userId, ClientRequestDto clientRequestDto) {
+        User user = userRepository.findByUserId(userId);
+        user.updateClient(clientRequestDto);
+        return user.getUserSeq();
+    }
+
+    @Transactional
+    public int updateCounselorInfo(String userId, CounselorRequestDto counselorRequestDto) {
+        User user = userRepository.findByUserId(userId);
+        user.updateCounselor(counselorRequestDto);
+        return user.getUserSeq();
+    }
+
+    @Transactional
+    public void deleteUser(String userId) {
+        User user = userRepository.findByUserId(userId);
+        int userSeq = user.getUserSeq();
+        userRepository.deleteById(userSeq);
     }
 }

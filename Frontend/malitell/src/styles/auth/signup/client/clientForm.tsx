@@ -102,6 +102,7 @@ export const Message = styled.div`
     margin: 1% auto;
   }
 `;
+
 export const Submit = styled.input`
   transition: all 0.2s;
   width: 51.5%;

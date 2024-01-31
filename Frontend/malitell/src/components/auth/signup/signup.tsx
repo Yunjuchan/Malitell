@@ -8,7 +8,7 @@ import {
   Line,
 } from "../../../styles/auth/signup/signup";
 import { faBackward, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import React, { useState } from "react";
 import ClientForm from "./client/clientForm";
 import Selection from "./selection/selection";
 
@@ -25,14 +25,17 @@ export default function Signup({
 }: LoginProps) {
   const [client, setClient] = useState(false);
   const [counselor, setCounselor] = useState(false);
+  // const [success, setSuccess] = useState(false);
 
   const handleClient = (e: React.MouseEvent): void => {
     setClient(!client);
   };
-
   const handleCounselor = (e: React.MouseEvent): void => {
     setCounselor(!counselor);
-  }
+  };
+  // const handleSuccess = (e: any): void => {
+  //   setSuccess(true);
+  // };
 
   return (
     <Wrapper>
@@ -58,11 +61,9 @@ export default function Signup({
       <Container>
         {client ? (
           <>
-          <SmallText>
-            회원가입
-          </SmallText>
-          <Line />
-          <ClientForm />
+            <SmallText>회원가입</SmallText>
+            <Line />
+            <ClientForm />
           </>
         ) : (
           <>

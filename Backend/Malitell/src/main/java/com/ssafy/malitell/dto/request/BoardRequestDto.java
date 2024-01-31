@@ -3,6 +3,7 @@ package com.ssafy.malitell.dto.request;
 import com.ssafy.malitell.domain.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 @Getter
@@ -11,6 +12,8 @@ public class BoardRequestDto {
 
     private String content;
 
-    private User user;
-
+    public BoardRequestDto(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
