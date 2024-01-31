@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Nav = styled.div`
   background-color: white;
-  height: 8.5vh;
+  height: 8vh;
   position: sticky;
   top: 0;
 `;
@@ -11,7 +11,7 @@ export const Grid = styled.div`
   /* box-shadow: 0 0 0 1px black inset; */
   display: grid;
   margin: auto;
-  width: 62%;
+  width: 1024px;
   height: 9vh;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(3, 1fr);
