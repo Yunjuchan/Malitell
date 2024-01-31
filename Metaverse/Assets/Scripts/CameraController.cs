@@ -9,12 +9,7 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         // Player를 찾아서 할당
-        player = GameObject.Find("Player(Clone)");
-
-        if (player == null)
-        {
-            Debug.LogError("Player(Clone) not found!");
-        }
+        FindPlayer();
     }
 
     private void Update()
@@ -26,6 +21,22 @@ public class CameraController : MonoBehaviour
             // 플레이어 위치에 따른 카메라 위치 조정
             Vector3 moveVector = new Vector3(dir.x * cameraspeed * Time.deltaTime, dir.y * cameraspeed * Time.deltaTime, 0.0f);
             transform.Translate(moveVector);
+        }
+        else
+        {
+            // 플레이어가 없다면 새로운 플레이어 찾기 시도
+            FindPlayer();
+        }
+    }
+
+    private void FindPlayer()
+    {
+        // Player를 찾아서 할당
+        player = GameObject.Find("Player(Clone)");
+
+        if (player == null)
+        {
+            Debug.LogError("Player(Clone) not found!");
         }
     }
 }

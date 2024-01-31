@@ -5432,7 +5432,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB85C\uBE44\uB85C \uB3CC\uC544\uAC00\uAE30"
+  m_text: "\uBC29 \uB5A0\uB098\uAE30"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f66e8a1d0808314c9d13a1a1800c203, type: 2}
   m_sharedMaterial: {fileID: 9069443777922264403, guid: 3f66e8a1d0808314c9d13a1a1800c203,

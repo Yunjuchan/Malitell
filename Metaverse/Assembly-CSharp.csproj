@@ -1188,6 +1188,18 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.WebRTC">
+      <HintPath>Library\ScriptAssemblies\Unity.WebRTC.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.WebRTC.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.WebRTC.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.EditorCoroutines.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="PhotonChat.csproj">
@@ -1233,6 +1245,14 @@
     <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
       <Project>{D3DB6437-4A87-5CDA-E57A-4DFB28490C44}</Project>
       <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.WebRTC.Samples.csproj">
+      <Project>{41770070-ED9D-BB86-1268-9C560D67E90D}</Project>
+      <Name>Unity.WebRTC.Samples</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.WebRTC.Samples.Editror.csproj">
+      <Project>{FBF5F69D-960C-C5C1-FE32-33A6FA338754}</Project>
+      <Name>Unity.WebRTC.Samples.Editror</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
