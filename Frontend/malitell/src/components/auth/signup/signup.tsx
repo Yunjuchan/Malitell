@@ -25,7 +25,7 @@ export default function Signup({
 }: LoginProps) {
   const [client, setClient] = useState(false);
   const [counselor, setCounselor] = useState(false);
-  // const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleClient = (e: React.MouseEvent): void => {
     setClient(!client);
@@ -33,16 +33,19 @@ export default function Signup({
   const handleCounselor = (e: React.MouseEvent): void => {
     setCounselor(!counselor);
   };
-  // const handleSuccess = (e: any): void => {
-  //   setSuccess(true);
-  // };
 
   return (
     <Wrapper>
       <ToolBox>
         <FontAwesomeIcon
           onClick={
-            client ? handleClient : counselor ? handleCounselor : handleSignup
+            client
+              ? success
+                ? handleSignup
+                : handleClient
+              : counselor
+              ? handleCounselor
+              : handleSignup
           }
           icon={faBackward}
           style={{ color: "bf94e4" }}
@@ -61,9 +64,14 @@ export default function Signup({
       <Container>
         {client ? (
           <>
-            <SmallText>회원가입</SmallText>
-            <Line />
-            <ClientForm />
+            {success ? null : (
+              <>
+                <SmallText>회원가입</SmallText>
+                <Line />
+              </>
+            )}
+
+            <ClientForm success={success} setSuccess={setSuccess} />
           </>
         ) : (
           <>

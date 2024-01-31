@@ -20,7 +20,12 @@ import {
   faVenusMars,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function ClientForm() {
+interface SignupProps {
+  success: boolean;
+  setSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function ClientForm({setSuccess, success} : SignupProps) {
   interface FormData {
     userId: string;
     password: string;
@@ -86,7 +91,6 @@ export default function ClientForm() {
   };
 
   // 회원가입 완료여부 확인 state
-  const [success, setSuccess] = useState(false);
 
   // input css용
   const [idFocus, setIdFocus] = useState(false);
