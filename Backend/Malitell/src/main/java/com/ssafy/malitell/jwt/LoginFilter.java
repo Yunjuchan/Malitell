@@ -67,8 +67,8 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         String role = auth.getAuthority(); // 권한
 
         // 사용자 아이디, 권한 입력해서 JWT 발급
-        String accessToken = jwtUtil.createAccessToken(userId, role); // access token (36초)
-        String refreshToken = jwtUtil.createRefreshToken(userId, role); // refresh token (30일)
+        String accessToken = jwtUtil.createAccessToken(userId, role); // access token
+        String refreshToken = jwtUtil.createRefreshToken(userId, role); // refresh token
 
         // Bearer 인증 방식
         // 응답 헤더에 JWT 토큰 값을 넣어 응답

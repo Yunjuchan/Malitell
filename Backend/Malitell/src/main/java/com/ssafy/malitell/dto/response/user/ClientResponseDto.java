@@ -1,4 +1,4 @@
-package com.ssafy.malitell.dto.response;
+package com.ssafy.malitell.dto.response.user;
 
 import com.ssafy.malitell.domain.User;
 import lombok.AllArgsConstructor;
