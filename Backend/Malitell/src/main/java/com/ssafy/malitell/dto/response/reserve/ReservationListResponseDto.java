@@ -1,4 +1,4 @@
-package com.ssafy.malitell.dto.response;
+package com.ssafy.malitell.dto.response.reserve;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

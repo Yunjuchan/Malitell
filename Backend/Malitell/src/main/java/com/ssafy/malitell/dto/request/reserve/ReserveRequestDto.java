@@ -1,4 +1,4 @@
-package com.ssafy.malitell.dto.request;
+package com.ssafy.malitell.dto.request.reserve;
 
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;

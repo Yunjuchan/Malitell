@@ -2,8 +2,8 @@ package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.counseling.Counseling;
 import com.ssafy.malitell.domain.user.User;
-import com.ssafy.malitell.dto.request.ReserveRequestDto;
-import com.ssafy.malitell.dto.response.ReservationListResponseDto;
+import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
+import com.ssafy.malitell.dto.response.reserve.ReservationListResponseDto;
 import com.ssafy.malitell.repository.ReserveRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
