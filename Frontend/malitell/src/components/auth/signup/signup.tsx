@@ -11,6 +11,7 @@ import { faBackward, faXmark } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import ClientForm from "./client/clientForm";
 import Selection from "./selection/selection";
+import Complete from "./complete";
 
 interface LoginProps {
   handleBack: (event: React.MouseEvent) => void;
@@ -64,7 +65,7 @@ export default function Signup({
       <Container>
         {client ? (
           <>
-            {success ? null : (
+            {success ? <Complete handleSignup={handleSignup} /> : (
               <>
                 <SmallText>회원가입</SmallText>
                 <Line />

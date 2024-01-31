@@ -14,7 +14,6 @@ import malitell from "../../../assets/images/malitell.png";
 import kakao from "../../../assets/images/auth/login/kakao.png";
 import naver from "../../../assets/images/auth/login/naver.png";
 import LoginEmail from "./loginEmail";
-import { NavLink } from "react-router-dom";
 import Signup from "../signup/signup";
 
 interface NavProps {
