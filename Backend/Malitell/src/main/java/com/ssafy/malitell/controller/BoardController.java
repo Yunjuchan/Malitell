@@ -1,16 +1,10 @@
 package com.ssafy.malitell.controller;
 
-import com.ssafy.malitell.domain.User;
 import com.ssafy.malitell.domain.board.BoardType;
-import com.ssafy.malitell.dto.request.BoardRequestDto;
-import com.ssafy.malitell.dto.response.BoardListResponseDto;
-import com.ssafy.malitell.dto.response.BoardResponseDto;
-import com.ssafy.malitell.dto.response.ResponseDto;
-import com.ssafy.malitell.repository.UserRepository;
+import com.ssafy.malitell.dto.request.board.BoardRequestDto;
+import com.ssafy.malitell.dto.response.board.BoardListResponseDto;
+import com.ssafy.malitell.dto.response.board.BoardResponseDto;
 import com.ssafy.malitell.service.BoardService;
-import com.ssafy.malitell.service.UserService;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

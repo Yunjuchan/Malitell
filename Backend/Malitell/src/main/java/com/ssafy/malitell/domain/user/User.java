@@ -1,10 +1,10 @@
-package com.ssafy.malitell.domain;
+package com.ssafy.malitell.domain.user;
 
 import com.ssafy.malitell.domain.board.Board;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
 import com.ssafy.malitell.dto.request.auth.SignUpRequestDto;
-import com.ssafy.malitell.dto.request.user.ClientRequestDto;
-import com.ssafy.malitell.dto.request.user.CounselorRequestDto;
+import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
+import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -73,16 +73,15 @@ public class User {
         this.gender = gender;
     }
 
-    public void updateClient(ClientRequestDto clientRequestDto) {
-        this.name = clientRequestDto.getName();
-        this.email = clientRequestDto.getEmail();
-        this.phone = clientRequestDto.getPhone();
+    public void updateClient(ClientUpdateRequestDto clientUpdateRequestDto) {
+        this.name = clientUpdateRequestDto.getName();
+        this.email = clientUpdateRequestDto.getEmail();
+        this.phone = clientUpdateRequestDto.getPhone();
     }
-
-    public void updateCounselor(CounselorRequestDto counselorRequestDto) {
-        this.name = counselorRequestDto.getName();
-        this.email = counselorRequestDto.getEmail();
-        this.phone = counselorRequestDto.getPhone();
-        this.careerPeriod = counselorRequestDto.getCareerPeriod();
+    public void updateCounselor(CounselorUpdateRequestDto counselorUpdateRequestDto) {
+        this.name = counselorUpdateRequestDto.getName();
+        this.email = counselorUpdateRequestDto.getEmail();
+        this.phone = counselorUpdateRequestDto.getPhone();
+        this.careerPeriod = counselorUpdateRequestDto.getCareerPeriod();
     }
 }

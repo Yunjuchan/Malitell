@@ -1,15 +1,13 @@
 package com.ssafy.malitell.service;
 
-import com.ssafy.malitell.domain.User;
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.domain.board.Board;
 import com.ssafy.malitell.domain.board.BoardType;
-import com.ssafy.malitell.dto.request.BoardRequestDto;
-import com.ssafy.malitell.dto.response.BoardListResponseDto;
-import com.ssafy.malitell.dto.response.BoardResponseDto;
+import com.ssafy.malitell.dto.request.board.BoardRequestDto;
+import com.ssafy.malitell.dto.response.board.BoardListResponseDto;
+import com.ssafy.malitell.dto.response.board.BoardResponseDto;
 import com.ssafy.malitell.repository.BoardRepository;
-import com.ssafy.malitell.repository.UserRepository;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

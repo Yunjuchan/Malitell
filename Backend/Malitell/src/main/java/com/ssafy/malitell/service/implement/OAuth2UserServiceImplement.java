@@ -2,9 +2,9 @@ package com.ssafy.malitell.service.implement;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ssafy.malitell.domain.CustomOAuth2User;
-import com.ssafy.malitell.domain.User;
-import com.ssafy.malitell.repository.UserRepository;
+import com.ssafy.malitell.domain.user.CustomOAuth2User;
+import com.ssafy.malitell.domain.user.User;
+import com.ssafy.malitell.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

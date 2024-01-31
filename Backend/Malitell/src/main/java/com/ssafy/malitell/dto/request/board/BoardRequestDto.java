@@ -1,9 +1,7 @@
-package com.ssafy.malitell.dto.request;
+package com.ssafy.malitell.dto.request.board;
 
-import com.ssafy.malitell.domain.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @NoArgsConstructor
 @Getter

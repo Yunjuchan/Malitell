@@ -1,12 +1,11 @@
 package com.ssafy.malitell.service;
 
-import com.ssafy.malitell.domain.User;
 import com.ssafy.malitell.domain.counseling.Counseling;
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.ReserveRequestDto;
 import com.ssafy.malitell.dto.response.ReservationListResponseDto;
 import com.ssafy.malitell.repository.ReserveRepository;
-import com.ssafy.malitell.repository.UserRepository;
-import io.lettuce.core.output.ListSubscriber;
+import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

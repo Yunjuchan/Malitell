@@ -1,6 +1,6 @@
 package com.ssafy.malitell.domain.counseling;
 
-import com.ssafy.malitell.domain.User;
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.ReserveRequestDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

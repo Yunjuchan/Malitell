@@ -1,6 +1,6 @@
 package com.ssafy.malitell.repository;
 
-import com.ssafy.malitell.domain.User;
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.domain.chat.ChatRoom;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
