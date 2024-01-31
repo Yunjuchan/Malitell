@@ -1,6 +1,6 @@
-package com.ssafy.malitell.repository;
+package com.ssafy.malitell.repository.user;
 
-import com.ssafy.malitell.domain.User;
+import com.ssafy.malitell.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Integer>, UserRepositoryCustom {

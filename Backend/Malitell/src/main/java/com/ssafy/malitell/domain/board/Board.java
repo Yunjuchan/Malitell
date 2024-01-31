@@ -1,17 +1,15 @@
 package com.ssafy.malitell.domain.board;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.ssafy.malitell.domain.User;
-import com.ssafy.malitell.dto.request.BoardRequestDto;
+import com.ssafy.malitell.domain.user.User;
+import com.ssafy.malitell.dto.request.board.BoardRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.context.annotation.Lazy;
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
 
 @Entity
 @Setter

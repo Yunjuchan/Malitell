@@ -1,7 +1,7 @@
 package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.counseling.Counseling;
-import com.ssafy.malitell.dto.ReserveDto;
+import com.ssafy.malitell.dto.response.reserve.ReserveDto;
 import com.ssafy.malitell.repository.ReserveRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

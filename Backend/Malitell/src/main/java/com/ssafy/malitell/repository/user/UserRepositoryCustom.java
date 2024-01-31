@@ -1,4 +1,4 @@
-package com.ssafy.malitell.repository;
+package com.ssafy.malitell.repository.user;
 
 import com.ssafy.malitell.dto.response.user.ClientResponseDto;
 import com.ssafy.malitell.dto.response.user.CounselorResponseDto;

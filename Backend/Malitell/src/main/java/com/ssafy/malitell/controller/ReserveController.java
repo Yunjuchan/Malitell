@@ -1,6 +1,6 @@
 package com.ssafy.malitell.controller;
 
-import com.ssafy.malitell.dto.ReserveDto;
+import com.ssafy.malitell.dto.response.reserve.ReserveDto;
 import com.ssafy.malitell.service.ReserveService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
