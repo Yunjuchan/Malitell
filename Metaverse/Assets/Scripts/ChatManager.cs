@@ -67,13 +67,6 @@ public class ChatManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        // 엔터 키를 누르면 채팅을 보내도록 함
-        if (Input.GetKeyDown(KeyCode.Return) && !input.isFocused)
-        {
-            Debug.Log("Enter key pressed!");
-            SendButtonOnClicked();
-        }
-
         // 마우스 휠로 스크롤 조절
         float scrollDelta = Input.GetAxis("Mouse ScrollWheel");
         if (scrollDelta != 0f)
@@ -107,6 +100,8 @@ public class ChatManager : MonoBehaviourPunCallbacks
         // mainScene이 활성화된 상태일 때
         if (mainScene)
         {
+            // 방 떠나기
+            PhotonNetwork.LeaveRoom();
             // mainScene을 비활성화하고 loginScene을 활성화
             mainScene.SetActive(false);
             loginScene.SetActive(true);
