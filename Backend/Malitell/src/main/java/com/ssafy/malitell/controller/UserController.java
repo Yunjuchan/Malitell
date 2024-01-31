@@ -84,13 +84,22 @@ public class UserController {
     @PutMapping("/mypage/user/client")
     public ResponseEntity<Integer> updateClientInfo(Principal principal, ClientRequestDto clientRequestDto) {
         String userId = principal.getName();
-        return new ResponseEntity<>(userService.updateClientInfo(userId, clientRequestDto), HttpStatus.OK);
+        if (userService.findUser(userId).getRole().equals("ROLE_CLIENT")) {
+            return new ResponseEntity<>(userService.updateClientInfo(userId, clientRequestDto), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // CLIENT가 아닐 경우
+        }
     }
 
     // 상담자 정보 수정
     @PutMapping("/mypage/user/counselor")
     public ResponseEntity<Integer> updateCounselorInfo(Principal principal, CounselorRequestDto counselorRequestDto) {
         String userId = principal.getName();
-        return new ResponseEntity<>(userService.updateCounselorInfo(userId, counselorRequestDto), HttpStatus.OK);
+        if (userService.findUser(userId).getRole().equals("ROLE_COUNSELOR")) {
+            return new ResponseEntity<>(userService.updateCounselorInfo(userId, counselorRequestDto), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // COUNSELOR가 아닐 경우
+        }
+
     }
 }
