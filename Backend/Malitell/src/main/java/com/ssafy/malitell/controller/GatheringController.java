@@ -20,32 +20,32 @@ public class GatheringController {
 
     // 게시물 등록
     @PostMapping("/Gatherings")
-    public ResponseEntity<Integer> createBoard(GatheringCreateRequestDto requestDto, Principal principal) {
-        return new ResponseEntity<>(gatheringService.createBoard(requestDto, principal), HttpStatus.OK);
+    public ResponseEntity<Integer> createGathering(GatheringCreateRequestDto requestDto, Principal principal) {
+        return new ResponseEntity<>(gatheringService.createGathering(requestDto, principal), HttpStatus.OK);
     }
 
     // 게시물 목록 조회
     @GetMapping("/Gatherings")
-    public ResponseEntity<List<GatheringListResponseDto>> getAllBoards() {
-        return new ResponseEntity<>(gatheringService.findAllBoard(), HttpStatus.OK);
+    public ResponseEntity<List<GatheringListResponseDto>> getAllGatherings() {
+        return new ResponseEntity<>(gatheringService.findAllGathering(), HttpStatus.OK);
     }
 
     // 게시물 하나 조회
-    @GetMapping("/Gatherings/{boardSeq}")
-    public ResponseEntity<GatheringResponseDto> getOneBoard(@PathVariable int boardSeq) {
-        return new ResponseEntity<>(gatheringService.findOneBoard(boardSeq), HttpStatus.OK);
+    @GetMapping("/Gatherings/{gatheringSeq}")
+    public ResponseEntity<GatheringResponseDto> getOneGathering(@PathVariable int gatheringSeq) {
+        return new ResponseEntity<>(gatheringService.findOneGathering(gatheringSeq), HttpStatus.OK);
     }
 
     // 게시물 삭제
-    @DeleteMapping("/Gatherings/{boardSeq}")
-    public ResponseEntity<Integer> deleteBoard(@PathVariable int boardSeq) {
-        return new ResponseEntity<>(gatheringService.deleteBoard(boardSeq), HttpStatus.OK);
+    @DeleteMapping("/Gatherings/{gatheringSeq}")
+    public ResponseEntity<Integer> deleteGathering(@PathVariable int gatheringSeq) {
+        return new ResponseEntity<>(gatheringService.deleteGathering(gatheringSeq), HttpStatus.OK);
     }
 
     // 게시물 수정
-    @PutMapping("/Gatherings/{boardSeq}")
-    public ResponseEntity<Integer> updateBoard(@PathVariable int boardSeq, GatheringUpdateRequestDto requestDto) {
-        return new ResponseEntity<>(gatheringService.updateBoard(boardSeq, requestDto), HttpStatus.OK);
+    @PutMapping("/Gatherings/{gatheringSeq}")
+    public ResponseEntity<Integer> updateGathering(@PathVariable int gatheringSeq, GatheringUpdateRequestDto requestDto) {
+        return new ResponseEntity<>(gatheringService.updateGathering(gatheringSeq, requestDto), HttpStatus.OK);
     }
 
 }

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,7 +27,7 @@ public class GatheringService {
     private final SelfHelpGroupRepository selfHelpGroupRepository;
 
     // 글 작성
-    public int createBoard(GatheringCreateRequestDto requestDto, Principal principal) {
+    public int createGathering(GatheringCreateRequestDto requestDto, Principal principal) {
         String name = principal.getName();
         SelfHelpGroup selfHelpGroup = new SelfHelpGroup(requestDto);
 
@@ -34,13 +35,13 @@ public class GatheringService {
 
         selfHelpGroupRepository.save(selfHelpGroup);
         gatheringRepository.save(gathering);
-        return gathering.getBoardSeq();
+        return gathering.getGatheringSeq();
     }
 
 
     // 게시글 조회
-    public GatheringResponseDto findOneBoard(int boardSeq) {
-        Gathering gathering = gatheringRepository.findById(boardSeq).orElseThrow(
+    public GatheringResponseDto findOneGathering(int gatheringSeq) {
+        Gathering gathering = gatheringRepository.findById(gatheringSeq).orElseThrow(
                 () -> new IllegalArgumentException("조회 실패")
         );
         return new GatheringResponseDto(gathering);
@@ -48,23 +49,28 @@ public class GatheringService {
 
     // 게시글 수정
     @Transactional
-    public int updateBoard(int boardSeq, GatheringUpdateRequestDto requestDto) {
-        Gathering gathering = gatheringRepository.findById(boardSeq).orElseThrow(
+    public int updateGathering(int gatheringSeq, GatheringUpdateRequestDto requestDto) {
+        Gathering gathering = gatheringRepository.findById(gatheringSeq).orElseThrow(
                 () -> new IllegalArgumentException("게시물이 존재하지 않습니다.")
         );
         gathering.update(requestDto);
-        return gathering.getBoardSeq();
+        return gathering.getGatheringSeq();
     }
 
     // 게시글 삭제
     @Transactional
-    public int deleteBoard(int boardSeq) {
-        gatheringRepository.deleteById(boardSeq);
-        return boardSeq;
+    public int deleteGathering(int gatheringSeq) {
+        Optional<Gathering> findGathering = gatheringRepository.findById(gatheringSeq);
+        if (findGathering.isPresent()) {
+            int selfHelpGroupSeq = findGathering.get().getSelfHelpGroup().getSelfHelpGroupSeq();
+            selfHelpGroupRepository.deleteById(selfHelpGroupSeq);
+        }
+        gatheringRepository.deleteById(gatheringSeq);
+        return gatheringSeq;
     }
 
         // 게시판 목록 가져오기
-    public List<GatheringListResponseDto> findAllBoard() {
+    public List<GatheringListResponseDto> findAllGathering() {
         try {
             List<Gathering> gatheringList = gatheringRepository.findAll();
 
