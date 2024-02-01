@@ -23,7 +23,7 @@ import CounselingNotice from "./components/counsel/counselingNotice";
 import CounselingCounselor from "./components/counsel/counselingCounselor";
 import CounselingClient from "./components/counsel/counselingClient";
 import Vendingmachine from "./components/common/vendingmachine";
-import ComingSoon from "./components/ppt/comingSoon";
+import Chat from "./routes/chat";
 
 // 중첩라우팅
 const router = createBrowserRouter([
@@ -103,6 +103,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/chat",
+    element: <Chat />,
+  }
   // {
   //   path: "/test",
   //   element: <ModalTest />,
