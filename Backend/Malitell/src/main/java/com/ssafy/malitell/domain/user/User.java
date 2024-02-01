@@ -50,7 +50,12 @@ public class User {
 
     // 참가하고 있는 자조모임
     @OneToMany(mappedBy = "user")
-    private List<SelfHelpGroupUser> SelfHelpGroupUsers = new ArrayList<>();
+    private List<SelfHelpGroupUser> selfHelpGroupUsers = new ArrayList<>();
+
+    public void addSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {
+        selfHelpGroupUsers.add(selfHelpGroupUser);
+        selfHelpGroupUser.setUser(this);
+    }
 
     public User(SignUpRequestDto dto) {
         this.userId = dto.getId();
