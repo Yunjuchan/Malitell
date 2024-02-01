@@ -138,7 +138,11 @@ function App() {
     init();
   }, []);
 
-  return <>{loading ? <Loading /> : <RouterProvider router={router} />}</>;
+  return (
+    <>
+        {loading ? <Loading /> : <RouterProvider router={router} />}
+    </>
+  );
 }
 
 export default App;

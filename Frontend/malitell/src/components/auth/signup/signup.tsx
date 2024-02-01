@@ -13,6 +13,7 @@ import ClientForm from "./client/clientForm";
 import Selection from "./selection/selection";
 import Complete from "./complete";
 
+
 interface LoginProps {
   handleBack: (event: React.MouseEvent) => void;
   handleLogin: (event: React.MouseEvent) => void;
@@ -44,7 +45,8 @@ export default function Signup({
               ? success
                 ? handleSignup
                 : handleClient
-              : counselor
+              : 
+              counselor
               ? handleCounselor
               : handleSignup
           }
