@@ -1,6 +1,7 @@
 package com.ssafy.malitell.controller;
 
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
+import com.ssafy.malitell.dto.response.reserve.CounselorListResponseDto;
 import com.ssafy.malitell.dto.response.reserve.ReservationListResponseDto;
 import com.ssafy.malitell.service.ReserveService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,8 +20,11 @@ public class ReserveController {
     private final ReserveService reserveService;
 
     // 상담자 프로필 목록 조회
-//    @GetMapping("/getCounselorList")
-//    public ResponseEntity<List<>>
+    @GetMapping("/getCounselorList")
+    public ResponseEntity<List<CounselorListResponseDto>> getCounselorList() {
+        List<CounselorListResponseDto> list = reserveService.getCounselorList();
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
 
     // 상담 예약 폼 조회
     @GetMapping("/reserve/{counselorSeq}")
