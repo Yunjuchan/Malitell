@@ -1,10 +1,9 @@
 package com.ssafy.malitell.domain.chat;
 
 import com.ssafy.malitell.domain.user.User;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class ChatRoom {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String chatRoomSeq;
     @ManyToOne
     private User counselor;
