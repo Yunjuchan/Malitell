@@ -1,5 +1,7 @@
 package com.ssafy.malitell.dto.response.auth;
 
+import com.ssafy.malitell.common.ResponseCode;
+import com.ssafy.malitell.common.ResponseMessage;
 import com.ssafy.malitell.dto.response.ResponseDto;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
@@ -18,7 +20,7 @@ public class CheckCertificationResponseDto extends ResponseDto {
     }
 
     public static ResponseEntity<ResponseDto> certificationFail() {
-        ResponseDto responseBody = new ResponseDto();
+        ResponseDto responseBody = new ResponseDto(ResponseCode.VALIDATION_FAIL, ResponseMessage.VALIDATION_FAIL);
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(responseBody);
     }
 }
