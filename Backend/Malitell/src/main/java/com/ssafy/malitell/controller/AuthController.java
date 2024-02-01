@@ -32,4 +32,9 @@ public class AuthController {
     public ResponseEntity<? super SignUpResponseDto> signUp(@RequestBody @Valid SignUpRequestDto requestBody) {
         return authService.signUp(requestBody);
     }
+
+    @PostMapping("/find-id")
+    public FindIdResponseDto findId(@RequestBody @Valid FindIdRequestDto findIdRequestDto) {
+        return authService.findId(findIdRequestDto);
+    }
 }

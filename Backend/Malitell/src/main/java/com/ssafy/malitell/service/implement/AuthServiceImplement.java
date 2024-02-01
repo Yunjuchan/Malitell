@@ -130,4 +130,15 @@ public class AuthServiceImplement implements AuthService {
 
         return SignUpResponseDto.success();
     }
+
+    @Override
+    public FindIdResponseDto findId(FindIdRequestDto findIdRequestDto) {
+        String name = findIdRequestDto.getName();
+        String email = findIdRequestDto.getEmail();
+        String userId = userRepository.findIdByNameAndEmail(name, email).getUserId();
+
+        FindIdResponseDto findIdResponseDto = new FindIdResponseDto();
+        findIdResponseDto.setUserId(userId);
+        return findIdResponseDto;
+    }
 }

@@ -1,6 +1,5 @@
 package com.ssafy.malitell.domain.user;
 
-import com.ssafy.malitell.domain.board.Board;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
 import com.ssafy.malitell.dto.request.auth.SignUpRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
@@ -46,8 +45,8 @@ public class User {
     private int careerPeriod; // 경력
     private double grade; // 평점
     private String type; // 타입 (kakao, naver)
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-    List<Board> boards = new ArrayList<>();
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+//    List<Board> boards = new ArrayList<>();
 
     // 참가하고 있는 자조모임
     @OneToMany(mappedBy = "user")
