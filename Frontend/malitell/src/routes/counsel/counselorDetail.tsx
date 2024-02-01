@@ -1,12 +1,13 @@
 import React from "react";
 import * as g from "../../styles/grid";
+import CounselorContent from "../../components/counsel/counselorContent";
 
 export default function CounselorDetail() {
   return (
     <g.Back>
       <g.Grid>
         <g.Box $col="1/9" $row="2/8">
-          introduce
+          <CounselorContent />
         </g.Box>
         <g.Box $col="1/9" $row="8/13">
           counsellingReviews
