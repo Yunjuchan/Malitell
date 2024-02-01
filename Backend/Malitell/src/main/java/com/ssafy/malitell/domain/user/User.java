@@ -50,12 +50,17 @@ public class User {
 //    List<Board> boards = new ArrayList<>();
 
     // 참가하고 있는 자조모임
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<SelfHelpGroupUser> selfHelpGroupUsers = new ArrayList<>();
 
     public void addSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {
         selfHelpGroupUsers.add(selfHelpGroupUser);
         selfHelpGroupUser.setUser(this);
+    }
+
+    public void removeSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {
+        selfHelpGroupUsers.remove(selfHelpGroupUser);
+        selfHelpGroupUser.setUser(null);
     }
 
     public User(SignUpRequestDto dto) {
@@ -83,6 +88,7 @@ public class User {
         this.email = clientUpdateRequestDto.getEmail();
         this.phone = clientUpdateRequestDto.getPhone();
     }
+
     public void updateCounselor(CounselorUpdateRequestDto counselorUpdateRequestDto) {
         this.name = counselorUpdateRequestDto.getName();
         this.email = counselorUpdateRequestDto.getEmail();
