@@ -40,12 +40,13 @@ const Lobby: React.FC = () => {
     }
   };
 
-  const enterRoom = (roomId: string) => {
+  const enterRoom = (chatRoomSeq: string) => {
+    console.log(chatRoomSeq);
     const sender = prompt("대화명을 입력해 주세요.");
     if (sender !== null && sender !== "") {
       localStorage.setItem("wschat.sender", sender);
-      localStorage.setItem("wschat.roomId", roomId);
-      window.location.href = `/chat/room/enter/${roomId}`;
+      localStorage.setItem("wschat.roomId", chatRoomSeq);
+      window.location.href = `/chat/room/${chatRoomSeq}`;
     }
   };
 
@@ -64,7 +65,7 @@ const Lobby: React.FC = () => {
       </div>
       <ul>
         {chatRooms.map((room) => (
-          <li key={room.roomId} onClick={() => enterRoom(room.roomId)}>
+          <li key={room.roomId} onClick={() => enterRoom(room.chatRoomSeq)}>
             {room.chatRoomSeq}
           </li>
         ))}
