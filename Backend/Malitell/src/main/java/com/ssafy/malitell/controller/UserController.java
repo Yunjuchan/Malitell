@@ -27,7 +27,7 @@ public class UserController {
         this.jwtUtil = jwtUtil;
     }
 
-    // 상담자 히원가입
+    // 상담자 회원가입
     @PostMapping("/user/join/counselor")
     public String joinCounselor(@RequestBody CounselorJoinRequestDto counselorJoinRequestDto) {
         userService.joinCounselor(counselorJoinRequestDto);
