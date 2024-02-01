@@ -33,7 +33,7 @@ export const Grid = styled.div`
   grid-gap: 5px;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
-  width: 62%;
+  width: 1024px;
   min-height: 91vh;
   margin: auto;
   /* 모바일 기기를 고려한 설계 */
@@ -64,7 +64,7 @@ export const Box = styled.div<{
   $row?: string;
   $display?: string;
 }>`
-  /* box-shadow: 0 0 0 1px black inset; */
+  box-shadow: 0 0 0 1px black inset;
   grid-column: ${({ $col }) => $col};
   grid-row: ${({ $row }) => $row};
   display: ${({ $display }) => $display};

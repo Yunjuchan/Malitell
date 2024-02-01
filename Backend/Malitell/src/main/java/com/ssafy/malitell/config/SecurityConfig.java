@@ -3,7 +3,7 @@ package com.ssafy.malitell.config;
 import com.ssafy.malitell.jwt.JWTFilter;
 import com.ssafy.malitell.jwt.JWTUtil;
 import com.ssafy.malitell.jwt.LoginFilter;
-import com.ssafy.malitell.repository.UserRepository;
+import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -66,13 +66,13 @@ public class SecurityConfig {
 
         // 경로별 인가 작업
         http.authorizeHttpRequests((auth) -> auth
-                .requestMatchers("/", "/user/join", "/login", "/oauth2/**", "/user/reissue", "/chat/**", "/ws-stomp").permitAll()
+                .requestMatchers("/", "/user/join/**", "/login", "/oauth2/**", "/user/reissue", "/chat/**", "/user/exists/**", "/auth/**", "/ws-stomp", "/getCounselorList").permitAll()
                 .requestMatchers("/reserve", "/board").hasRole("CLIENT")
 //                .requestMatchers("/board").hasRole("COUNSELOR") // 상담자, 관리자 권한 처리하기
                 .anyRequest().authenticated());
 
         // OAuth2
-        http.oauth2Login(oauth2 -> oauth2.authorizationEndpoint(endpoint -> endpoint.baseUri("/api/v1/auth/oauth2")).redirectionEndpoint(endpoint -> endpoint.baseUri("/oauth2/callback/*")).userInfoEndpoint(endpoint -> endpoint.userService(oAuth2UserService)));
+        http.oauth2Login(oauth2 -> oauth2.authorizationEndpoint(endpoint -> endpoint.baseUri("/auth/oauth2")).redirectionEndpoint(endpoint -> endpoint.baseUri("/oauth2/callback/*")).userInfoEndpoint(endpoint -> endpoint.userService(oAuth2UserService)));
 
         // JWT 검증 필터 등록 (LoginFilter 앞에)
         http.addFilterBefore(new JWTFilter(jwtUtil), LoginFilter.class);

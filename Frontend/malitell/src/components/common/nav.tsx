@@ -60,16 +60,16 @@ export default function Nav() {
 
           {/* 네브바 하단부분 */}
           <s.NavItems $col="4/10" $row="2/4" $align="space-between">
-            <s.NavItem $width="150px" $size="20px">
+            <s.NavItem $width="150px" $size="17px">
               <Link to="/comingsoon">메타버스</Link>
             </s.NavItem>
-            <s.NavItem $width="150px" $size="20px">
+            <s.NavItem $width="150px" $size="17px">
               <Link to="/articles">커뮤니티</Link>
             </s.NavItem>
-            <s.NavItem $width="150px" $size="20px">
+            <s.NavItem $width="150px" $size="17px">
               <Link to="/counselors">전문가 찾기</Link>
             </s.NavItem>
-            <s.NavItem $width="150px" $size="20px">
+            <s.NavItem $width="150px" $size="17px">
               <Link to="/bamboo">대나무 숲</Link>
             </s.NavItem>
           </s.NavItems>

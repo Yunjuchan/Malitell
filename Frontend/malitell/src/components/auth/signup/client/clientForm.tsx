@@ -19,8 +19,26 @@ import {
   faPhone,
   faVenusMars,
 } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, AppDispatch } from "../../../../store/store";
+import {
+  setId,
+  setPw,
+  setPwCheck,
+  setEmail,
+  setName,
+  setGender,
+  setNickname,
+  setBirthday,
+  setPhone,
+} from "../../../../store/auth/signupFocusSlice";
 
-export default function ClientForm() {
+interface SignupProps {
+  success: boolean;
+  setSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function ClientForm({ setSuccess, success }: SignupProps) {
   interface FormData {
     userId: string;
     password: string;
@@ -70,7 +88,7 @@ export default function ClientForm() {
   const onSubmit = (data: FormData) => {
     console.log("데이터: ", data);
 
-    fetch(`http://localhost:8080/user/join`, {
+    fetch(`http://localhost:8080/user/join/client`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -86,47 +104,35 @@ export default function ClientForm() {
   };
 
   // 회원가입 완료여부 확인 state
-  const [success, setSuccess] = useState(false);
-
   // input css용
-  const [idFocus, setIdFocus] = useState(false);
-  const [pwFocus, setPwFocus] = useState(false);
-  const [pwCheckFocus, setPwCheckFocus] = useState(false);
-  const [emailFocus, setEmailFocus] = useState(false);
-  const [nameFocus, setNameFocus] = useState(false);
-  const [genderFocus, setGenderFocus] = useState(false);
-  const [nicknameFocus, setNicknameFocus] = useState(false);
-  const [birthdayFocus, setBirthdayFocus] = useState(false);
-  const [phoneFocus, setPhoneFocus] = useState(false);
+  // const [idFocus, setIdFocus] = useState(false);
+  // const [pwFocus, setPwFocus] = useState(false);
+  // const [pwCheckFocus, setPwCheckFocus] = useState(false);
+  // const [emailFocus, setEmailFocus] = useState(false);
+  // const [nameFocus, setNameFocus] = useState(false);
+  // const [genderFocus, setGenderFocus] = useState(false);
+  // const [nicknameFocus, setNicknameFocus] = useState(false);
+  // const [birthdayFocus, setBirthdayFocus] = useState(false);
+  // const [phoneFocus, setPhoneFocus] = useState(false);
 
-  const onFocusId = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
-    setIdFocus(!idFocus);
+  const dispatch: AppDispatch = useDispatch();
+  const focus = useSelector((state: RootState) => state.signupFocus);
+  const focusActions = {
+    id: setId,
+    pw: setPw,
+    pwCheck: setPwCheck,
+    email: setEmail,
+    name: setName,
+    gender: setGender,
+    nickname: setNickname,
+    birthday: setBirthday,
+    phone: setPhone,
   };
-  const onFocusPw = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
-    setPwFocus(!pwFocus);
-  };
-  const onFocusPwCheck = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
-    setPwCheckFocus(!pwCheckFocus);
-  };
-  const onFocusEmail = (
-    e: React.InputHTMLAttributes<HTMLInputTypeAttribute>
-  ) => {
-    setEmailFocus(!emailFocus);
-  };
-  const onFocusName = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
-    setNameFocus(!nameFocus);
-  };
-  const onFocusGender = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
-    setGenderFocus(!genderFocus);
-  };
-  const onFocusNickname = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
-    setNicknameFocus(!nicknameFocus);
-  };
-  const onFocusBirthday = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
-    setBirthdayFocus(!birthdayFocus);
-  };
-  const onFocusPhone = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
-    setPhoneFocus(!phoneFocus);
+
+  const onFocus = (field: keyof typeof focusActions) => {
+    return (e: React.FocusEvent<HTMLInputElement>) => {
+      dispatch(focusActions[field](!focus[field]));
+    };
   };
 
   // 셀렉트박스 css용
@@ -140,10 +146,10 @@ export default function ClientForm() {
     <>
       {success ? null : (
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <InputBox className={idFocus ? "focus" : "normal"}>
+          <InputBox className={focus.id ? "focus" : "normal"}>
             <FontAwesomeIcon
               icon={faUser}
-              color={idFocus ? "#bf94e4" : "#D3D3D3"}
+              color={focus.id ? "#bf94e4" : "#D3D3D3"}
             />
             <Input
               {...register("userId", {
@@ -153,18 +159,18 @@ export default function ClientForm() {
                   message: "아이디: 소문자 + 숫자 8-20자",
                 },
               })}
-              onFocus={onFocusId}
-              onBlur={onFocusId}
+              onFocus={onFocus("id")}
+              onBlur={onFocus("id")}
               name="userId"
               placeholder="아이디"
               type="text"
             />
           </InputBox>
 
-          <InputBox className={pwFocus ? "focus" : "normal"}>
+          <InputBox className={focus.pw ? "focus" : "normal"}>
             <FontAwesomeIcon
               icon={faLock}
-              color={pwFocus ? "#bf94e4" : "#D3D3D3"}
+              color={focus.pw ? "#bf94e4" : "#D3D3D3"}
             />
             <Input
               {...register("password", {
@@ -174,17 +180,17 @@ export default function ClientForm() {
                   message: "비밀번호: 소문자 + 숫자 + 특수문자 8-16자",
                 },
               })}
-              onFocus={onFocusPw}
-              onBlur={onFocusPw}
+              onFocus={onFocus("pw")}
+              onBlur={onFocus("pw")}
               name="password"
               placeholder="비밀번호"
               type="password"
             />
           </InputBox>
-          <InputBox className={pwCheckFocus ? "focus" : "normal"}>
+          <InputBox className={focus.pwCheck ? "focus" : "normal"}>
             <FontAwesomeIcon
               icon={faLock}
-              color={pwCheckFocus ? "#bf94e4" : "#D3D3D3"}
+              color={focus.pwCheck ? "#bf94e4" : "#D3D3D3"}
             />
             <Input
               {...register("passwordCheck", {
@@ -193,18 +199,18 @@ export default function ClientForm() {
                   value === getValues("password") ||
                   "비밀번호: 비밀번호가 일치하지 않습니다.",
               })}
-              onFocus={onFocusPwCheck}
-              onBlur={onFocusPwCheck}
+              onFocus={onFocus("pwCheck")}
+              onBlur={onFocus("pwCheck")}
               name="passwordCheck"
               placeholder="비밀번호 확인"
               type="password"
             />
           </InputBox>
 
-          <InputBox className={emailFocus ? "focus" : "normal"}>
+          <InputBox className={focus.email ? "focus" : "normal"}>
             <FontAwesomeIcon
               icon={faEnvelope}
-              color={emailFocus ? "#bf94e4" : "#D3D3D3"}
+              color={focus.email ? "#bf94e4" : "#D3D3D3"}
             />
             <Input
               {...register("email", {
@@ -214,8 +220,8 @@ export default function ClientForm() {
                   message: "이메일: 이메일 형식을 확인해 주세요.",
                 },
               })}
-              onFocus={onFocusEmail}
-              onBlur={onFocusEmail}
+              onFocus={onFocus("email")}
+              onBlur={onFocus("email")}
               name="email"
               placeholder="이메일"
               type="text"
@@ -223,10 +229,10 @@ export default function ClientForm() {
           </InputBox>
           <hr style={{ width: "51%", border: "1px solid #f2d4f9" }} />
           <InputBox id="genderBox">
-            <InputBox className={nameFocus ? "focus" : "normal"} id="name">
+            <InputBox className={focus.name ? "focus" : "normal"} id="name">
               <FontAwesomeIcon
                 icon={faUser}
-                color={nameFocus ? "#bf94e4" : "#D3D3D3"}
+                color={focus.name ? "#bf94e4" : "#D3D3D3"}
               />
               <Input
                 {...register("name", {
@@ -236,17 +242,22 @@ export default function ClientForm() {
                     message: "이름: 이름은 1-30자 한글만 입력 가능합니다.",
                   },
                 })}
-                onFocus={onFocusName}
-                onBlur={onFocusName}
+                onFocus={onFocus("name")}
+                onBlur={onFocus("name")}
                 name="name"
                 placeholder="이름"
                 type="text"
               />
             </InputBox>
-            <InputBox className={genderFocus ? "focus" : "normal"} id="gender">
+            <InputBox
+              className={focus.gender ? "focus" : "normal"}
+              id="gender"
+              onFocus={onFocus("gender")}
+              onBlur={onFocus("gender")}
+            >
               <FontAwesomeIcon
                 icon={faVenusMars}
-                color={genderFocus ? "#bf94e4" : "#D3D3D3"}
+                color={focus.gender ? "#bf94e4" : "#D3D3D3"}
               />
               <Select
                 className={placeholder ? "placeholder" : ""}
@@ -260,8 +271,6 @@ export default function ClientForm() {
                     handlePlaceholder(event);
                   },
                 })}
-                onFocus={onFocusGender}
-                onBlur={onFocusGender}
               >
                 <Option value="" hidden>
                   선택해 주세요.
@@ -271,10 +280,10 @@ export default function ClientForm() {
               </Select>
             </InputBox>
           </InputBox>
-          <InputBox className={nicknameFocus ? "focus" : "normal"}>
+          <InputBox className={focus.nickname ? "focus" : "normal"}>
             <FontAwesomeIcon
               icon={faIdCard}
-              color={nicknameFocus ? "#bf94e4" : "#D3D3D3"}
+              color={focus.nickname ? "#bf94e4" : "#D3D3D3"}
             />
             <Input
               {...register("nickname", {
@@ -283,17 +292,17 @@ export default function ClientForm() {
                   message: "닉네임: 닉네임은 2-10자 한글만 입력 가능합니다.",
                 },
               })}
-              onFocus={onFocusNickname}
-              onBlur={onFocusNickname}
+              onFocus={onFocus("nickname")}
+              onBlur={onFocus("nickname")}
               name="nickname"
               placeholder="닉네임"
               type="text"
             />
           </InputBox>
-          <InputBox className={birthdayFocus ? "focus" : "normal"}>
+          <InputBox className={focus.birthday ? "focus" : "normal"}>
             <FontAwesomeIcon
               icon={faCalendar}
-              color={birthdayFocus ? "#bf94e4" : "#D3D3D3"}
+              color={focus.birthday ? "#bf94e4" : "#D3D3D3"}
             />
             <Input
               {...register("birth", {
@@ -303,17 +312,17 @@ export default function ClientForm() {
                   message: "생년월일: 생년월일이 정확한지 확인해 주세요.",
                 },
               })}
-              onFocus={onFocusBirthday}
-              onBlur={onFocusBirthday}
+              onFocus={onFocus("birthday")}
+              onBlur={onFocus("birthday")}
               name="birth"
               placeholder="생년월일 8자리"
               type="text"
             />
           </InputBox>
-          <InputBox className={phoneFocus ? "focus" : "normal"}>
+          <InputBox className={focus.phone ? "focus" : "normal"}>
             <FontAwesomeIcon
               icon={faPhone}
-              color={phoneFocus ? "#bf94e4" : "#D3D3D3"}
+              color={focus.phone ? "#bf94e4" : "#D3D3D3"}
             />
             <Input
               {...register("phone", {
@@ -323,8 +332,8 @@ export default function ClientForm() {
                   message: "핸드폰 번호: 핸드폰 번호가 정확한지 확인해 주세요.",
                 },
               })}
-              onFocus={onFocusPhone}
-              onBlur={onFocusPhone}
+              onFocus={onFocus("phone")}
+              onBlur={onFocus("phone")}
               name="phone"
               placeholder="휴대전화번호"
               type="text"

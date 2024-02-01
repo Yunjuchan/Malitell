@@ -1,24 +1,27 @@
 package com.ssafy.malitell.domain.chat;
 
-import com.ssafy.malitell.domain.User;
-import jakarta.persistence.ManyToOne;
+import com.ssafy.malitell.domain.user.User;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
 
+@Entity
 @Getter
-@RedisHash(value = "chat_message")
+//@RedisHash(value = "chat_message")
+@NoArgsConstructor
 @AllArgsConstructor
 public class ChatMessage {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long chatMessageSeq;
-    private int chatRoomSeq;
+    @ManyToOne
+    private ChatRoom chatRoom;
     @ManyToOne
     private User user;
-    private String messageContent;
-    private LocalTime spentTime;
+    private String content;
+    private LocalTime sendTime;
     private boolean isRead;
 }

@@ -2,14 +2,14 @@ package com.ssafy.malitell.service.implement;
 
 
 import com.ssafy.malitell.common.CertificationNumber;
-import com.ssafy.malitell.domain.CertificationEntity;
-import com.ssafy.malitell.domain.User;
+import com.ssafy.malitell.domain.auth.CertificationEntity;
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.auth.*;
 import com.ssafy.malitell.dto.response.ResponseDto;
 import com.ssafy.malitell.dto.response.auth.*;
 import com.ssafy.malitell.jwt.JWTUtil;
 import com.ssafy.malitell.repository.CertificationRepository;
-import com.ssafy.malitell.repository.UserRepository;
+import com.ssafy.malitell.repository.user.UserRepository;
 import com.ssafy.malitell.service.AuthService;
 import com.ssafy.malitell.util.EmailUtil;
 import lombok.RequiredArgsConstructor;
@@ -129,5 +129,16 @@ public class AuthServiceImplement implements AuthService {
         }
 
         return SignUpResponseDto.success();
+    }
+
+    @Override
+    public FindIdResponseDto findId(FindIdRequestDto findIdRequestDto) {
+        String name = findIdRequestDto.getName();
+        String email = findIdRequestDto.getEmail();
+        String userId = userRepository.findIdByNameAndEmail(name, email).getUserId();
+
+        FindIdResponseDto findIdResponseDto = new FindIdResponseDto();
+        findIdResponseDto.setUserId(userId);
+        return findIdResponseDto;
     }
 }

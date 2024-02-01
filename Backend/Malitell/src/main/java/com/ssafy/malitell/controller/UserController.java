@@ -1,11 +1,12 @@
 package com.ssafy.malitell.controller;
 
-import com.ssafy.malitell.domain.User;
-import com.ssafy.malitell.dto.request.JoinDto;
-import com.ssafy.malitell.dto.request.user.ClientRequestDto;
-import com.ssafy.malitell.dto.request.user.CounselorRequestDto;
+import com.ssafy.malitell.domain.user.User;
+import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
+import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
+import com.ssafy.malitell.dto.request.user.CounselorJoinRequestDto;
+import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import com.ssafy.malitell.jwt.JWTUtil;
-import com.ssafy.malitell.repository.UserRepository;
+import com.ssafy.malitell.repository.user.UserRepository;
 import com.ssafy.malitell.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +27,27 @@ public class UserController {
         this.jwtUtil = jwtUtil;
     }
 
-    @PostMapping("/user/join")
-    public String join(@RequestBody JoinDto joinDTO) {
-        userService.join(joinDTO);
-        return "join success";
+    // 상담자 회원가입
+    @PostMapping("/user/join/counselor")
+    public String joinCounselor(@RequestBody CounselorJoinRequestDto counselorJoinRequestDto) {
+        userService.joinCounselor(counselorJoinRequestDto);
+        return "Join Success";
     }
 
+    // 내담자 회원가입
+    @PostMapping("/user/join/client")
+    public String joinClient(@RequestBody ClientJoinRequestDto clientJoinRequestDto) {
+        userService.joinClient(clientJoinRequestDto);
+        return "Join Success";
+    }
+
+    // 아이디 중복 검증
+    @GetMapping("/user/exists/{userId}")
+    public ResponseEntity<Boolean> checkIdDuplicate(@PathVariable String userId) {
+        return new ResponseEntity<>(userService.checkIdDuplicate(userId), HttpStatus.OK);
+    }
+
+    // token 검증
     @PostMapping("/user/reissue")
     public String token(String refreshToken) throws Exception {
 
@@ -82,10 +98,10 @@ public class UserController {
 
     // 내담자 정보 수정
     @PutMapping("/mypage/user/client")
-    public ResponseEntity<Integer> updateClientInfo(Principal principal, ClientRequestDto clientRequestDto) {
+    public ResponseEntity<?> updateClientInfo(Principal principal, ClientUpdateRequestDto clientUpdateRequestDto) {
         String userId = principal.getName();
         if (userService.findUser(userId).getRole().equals("ROLE_CLIENT")) {
-            return new ResponseEntity<>(userService.updateClientInfo(userId, clientRequestDto), HttpStatus.OK);
+            return new ResponseEntity<>(userService.updateClientInfo(userId, clientUpdateRequestDto), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // CLIENT가 아닐 경우
         }
@@ -93,13 +109,25 @@ public class UserController {
 
     // 상담자 정보 수정
     @PutMapping("/mypage/user/counselor")
-    public ResponseEntity<Integer> updateCounselorInfo(Principal principal, CounselorRequestDto counselorRequestDto) {
+    public ResponseEntity<?> updateCounselorInfo(Principal principal, CounselorUpdateRequestDto counselorRequestDto) {
         String userId = principal.getName();
         if (userService.findUser(userId).getRole().equals("ROLE_COUNSELOR")) {
             return new ResponseEntity<>(userService.updateCounselorInfo(userId, counselorRequestDto), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // COUNSELOR가 아닐 경우
         }
-
     }
+
+    // 회원 탈퇴
+    @DeleteMapping("/mypage/user")
+    public ResponseEntity<?> deleteUser(Principal principal) {
+        userService.deleteUser(principal.getName());
+        System.out.println(principal.getName());
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+//    @PostMapping("/find/id")
+//    public ResponseEntity<Integer> findId() {
+//
+//    }
 }

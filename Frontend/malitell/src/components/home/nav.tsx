@@ -21,7 +21,7 @@ export default function Nav() {
         <Icon src="./images/home/nav/related-organizations.png" alt="counsel" />
         <Name>관련 사이트</Name>
       </NavLink>
-      <NavLink to={"/asd"}>
+      <NavLink to={"/chat"}>
         <Icon src="./images/home/nav/about.png" alt="counsel" />
         <Name>서비스 소개</Name>
       </NavLink>

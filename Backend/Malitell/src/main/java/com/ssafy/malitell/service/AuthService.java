@@ -14,4 +14,5 @@ public interface AuthService {
     ResponseEntity<? super CheckCertificationResponseDto> checkCertification(CheckCertificationRequestDto dto);
 
     ResponseEntity<? super SignUpResponseDto> signUp(SignUpRequestDto dto);
+    FindIdResponseDto findId(FindIdRequestDto findIdRequestDto);
 }
