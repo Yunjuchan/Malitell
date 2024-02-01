@@ -20,4 +20,5 @@ public interface UserRepositoryCustom {
     CounselorResponseDto findCounselorByUserId(String userId);
 
     List<User> findByRole(String role);
+//    void update
 }

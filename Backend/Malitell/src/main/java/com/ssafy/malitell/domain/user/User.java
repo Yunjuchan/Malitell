@@ -1,6 +1,7 @@
 package com.ssafy.malitell.domain.user;
 
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
+import com.ssafy.malitell.dto.request.auth.PasswordRequestDto;
 import com.ssafy.malitell.dto.request.auth.SignUpRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
@@ -87,5 +88,8 @@ public class User {
         this.email = counselorUpdateRequestDto.getEmail();
         this.phone = counselorUpdateRequestDto.getPhone();
         this.careerPeriod = counselorUpdateRequestDto.getCareerPeriod();
+    }
+    public void updatePassword(String password) {
+        this.password = password;
     }
 }
