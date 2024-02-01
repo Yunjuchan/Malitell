@@ -1,6 +1,7 @@
 package com.ssafy.malitell.controller;
 
 import com.ssafy.malitell.domain.user.User;
+import com.ssafy.malitell.dto.request.auth.PasswordRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorJoinRequestDto;
@@ -122,12 +123,12 @@ public class UserController {
     @DeleteMapping("/mypage/user")
     public ResponseEntity<?> deleteUser(Principal principal) {
         userService.deleteUser(principal.getName());
-        System.out.println(principal.getName());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-//    @PostMapping("/find/id")
-//    public ResponseEntity<Integer> findId() {
-//
-//    }
+    @PutMapping("/mypage/user/updatePassword")
+    public ResponseEntity<?> updatePassword(Principal principal, @RequestBody PasswordRequestDto passwordRequestDto) {
+        String userId = principal.getName();
+        return new ResponseEntity<>(userService.updatePassword(userId, passwordRequestDto), HttpStatus.OK);
+    }
 }

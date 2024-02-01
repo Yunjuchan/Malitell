@@ -16,7 +16,6 @@ import java.util.UUID;
 @NoArgsConstructor
 public class ChatRoom {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String chatRoomSeq;
     @ManyToOne
     private User counselor;
