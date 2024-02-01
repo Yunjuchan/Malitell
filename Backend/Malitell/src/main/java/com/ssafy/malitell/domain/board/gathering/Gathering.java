@@ -23,7 +23,7 @@ public class Gathering {
     private int gatheringSeq;
 
     // 어떤 자조모임 모집 게시글인지
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     @JoinColumn(name = "selfHelpGroup_id")
     private SelfHelpGroup selfHelpGroup;
 
