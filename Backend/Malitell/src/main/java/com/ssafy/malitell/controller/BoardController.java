@@ -4,7 +4,6 @@ import com.ssafy.malitell.domain.board.BoardType;
 import com.ssafy.malitell.dto.request.board.BoardRequestDto;
 import com.ssafy.malitell.dto.response.board.BoardListResponseDto;
 import com.ssafy.malitell.dto.response.board.BoardResponseDto;
-import com.ssafy.malitell.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
