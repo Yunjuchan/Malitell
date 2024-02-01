@@ -1,12 +1,12 @@
 import React from "react";
-import { Search, Wrapper } from "../../styles/counsel/counselorList";
+import { Search, SearchWrapper } from "../../styles/counsel/searchBox";
 
 export default function searchBox() {
   return (
-    <Wrapper>
+    <SearchWrapper>
       <Search>
-        <div>aa</div>
+        Search
       </Search>
-    </Wrapper>
+    </SearchWrapper>
   );
 }

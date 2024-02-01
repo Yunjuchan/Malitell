@@ -1,5 +1,5 @@
 import React from 'react'
-import { Filter, FilterWrapper } from '../../styles/counsel/counselorList'
+import { Filter , FilterWrapper } from '../../styles/counsel/filterBox'
 
 
 export default function FilterBox() {
