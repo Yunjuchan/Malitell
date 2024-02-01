@@ -1,5 +1,6 @@
 package com.ssafy.malitell.domain.selfhelpgroup;
 
+import com.ssafy.malitell.dto.request.gathering.GatheringCreateRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,6 +37,19 @@ public class SelfHelpGroup {
 
     // 자조모임에 참가하는 사람
     @OneToMany(mappedBy = "selfHelpGroup")
-    private List<SelfHelpGroupUser> SelfHelpGroupUsers = new ArrayList<>();
+    private List<SelfHelpGroupUser> selfHelpGroupUsers;
+
+    public void addSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {
+        selfHelpGroupUsers.add(selfHelpGroupUser);
+        selfHelpGroupUser.setSelfHelpGroup(this);
+    }
+
+    public SelfHelpGroup(GatheringCreateRequestDto gatheringCreateRequestDto) {
+        this.title = gatheringCreateRequestDto.getSelfHelpGroupTitle();
+        this.content = gatheringCreateRequestDto.getSelfHelpGroupContent();
+        this.times = gatheringCreateRequestDto.getTimes();
+        this.selfHelpType = SelfHelpType.valueOf(gatheringCreateRequestDto.getSelfHelpType().toUpperCase());
+        this.selfHelpGroupUsers = new ArrayList<>(gatheringCreateRequestDto.getSelfHelpGroupHeadCount());
+    }
 
 }
