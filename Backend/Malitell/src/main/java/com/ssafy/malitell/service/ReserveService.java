@@ -59,7 +59,7 @@ public class ReserveService {
 //        return reservationList;
 //    }
 
-    public List<ReservationListResponseDto> getAllReservationLists(HttpServletRequest request, Principal principal) {
+    public List<ReservationListResponseDto> getAllReservationLists(Principal principal) {
         String userId = principal.getName();
         User loginUser = userRepository.findByUserId(userId);
         int userSeq = loginUser.getUserSeq();

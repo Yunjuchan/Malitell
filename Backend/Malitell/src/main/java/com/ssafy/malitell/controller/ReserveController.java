@@ -18,6 +18,10 @@ public class ReserveController {
 
     private final ReserveService reserveService;
 
+    // 상담자 프로필 목록 조회
+//    @GetMapping("/getCounselorList")
+//    public ResponseEntity<List<>>
+
     // 상담 예약 폼 조회
     @GetMapping("/reserve/{counselorSeq}")
     public ResponseEntity<Void> reserve(@PathVariable int counselorSeq) {
@@ -31,20 +35,14 @@ public class ReserveController {
         return new ResponseEntity<>(counselingSeq, HttpStatus.OK);
     }
 
-    // 내담자 - 상담 예약 조회 (마이페이지-나의예약)
+    // [내담자/상담자] - 상담 예약 조회 (마이페이지-나의예약)
     @GetMapping("/mypage/reserve")
-    public ResponseEntity<List<ReservationListResponseDto>> getAllReservationLists(HttpServletRequest request, Principal principal) {
-        List<ReservationListResponseDto> list = reserveService.getAllReservationLists(request, principal);
+    public ResponseEntity<List<ReservationListResponseDto>> getAllReservationLists(Principal principal) {
+        List<ReservationListResponseDto> list = reserveService.getAllReservationLists(principal);
 
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    // 상담자 - 상담 예약 조회 (마이페이지-나의예약)
-//    @GetMapping("/mypage/reserve")
-//    public ResponseEntity<List<ReservationListResponseDto>> getAllReservationLists(Principal principal) {
-//        List<ReservationListResponseDto> list = reserveService.getAllReservationLists(principal);
-//
-//        return new ResponseEntity<>(list, HttpStatus.OK);
-//    }
+
 
 }
