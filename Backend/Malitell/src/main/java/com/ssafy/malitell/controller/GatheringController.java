@@ -20,7 +20,7 @@ public class GatheringController {
 
     // 게시물 등록
     @PostMapping("/Gatherings")
-    public ResponseEntity<Integer> createGathering(GatheringCreateRequestDto requestDto, Principal principal) {
+    public ResponseEntity<Integer> createGathering(@RequestBody GatheringCreateRequestDto requestDto, Principal principal) {
         return new ResponseEntity<>(gatheringService.createGathering(requestDto, principal), HttpStatus.OK);
     }
 
@@ -44,7 +44,7 @@ public class GatheringController {
 
     // 게시물 수정
     @PutMapping("/Gatherings/{gatheringSeq}")
-    public ResponseEntity<Integer> updateGathering(@PathVariable int gatheringSeq, GatheringUpdateRequestDto requestDto) {
+    public ResponseEntity<Integer> updateGathering(@PathVariable int gatheringSeq, @RequestBody GatheringUpdateRequestDto requestDto) {
         return new ResponseEntity<>(gatheringService.updateGathering(gatheringSeq, requestDto), HttpStatus.OK);
     }
 
