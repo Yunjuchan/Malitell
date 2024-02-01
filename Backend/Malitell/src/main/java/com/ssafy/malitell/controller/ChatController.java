@@ -1,9 +1,11 @@
 package com.ssafy.malitell.controller;
 
+import com.ssafy.malitell.domain.chat.ChatMessage;
 import com.ssafy.malitell.domain.chat.ChatRoom;
 import com.ssafy.malitell.dto.request.chat.ChatRequestDto;
 import com.ssafy.malitell.service.ChatService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +18,10 @@ public class ChatController {
     private final ChatService chatService;
     private final SimpMessageSendingOperations sendingOperations;
 
-//    @MessageMapping("/message")
-//    public void enter(ChatMessage chatMessage) {
-//        sendingOperations.convertAndSend("/topic/chat/room/"+chatMessage.getChatRoomSeq(),chatMessage);
-//    }
+    @MessageMapping("/message")
+    public void enter(ChatMessage chatMessage) {
+        sendingOperations.convertAndSend("/chat/room/" + chatMessage.getChatRoomSeq(), chatMessage);
+    }
 
     // 채팅방 생성
     @PostMapping("/room")
@@ -33,10 +35,10 @@ public class ChatController {
         return chatService.chatRoomList();
     }
 
-
-    // 특정 채팅방 조회
+    // 채팅방 조회
     @GetMapping("/room/{chatRoomSeq}")
     public ChatRoom roomInfo(@PathVariable String chatRoomSeq) {
         return chatService.findRoom(chatRoomSeq);
     }
+
 }
