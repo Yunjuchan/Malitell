@@ -2,7 +2,7 @@ import React from "react";
 import * as g from "../../styles/grid";
 import SearchBox from "../../components/counsel/searchBox";
 import FilterBox from "../../components/counsel/filterBox";
-import Counselors from "../../components/counsel/counselorList";
+import Counselors from "../../components/counsel/counselors";
 
 export default function CounselorList() {
   return (

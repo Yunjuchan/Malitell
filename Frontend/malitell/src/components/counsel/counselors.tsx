@@ -1,15 +1,15 @@
 import React from "react";
-import { Counselor, ListWrapper } from "../../styles/counsel/counselorList";
+import { Counselor, CounselorWrapper } from "../../styles/counsel/counselors";
 
-export default function CounselorList() {
+export default function Counselors() {
   return (
-    <ListWrapper>
+    <CounselorWrapper>
       <Counselor>aa</Counselor>
       <Counselor>aa</Counselor>
       <Counselor>aa</Counselor>
       <Counselor>aa</Counselor>
       <Counselor>aa</Counselor>
       <Counselor>aa</Counselor>
-    </ListWrapper>
+    </CounselorWrapper>
   );
 }
