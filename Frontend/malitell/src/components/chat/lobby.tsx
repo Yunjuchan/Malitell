@@ -1,23 +1,76 @@
-import { useState } from "react";
-import styled from "styled-components"
-import Create from "./create";
-import List from "./list";
-import Room from "./room";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const Wrapper = styled.div`
-  width: 60%;
-  height: 80%;
-  position: fixed;
-  background-color: lightgray;
-`;
+type ChatRoom = {
+  roomId: string;
+  name: string;
+  chatRoomSeq: string;
+};
 
-export default function Lobby() {
-  const [create, setCreate] = useState(false);
-  const [room, setRoom] = useState(0);
+const Lobby: React.FC = () => {
+  const [roomName, setRoomName] = useState("");
+  const [chatRooms, setChatRooms] = useState<ChatRoom[]>([]);
+
+  useEffect(() => {
+    findAllRooms();
+  }, []);
+
+  const findAllRooms = async () => {
+    const response = await axios.get("http://localhost:8080/chat/rooms");
+    console.log(response.data);
+    setChatRooms(response.data);
+  };
+
+  const createRoom = async () => {
+    if (roomName === "") {
+      alert("방 제목을 입력해 주십시요.");
+      return;
+    }
+
+    try {
+      const params = new URLSearchParams();
+      params.append("name", roomName);
+
+      const response = await axios.post("http://localhost:8080/chat/room", params);
+      alert(`${response.data.name} 방 개설에 성공하였습니다.`);
+      setRoomName("");
+      await findAllRooms();
+    } catch {
+      alert("채팅방 개설에 실패하였습니다.");
+    }
+  };
+
+  const enterRoom = (roomId: string) => {
+    const sender = prompt("대화명을 입력해 주세요.");
+    if (sender !== null && sender !== "") {
+      localStorage.setItem("wschat.sender", sender);
+      localStorage.setItem("wschat.roomId", roomId);
+      window.location.href = `/chat/room/enter/${roomId}`;
+    }
+  };
 
   return (
-    <Wrapper>
-      {create? <Create setRoom={setRoom} /> : room !== 0 ? <Room /> : <List setCreate={setCreate} setRoom={setRoom} />}
-    </Wrapper>
-  )
-}
+    <div>
+      <h3>채팅방 리스트</h3>
+      <div>
+        <label>방제목</label>
+        <input
+          type="text"
+          value={roomName}
+          onChange={(e) => setRoomName(e.target.value)}
+          onKeyUp={(e) => e.key === "Enter" && createRoom()}
+        />
+        <button onClick={createRoom}>채팅방 개설</button>
+      </div>
+      <ul>
+        {chatRooms.map((room) => (
+          <li key={room.roomId} onClick={() => enterRoom(room.roomId)}>
+            {room.chatRoomSeq}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Lobby;
