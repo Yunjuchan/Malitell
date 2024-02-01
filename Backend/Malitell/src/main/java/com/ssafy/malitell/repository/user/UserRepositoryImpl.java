@@ -1,6 +1,7 @@
 package com.ssafy.malitell.repository.user;
 
 import com.ssafy.malitell.domain.user.User;
+import com.ssafy.malitell.dto.response.reserve.CounselorListResponseDto;
 import com.ssafy.malitell.dto.response.user.ClientResponseDto;
 import com.ssafy.malitell.dto.response.user.CounselorResponseDto;
 import jakarta.persistence.EntityManager;
@@ -8,6 +9,8 @@ import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 @Transactional
@@ -57,5 +60,12 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
                 .setParameter("userId", userId)
                 .getSingleResult();
         return new CounselorResponseDto(user);
+    }
+
+    @Override
+    public List<User> findByRole(String role) {
+        return entityManager.createQuery("SELECT u FROM User u WHERE u.role = :role", User.class)
+                .setParameter("role", role)
+                .getResultList();
     }
 }
