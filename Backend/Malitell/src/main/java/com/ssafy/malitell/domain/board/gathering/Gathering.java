@@ -20,7 +20,7 @@ public class Gathering {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int boardSeq;
+    private int gatheringSeq;
 
     // 어떤 자조모임 모집 게시글인지
     @OneToOne
