@@ -99,13 +99,13 @@ public class ReserveService {
         return reservationList;
     }
 
-    public List<CounselingLogOrderByDateResponseDto> getCounselingLogListOrderByTime(Principal principal) {
+    public List<CounselingLogOrderByDateResponseDto> getCounselingLogListOrderByDate(Principal principal) {
         String loginUser = principal.getName();
 
         User user = reserveRepository.findByUserId(loginUser);
         int loginUserSeq = user.getUserSeq();
 
-        List<CounselingLog> counselingLoglist = reserveRepository.getCounselingLogListOrderByTime(loginUserSeq);
+        List<CounselingLog> counselingLoglist = reserveRepository.getCounselingLogListOrderByDate(loginUserSeq);
 
         List<CounselingLogOrderByDateResponseDto> counselingLogOrderByDateList = new ArrayList<>();
 
