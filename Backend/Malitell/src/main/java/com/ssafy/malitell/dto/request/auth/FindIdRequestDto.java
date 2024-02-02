@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class FindIdRequestDto {
     @NotBlank
-    private String name;
+    private String userId;
     @NotBlank
     private String email;
 

@@ -27,7 +27,6 @@ public class AuthServiceImplement implements AuthService {
     private final UserRepository userRepository;
     private final CertificationRepository certificationRepository;
 
-    private final JWTUtil jwtUtil;
     private final EmailUtil emailUtil;
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -35,7 +34,7 @@ public class AuthServiceImplement implements AuthService {
     public ResponseEntity<? super IdCheckResponseDto> idCheck(IdCheckRequestDto dto) {
         try {
 
-            String userId = dto.getId();
+            String userId = dto.getUserId();
             boolean isExistId = userRepository.existsByUserId(userId);
 
             if (isExistId) return IdCheckResponseDto.duplicated();
@@ -53,7 +52,7 @@ public class AuthServiceImplement implements AuthService {
     public ResponseEntity<? super EmailCertificationResponseDto> emailCertification(EmailCertificationRequestDto dto) {
         try {
 
-            String userId = dto.getId();
+            String userId = dto.getUserId();
             String email = dto.getEmail();
             boolean isExistId = userRepository.existsByUserId(userId);
             if (isExistId) return EmailCertificationResponseDto.duplicateId();
@@ -78,7 +77,7 @@ public class AuthServiceImplement implements AuthService {
     public ResponseEntity<? super CheckCertificationResponseDto> checkCertification(CheckCertificationRequestDto dto) {
         try {
 
-            String userId = dto.getId();
+            String userId = dto.getUserId();
             String email = dto.getEmail();
             String certificationNumber = dto.getCertificationNumber();
 
@@ -101,7 +100,7 @@ public class AuthServiceImplement implements AuthService {
     @Override
     public ResponseEntity<? super SignUpResponseDto> signUp(SignUpRequestDto dto) {
         try {
-            String userId = dto.getId();
+            String userId = dto.getUserId();
             boolean isExistId = userRepository.existsByUserId(userId);
             if (isExistId) {
                 return SignUpResponseDto.duplicated();
@@ -133,7 +132,7 @@ public class AuthServiceImplement implements AuthService {
 
     @Override
     public FindIdResponseDto findId(FindIdRequestDto findIdRequestDto) {
-        String name = findIdRequestDto.getName();
+        String name = findIdRequestDto.getUserId();
         String email = findIdRequestDto.getEmail();
         String userId = userRepository.findIdByNameAndEmail(name, email).getUserId();
 
