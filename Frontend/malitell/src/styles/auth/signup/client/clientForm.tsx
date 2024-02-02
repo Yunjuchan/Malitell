@@ -23,7 +23,7 @@ export const Form = styled.form`
       margin-bottom: 1.5%;
     }
     svg {
-      margin-left: 12px;
+      margin-left: 15px;
     }
   }
   #gender {

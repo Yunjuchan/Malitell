@@ -32,6 +32,7 @@ import {
   setBirthday,
   setPhone,
 } from "../../../../store/auth/signupFocusSlice";
+import { error } from "console";
 
 interface SignupProps {
   success: boolean;
@@ -98,9 +99,21 @@ export default function ClientForm({ setSuccess, success }: SignupProps) {
       .then((res) => {
         console.log(res);
       })
-      .then(() => {
-        setSuccess(true);
-      });
+      // .then(() => {
+      //   fetch(`http://localhost:8080/auth/email-certification`, {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify(data),
+      //   })
+          .then((res) => {
+            console.log(res);
+          })
+          .then(() => {
+            setSuccess(true);
+          });
+      // });
   };
 
   // 회원가입 완료여부 확인 state
@@ -339,7 +352,7 @@ export default function ClientForm({ setSuccess, success }: SignupProps) {
               type="text"
             />
           </InputBox>
-          <Submit type="submit" value={"인증하기"} />
+          <Submit type="submit" value={"인증메일 전송"} />
           <Message>
             {errors.userId ? (
               <>{errors.userId.message}</>
