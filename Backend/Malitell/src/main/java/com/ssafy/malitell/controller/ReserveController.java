@@ -51,9 +51,10 @@ public class ReserveController {
     @GetMapping("/mypage/counselingLog/{filter}")
     public ResponseEntity<?> getCounselingLog(@PathVariable String filter, Principal principal) {
         if(filter.equals("최근순")) {
-            List<CounselingLogOrderByDateResponseDto> list = reserveService.getCounselingLogListOrderByTime(principal);
+            List<CounselingLogOrderByDateResponseDto> list = reserveService.getCounselingLogListOrderByDate(principal);
             return new ResponseEntity<>(list, HttpStatus.OK);
         } else { // 이름순
+//            reserveService.getCounselingLogListOrderByName()
             return new ResponseEntity<>(null, HttpStatus.OK);
         }
     }

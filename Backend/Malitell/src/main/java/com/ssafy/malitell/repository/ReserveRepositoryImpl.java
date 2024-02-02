@@ -29,7 +29,7 @@ public class ReserveRepositoryImpl implements ReserveRepositoryCustom {
     }
 
     @Override
-    public List<CounselingLog> getCounselingLogListOrderByTime(int loginUserSeq) {
+    public List<CounselingLog> getCounselingLogListOrderByDate(int loginUserSeq) {
         List<CounselingLog> counselingLogList = entityManager.createQuery("SELECT cl FROM CounselingLog cl JOIN FETCH cl.counseling " +
                         "WHERE cl.counseling.clientSeq = :loginUserSeq " +
                         "ORDER BY cl.counseling.counselingDate DESC", CounselingLog.class)

@@ -14,6 +14,6 @@ public interface ReserveRepositoryCustom {
 
     public User findByUserId(String userId);
 
-    public List<CounselingLog> getCounselingLogListOrderByTime(int loginUserSeq);
+    public List<CounselingLog> getCounselingLogListOrderByDate(int loginUserSeq);
 
 }
