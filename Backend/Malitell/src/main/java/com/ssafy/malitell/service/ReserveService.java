@@ -4,12 +4,11 @@ import com.ssafy.malitell.domain.counseling.Counseling;
 import com.ssafy.malitell.domain.counseling.CounselingLog;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
-import com.ssafy.malitell.dto.response.reserve.CounselingLogOrderyByDateResponseDto;
+import com.ssafy.malitell.dto.response.reserve.CounselingLogOrderByDateResponseDto;
 import com.ssafy.malitell.dto.response.reserve.CounselorListResponseDto;
 import com.ssafy.malitell.dto.response.reserve.ReservationListResponseDto;
 import com.ssafy.malitell.repository.ReserveRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -99,13 +99,31 @@ public class ReserveService {
         return reservationList;
     }
 
-    public List<CounselingLogOrderyByDateResponseDto> getCounselingLogListOrderByTime(Principal principal) {
+    public List<CounselingLogOrderByDateResponseDto> getCounselingLogListOrderByTime(Principal principal) {
         String loginUser = principal.getName();
-        List<CounselingLog> counselingLoglist = reserveRepository.getCounselingLogListOrderByTime(loginUser);
 
+        User user = reserveRepository.findByUserId(loginUser);
+        int loginUserSeq = user.getUserSeq();
 
-        List<CounselingLogOrderyByDateResponseDto> list = new ArrayList<>();
-        return list;
+        List<CounselingLog> counselingLoglist = reserveRepository.getCounselingLogListOrderByTime(loginUserSeq);
+
+        List<CounselingLogOrderByDateResponseDto> counselingLogOrderByDateList = new ArrayList<>();
+
+        for(CounselingLog log : counselingLoglist) {
+            int counselorSeq = log.getCounseling().getCounselorSeq();
+            Optional<User> counselor = userRepository.findById(counselorSeq);
+            String counselorName = counselor.get().getName();
+
+            Timestamp counselingDate = log.getCounseling().getCounselingDate();
+            int round = log.getCounseling().getRound();
+            String content = log.getContent();
+
+            CounselingLogOrderByDateResponseDto dto = new CounselingLogOrderByDateResponseDto(counselorName, counselingDate, round, content);
+
+            counselingLogOrderByDateList.add(dto);
+        }
+
+        return counselingLogOrderByDateList;
     }
 
 }
