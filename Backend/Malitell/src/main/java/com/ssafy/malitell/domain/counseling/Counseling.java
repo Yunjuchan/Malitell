@@ -3,6 +3,7 @@ package com.ssafy.malitell.domain.counseling;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.sql.Timestamp;
 @Entity
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Counseling {
 
     @Id
@@ -23,11 +25,11 @@ public class Counseling {
     private Timestamp reservationDate; // 상담 예약일
     private String counselingRoomUrl; // 상담방 url
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "counselingSeq")
-//    @OneToOne(mappedBy = "counselingLog")
+//    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "counselingSeq")
-    private CounselingLog counselingLog;
+////    @OneToOne(mappedBy = "counselingLog")
+////    @JoinColumn(name = "counselingSeq")
+//    private CounselingLog counselingLog;
 
     public Counseling(int counselorSeq, ReserveRequestDto reserveRequestDto, User user, int round) {
         this.counselorSeq = counselorSeq;

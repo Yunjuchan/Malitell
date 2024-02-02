@@ -24,7 +24,7 @@ public class Gathering {
 
     // 어떤 자조모임 모집 게시글인지
     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
-    @JoinColumn(name = "selfHelpGroup_id")
+    @JoinColumn(name = "selfHelpGroup_seq")
     private SelfHelpGroup selfHelpGroup;
 
     // 작성자 이름

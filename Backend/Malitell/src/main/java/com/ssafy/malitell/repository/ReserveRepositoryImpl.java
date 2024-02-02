@@ -2,6 +2,7 @@ package com.ssafy.malitell.repository;
 
 import com.ssafy.malitell.domain.counseling.Counseling;
 import com.ssafy.malitell.domain.counseling.CounselingLog;
+import com.ssafy.malitell.domain.user.User;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,40 +22,20 @@ public class ReserveRepositoryImpl implements ReserveRepositoryCustom {
     }
 
     @Override
-    public List<CounselingLog> getCounselingLogListOrderByTime(String userId) {
-//        entityManager.createQuery("SELECT c, cl FROM Counseling c JOIN c.counselingLog cl " +
-//                "ON c.counselingSeq = cl.counselingSeq " +
-//                "WHERE c.clientSeq = :userId " +
-//                "ORDER BY c.counselingDate desc", Counseling.class);
+    public User findByUserId(String userId) {
+        return entityManager.createQuery("SELECT u FROM User u WHERE u.userId = :userId", User.class)
+                .setParameter("userId", userId)
+                .getSingleResult();
+    }
 
-//        System.out.println("@@@@@" + entityManager.createQuery("SELECT c FROM Counseling c JOIN c.counselingLog cl", Counseling.class)
-//                .getResultList());
-
-//        entityManager.createQuery("SELECT c FROM Counseling c JOIN c.counselingLog cl", Counseling.class)
-//                .getResultList();
-
-
-//        List<Counseling> counselingList = entityManager.createQuery("SELECT c FROM Counseling c WHERE c.clientSeq = :userId", Counseling.class)
-//                .setParameter("userId", userId)
-//                .getResultList();
-
-
-        List<Counseling> cList = entityManager.createQuery("SELECT c FROM Counseling c", Counseling.class)
+    @Override
+    public List<CounselingLog> getCounselingLogListOrderByTime(int loginUserSeq) {
+        List<CounselingLog> counselingLogList = entityManager.createQuery("SELECT cl FROM CounselingLog cl JOIN FETCH cl.counseling " +
+                        "WHERE cl.counseling.clientSeq = :loginUserSeq " +
+                        "ORDER BY cl.counseling.counselingDate DESC", CounselingLog.class)
+                .setParameter("loginUserSeq", loginUserSeq)
                 .getResultList();
-        System.out.println("상담 목록 : " + cList);
-
-        List<CounselingLog> clList = entityManager.createQuery("SELECT cl FROM CounselingLog cl", CounselingLog.class)
-                .getResultList();
-        System.out.println("상담일지 목록 : " + clList);
-
-        List<Counseling> counselingList = entityManager.createQuery("SELECT c FROM Counseling c JOIN FETCH c.counselingLog", Counseling.class)
-                .getResultList();
-
-        System.out.println("!!!!!!!!!!!!" + counselingList);
-
-
-        List<CounselingLog> list = new ArrayList<>();
-        return list;
+        return counselingLogList;
     }
 
 }
