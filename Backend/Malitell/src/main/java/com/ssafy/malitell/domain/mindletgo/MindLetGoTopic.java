@@ -15,7 +15,7 @@ public class MindLetGoTopic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int mindLetGoTopicSeq;
-    @OneToMany(mappedBy = "mindLetGoTopic")
+    @OneToMany
     private List<MindLetGo> mindLetGoList;
     private String topic;
 }
