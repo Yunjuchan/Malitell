@@ -1,20 +1,26 @@
 import React from "react";
 import * as g from "../../styles/grid";
+import CounselorInfo from "../../components/counsel/counselorInfo";
+import ReviewList from "../../components/counsel/reviewList";
+import ButtonBox from "../../components/counsel/buttonBox";
+import ProfileBox from "../../components/counsel/profileBox";
 
 export default function CounselorDetail() {
   return (
     <g.Back>
       <g.Grid>
         <g.Box $col="1/9" $row="2/8">
-          introduce
+          <CounselorInfo />
         </g.Box>
         <g.Box $col="1/9" $row="8/13">
-          counsellingReviews
+          <ReviewList />
         </g.Box>
         <g.Box $col="9/13" $row="2/7">
-          counselorImage
+          <ProfileBox />
         </g.Box>
-        <g.Box $col="9/13" $row="7/10"></g.Box>
+        <g.Box $col="9/13" $row="7/10">
+          <ButtonBox />
+        </g.Box>
       </g.Grid>
     </g.Back>
   );

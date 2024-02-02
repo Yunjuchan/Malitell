@@ -1,6 +1,7 @@
 package com.ssafy.malitell.domain.user;
 
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
+import com.ssafy.malitell.dto.request.auth.PasswordRequestDto;
 import com.ssafy.malitell.dto.request.auth.SignUpRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
@@ -49,12 +50,17 @@ public class User {
 //    List<Board> boards = new ArrayList<>();
 
     // 참가하고 있는 자조모임
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<SelfHelpGroupUser> selfHelpGroupUsers = new ArrayList<>();
 
     public void addSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {
         selfHelpGroupUsers.add(selfHelpGroupUser);
         selfHelpGroupUser.setUser(this);
+    }
+
+    public void removeSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {
+        selfHelpGroupUsers.remove(selfHelpGroupUser);
+        selfHelpGroupUser.setUser(null);
     }
 
     public User(SignUpRequestDto dto) {
@@ -82,10 +88,14 @@ public class User {
         this.email = clientUpdateRequestDto.getEmail();
         this.phone = clientUpdateRequestDto.getPhone();
     }
+
     public void updateCounselor(CounselorUpdateRequestDto counselorUpdateRequestDto) {
         this.name = counselorUpdateRequestDto.getName();
         this.email = counselorUpdateRequestDto.getEmail();
         this.phone = counselorUpdateRequestDto.getPhone();
         this.careerPeriod = counselorUpdateRequestDto.getCareerPeriod();
+    }
+    public void updatePassword(String password) {
+        this.password = password;
     }
 }

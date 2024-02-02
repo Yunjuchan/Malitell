@@ -36,12 +36,17 @@ public class SelfHelpGroup {
     private SelfHelpType selfHelpType;
 
     // 자조모임에 참가하는 사람
-    @OneToMany(mappedBy = "selfHelpGroup")
+    @OneToMany(mappedBy = "selfHelpGroup", fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     private List<SelfHelpGroupUser> selfHelpGroupUsers;
 
     public void addSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {
         selfHelpGroupUsers.add(selfHelpGroupUser);
         selfHelpGroupUser.setSelfHelpGroup(this);
+    }
+
+    public void removeSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {
+        selfHelpGroupUsers.remove(selfHelpGroupUser);
+        selfHelpGroupUser.setSelfHelpGroup(null);
     }
 
     public SelfHelpGroup(GatheringCreateRequestDto gatheringCreateRequestDto) {

@@ -1,6 +1,7 @@
 package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.user.User;
+import com.ssafy.malitell.dto.request.auth.PasswordRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorJoinRequestDto;
@@ -11,6 +12,7 @@ import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
@@ -22,17 +24,10 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public void joinClient(ClientJoinRequestDto clientJoinRequestDto) {
         String userId = clientJoinRequestDto.getUserId();
-//        String name = clientJoinRequestDto.getName();
-//        String nickname = clientJoinRequestDto.getNickname();
-//        String password = clientJoinRequestDto.getPassword();
-//        String email = clientJoinRequestDto.getEmail();
-//        String phone = clientJoinRequestDto.getPhone();
-//        String birth = clientJoinRequestDto.getBirth();
-//        String gender = clientJoinRequestDto.getGender();
-//        String role = clientJoinRequestDto.getRole();
 
         Boolean isExist = userRepository.existsByUserId(userId);
 
@@ -110,5 +105,14 @@ public class UserService {
 
     public boolean checkIdDuplicate(String userId) {
         return userRepository.findByUserId(userId) != null;
+    }
+
+    @Transactional
+    public int updatePassword(String userId, PasswordRequestDto passwordRequestDto) {
+        User user = userRepository.findByUserId(userId);
+        String password = passwordRequestDto.getPassword();
+        String encodePassword = passwordEncoder.encode(password);
+        user.updatePassword(encodePassword);
+        return user.getUserSeq();
     }
 }
