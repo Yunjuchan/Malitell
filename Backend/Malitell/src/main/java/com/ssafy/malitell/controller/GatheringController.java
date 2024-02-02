@@ -15,35 +15,36 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/gathering")
 public class GatheringController {
     private final GatheringService gatheringService;
 
     // 게시물 등록
-    @PostMapping("/Gatherings")
+    @PostMapping("/")
     public ResponseEntity<Integer> createGathering(@RequestBody GatheringCreateRequestDto requestDto, Principal principal) {
         return new ResponseEntity<>(gatheringService.createGathering(requestDto, principal), HttpStatus.OK);
     }
 
     // 게시물 목록 조회
-    @GetMapping("/Gatherings")
+    @GetMapping("/")
     public ResponseEntity<List<GatheringListResponseDto>> getAllGatherings() {
         return new ResponseEntity<>(gatheringService.findAllGathering(), HttpStatus.OK);
     }
 
     // 게시물 하나 조회
-    @GetMapping("/Gatherings/{gatheringSeq}")
+    @GetMapping("/{gatheringSeq}")
     public ResponseEntity<GatheringResponseDto> getOneGathering(@PathVariable int gatheringSeq) {
         return new ResponseEntity<>(gatheringService.findOneGathering(gatheringSeq), HttpStatus.OK);
     }
 
     // 게시물 삭제
-    @DeleteMapping("/Gatherings/{gatheringSeq}")
+    @DeleteMapping("/{gatheringSeq}")
     public ResponseEntity<Integer> deleteGathering(@PathVariable int gatheringSeq) {
         return new ResponseEntity<>(gatheringService.deleteGathering(gatheringSeq), HttpStatus.OK);
     }
 
     // 게시물 수정
-    @PutMapping("/Gatherings/{gatheringSeq}")
+    @PutMapping("/{gatheringSeq}")
     public ResponseEntity<Integer> updateGathering(@PathVariable int gatheringSeq, @RequestBody GatheringUpdateRequestDto requestDto) {
         return new ResponseEntity<>(gatheringService.updateGathering(gatheringSeq, requestDto), HttpStatus.OK);
     }
