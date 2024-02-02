@@ -16,11 +16,11 @@ import java.util.List;
 public class MindLetGoService {
     private final MindLetGoRepository mindLetGoRepository;
 
-    public int createMindLetGo(MindLetGoRequestDto mindLetGoRequestDto) {
-        MindLetGo mindLetGo = new MindLetGo(mindLetGoRequestDto);
-        mindLetGoRepository.save(mindLetGo);
-        return mindLetGo.getMindLetGoSeq();
-    }
+//    public int createMindLetGo(MindLetGoRequestDto mindLetGoRequestDto) {
+//        MindLetGo mindLetGo = new MindLetGo(mindLetGoRequestDto);
+//        mindLetGoRepository.save(mindLetGo);
+//        return mindLetGo.getMindLetGoSeq();
+//    }
 
     public List<MindLetGoResponseDto> findAll() {
         List<MindLetGo> mindLetGos = mindLetGoRepository.findAll();
