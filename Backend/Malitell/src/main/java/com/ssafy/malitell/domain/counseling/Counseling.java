@@ -2,10 +2,7 @@ package com.ssafy.malitell.domain.counseling;
 
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,6 +23,12 @@ public class Counseling {
     private Timestamp reservationDate; // 상담 예약일
     private String counselingRoomUrl; // 상담방 url
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "counselingSeq")
+//    @OneToOne(mappedBy = "counselingLog")
+//    @JoinColumn(name = "counselingSeq")
+    private CounselingLog counselingLog;
+
     public Counseling(int counselorSeq, ReserveRequestDto reserveRequestDto, User user, int round) {
         this.counselorSeq = counselorSeq;
         this.clientSeq = user.getUserSeq();
@@ -37,6 +40,7 @@ public class Counseling {
     @Override
     public String toString() {
         return "Counseling{" +
+                
                 "counselingSeq=" + counselingSeq +
                 ", counselorSeq=" + counselorSeq +
                 ", clientSeq=" + clientSeq +
