@@ -33,6 +33,18 @@ export const Explanation = styled.div`
   }
 `
 
+export const Input = styled.input`
+  width: 50%;
+  height: 10%;
+  border: none;
+  border-radius: 10px;
+  margin-top: 3%;
+  box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+`
+
 export const Button = styled.div`
   transition: all 0.2s;
   display: flex;
