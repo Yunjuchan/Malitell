@@ -64,7 +64,7 @@ public class User {
     }
 
     public User(SignUpRequestDto dto) {
-        this.userId = dto.getId();
+        this.userId = dto.getUserId();
         this.password = dto.getPassword();
         this.email = dto.getEmail();
         this.type = "app";
