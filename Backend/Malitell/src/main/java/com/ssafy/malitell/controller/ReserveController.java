@@ -1,10 +1,10 @@
 package com.ssafy.malitell.controller;
 
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
+import com.ssafy.malitell.dto.response.reserve.CounselingLogOrderyByDateResponseDto;
 import com.ssafy.malitell.dto.response.reserve.CounselorListResponseDto;
 import com.ssafy.malitell.dto.response.reserve.ReservationListResponseDto;
 import com.ssafy.malitell.service.ReserveService;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +47,15 @@ public class ReserveController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-
+    // [내담자] - 나의 상담일지 (마이페이지-나의상담일지 -> 디폴트는 최근순)
+    @GetMapping("/mypage/counselingLog/{filter}")
+    public ResponseEntity<?> getCounselingLog(@PathVariable String filter, Principal principal) {
+        if(filter.equals("최근순")) {
+            List<CounselingLogOrderyByDateResponseDto> list = reserveService.getCounselingLogListOrderByTime(principal);
+            return new ResponseEntity<>(list, HttpStatus.OK);
+        } else { // 이름순
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        }
+    }
 
 }

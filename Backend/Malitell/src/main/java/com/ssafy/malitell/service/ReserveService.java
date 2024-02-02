@@ -1,8 +1,10 @@
 package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.counseling.Counseling;
+import com.ssafy.malitell.domain.counseling.CounselingLog;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
+import com.ssafy.malitell.dto.response.reserve.CounselingLogOrderyByDateResponseDto;
 import com.ssafy.malitell.dto.response.reserve.CounselorListResponseDto;
 import com.ssafy.malitell.dto.response.reserve.ReservationListResponseDto;
 import com.ssafy.malitell.repository.ReserveRepository;
@@ -70,23 +72,6 @@ public class ReserveService {
         return counseling.getCounselingSeq();
     }
 
-//    public List<ReservationListResponseDto> getAllReservationLists(Principal principal) {
-//        String clientId = principal.getName();
-//        User user = userRepository.findByUserId(clientId);
-//        int clientSeq = user.getUserSeq();
-//
-//        List<Counseling> list = reserveRepository.findAllBySeq(clientSeq);
-//        List<ReservationListResponseDto> reservationList = new ArrayList<>();
-//
-//        for(Counseling counseling : list) {
-//            Timestamp counselingDate = counseling.getCounselingDate();
-//            User counselor = userRepository.findByUserSeq(counseling.getCounselorSeq());
-//
-//            reservationList.add(new ReservationListResponseDto(counselingDate, counselor.getName()));
-//        }
-//        return reservationList;
-//    }
-
     public List<ReservationListResponseDto> getAllReservationLists(Principal principal) {
         String userId = principal.getName();
         User loginUser = userRepository.findByUserId(userId);
@@ -111,8 +96,16 @@ public class ReserveService {
             }
             reservationList.add(new ReservationListResponseDto(counselingDate, name));
         }
-
         return reservationList;
+    }
+
+    public List<CounselingLogOrderyByDateResponseDto> getCounselingLogListOrderByTime(Principal principal) {
+        String loginUser = principal.getName();
+        List<CounselingLog> counselingLoglist = reserveRepository.getCounselingLogListOrderByTime(loginUser);
+
+
+        List<CounselingLogOrderyByDateResponseDto> list = new ArrayList<>();
+        return list;
     }
 
 }
