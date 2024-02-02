@@ -9,18 +9,18 @@ public class CounselingLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int counselingLogSeq;
-
-//    @JoinColumn(name = "counselingSeq")
-    private int counselingSeq;
-
     private String content;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "counseling_seq")
+    private Counseling counseling;
 
     @Override
     public String toString() {
         return "CounselingLog{" +
                 "counselingLogSeq=" + counselingLogSeq +
-                ", counselingSeq=" + counselingSeq +
-                ", content=" + content + '\'' +
+                ", content='" + content + '\'' +
+                ", counseling=" + counseling +
                 '}';
     }
 }

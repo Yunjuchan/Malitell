@@ -1,7 +1,7 @@
 package com.ssafy.malitell.controller;
 
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
-import com.ssafy.malitell.dto.response.reserve.CounselingLogOrderyByDateResponseDto;
+import com.ssafy.malitell.dto.response.reserve.CounselingLogOrderByDateResponseDto;
 import com.ssafy.malitell.dto.response.reserve.CounselorListResponseDto;
 import com.ssafy.malitell.dto.response.reserve.ReservationListResponseDto;
 import com.ssafy.malitell.service.ReserveService;
@@ -51,7 +51,7 @@ public class ReserveController {
     @GetMapping("/mypage/counselingLog/{filter}")
     public ResponseEntity<?> getCounselingLog(@PathVariable String filter, Principal principal) {
         if(filter.equals("최근순")) {
-            List<CounselingLogOrderyByDateResponseDto> list = reserveService.getCounselingLogListOrderByTime(principal);
+            List<CounselingLogOrderByDateResponseDto> list = reserveService.getCounselingLogListOrderByTime(principal);
             return new ResponseEntity<>(list, HttpStatus.OK);
         } else { // 이름순
             return new ResponseEntity<>(null, HttpStatus.OK);
