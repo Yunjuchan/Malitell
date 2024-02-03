@@ -4,8 +4,10 @@ package com.ssafy.malitell.dto.request.mindletgo;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 @AllArgsConstructor
 public class MindLetGoRequestDto {
     @NotNull
