@@ -15,7 +15,7 @@ type Room = {
 const Room = () => {
   const [roomId, setRoomId] = useState<string | null>(null);
   const [sender, setSender] = useState<string | null>(null);
-  const [room, setRoom] = useState<Room>({ name: "" });
+  // const [room, setRoom] = useState<Room>({ name: "" });
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
 
@@ -24,18 +24,18 @@ const Room = () => {
     const storedSender = localStorage.getItem("wschat.sender");
     setRoomId(storedRoomId);
     setSender(storedSender);
-    findRoom(storedRoomId);
+    // findRoom(storedRoomId);
   }, []);
 
-  const findRoom = async (roomId: string | null) => {
-    if (roomId) {
-      const response = await axios.get(
-        "http://localhost:8080/chat/room/" + roomId
-      );
-      // console.log(response.data);
-      setRoom(response.data);
-    }
-  };
+  // const findRoom = async (roomId: string | null) => {
+  //   if (roomId) {
+  //     const response = await axios.get(
+  //       "http://localhost:8080/chat/room/" + roomId
+  //     );
+  //     // console.log(response.data);
+  //     setRoom(response.data);
+  //   }
+  // };
 
   const sendMessage = (client: any) => {
     if (roomId && sender) {
@@ -47,20 +47,20 @@ const Room = () => {
     }
   };
 
-  const recvMessage = (message: Message) => {
-    setMessages((prevMessages) => [
-      {
-        type: message.type,
-        sender: message.type === "ENTER" ? "[알림]" : message.sender,
-        message: message.message,
-      },
-      ...prevMessages,
-    ]);
-  };
+  // const recvMessage = (message: Message) => {
+  //   setMessages((prevMessages) => [
+  //     {
+  //       type: message.type,
+  //       sender: message.type === "ENTER" ? "[알림]" : message.sender,
+  //       message: message.message,
+  //     },
+  //     ...prevMessages,
+  //   ]);
+  // };
 
   return (
     <div className="container">
-      <h2>{room.name}</h2>
+      {/* <h2>{room.name}</h2> */}
       <div className="input-group">
         {/* <div className="input-group-prepend"> */}
           {/* <label className="input-group-text">내용</label> */}
@@ -75,7 +75,7 @@ const Room = () => {
           <SockJsClient
             url="http://localhost:8080/ws-stomp"
             topics={[`http://localhost:8080/chat/room/${roomId}`]}
-            onMessage={(msg: Message) => recvMessage(msg)}
+            // onMessage={(msg: Message) => recvMessage(msg)}
             onConnect={(client: any) => {
               if (roomId && sender) {
                 client.sendMessage(

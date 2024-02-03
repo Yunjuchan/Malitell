@@ -1,7 +1,11 @@
-import React from 'react'
+import { Wrapper, Button } from "../../styles/article/filter";
 
 export default function Filter() {
   return (
-    <div>Filter</div>
-  )
+    <Wrapper>
+      <Button>
+        button
+      </Button>
+    </Wrapper>
+  );
 }

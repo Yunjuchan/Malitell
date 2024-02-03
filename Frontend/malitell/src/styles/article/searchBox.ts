@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  top: 10vh;
   display: flex;
   width: 100%;
   height: 100%;

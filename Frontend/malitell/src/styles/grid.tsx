@@ -12,9 +12,10 @@ export const BackHome = styled.div`
 
 // 나머지 페이지들 네브바와 페이지 구분감 목적
 export const Back = styled.div`
-  position: absolute;
+  position: fixed;
   top: 80px;
   width: 100%;
+  min-height: 100vh;
   z-index: -1;
   background-color: #f7f7f7;
 `;
@@ -30,7 +31,6 @@ export const BackCounsel = styled.div`
 // 그리드 이걸로 통일(갭은 디자인 구성 볼려고 일부러 넣어둠 나중에 뺼 것!!)
 export const Grid = styled.div`
   display: grid;
-  grid-gap: 5px;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
   width: 1024px;
@@ -63,11 +63,16 @@ export const Box = styled.div<{
   $col?: string;
   $row?: string;
   $display?: string;
+  $position?: string;
+  $top?: string;
 }>`
   box-shadow: 0 0 0 1px black inset;
+  background-color: #f7f7f7;
   grid-column: ${({ $col }) => $col};
   grid-row: ${({ $row }) => $row};
   display: ${({ $display }) => $display};
+  position: ${({ $position }) => $position};
+  top: ${({$top}) => $top};
 `;
 
 // 모달 컴포넌트 사용시 뒷 배경 어둡게 하는 용도
