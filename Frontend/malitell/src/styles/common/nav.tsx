@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Nav = styled.div`
   background-color: white;
-  height: 8vh;
+  height: 80px;
   position: sticky;
   top: 0;
 `;

@@ -18,7 +18,7 @@ import Notification from "./components/common/notification";
 import NotFound from "./routes/etc/notFound";
 import ModalTest from "./routes/test";
 import SelfTest from "./routes/etc/selfTest";
-import Bamboo from "./routes/etc/bamboo";
+import Bamboo from "./routes/bamboo/bamboo";
 import CounselingNotice from "./components/counsel/counselingNotice";
 import CounselingCounselor from "./components/counsel/counselingCounselor";
 import CounselingClient from "./components/counsel/counselingClient";
