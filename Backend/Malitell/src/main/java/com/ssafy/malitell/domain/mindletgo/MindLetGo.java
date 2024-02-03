@@ -17,6 +17,8 @@ public class MindLetGo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int mindLetGoSeq;
+    @ManyToOne
+    private MindLetGoTopic mindLetGoTopic;
     private String content;
 
     public MindLetGo(MindLetGoRequestDto mindLetGoRequestDto) {
