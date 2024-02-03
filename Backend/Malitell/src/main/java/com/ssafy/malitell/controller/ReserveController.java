@@ -53,10 +53,19 @@ public class ReserveController {
         if(filter.equals("최근순")) {
             List<CounselingLogOrderByDateResponseDto> list = reserveService.getCounselingLogListOrderByDate(principal);
             return new ResponseEntity<>(list, HttpStatus.OK);
-        } else { // 이름순
-//            reserveService.getCounselingLogListOrderByName()
-            return new ResponseEntity<>(null, HttpStatus.OK);
+        } else if( filter.equals("이름순")) {
+            List<CounselorListResponseDto> list = reserveService.getCounselorListOrderByName(principal);
+            return new ResponseEntity<>(list, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    // [내담자] 나의 상담일지 - 이름순 - 상담자명 클릭 시 상담일지 최근순으로 반환
+    @GetMapping("/mypage/counselingLog/이름순/{counselorSeq}")
+    public ResponseEntity<List<CounselingLogOrderByDateResponseDto>> getCounselingLogByOne(@PathVariable int counselorSeq, Principal principal) {
+        List<CounselingLogOrderByDateResponseDto> list = reserveService.getCounselingLogByOne(counselorSeq, principal);
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
 }
