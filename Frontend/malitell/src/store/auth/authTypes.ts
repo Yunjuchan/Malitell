@@ -1,20 +1,4 @@
 // types.ts
-export interface ButtonStateType {
-  emailLogin: boolean;
-  signup: boolean;
-  client: boolean;
-  counselor: boolean;
-  success: boolean;
-};
-
-const initialState: ButtonStateType = {
-  emailLogin: false,
-  signup: false,
-  client: false,
-  counselor: false,
-  success: false,
-};
-
 export interface FormData {
   userId: string;
   password: string;
@@ -28,7 +12,6 @@ export interface FormData {
   role: string;
 }
 
-
 export interface signupFocusState {
     id: boolean;
     pw: boolean;
@@ -39,4 +22,8 @@ export interface signupFocusState {
     nickname: boolean;
     birthday: boolean;
     phone: boolean;
+}
+
+export interface signupProcedure {
+  certification: boolean;
 }

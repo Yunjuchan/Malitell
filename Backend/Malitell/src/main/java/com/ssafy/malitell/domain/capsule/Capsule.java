@@ -5,11 +5,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class Capsule {
 
     @Id
@@ -19,4 +21,9 @@ public class Capsule {
     private String phrases;
 
     private String videoLink;
+
+    public Capsule(String phrases, String videoLink) {
+        this.phrases = phrases;
+        this.videoLink = videoLink;
+    }
 }
