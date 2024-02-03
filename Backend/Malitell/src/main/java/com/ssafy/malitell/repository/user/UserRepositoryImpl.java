@@ -1,7 +1,6 @@
 package com.ssafy.malitell.repository.user;
 
 import com.ssafy.malitell.domain.user.User;
-import com.ssafy.malitell.dto.response.reserve.CounselorListResponseDto;
 import com.ssafy.malitell.dto.response.user.ClientResponseDto;
 import com.ssafy.malitell.dto.response.user.CounselorResponseDto;
 import jakarta.persistence.EntityManager;

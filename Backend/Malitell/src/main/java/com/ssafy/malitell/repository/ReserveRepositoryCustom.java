@@ -16,4 +16,8 @@ public interface ReserveRepositoryCustom {
 
     public List<CounselingLog> getCounselingLogListOrderByDate(int loginUserSeq);
 
+    public List<CounselingLog> getCounselingLogList(int loginUserSeq);
+
+    public List<CounselingLog> getCounselingLogByOne(int loginUserSeq, int counselorSeq);
+
 }

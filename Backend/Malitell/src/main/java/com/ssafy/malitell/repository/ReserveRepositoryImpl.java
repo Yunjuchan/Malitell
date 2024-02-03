@@ -38,4 +38,23 @@ public class ReserveRepositoryImpl implements ReserveRepositoryCustom {
         return counselingLogList;
     }
 
+    @Override
+    public List<CounselingLog> getCounselingLogList(int loginUserSeq) {
+        List<CounselingLog> counselingLogList = entityManager.createQuery("SELECT cl FROM CounselingLog cl JOIN FETCH cl.counseling " +
+                        "WHERE cl.counseling.clientSeq = :loginUserSeq", CounselingLog.class)
+                .setParameter("loginUserSeq", loginUserSeq)
+                .getResultList();
+        return counselingLogList;
+    }
+
+    @Override
+    public List<CounselingLog> getCounselingLogByOne(int loginUserSeq, int counselorSeq) {
+        return entityManager.createQuery("SELECT cl FROM CounselingLog cl JOIN FETCH cl.counseling " +
+                        "WHERE cl.counseling.clientSeq = :loginUserSeq and cl.counseling.counselorSeq = :counselorSeq " +
+                        "ORDER BY cl.counseling.counselingDate DESC", CounselingLog.class)
+                .setParameter("loginUserSeq", loginUserSeq)
+                .setParameter("counselorSeq", counselorSeq)
+                .getResultList();
+    }
+
 }

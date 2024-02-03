@@ -12,13 +12,11 @@ import com.ssafy.malitell.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.security.Principal;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -32,6 +30,7 @@ public class ReserveService {
 
         List<CounselorListResponseDto> counselorList = new ArrayList<>();
         for(User counselor : list) {
+            int seq = counselor.getUserSeq();
             String name = counselor.getName();
             String email = counselor.getEmail();
 
@@ -45,7 +44,7 @@ public class ReserveService {
             int careerPeriod = counselor.getCareerPeriod();
             double grade = counselor.getGrade();
 
-            CounselorListResponseDto counselorDto = new CounselorListResponseDto(name, email, age, gender, profileImg, professionalField, careerPeriod, grade);
+            CounselorListResponseDto counselorDto = new CounselorListResponseDto(seq, name, email, age, gender, profileImg, professionalField, careerPeriod, grade);
             counselorList.add(counselorDto);
         }
 
@@ -112,6 +111,62 @@ public class ReserveService {
         for(CounselingLog log : counselingLoglist) {
             int counselorSeq = log.getCounseling().getCounselorSeq();
             Optional<User> counselor = userRepository.findById(counselorSeq);
+            String counselorName = counselor.get().getName();
+
+            Timestamp counselingDate = log.getCounseling().getCounselingDate();
+            int round = log.getCounseling().getRound();
+            String content = log.getContent();
+
+            CounselingLogOrderByDateResponseDto dto = new CounselingLogOrderByDateResponseDto(counselorName, counselingDate, round, content);
+
+            counselingLogOrderByDateList.add(dto);
+        }
+
+        return counselingLogOrderByDateList;
+    }
+
+    public List<CounselorListResponseDto> getCounselorListOrderByName(Principal principal) {
+        String loginUser = principal.getName();
+
+        User user = reserveRepository.findByUserId(loginUser);
+        int loginUserSeq = user.getUserSeq();
+
+        // 나의 상담일지 목록 가져오기
+        List<CounselingLog> counselingLoglist = reserveRepository.getCounselingLogList(loginUserSeq);
+
+        Set<Integer> counselorSeqSet = new HashSet<>(); // 상담자 식별키 중복 제거
+        for(CounselingLog log : counselingLoglist) {
+            int counselorSeq = log.getCounseling().getCounselorSeq();
+            counselorSeqSet.add(counselorSeq);
+        }
+
+        // 내 상담일지를 작성해준 상담자 목록
+        List<CounselorListResponseDto> counselorList = new ArrayList<>();
+
+        for(int counselorSeq : counselorSeqSet) {
+            Optional<User> counselor = userRepository.findById(counselorSeq);
+            String counselorName = counselor.get().getName();
+
+            CounselorListResponseDto dto = new CounselorListResponseDto(counselorSeq, counselorName);
+            counselorList.add(dto);
+        }
+
+        return  counselorList;
+    }
+
+    // counselorSeq에 해당하는 상담자가 작성해준 내 상담일지 최근순으로 가져오기
+    public List<CounselingLogOrderByDateResponseDto> getCounselingLogByOne(int counselorSeq, Principal principal) {
+        String loginUser = principal.getName();
+        User user = userRepository.findByUserId(loginUser);
+        int loginUserSeq = user.getUserSeq();
+
+        // clientSeq는 나이고 counselorSeq는 내가 클릭한 상담자인 상담목록 가져오기
+        List<CounselingLog> counselingLogList = reserveRepository.getCounselingLogByOne(loginUserSeq, counselorSeq);
+
+        List<CounselingLogOrderByDateResponseDto> counselingLogOrderByDateList = new ArrayList<>();
+
+        for(CounselingLog log : counselingLogList) {
+            Optional<User> counselor = userRepository.findById(log.getCounseling().getCounselorSeq());
             String counselorName = counselor.get().getName();
 
             Timestamp counselingDate = log.getCounseling().getCounselingDate();
