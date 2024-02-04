@@ -17,4 +17,9 @@ public class MindLetGoTopic {
     private int mindLetGoTopicSeq;
     private String topic;
     private boolean isSelect;
+
+    public MindLetGoTopic(String topic, boolean isSelect) {
+        this.topic = topic;
+        this.isSelect = isSelect;
+    }
 }
