@@ -27,10 +27,10 @@ export default function Bamboo() {
     <>
       <Back />
       <Grid>
-        <Box $col="1/4" $row="2/4">
+        <Box $col="1/4" $row="2/3" $position="sticky" $top="160px">
           <Metaverse />
         </Box>
-        <Box $col="4/13" $row="1/2" $display="flex">
+        <Box $col="4/13" $row="1/2" $display="flex" $position="sticky" $top="80px">
           <Img src={bamboo} />
           <Text>대나무 숲</Text>
         </Box>
