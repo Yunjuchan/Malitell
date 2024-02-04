@@ -14,10 +14,16 @@ public interface ReserveRepositoryCustom {
 
     public User findByUserId(String userId);
 
-    public List<CounselingLog> getCounselingLogListOrderByDate(int loginUserSeq);
+    public List<CounselingLog> getCounselingLogListOrderByDate1(int loginUserSeq);
 
-    public List<CounselingLog> getCounselingLogList(int loginUserSeq);
+    public List<CounselingLog> getCounselingLogListOrderByDate2(int loginUserSeq);
 
-    public List<CounselingLog> getCounselingLogByOne(int loginUserSeq, int counselorSeq);
+    public List<CounselingLog> getCounselingLogList1(int loginUserSeq);
+
+    public List<CounselingLog> getCounselingLogList2(int loginUserSeq);
+
+    public List<CounselingLog> getCounselingLogsForOne1(int loginUserSeq, int counselorSeq);
+
+    public List<CounselingLog> getCounselingLogsForOne2(int loginUserSeq, int clientSeq);
 
 }

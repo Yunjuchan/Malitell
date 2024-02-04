@@ -1,7 +1,7 @@
 package com.ssafy.malitell.controller;
 
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
-import com.ssafy.malitell.dto.response.reserve.CounselingLogOrderByDateResponseDto;
+import com.ssafy.malitell.dto.response.reserve.CounselingLogOrderByDateResponseDto1;
 import com.ssafy.malitell.dto.response.reserve.CounselorListResponseDto;
 import com.ssafy.malitell.dto.response.reserve.ReservationListResponseDto;
 import com.ssafy.malitell.service.ReserveService;
@@ -47,25 +47,29 @@ public class ReserveController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    // [내담자] - 나의 상담일지 (마이페이지-나의상담일지 -> 디폴트는 최근순)
+    // [내담자/상담자] 나의 상담일지
+    // 마이페이지-나의상담일지 -> 디폴트는 최근순
     @GetMapping("/mypage/counselingLog/{filter}")
     public ResponseEntity<?> getCounselingLog(@PathVariable String filter, Principal principal) {
         if(filter.equals("최근순")) {
-            List<CounselingLogOrderByDateResponseDto> list = reserveService.getCounselingLogListOrderByDate(principal);
+            List<?> list = reserveService.getCounselingLogListOrderByDate(principal);
             return new ResponseEntity<>(list, HttpStatus.OK);
         } else if( filter.equals("이름순")) {
-            List<CounselorListResponseDto> list = reserveService.getCounselorListOrderByName(principal);
+            List<?> list = reserveService.getListOrderByName(principal);
             return new ResponseEntity<>(list, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
 
-    // [내담자] 나의 상담일지 - 이름순 - 상담자명 클릭 시 상담일지 최근순으로 반환
-    @GetMapping("/mypage/counselingLog/이름순/{counselorSeq}")
-    public ResponseEntity<List<CounselingLogOrderByDateResponseDto>> getCounselingLogByOne(@PathVariable int counselorSeq, Principal principal) {
-        List<CounselingLogOrderByDateResponseDto> list = reserveService.getCounselingLogByOne(counselorSeq, principal);
+    // [내담자/상담자] 나의 상담일지 - 이름순
+    // 이름 클릭 시 상담일지 최근순으로 반환
+    @GetMapping("/mypage/counselingLog/이름순/{userSeq}")
+    public ResponseEntity<List<?>> getCounselingLogsForOne(@PathVariable int userSeq, Principal principal) {
+        List<?> list = reserveService.getCounselingLogsForOne(userSeq, principal);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
+
 
 }

@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public class CounselorListResponseDto {
 
-    private int userSeq; // 추가했음
+    private int userSeq;
     private String name;
     private String email;
     private int age;
@@ -18,10 +18,5 @@ public class CounselorListResponseDto {
     private String professionalField;
     private int careerPeriod;
     private double grade;
-
-    public CounselorListResponseDto(int counselorSeq, String counselorName) {
-        this.userSeq = counselorSeq;
-        this.name = counselorName;
-    }
 
 }
