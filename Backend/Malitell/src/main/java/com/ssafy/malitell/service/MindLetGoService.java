@@ -29,12 +29,10 @@ public class MindLetGoService {
         return mindLetGoRepository.findAll();
     }
 
-    @Transactional
     public void deleteAll() {
         mindLetGoRepository.deleteAll();
     }
 
-    @Transactional
     public void updateTopic() {
         List<MindLetGoTopic> mindLetGoTopicList = mindLetGoTopicRepository.findAll();
         int topicSeq = (int) (Math.random() * mindLetGoTopicList.size()) + 1;
