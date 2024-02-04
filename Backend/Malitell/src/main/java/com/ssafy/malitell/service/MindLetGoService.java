@@ -38,7 +38,6 @@ public class MindLetGoService {
     public void updateTopic() {
         List<MindLetGoTopic> mindLetGoTopicList = mindLetGoTopicRepository.findAll();
         int topicSeq = (int) (Math.random() * mindLetGoTopicList.size()) + 1;
-        System.out.println(topicSeq);
         mindLetGoTopicRepository.updateMindLetGoTopicSelectCancel(); // 전에 선택된 주제 isSelect = false
         mindLetGoTopicRepository.updateMindLetGoTopicSelect(topicSeq); // 새로운 랜덤 주제 isSelect = true
     }
