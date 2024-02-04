@@ -5,7 +5,6 @@ export default function searchBox() {
   return (
     <SearchWrapper>
       <Search>
-        Search
       </Search>
     </SearchWrapper>
   );

@@ -10,6 +10,12 @@ export default function ArticleList() {
       <Article />
       <Article />
       <Article />
+      <Article />
+      <Article />
+      <Article />
+      <Article />
+      <Article />
+      <Article />
     </Wrapper>
   )
 }

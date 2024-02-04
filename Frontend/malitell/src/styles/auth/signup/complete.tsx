@@ -43,6 +43,9 @@ export const Input = styled.input`
   text-align: center;
   font-size: 30px;
   font-weight: bold;
+  &:focus {
+    outline-color: #bf94e4;
+  }
 `
 
 export const Button = styled.div`

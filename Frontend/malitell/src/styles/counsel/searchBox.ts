@@ -11,8 +11,8 @@ export const SearchWrapper = styled.div`
 
 export const Search = styled.div`
   width: 97%;
-  height: 80%;
+  height: 60%;
   box-shadow: 1px 1px 1px 1px lightgray inset;
-  border-radius: 20px;
+  border-radius: 18px;
   background-color: #fbf3fd;
 `;
