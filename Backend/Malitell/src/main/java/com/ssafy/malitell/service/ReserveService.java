@@ -4,15 +4,12 @@ import com.ssafy.malitell.domain.counseling.Counseling;
 import com.ssafy.malitell.domain.counseling.CounselingLog;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
-import com.ssafy.malitell.dto.response.reserve.CounselingLogOrderByDateResponseDto;
-import com.ssafy.malitell.dto.response.reserve.CounselorListResponseDto;
-import com.ssafy.malitell.dto.response.reserve.ReservationListResponseDto;
+import com.ssafy.malitell.dto.response.reserve.*;
 import com.ssafy.malitell.repository.ReserveRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.security.Principal;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -98,87 +95,202 @@ public class ReserveService {
         return reservationList;
     }
 
-    public List<CounselingLogOrderByDateResponseDto> getCounselingLogListOrderByDate(Principal principal) {
+    public List<?> getCounselingLogListOrderByDate(Principal principal) {
         String loginUser = principal.getName();
 
         User user = reserveRepository.findByUserId(loginUser);
         int loginUserSeq = user.getUserSeq();
 
-        List<CounselingLog> counselingLoglist = reserveRepository.getCounselingLogListOrderByDate(loginUserSeq);
+        List<CounselingLog> counselingLoglist = new ArrayList<>();
 
-        List<CounselingLogOrderByDateResponseDto> counselingLogOrderByDateList = new ArrayList<>();
+        String role = user.getRole();
+        System.out.println("권한 : " + role);
+        if(role.equals("ROLE_CLIENT")) { // 내담자가 상담일지(최근순)을 조회한 경우
 
-        for(CounselingLog log : counselingLoglist) {
-            int counselorSeq = log.getCounseling().getCounselorSeq();
-            Optional<User> counselor = userRepository.findById(counselorSeq);
-            String counselorName = counselor.get().getName();
+            counselingLoglist = reserveRepository.getCounselingLogListOrderByDate1(loginUserSeq);
 
-            Timestamp counselingDate = log.getCounseling().getCounselingDate();
-            int round = log.getCounseling().getRound();
-            String content = log.getContent();
+            List<CounselingLogOrderByDateResponseDto1> counselingLogOrderByDateList1 = new ArrayList<>();
 
-            CounselingLogOrderByDateResponseDto dto = new CounselingLogOrderByDateResponseDto(counselorName, counselingDate, round, content);
+            for(CounselingLog log : counselingLoglist) {
+                int counselorSeq = log.getCounseling().getCounselorSeq();
+                Optional<User> counselor = userRepository.findById(counselorSeq);
+                String counselorName = counselor.get().getName();
 
-            counselingLogOrderByDateList.add(dto);
+                Timestamp counselingDate = log.getCounseling().getCounselingDate();
+                int round = log.getCounseling().getRound();
+                String content = log.getContent();
+
+                CounselingLogOrderByDateResponseDto1 dto = new CounselingLogOrderByDateResponseDto1(counselorName, counselingDate, round, content);
+
+                counselingLogOrderByDateList1.add(dto);
+            }
+
+            return counselingLogOrderByDateList1;
+
+        } else if(role.equals("ROLE_COUNSELOR")) { // 상담자가 상담일지(최근순)을 조회한 경우
+
+            counselingLoglist = reserveRepository.getCounselingLogListOrderByDate2(loginUserSeq);
+            System.out.println("[상담자] 상담일지 조회(최근순) : " + counselingLoglist);
+
+            List<CounselingLogOrderByDateResponseDto2> counselingLogOrderByDateList2 = new ArrayList<>();
+
+            for(CounselingLog log : counselingLoglist) {
+                int clientSeq = log.getCounseling().getClientSeq();
+                Optional<User> client = userRepository.findById(clientSeq);
+                String clientName = client.get().getName();
+
+                Timestamp counselingDate = log.getCounseling().getCounselingDate();
+                int round = log.getCounseling().getRound();
+                String content = log.getContent();
+
+                CounselingLogOrderByDateResponseDto2 dto = new CounselingLogOrderByDateResponseDto2(clientName, counselingDate, round, content);
+
+                counselingLogOrderByDateList2.add(dto);
+            }
+
+            return counselingLogOrderByDateList2;
+
+        } else {
+            System.out.println("상담일지가 없습니다.");
+            return null;
         }
-
-        return counselingLogOrderByDateList;
     }
 
-    public List<CounselorListResponseDto> getCounselorListOrderByName(Principal principal) {
+    public List<?> getListOrderByName(Principal principal) {
         String loginUser = principal.getName();
 
         User user = reserveRepository.findByUserId(loginUser);
         int loginUserSeq = user.getUserSeq();
 
-        // 나의 상담일지 목록 가져오기
-        List<CounselingLog> counselingLoglist = reserveRepository.getCounselingLogList(loginUserSeq);
+        String role = user.getRole();
+        if(role.equals("ROLE_CLIENT")) {
 
-        Set<Integer> counselorSeqSet = new HashSet<>(); // 상담자 식별키 중복 제거
-        for(CounselingLog log : counselingLoglist) {
-            int counselorSeq = log.getCounseling().getCounselorSeq();
-            counselorSeqSet.add(counselorSeq);
+            // 내담자의 상담일지 목록 가져오기
+            List<CounselingLog> counselingLoglist = reserveRepository.getCounselingLogList1(loginUserSeq);
+
+            // 상담자 식별키 중복 제거
+            Set<Integer> counselorSeqSet = new HashSet<>();
+            for(CounselingLog log : counselingLoglist) {
+                int counselorSeq = log.getCounseling().getCounselorSeq();
+                counselorSeqSet.add(counselorSeq);
+            }
+
+            // 내 상담일지를 작성해준 상담자 목록 (이름순)
+            List<String> counselorList = new ArrayList<>();
+
+            for(int counselorSeq : counselorSeqSet) {
+                Optional<User> counselor = userRepository.findById(counselorSeq);
+                String counselorName = counselor.get().getName();
+                counselorList.add(counselorName);
+            }
+
+            Collections.sort(counselorList);
+            return counselorList;
+
+        } else if(role.equals("ROLE_COUNSELOR")) {
+
+            // 상담자의 상담일지 목록 가져오기
+            List<CounselingLog> counselingLoglist = reserveRepository.getCounselingLogList2(loginUserSeq);
+
+            // 내담자 식별키 중복 제거
+            Set<Integer> clientSeqSet = new HashSet<>();
+            for(CounselingLog log : counselingLoglist) {
+                int clinetSeq = log.getCounseling().getClientSeq();
+                clientSeqSet.add(clinetSeq);
+            }
+
+            // 내가 상담일지를 작성해준 내담자 목록 (이름순)
+            List<String> clientList = new ArrayList<>();
+
+            for(int clientSeq : clientSeqSet) {
+                Optional<User> client = userRepository.findById(clientSeq);
+                String clientName = client.get().getName();
+                clientList.add(clientName);
+            }
+
+            Collections.sort(clientList);
+            return clientList;
+
+        } else {
+            System.out.println("상담일지가 없습니다.");
+            return null;
         }
-
-        // 내 상담일지를 작성해준 상담자 목록
-        List<CounselorListResponseDto> counselorList = new ArrayList<>();
-
-        for(int counselorSeq : counselorSeqSet) {
-            Optional<User> counselor = userRepository.findById(counselorSeq);
-            String counselorName = counselor.get().getName();
-
-            CounselorListResponseDto dto = new CounselorListResponseDto(counselorSeq, counselorName);
-            counselorList.add(dto);
-        }
-
-        return  counselorList;
     }
 
-    // counselorSeq에 해당하는 상담자가 작성해준 내 상담일지 최근순으로 가져오기
-    public List<CounselingLogOrderByDateResponseDto> getCounselingLogByOne(int counselorSeq, Principal principal) {
+    // [내담자] userSeq에 해당하는 상담자가 작성해준 내 상담일지 최근순으로 가져오기
+    // [상담자] userSeq에 해당하는 내담자의 상담일지 최근순으로 가져오기
+    public List<?> getCounselingLogsForOne(int userSeq, Principal principal) {
         String loginUser = principal.getName();
         User user = userRepository.findByUserId(loginUser);
         int loginUserSeq = user.getUserSeq();
 
-        // clientSeq는 나이고 counselorSeq는 내가 클릭한 상담자인 상담목록 가져오기
-        List<CounselingLog> counselingLogList = reserveRepository.getCounselingLogByOne(loginUserSeq, counselorSeq);
+        String role = user.getRole();
+        if(role.equals("ROLE_CLIENT")) {
 
-        List<CounselingLogOrderByDateResponseDto> counselingLogOrderByDateList = new ArrayList<>();
+            // 내담자가 클릭한 상담자의 상담목록 가져오기
+            List<CounselingLog> counselingLogList = reserveRepository.getCounselingLogsForOne1(loginUserSeq, userSeq); // (내담자Seq, 상담자Seq)
 
-        for(CounselingLog log : counselingLogList) {
-            Optional<User> counselor = userRepository.findById(log.getCounseling().getCounselorSeq());
-            String counselorName = counselor.get().getName();
+            List<CounselingLogOrderByDateResponseDto1> counselingLogOrderByDateList = new ArrayList<>();
 
-            Timestamp counselingDate = log.getCounseling().getCounselingDate();
-            int round = log.getCounseling().getRound();
-            String content = log.getContent();
+            for(CounselingLog log : counselingLogList) {
+                Optional<User> counselor = userRepository.findById(log.getCounseling().getCounselorSeq());
+                String counselorName = counselor.get().getName();
 
-            CounselingLogOrderByDateResponseDto dto = new CounselingLogOrderByDateResponseDto(counselorName, counselingDate, round, content);
+                Timestamp counselingDate = log.getCounseling().getCounselingDate();
+                int round = log.getCounseling().getRound();
+                String content = log.getContent();
 
-            counselingLogOrderByDateList.add(dto);
+                CounselingLogOrderByDateResponseDto1 dto = new CounselingLogOrderByDateResponseDto1(counselorName, counselingDate, round, content);
+                counselingLogOrderByDateList.add(dto);
+            }
+
+            return counselingLogOrderByDateList;
+
+        } else if(role.equals("ROLE_COUNSELOR")) {
+
+            // 상담자가 클릭한 내담자의 상담목록 가져오기
+            List<CounselingLog> counselingLogList = reserveRepository.getCounselingLogsForOne2(loginUserSeq, userSeq); // (상담자Seq, 내담자Seq)
+
+            List<CounselingLogOrderByDateResponseDto2> counselingLogOrderByDateList = new ArrayList<>();
+
+            for(CounselingLog log : counselingLogList) {
+                Optional<User> client = userRepository.findById(log.getCounseling().getClientSeq());
+                String clientName = client.get().getName();
+
+                Timestamp counselingDate = log.getCounseling().getCounselingDate();
+                int round = log.getCounseling().getRound();
+                String content = log.getContent();
+
+                CounselingLogOrderByDateResponseDto2 dto = new CounselingLogOrderByDateResponseDto2(clientName, counselingDate, round, content);
+                counselingLogOrderByDateList.add(dto);
+            }
+
+            return counselingLogOrderByDateList;
+
+        } else {
+            System.out.println("상담일지가 없습니다.");
+            return null;
         }
 
-        return counselingLogOrderByDateList;
+//        // clientSeq는 나이고 counselorSeq는 내가 클릭한 상담자인 상담목록 가져오기
+//        List<CounselingLog> counselingLogList = reserveRepository.getCounselingLogByOne(loginUserSeq, counselorSeq);
+//
+//        List<CounselingLogOrderByDateResponseDto1> counselingLogOrderByDateList = new ArrayList<>();
+//
+//        for(CounselingLog log : counselingLogList) {
+//            Optional<User> counselor = userRepository.findById(log.getCounseling().getCounselorSeq());
+//            String counselorName = counselor.get().getName();
+//
+//            Timestamp counselingDate = log.getCounseling().getCounselingDate();
+//            int round = log.getCounseling().getRound();
+//            String content = log.getContent();
+//
+//            CounselingLogOrderByDateResponseDto1 dto = new CounselingLogOrderByDateResponseDto1(counselorName, counselingDate, round, content);
+//
+//            counselingLogOrderByDateList.add(dto);
+//        }
+//
+//        return counselingLogOrderByDateList;
     }
 
 }
