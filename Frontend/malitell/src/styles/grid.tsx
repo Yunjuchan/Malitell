@@ -65,6 +65,7 @@ export const Box = styled.div<{
   $display?: string;
   $position?: string;
   $top?: string;
+  $zindex?: string;
 }>`
   box-shadow: 0 0 0 1px black inset;
   background-color: #f7f7f7;
@@ -73,6 +74,7 @@ export const Box = styled.div<{
   display: ${({ $display }) => $display};
   position: ${({ $position }) => $position};
   top: ${({$top}) => $top};
+  z-index: ${({$zindex}) => $zindex};
 `;
 
 // 모달 컴포넌트 사용시 뒷 배경 어둡게 하는 용도

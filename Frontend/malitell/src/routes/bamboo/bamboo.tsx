@@ -30,7 +30,7 @@ export default function Bamboo() {
         <Box $col="1/4" $row="2/3" $position="sticky" $top="160px">
           <Metaverse />
         </Box>
-        <Box $col="4/13" $row="1/2" $display="flex" $position="sticky" $top="80px">
+        <Box $col="4/13" $row="1/2" $display="flex" $position="sticky" $top="80px" $zindex="1">
           <Img src={bamboo} />
           <Text>대나무 숲</Text>
         </Box>

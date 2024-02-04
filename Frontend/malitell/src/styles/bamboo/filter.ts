@@ -46,6 +46,7 @@ align-items: center;
 export const Toggle = styled.input`
   appearance: none;
   position: relative;
+  z-index: 0;
   border: 3px solid #bf94e4;
   border-radius: 20px;
   width: 40px;

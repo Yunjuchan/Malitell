@@ -1,18 +1,61 @@
 import styled from "styled-components";
 
-export const FilterWrapper = styled.div`
-  width: 96%;
+export const Wrapper = styled.div`
+  width: 98%;
   height: 100%;
-  margin: 1% auto;
-  display: flex;
-  flex-direction: column;
-  background: #FFF;
-  border-radius: 15px;
-  box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
+  padding-left: 1%;
+  padding-top: 2%;
+  .collapsible {
+    /* transition: all 0.2ms; */
+    background-color: white;
+    font-weight: bold;
+    font-size: 15px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    justify-content: space-between;
+    box-shadow: 1px 1px 1px 1px lightgray;
+    cursor: pointer;
+  }
+  .top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .bottom {
+    border-end-end-radius: 10px;
+    border-end-start-radius: 10px;
+  }
+  .collapsible:hover,
+  .collapsible.active {
+    background-color: #fbf3fd;
+  }
+
+  .content {
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+    max-height: 0;
+  }
+
+  .content.active {
+    max-height: 100px;
+    transition: max-height 0.2s ease-in-out;
+  }
 `;
 
-export const Filter = styled.div`
-  width: 94%;
-  height: 25%;
-  margin: 0% auto;
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 10px;
+`;
+
+export const Select = styled.div`
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 1px 1px lightgray inset;
+  background-color: #f7f7f7;
 `;

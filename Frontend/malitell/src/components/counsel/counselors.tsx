@@ -1,15 +1,16 @@
 import React from "react";
-import { Counselor, CounselorWrapper } from "../../styles/counsel/counselors";
+import { Wrapper } from "../../styles/counsel/counselors";
+import Counselor from "./counselor";
 
 export default function Counselors() {
   return (
-    <CounselorWrapper>
-      <Counselor>aa</Counselor>
-      <Counselor>aa</Counselor>
-      <Counselor>aa</Counselor>
-      <Counselor>aa</Counselor>
-      <Counselor>aa</Counselor>
-      <Counselor>aa</Counselor>
-    </CounselorWrapper>
+    <Wrapper>
+      <Counselor />
+      <Counselor />
+      <Counselor />
+      <Counselor />
+      <Counselor />
+      <Counselor />
+    </Wrapper>
   );
 }
