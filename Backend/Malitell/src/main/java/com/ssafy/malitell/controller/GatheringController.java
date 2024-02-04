@@ -1,5 +1,6 @@
 package com.ssafy.malitell.controller;
 
+import com.ssafy.malitell.domain.board.gathering.Gathering;
 import com.ssafy.malitell.dto.request.gathering.GatheringCreateRequestDto;
 import com.ssafy.malitell.dto.request.gathering.GatheringUpdateRequestDto;
 import com.ssafy.malitell.dto.response.gathering.GatheringListResponseDto;
@@ -49,4 +50,9 @@ public class GatheringController {
         return new ResponseEntity<>(gatheringService.updateGathering(gatheringSeq, requestDto), HttpStatus.OK);
     }
 
+//    @GetMapping("/mypage/user/scrap")
+//    public ResponseEntity<List<Gathering>> userScrapList(Principal principal) {
+//        String userId = principal.getName();
+//        return new ResponseEntity<>(gatheringService.userScrapList(userId), HttpStatus.OK);
+//    }
 }

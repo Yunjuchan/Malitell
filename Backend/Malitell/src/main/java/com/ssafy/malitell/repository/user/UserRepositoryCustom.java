@@ -1,5 +1,6 @@
 package com.ssafy.malitell.repository.user;
 
+import com.ssafy.malitell.domain.board.gathering.Gathering;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.response.reserve.CounselorListResponseDto;
 import com.ssafy.malitell.dto.response.user.ClientResponseDto;
@@ -20,5 +21,4 @@ public interface UserRepositoryCustom {
     CounselorResponseDto findCounselorByUserId(String userId);
 
     List<User> findByRole(String role);
-//    void update
 }

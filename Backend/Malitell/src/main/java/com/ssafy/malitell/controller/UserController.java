@@ -1,5 +1,6 @@
 package com.ssafy.malitell.controller;
 
+import com.ssafy.malitell.domain.board.gathering.Gathering;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.auth.PasswordRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
@@ -14,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 public class UserController {

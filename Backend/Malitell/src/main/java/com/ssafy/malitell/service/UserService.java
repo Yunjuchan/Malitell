@@ -1,5 +1,6 @@
 package com.ssafy.malitell.service;
 
+import com.ssafy.malitell.domain.board.gathering.Gathering;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.auth.PasswordRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
@@ -16,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.List;
 
 
 @Service
