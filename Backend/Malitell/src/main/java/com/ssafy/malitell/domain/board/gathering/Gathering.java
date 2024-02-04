@@ -1,6 +1,7 @@
 package com.ssafy.malitell.domain.board.gathering;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.ssafy.malitell.domain.scrap.Scrap;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
 import com.ssafy.malitell.dto.request.gathering.GatheringUpdateRequestDto;
 import jakarta.persistence.*;
@@ -42,6 +43,9 @@ public class Gathering {
 
     // 게시물 조회수
     private int hit;
+
+    @OneToOne(mappedBy = "gathering")
+    private Scrap scrap;
 
     public Gathering(SelfHelpGroup selfHelpGroup, String name, String title, String content) {
         this.selfHelpGroup = selfHelpGroup;

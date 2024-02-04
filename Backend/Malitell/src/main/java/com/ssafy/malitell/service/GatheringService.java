@@ -88,4 +88,7 @@ public class GatheringService {
         return null;
     }
 
+//    public List<Gathering> userScrapList(String userId) {
+//        return gatheringRepository.findUserScrapList(userId);
+//    }
 }
