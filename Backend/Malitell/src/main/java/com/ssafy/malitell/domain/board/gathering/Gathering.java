@@ -24,7 +24,7 @@ public class Gathering {
     private int gatheringSeq;
 
     // 어떤 자조모임 모집 게시글인지
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "selfHelpGroup_seq")
     private SelfHelpGroup selfHelpGroup;
 
@@ -56,5 +56,9 @@ public class Gathering {
     public void update(GatheringUpdateRequestDto requestDto) {
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
+    }
+
+    public void hitCountUp() {
+        this.hit += 1;
     }
 }
