@@ -17,8 +17,8 @@ public class Scrap {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int scrapSeq;
-    @OneToOne
-    @JoinColumn(name="gatheringSeq")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "gatheringSeq")
     private Gathering gathering;
     @ManyToOne
     private User user;

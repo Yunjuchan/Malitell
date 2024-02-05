@@ -49,10 +49,4 @@ public class GatheringController {
     public ResponseEntity<Integer> updateGathering(@PathVariable int gatheringSeq, @RequestBody GatheringUpdateRequestDto requestDto) {
         return new ResponseEntity<>(gatheringService.updateGathering(gatheringSeq, requestDto), HttpStatus.OK);
     }
-
-//    @GetMapping("/mypage/user/scrap")
-//    public ResponseEntity<List<Gathering>> userScrapList(Principal principal) {
-//        String userId = principal.getName();
-//        return new ResponseEntity<>(gatheringService.userScrapList(userId), HttpStatus.OK);
-//    }
 }

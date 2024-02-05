@@ -3,19 +3,24 @@ package com.ssafy.malitell.service;
 import com.ssafy.malitell.domain.board.gathering.Gathering;
 import com.ssafy.malitell.domain.scrap.Scrap;
 import com.ssafy.malitell.dto.request.scrap.ScrapRequestDto;
+import com.ssafy.malitell.dto.response.gathering.GatheringScrapResponseDto;
 import com.ssafy.malitell.repository.GatheringRepository;
 import com.ssafy.malitell.repository.ScrapRepository;
+import com.ssafy.malitell.repository.ScrapRepositoryImpl;
 import com.ssafy.malitell.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class ScrapService {
     private final ScrapRepository scrapRepository;
+    private final ScrapRepositoryImpl scrapRepositoryImpl;
     private final GatheringRepository gatheringRepository;
     private final UserRepository userRepository;
 
@@ -28,5 +33,9 @@ public class ScrapService {
 
     public void deleteScrap(int scrapSeq) {
         scrapRepository.deleteById(scrapSeq);
+    }
+
+    public List<Gathering> gatheringList(String userId) {
+        return scrapRepositoryImpl.findUserScrapList(userId);
     }
 }

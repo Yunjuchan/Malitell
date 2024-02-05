@@ -44,9 +44,6 @@ public class Gathering {
     // 게시물 조회수
     private int hit;
 
-    @OneToOne(mappedBy = "gathering")
-    private Scrap scrap;
-
     public Gathering(SelfHelpGroup selfHelpGroup, String name, String title, String content) {
         this.selfHelpGroup = selfHelpGroup;
         this.name = name;
