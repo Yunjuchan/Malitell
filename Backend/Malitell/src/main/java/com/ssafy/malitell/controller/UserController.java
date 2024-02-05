@@ -133,4 +133,12 @@ public class UserController {
         String userId = principal.getName();
         return new ResponseEntity<>(userService.updatePassword(userId, passwordRequestDto), HttpStatus.OK);
     }
+
+    // 유저 쪽지 기능
+    @GetMapping("/getMemo")
+    public ResponseEntity<?> getMemo(Principal principal) {
+        String name = principal.getName();
+        User findUser = userRepository.findByUserId(name);
+        return new ResponseEntity<>(findUser.getMessage(), HttpStatus.OK);
+    }
 }
