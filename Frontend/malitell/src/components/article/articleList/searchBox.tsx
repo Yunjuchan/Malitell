@@ -1,4 +1,4 @@
-import { Wrapper, Search } from "../../styles/article/searchBox";
+import { Wrapper, Search } from "../../../styles/article/searchBox";
 
 export default function SearchBox() {
   return (

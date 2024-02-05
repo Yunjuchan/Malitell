@@ -1,4 +1,4 @@
-import {Wrapper} from '../../styles/article/article';
+import {Wrapper} from '../../../styles/article/article';
 
 export default function Article() {
   return (

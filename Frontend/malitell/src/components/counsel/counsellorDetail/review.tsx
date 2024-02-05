@@ -1,5 +1,5 @@
 import React from 'react'
-import { Wrapper } from '../../styles/counsel/review'
+import { Wrapper } from '../../../styles/counsel/review'
 
 export default function Review() {
   return (

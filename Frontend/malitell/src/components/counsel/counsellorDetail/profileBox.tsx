@@ -5,7 +5,7 @@ import {
   ProfileWrapper,
   Reputation,
   Wrapper,
-} from "../../styles/counsel/profileBox";
+} from "../../../styles/counsel/profileBox";
 
 export default function ProfileBox() {
   return (

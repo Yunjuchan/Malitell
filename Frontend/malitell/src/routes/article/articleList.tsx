@@ -1,7 +1,7 @@
-import SearchBox from "../../components/article/searchBox";
+import SearchBox from "../../components/article/articleList/searchBox";
 import RecommendedArticle from "../../components/article/recommendedArticle";
-import Filter from "../../components/article/filter";
-import ArticleList from "../../components/article/articleList";
+import Filter from "../../components/article/articleList/filter";
+import ArticleList from "../../components/article/articleList/articleList";
 import * as g from "../../styles/grid";
 import {GridList} from '../../styles/article/grid';
 import Bamboo from "../../components/common/banners/bamboo";
