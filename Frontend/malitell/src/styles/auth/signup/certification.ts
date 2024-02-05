@@ -7,8 +7,8 @@ export const Wrapper = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 250px;
-  height: 200px;
+  width: 45%;
+  height: 40%;
 `;
 
 export const TextBox = styled.div`
@@ -34,12 +34,14 @@ export const Explanation = styled.div`
 `
 
 export const Form = styled.form`
-
+  width: 60%;
+  height: 30%;
+  margin: auto;
 `
 
-export const Number = styled.input`
-  width: 50%;
-  height: 10%;
+export const Input = styled.input`
+  width: 80%;
+  height: 30%;
   border: none;
   border-radius: 10px;
   margin-top: 3%;
@@ -52,15 +54,15 @@ export const Number = styled.input`
   }
 `
 
-export const Button = styled.input`
+export const Submit = styled.input`
   transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   font-size: 18px;
-  width: 50%;
-  height: 50px;
+  width: 80%;
+  height: 30%;
   margin: 30px auto;
   border: none;
   border-radius: 10px;

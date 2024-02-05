@@ -43,7 +43,7 @@ import {
 } from "../../../../styles/auth/signup/emailCertification";
 import malitell from "../../../../assets/images/malitell.png";
 
-import EmailCertification from "../emailCertification";
+// import EmailCertification from "../certification";
 import { error } from "console";
 
 interface SignupProps {
