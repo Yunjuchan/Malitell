@@ -12,7 +12,7 @@ import React, { useState } from "react";
 import ClientForm from "./client/clientForm";
 import Selection from "./selection/selection";
 import Complete from "./complete";
-
+import CounselorForm from "./counselor/counselorForm";
 
 interface LoginProps {
   handleBack: (event: React.MouseEvent) => void;
@@ -45,8 +45,7 @@ export default function Signup({
               ? success
                 ? handleSignup
                 : handleClient
-              : 
-              counselor
+              : counselor
               ? handleCounselor
               : handleSignup
           }
@@ -67,7 +66,7 @@ export default function Signup({
       <Container>
         {client ? (
           <>
-            {success ? <Complete handleSignup={handleSignup} /> : (
+            {success ? null : (
               <>
                 <SmallText>회원가입</SmallText>
                 <Line />
@@ -76,11 +75,25 @@ export default function Signup({
 
             <ClientForm success={success} setSuccess={setSuccess} />
           </>
+        ) : counselor ? (
+          <>
+            {success ? null : (
+              <>
+                <SmallText>회원가입</SmallText>
+                <Line />
+              </>
+            )}
+
+            <CounselorForm />
+          </>
         ) : (
           <>
             <Text>회원가입</Text>
             <Line />
-            <Selection handleClient={handleClient} />
+            <Selection
+              handleClient={handleClient}
+              handleCounselor={handleCounselor}
+            />
           </>
         )}
       </Container>
