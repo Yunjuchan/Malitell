@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F16B9AD4-4E83-D9C0-A64D-4308727416E0}</ProjectGuid>
+    <ProjectGuid>{D03DE2D3-8AE2-9388-78D4-78471CFFBE6B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>PunDemos.DemoSlotcarEditor</AssemblyName>
@@ -997,7 +997,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
-      <Project>{55B2D0BA-4979-D4A1-6928-17CAE74F9527}</Project>
+      <Project>{9A86E0F3-2981-282F-8624-8FE998E3A531}</Project>
       <Name>PhotonUnityNetworking.Demos</Name>
     </ProjectReference>
   </ItemGroup>

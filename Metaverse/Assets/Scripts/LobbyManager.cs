@@ -6,17 +6,17 @@ using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
 
+// MonoBehaviour 이 아닌 Pun 내에 함수를 사용하기 위한 MonoBehaviourPunCallbacks
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
     public Button loginBtn;
-    // Text Mesh Pro 의 텍스트를 선언하기 위한 TMP_Text
+    // TMP_Text 형 변수 선언
     public TMP_Text IDtext;
     public TMP_Text ConnectionStatus;
-    
+
     // Start is called before the first frame update
     private void Start()
     {
-        // 포톤 네트워크 연결
         PhotonNetwork.ConnectUsingSettings();
         // 버튼 활성화 상태 기본 false로 비활성화 적용
         loginBtn.interactable = false;
@@ -39,7 +39,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             if (PhotonNetwork.IsConnected)
             {
                 ConnectionStatus.text = "방에 연결 중 입니다...";
-                // 방에 랜덤으로 입장 (문법 변경 됨)
+                // 방에 랜덤으로 입장
                 PhotonNetwork.JoinRandomOrCreateRoom();
             }
             // 연결에 실패했을 때
@@ -51,7 +51,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
     }
 
-    // 서버를 사용할 수 있기 전에 최초 연결이 성립될 때 호출
+    // 서버를 사용할 수 있기 전에 최초 연결이 성립될 때 호출 
     public override void OnConnectedToMaster()
     {
         loginBtn.interactable = true;
@@ -59,7 +59,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     public override void OnDisconnected(DisconnectCause cause)
     {
-        loginBtn.interactable = true;
+        loginBtn.interactable = false;
         ConnectionStatus.text = "오프라인 : 연결에 실패 했습니다. \n 재연결 중...";
     }
     public override void OnJoinRandomFailed(short returnCode, string message)
@@ -69,7 +69,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         ConnectionStatus.text = "방에 연결되었습니다.";
-        PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);
         PhotonNetwork.LoadLevel("Main");
     }
 }
