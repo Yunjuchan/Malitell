@@ -24,7 +24,7 @@ public class ChatController {
     private final SimpMessageSendingOperations sendingOperations;
 
     // 채팅방 생성
-    @PostMapping
+    @PostMapping("/room")
     public ChatRoom createRoom(@RequestBody ChatRequestDto chatRequestDto) {
         return chatService.createChatRoom(chatRequestDto);
     }

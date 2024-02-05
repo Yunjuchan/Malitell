@@ -50,8 +50,8 @@ public class ChatRoomRepository {
 
         List<ChatMessageResponseDto> chatMessageResponseDtos = new ArrayList<>();
 
-        for (int i = 0; i < chatMessages.size(); i++) {
-            chatMessageResponseDtos.add(new ChatMessageResponseDto(chatMessages.get(i)));
+        for (ChatMessage chatMessage : chatMessages) {
+            chatMessageResponseDtos.add(new ChatMessageResponseDto(chatMessage));
         }
         return chatMessageResponseDtos;
 
