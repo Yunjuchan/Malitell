@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class CounselingLogOrderByDateResponseDto2 {
 
+    private int counselingLogSeq; // 상담일지 식별키
     private String clientName; // 내담자 이름
     private Timestamp counselingDate; // 상담날짜
     private int round; // 회차

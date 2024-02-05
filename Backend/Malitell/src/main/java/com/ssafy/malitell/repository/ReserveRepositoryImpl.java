@@ -2,6 +2,7 @@ package com.ssafy.malitell.repository;
 
 import com.ssafy.malitell.domain.counseling.Counseling;
 import com.ssafy.malitell.domain.counseling.CounselingLog;
+import com.ssafy.malitell.domain.counseling.CounselingReview;
 import com.ssafy.malitell.domain.user.User;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,5 +92,20 @@ public class ReserveRepositoryImpl implements ReserveRepositoryCustom {
                 .setParameter("clientSeq", clientSeq)
                 .getResultList();
     }
+
+    @Override
+    public List<CounselingReview> counselorReviewList(int counselorSeq) {
+        return entityManager.createQuery("SELECT cr FROM CounselingReview cr JOIN FETCH cr.counseling " +
+                        "WHERE cr.counseling.counselorSeq = :counselorSeq", CounselingReview.class)
+                .setParameter("counselorSeq", counselorSeq)
+                .getResultList();
+    }
+
+    @Override
+    public List<Counseling> findAllByCounselorSeq(int counselorSeq) {
+
+        return null;
+    }
+
 
 }
