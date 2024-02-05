@@ -1,5 +1,5 @@
 import { createSlice, type Dispatch } from "@reduxjs/toolkit";
-import { api } from "../axiosInstance";
+import { api, authApi } from "../axiosInstance";
 
 export interface profileState {
     role: string;
@@ -37,7 +37,7 @@ const initialState: profileState = {
     reviews: [],
 }
 
-// 내 예약 정보 데이터 
+// 내 예약 정보 데이터 불러오기
 export const fetchReservations = () => {
     return (dispatch: Dispatch) => {
         api.get(`/mypage/reserve`)
@@ -46,11 +46,11 @@ export const fetchReservations = () => {
         })
         .catch((error) => {
             console.error("Failed to load:", error);
-          });
+        });
     }
 }
 
-// 회원 정보 수정을 위한 내 정보 데이터
+// 회원 정보 수정을 위한 내 정보 데이터 불러오기
 export const fetchUserInfo = () => {
     return (dispatch: Dispatch) => {
         api.get(`/mypage/user`)
@@ -61,12 +61,11 @@ export const fetchUserInfo = () => {
             console.log("Failed to load:", error)
         })
     }
-
 }
 
-// 내가 스크랩한 글
+// 내가 스크랩한 글 authApi
 export const fetchScrap = () => {
-    const data = api.get(`mypage/scrap`)
+    const data = authApi.get(`mypage/scrap`)
     .then((response) => {
         return response.data
     })
@@ -76,7 +75,37 @@ export const fetchScrap = () => {
     return data
 }
 
+// 상담자 정보 수정 authapi
+export const editCounselorInfo = (editForm: object) => {
+    authApi.put('/mypage/user/counselor', {editForm})
+    .then((response) => {
+        return response.data
+    })
+    .catch((error) => console.error("Failed to Edit:", error))
+}
 
+// 내담자 정보 수정 authapi
+export const editClientInfo = (editForm: object) => {
+    authApi.put('/mypage/user/client', {editForm})
+    .then((response) => {
+        return response.data
+    })
+    .catch((error) => console.error("Failed to Edit:", error))
+}
+
+// 회원 탈퇴 authapi
+export const deleteUser = () => {
+    authApi.delete('/mypage/user')
+    .then((response) => {
+        // 뭐를 리턴할지 모르겠음
+        // 삭제 잘 되면 200 OK
+        // 로그아웃하고 로컬스토리지 토큰 삭제
+        return response.data
+    })
+    .catch((error) => {
+        console.error("Failed to delete:", error)
+    })
+}
 
 export const profileSlice = createSlice({
     name: "reservation",
