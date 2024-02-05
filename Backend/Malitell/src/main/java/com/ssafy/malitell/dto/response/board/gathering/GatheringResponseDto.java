@@ -1,4 +1,4 @@
-package com.ssafy.malitell.dto.response.gathering;
+package com.ssafy.malitell.dto.response.board.gathering;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ssafy.malitell.domain.board.gathering.Gathering;

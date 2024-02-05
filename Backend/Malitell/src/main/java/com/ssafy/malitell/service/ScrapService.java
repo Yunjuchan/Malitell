@@ -3,7 +3,6 @@ package com.ssafy.malitell.service;
 import com.ssafy.malitell.domain.board.gathering.Gathering;
 import com.ssafy.malitell.domain.scrap.Scrap;
 import com.ssafy.malitell.dto.request.scrap.ScrapRequestDto;
-import com.ssafy.malitell.dto.response.gathering.GatheringScrapResponseDto;
 import com.ssafy.malitell.repository.GatheringRepository;
 import com.ssafy.malitell.repository.ScrapRepository;
 import com.ssafy.malitell.repository.ScrapRepositoryImpl;
@@ -12,9 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

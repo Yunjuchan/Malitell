@@ -1,6 +1,6 @@
 package com.ssafy.malitell.domain.selfhelpgroup;
 
-import com.ssafy.malitell.dto.request.gathering.GatheringCreateRequestDto;
+import com.ssafy.malitell.dto.request.board.gathering.GatheringCreateRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
