@@ -85,17 +85,15 @@ public class UserService {
     }
 
     @Transactional
-    public int updateClientInfo(String userId, ClientUpdateRequestDto clientUpdateRequestDto) {
+    public void updateClientInfo(String userId, ClientUpdateRequestDto clientUpdateRequestDto) {
         User user = userRepository.findByUserId(userId);
         user.updateClient(clientUpdateRequestDto);
-        return user.getUserSeq();
     }
 
     @Transactional
-    public int updateCounselorInfo(String userId, CounselorUpdateRequestDto counselorRequestDto) {
+    public void updateCounselorInfo(String userId, CounselorUpdateRequestDto counselorRequestDto) {
         User user = userRepository.findByUserId(userId);
         user.updateCounselor(counselorRequestDto);
-        return user.getUserSeq();
     }
 
     @Transactional

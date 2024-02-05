@@ -102,7 +102,8 @@ public class UserController {
     public ResponseEntity<?> updateClientInfo(Principal principal, ClientUpdateRequestDto clientUpdateRequestDto) {
         String userId = principal.getName();
         if (userService.findUser(userId).getRole().equals("ROLE_CLIENT")) {
-            return new ResponseEntity<>(userService.updateClientInfo(userId, clientUpdateRequestDto), HttpStatus.OK);
+            userService.updateClientInfo(userId, clientUpdateRequestDto);
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // CLIENT가 아닐 경우
         }
@@ -113,7 +114,8 @@ public class UserController {
     public ResponseEntity<?> updateCounselorInfo(Principal principal, CounselorUpdateRequestDto counselorRequestDto) {
         String userId = principal.getName();
         if (userService.findUser(userId).getRole().equals("ROLE_COUNSELOR")) {
-            return new ResponseEntity<>(userService.updateCounselorInfo(userId, counselorRequestDto), HttpStatus.OK);
+            userService.updateCounselorInfo(userId, counselorRequestDto);
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // COUNSELOR가 아닐 경우
         }
