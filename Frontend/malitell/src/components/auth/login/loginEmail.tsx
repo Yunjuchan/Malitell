@@ -101,6 +101,7 @@ export default function LoginEmail({
             onFocus={handleFocusPw}
             onBlur={handleFocusPw}
             placeholder="비밀번호"
+            type="password"
           />
         </InputBox>
         <Submit type="submit" value="로그인" />
