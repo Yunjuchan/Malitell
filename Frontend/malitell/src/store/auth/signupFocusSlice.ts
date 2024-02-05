@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { signupFocusState } from './authTypes';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { signupFocusState } from "./authTypes";
 
 const initialState: signupFocusState = {
   id: false,
@@ -11,10 +11,11 @@ const initialState: signupFocusState = {
   nickname: false,
   birthday: false,
   phone: false,
-}
+  career: false,
+};
 
 const signupFocusSlice = createSlice({
-  name: 'focus',
+  name: "focus",
   initialState,
   reducers: {
     setId: (state, action: PayloadAction<boolean>) => {
@@ -44,6 +45,9 @@ const signupFocusSlice = createSlice({
     setPhone: (state, action: PayloadAction<boolean>) => {
       state.phone = action.payload;
     },
+    setCareer: (state, action: PayloadAction<boolean>) => {
+      state.career = action.payload;
+    },
   },
 });
 
@@ -57,6 +61,7 @@ export const {
   setNickname,
   setBirthday,
   setPhone,
+  setCareer,
 } = signupFocusSlice.actions;
 
 export default signupFocusSlice.reducer;

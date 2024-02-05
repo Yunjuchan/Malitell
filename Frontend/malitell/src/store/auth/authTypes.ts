@@ -22,6 +22,7 @@ export interface signupFocusState {
     nickname: boolean;
     birthday: boolean;
     phone: boolean;
+    career: boolean;
 }
 
 export interface signupProcedure {
