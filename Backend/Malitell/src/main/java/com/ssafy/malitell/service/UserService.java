@@ -151,4 +151,11 @@ public class UserService {
 
         }
     }
+
+    @Transactional
+    public String readMemo(String userId) {
+        User findUser = userRepository.findByUserId(userId);
+        findUser.setReadChk(0);
+        return findUser.getMessage();
+    }
 }

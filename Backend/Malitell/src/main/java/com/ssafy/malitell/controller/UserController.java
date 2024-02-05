@@ -138,7 +138,7 @@ public class UserController {
     @GetMapping("/getMemo")
     public ResponseEntity<?> getMemo(Principal principal) {
         String name = principal.getName();
-        User findUser = userRepository.findByUserId(name);
-        return new ResponseEntity<>(findUser.getMessage(), HttpStatus.OK);
+        String message = userService.readMemo(name);
+        return new ResponseEntity<>(message, HttpStatus.OK);
     }
 }
