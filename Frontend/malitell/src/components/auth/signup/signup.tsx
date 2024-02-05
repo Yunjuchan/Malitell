@@ -83,8 +83,7 @@ export default function Signup({
                 <Line />
               </>
             )}
-
-            <CounselorForm />
+            <CounselorForm setSuccess={setSuccess} />
           </>
         ) : (
           <>
