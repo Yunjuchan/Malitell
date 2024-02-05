@@ -68,7 +68,7 @@ export default function Signup({
           <>
             {success ? null : (
               <>
-                <SmallText>회원가입</SmallText>
+                <SmallText>일반 회원가입</SmallText>
                 <Line />
               </>
             )}
@@ -79,7 +79,7 @@ export default function Signup({
           <>
             {success ? null : (
               <>
-                <SmallText>회원가입</SmallText>
+                <SmallText>상담가 회원가입</SmallText>
                 <Line />
               </>
             )}
