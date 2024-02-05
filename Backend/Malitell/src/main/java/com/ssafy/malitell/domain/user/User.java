@@ -49,6 +49,9 @@ public class User {
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
 //    List<Board> boards = new ArrayList<>();
 
+    private String message;
+    private int readChk; // 안 읽었으면 1 , 읽었으면 0
+
     // 참가하고 있는 자조모임
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<SelfHelpGroupUser> selfHelpGroupUsers = new ArrayList<>();
