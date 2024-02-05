@@ -1,4 +1,4 @@
-import { Wrapper, Button } from "../../styles/article/filter";
+import { Wrapper, Button } from "../../../styles/article/filter";
 
 export default function Filter() {
   return (

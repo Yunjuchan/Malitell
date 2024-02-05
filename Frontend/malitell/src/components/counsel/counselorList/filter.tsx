@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Wrapper, Button, Select } from "../../styles/counsel/filterBox";
+import { Wrapper, Button, Select } from "../../../styles/counsel/filterBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 

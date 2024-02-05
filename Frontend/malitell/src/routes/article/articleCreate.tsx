@@ -3,7 +3,7 @@ import * as g from "../../styles/grid";
 import { GridCreate } from "../../styles/article/grid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBackward } from "@fortawesome/free-solid-svg-icons";
-import CreateForm from "../../components/article/createForm";
+import CreateForm from "../../components/article/articleCreate/createForm";
 
 const Text = styled.div`
   display: flex;

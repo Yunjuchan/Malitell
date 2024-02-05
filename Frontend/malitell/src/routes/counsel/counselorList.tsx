@@ -1,9 +1,9 @@
 import { Back, Box } from "../../styles/grid";
 import { Grid } from "../../styles/counsel/grid";
 import styled from "styled-components";
-import SearchBox from "../../components/counsel/searchBox";
-import Filter from "../../components/counsel/filter";
-import Counselors from "../../components/counsel/counselors";
+import SearchBox from "../../components/counsel/counselorList/searchBox";
+import Filter from "../../components/counsel/counselorList/filter";
+import Counselors from "../../components/counsel/counselorList/counselors";
 
 const Text = styled.div`
   width: 100%;

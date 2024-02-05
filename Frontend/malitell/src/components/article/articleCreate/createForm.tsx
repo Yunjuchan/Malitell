@@ -1,4 +1,4 @@
-import { Wrapper, TopBox, Filter, Title, Input, Submit } from "../../styles/article/createForm";
+import { Wrapper, TopBox, Filter, Title, Input, Submit } from "../../../styles/article/createForm";
 
 export default function CreateForm() {
   return (
