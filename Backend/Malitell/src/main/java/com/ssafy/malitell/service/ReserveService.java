@@ -2,13 +2,18 @@ package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.counseling.Counseling;
 import com.ssafy.malitell.domain.counseling.CounselingLog;
+import com.ssafy.malitell.domain.counseling.CounselingReview;
 import com.ssafy.malitell.domain.user.User;
+import com.ssafy.malitell.dto.request.reserve.CounselingReviewRequestDto;
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
 import com.ssafy.malitell.dto.response.reserve.*;
+import com.ssafy.malitell.repository.CounselingReviewRepository;
 import com.ssafy.malitell.repository.ReserveRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.security.Principal;
 import java.sql.Timestamp;
@@ -21,6 +26,7 @@ public class ReserveService {
 
     private final ReserveRepository reserveRepository;
     private final UserRepository userRepository;
+    private final CounselingReviewRepository counselingReviewRepository;
 
     public List<CounselorListResponseDto> getCounselorList() {
         List<User> list = userRepository.findByRole("ROLE_COUNSELOR");
@@ -112,6 +118,7 @@ public class ReserveService {
             List<CounselingLogOrderByDateResponseDto1> counselingLogOrderByDateList1 = new ArrayList<>();
 
             for(CounselingLog log : counselingLoglist) {
+                int counselingLogSeq = log.getCounselingLogSeq();
                 int counselorSeq = log.getCounseling().getCounselorSeq();
                 Optional<User> counselor = userRepository.findById(counselorSeq);
                 String counselorName = counselor.get().getName();
@@ -120,7 +127,7 @@ public class ReserveService {
                 int round = log.getCounseling().getRound();
                 String content = log.getContent();
 
-                CounselingLogOrderByDateResponseDto1 dto = new CounselingLogOrderByDateResponseDto1(counselorName, counselingDate, round, content);
+                CounselingLogOrderByDateResponseDto1 dto = new CounselingLogOrderByDateResponseDto1(counselingLogSeq, counselorName, counselingDate, round, content);
 
                 counselingLogOrderByDateList1.add(dto);
             }
@@ -135,6 +142,7 @@ public class ReserveService {
             List<CounselingLogOrderByDateResponseDto2> counselingLogOrderByDateList2 = new ArrayList<>();
 
             for(CounselingLog log : counselingLoglist) {
+                int counselingLogSeq = log.getCounselingLogSeq();
                 int clientSeq = log.getCounseling().getClientSeq();
                 Optional<User> client = userRepository.findById(clientSeq);
                 String clientName = client.get().getName();
@@ -143,7 +151,7 @@ public class ReserveService {
                 int round = log.getCounseling().getRound();
                 String content = log.getContent();
 
-                CounselingLogOrderByDateResponseDto2 dto = new CounselingLogOrderByDateResponseDto2(clientName, counselingDate, round, content);
+                CounselingLogOrderByDateResponseDto2 dto = new CounselingLogOrderByDateResponseDto2(counselingLogSeq, clientName, counselingDate, round, content);
 
                 counselingLogOrderByDateList2.add(dto);
             }
@@ -233,6 +241,7 @@ public class ReserveService {
             List<CounselingLogOrderByDateResponseDto1> counselingLogOrderByDateList = new ArrayList<>();
 
             for(CounselingLog log : counselingLogList) {
+                int counselingLogSeq = log.getCounselingLogSeq();
                 Optional<User> counselor = userRepository.findById(log.getCounseling().getCounselorSeq());
                 String counselorName = counselor.get().getName();
 
@@ -240,7 +249,7 @@ public class ReserveService {
                 int round = log.getCounseling().getRound();
                 String content = log.getContent();
 
-                CounselingLogOrderByDateResponseDto1 dto = new CounselingLogOrderByDateResponseDto1(counselorName, counselingDate, round, content);
+                CounselingLogOrderByDateResponseDto1 dto = new CounselingLogOrderByDateResponseDto1(counselingLogSeq, counselorName, counselingDate, round, content);
                 counselingLogOrderByDateList.add(dto);
             }
 
@@ -254,6 +263,7 @@ public class ReserveService {
             List<CounselingLogOrderByDateResponseDto2> counselingLogOrderByDateList = new ArrayList<>();
 
             for(CounselingLog log : counselingLogList) {
+                int counselingLogSeq = log.getCounselingLogSeq();
                 Optional<User> client = userRepository.findById(log.getCounseling().getClientSeq());
                 String clientName = client.get().getName();
 
@@ -261,7 +271,7 @@ public class ReserveService {
                 int round = log.getCounseling().getRound();
                 String content = log.getContent();
 
-                CounselingLogOrderByDateResponseDto2 dto = new CounselingLogOrderByDateResponseDto2(clientName, counselingDate, round, content);
+                CounselingLogOrderByDateResponseDto2 dto = new CounselingLogOrderByDateResponseDto2(counselingLogSeq, clientName, counselingDate, round, content);
                 counselingLogOrderByDateList.add(dto);
             }
 
@@ -271,26 +281,51 @@ public class ReserveService {
             System.out.println("상담일지가 없습니다.");
             return null;
         }
+    }
 
-//        // clientSeq는 나이고 counselorSeq는 내가 클릭한 상담자인 상담목록 가져오기
-//        List<CounselingLog> counselingLogList = reserveRepository.getCounselingLogByOne(loginUserSeq, counselorSeq);
-//
-//        List<CounselingLogOrderByDateResponseDto1> counselingLogOrderByDateList = new ArrayList<>();
-//
-//        for(CounselingLog log : counselingLogList) {
-//            Optional<User> counselor = userRepository.findById(log.getCounseling().getCounselorSeq());
-//            String counselorName = counselor.get().getName();
-//
-//            Timestamp counselingDate = log.getCounseling().getCounselingDate();
-//            int round = log.getCounseling().getRound();
-//            String content = log.getContent();
-//
-//            CounselingLogOrderByDateResponseDto1 dto = new CounselingLogOrderByDateResponseDto1(counselorName, counselingDate, round, content);
-//
-//            counselingLogOrderByDateList.add(dto);
-//        }
-//
-//        return counselingLogOrderByDateList;
+    @Transactional
+    public void writeCounselingReview(int counselingSeq, CounselingReviewRequestDto counselingReviewRequestDto) {
+        String content = counselingReviewRequestDto.getContent();
+        int grade = counselingReviewRequestDto.getGrade();
+
+        Optional<Counseling> counseling = reserveRepository.findById(counselingSeq);
+
+        CounselingReview counselingReview = new CounselingReview(counseling.get(), content, grade);
+        counselingReviewRepository.save(counselingReview);
+
+        // 상담자 평점 업데이트
+        int counselorSeq = counseling.get().getCounselorSeq();
+        List<CounselingReview> counselorReviewList = reserveRepository.counselorReviewList(counselorSeq);
+
+        int sum = 0;
+        for(CounselingReview review : counselorReviewList) {
+            sum += review.getGrade();
+        }
+        double avg = Double.parseDouble(String.format("%.1f", (double)sum / counselorReviewList.size()));
+
+        Optional<User> counselor = userRepository.findById(counselorSeq);
+        if(counselor.isPresent()) {
+            counselor.get().setGrade(avg);
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
+
+    public List<CounselingReview> getCounselingReviewList(int counselorSeq) {
+        List<Counseling> counselingList = reserveRepository.findAllByCounselorSeq(counselorSeq);
+
+        List<CounselingReview> counselingReviewList = new ArrayList<>();
+
+        for(Counseling counseling : counselingList) {
+            int counselingSeq = counseling.getCounselingSeq();
+            Optional<CounselingReview> counselingReview = counselingReviewRepository.findById(counselingSeq);
+            if(counselingReview.isPresent()) {
+                counselingReviewList.add(counselingReview.get());
+            } else {
+                throw new NoSuchElementException();
+            }
+        }
+        return counselingReviewList;
     }
 
 }
