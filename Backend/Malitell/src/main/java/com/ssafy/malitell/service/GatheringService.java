@@ -2,10 +2,10 @@ package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.board.gathering.Gathering;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
-import com.ssafy.malitell.dto.request.gathering.GatheringCreateRequestDto;
-import com.ssafy.malitell.dto.request.gathering.GatheringUpdateRequestDto;
-import com.ssafy.malitell.dto.response.gathering.GatheringListResponseDto;
-import com.ssafy.malitell.dto.response.gathering.GatheringResponseDto;
+import com.ssafy.malitell.dto.request.board.gathering.GatheringCreateRequestDto;
+import com.ssafy.malitell.dto.request.board.gathering.GatheringUpdateRequestDto;
+import com.ssafy.malitell.dto.response.board.gathering.GatheringListResponseDto;
+import com.ssafy.malitell.dto.response.board.gathering.GatheringResponseDto;
 import com.ssafy.malitell.repository.GatheringRepository;
 import com.ssafy.malitell.repository.SelfHelpGroupRepository;
 import jakarta.transaction.Transactional;

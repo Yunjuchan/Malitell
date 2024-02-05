@@ -1,31 +1,26 @@
-package com.ssafy.malitell.domain.board.gathering;
+package com.ssafy.malitell.domain.board.overcoming;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
-import com.ssafy.malitell.dto.request.board.gathering.GatheringUpdateRequestDto;
-import jakarta.persistence.*;
+import com.ssafy.malitell.dto.request.board.overcoming.OverComingRequestDto;
+import com.ssafy.malitell.dto.request.board.overcoming.OverComingUpdateRequestDto;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.sql.Timestamp;
 
 @Entity
-@Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Gathering {
-
+public class OverComing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int gatheringSeq;
-
-    // 어떤 자조모임 모집 게시글인지
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
-    @JoinColumn(name = "selfHelpGroup_seq")
-    private SelfHelpGroup selfHelpGroup;
+    private int overcomingSeq;
 
     // 작성자 이름
     private String name;
@@ -43,16 +38,15 @@ public class Gathering {
     // 게시물 조회수
     private int hit;
 
-    public Gathering(SelfHelpGroup selfHelpGroup, String name, String title, String content) {
-        this.selfHelpGroup = selfHelpGroup;
+    public OverComing(String name, OverComingRequestDto overComingRequestDto) {
         this.name = name;
-        this.title = title;
-        this.content = content;
+        this.title = overComingRequestDto.getTitle();
+        this.content = overComingRequestDto.getContent();
         this.hit = 0;
         this.time = new Timestamp(System.currentTimeMillis());
     }
 
-    public void update(GatheringUpdateRequestDto requestDto) {
+    public void update(OverComingUpdateRequestDto requestDto) {
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
     }

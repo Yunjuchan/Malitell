@@ -131,6 +131,7 @@ public class UserController {
     @PutMapping("/mypage/user/updatePassword")
     public ResponseEntity<?> updatePassword(Principal principal, @RequestBody PasswordRequestDto passwordRequestDto) {
         String userId = principal.getName();
-        return new ResponseEntity<>(userService.updatePassword(userId, passwordRequestDto), HttpStatus.OK);
+        userService.updatePassword(userId, passwordRequestDto);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

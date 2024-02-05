@@ -108,11 +108,10 @@ public class UserService {
     }
 
     @Transactional
-    public int updatePassword(String userId, PasswordRequestDto passwordRequestDto) {
+    public void updatePassword(String userId, PasswordRequestDto passwordRequestDto) {
         User user = userRepository.findByUserId(userId);
         String password = passwordRequestDto.getPassword();
         String encodePassword = passwordEncoder.encode(password);
         user.updatePassword(encodePassword);
-        return user.getUserSeq();
     }
 }

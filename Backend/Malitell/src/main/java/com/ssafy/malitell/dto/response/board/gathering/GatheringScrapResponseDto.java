@@ -1,4 +1,4 @@
-package com.ssafy.malitell.dto.response.gathering;
+package com.ssafy.malitell.dto.response.board.gathering;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
