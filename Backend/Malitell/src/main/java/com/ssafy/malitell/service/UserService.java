@@ -1,5 +1,7 @@
 package com.ssafy.malitell.service;
 
+import com.ssafy.malitell.domain.board.gathering.Gathering;
+import com.ssafy.malitell.domain.counseling.Counseling;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.auth.PasswordRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
@@ -8,6 +10,7 @@ import com.ssafy.malitell.dto.request.user.CounselorJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import com.ssafy.malitell.dto.response.user.ClientResponseDto;
 import com.ssafy.malitell.dto.response.user.CounselorResponseDto;
+import com.ssafy.malitell.repository.ReserveRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +19,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Service
@@ -24,6 +31,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final ReserveRepository reserveRepository;
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public void joinClient(ClientJoinRequestDto clientJoinRequestDto) {
@@ -83,17 +91,15 @@ public class UserService {
     }
 
     @Transactional
-    public int updateClientInfo(String userId, ClientUpdateRequestDto clientUpdateRequestDto) {
+    public void updateClientInfo(String userId, ClientUpdateRequestDto clientUpdateRequestDto) {
         User user = userRepository.findByUserId(userId);
         user.updateClient(clientUpdateRequestDto);
-        return user.getUserSeq();
     }
 
     @Transactional
-    public int updateCounselorInfo(String userId, CounselorUpdateRequestDto counselorRequestDto) {
+    public void updateCounselorInfo(String userId, CounselorUpdateRequestDto counselorRequestDto) {
         User user = userRepository.findByUserId(userId);
         user.updateCounselor(counselorRequestDto);
-        return user.getUserSeq();
     }
 
     @Transactional
@@ -114,5 +120,42 @@ public class UserService {
         String encodePassword = passwordEncoder.encode(password);
         user.updatePassword(encodePassword);
         return user.getUserSeq();
+    }
+
+    @Transactional
+    public void sendAlarm() {
+        List<Counseling> allCounseling = reserveRepository.findAll();
+        for (Counseling counseling : allCounseling) {
+            Timestamp counselingDate = counseling.getCounselingDate();
+            LocalDateTime localDateTime = counselingDate.toLocalDateTime();
+            LocalDate today = LocalDate.now();
+
+            if (localDateTime.toLocalDate().equals(today)) {
+                System.out.println("현재 Timestamp는 오늘 날짜입니다.");
+                int clientSeq = counseling.getClientSeq();
+                int counselorSeq = counseling.getCounselorSeq();
+
+                User findClient = userRepository.findByUserSeq(clientSeq);
+                User findCounselor = userRepository.findByUserSeq(counselorSeq);
+
+                findClient.setMessage("오늘 상담이 있는 날입니다.");
+                findClient.setReadChk(1);
+
+                findCounselor.setMessage("오늘 상담이 있는 날입니다.");
+                findCounselor.setReadChk(1);
+
+            } else {
+                System.out.println("현재 Timestamp는 오늘 날짜가 아닙니다.");
+                return;
+            }
+
+        }
+    }
+
+    @Transactional
+    public String readMemo(String userId) {
+        User findUser = userRepository.findByUserId(userId);
+        findUser.setReadChk(0);
+        return findUser.getMessage();
     }
 }

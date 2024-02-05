@@ -17,25 +17,26 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@RequestMapping("/chat")
 @RequiredArgsConstructor
 public class ChatController {
     private final ChatService chatService;
     private final SimpMessageSendingOperations sendingOperations;
 
     // 채팅방 생성
-    @PostMapping("/chat/room")
+    @PostMapping("/room")
     public ChatRoom createRoom(@RequestBody ChatRequestDto chatRequestDto) {
         return chatService.createChatRoom(chatRequestDto);
     }
 
     // 채팅방 목록 - 최근순
-    @GetMapping("/chat/rooms")
+    @GetMapping("/rooms")
     public List<ChatRoom> rooms() {
         return chatService.chatRoomList();
     }
 
     // 채팅방 메세지 조회
-    @GetMapping("/chat/room/{chatRoomSeq}")
+    @GetMapping("/room/{chatRoomSeq}")
     public List<ChatMessageResponseDto> roomInfo(@PathVariable String chatRoomSeq) {
         return chatService.chatMessageList(chatRoomSeq);
     }

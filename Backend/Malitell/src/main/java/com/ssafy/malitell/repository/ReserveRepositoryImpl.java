@@ -2,6 +2,7 @@ package com.ssafy.malitell.repository;
 
 import com.ssafy.malitell.domain.counseling.Counseling;
 import com.ssafy.malitell.domain.counseling.CounselingLog;
+import com.ssafy.malitell.domain.counseling.CounselingReview;
 import com.ssafy.malitell.domain.user.User;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,9 @@ public class ReserveRepositoryImpl implements ReserveRepositoryCustom {
                 .getSingleResult();
     }
 
+    // 내담자
     @Override
-    public List<CounselingLog> getCounselingLogListOrderByDate(int loginUserSeq) {
+    public List<CounselingLog> getCounselingLogListOrderByDate1(int loginUserSeq) {
         List<CounselingLog> counselingLogList = entityManager.createQuery("SELECT cl FROM CounselingLog cl JOIN FETCH cl.counseling " +
                         "WHERE cl.counseling.clientSeq = :loginUserSeq " +
                         "ORDER BY cl.counseling.counselingDate DESC", CounselingLog.class)
@@ -37,5 +39,73 @@ public class ReserveRepositoryImpl implements ReserveRepositoryCustom {
                 .getResultList();
         return counselingLogList;
     }
+
+    // 상담자
+    @Override
+    public List<CounselingLog> getCounselingLogListOrderByDate2(int loginUserSeq) {
+        List<CounselingLog> counselingLogList = entityManager.createQuery("SELECT cl FROM CounselingLog cl JOIN FETCH cl.counseling " +
+                        "WHERE cl.counseling.counselorSeq = :loginUserSeq " +
+                        "ORDER BY cl.counseling.counselingDate DESC", CounselingLog.class)
+                .setParameter("loginUserSeq", loginUserSeq)
+                .getResultList();
+        return counselingLogList;
+    }
+
+    // 내담자
+    @Override
+    public List<CounselingLog> getCounselingLogList1(int loginUserSeq) {
+        List<CounselingLog> counselingLogList = entityManager.createQuery("SELECT cl FROM CounselingLog cl JOIN FETCH cl.counseling " +
+                        "WHERE cl.counseling.clientSeq = :loginUserSeq", CounselingLog.class)
+                .setParameter("loginUserSeq", loginUserSeq)
+                .getResultList();
+        return counselingLogList;
+    }
+
+    // 상담자
+    @Override
+    public List<CounselingLog> getCounselingLogList2(int loginUserSeq) {
+        List<CounselingLog> counselingLogList = entityManager.createQuery("SELECT cl FROM CounselingLog cl JOIN FETCH cl.counseling " +
+                        "WHERE cl.counseling.counselorSeq = :loginUserSeq", CounselingLog.class)
+                .setParameter("loginUserSeq", loginUserSeq)
+                .getResultList();
+        return counselingLogList;
+    }
+
+    // 내담자
+    @Override
+    public List<CounselingLog> getCounselingLogsForOne1(int loginUserSeq, int counselorSeq) {
+        return entityManager.createQuery("SELECT cl FROM CounselingLog cl JOIN FETCH cl.counseling " +
+                        "WHERE cl.counseling.clientSeq = :loginUserSeq and cl.counseling.counselorSeq = :counselorSeq " +
+                        "ORDER BY cl.counseling.counselingDate DESC", CounselingLog.class)
+                .setParameter("loginUserSeq", loginUserSeq)
+                .setParameter("counselorSeq", counselorSeq)
+                .getResultList();
+    }
+
+    // 상담자
+    @Override
+    public List<CounselingLog> getCounselingLogsForOne2(int loginUserSeq, int clientSeq) {
+        return entityManager.createQuery("SELECT cl FROM CounselingLog cl JOIN FETCH cl.counseling " +
+                        "WHERE cl.counseling.counselorSeq = :loginUserSeq and cl.counseling.clientSeq = :clientSeq " +
+                        "ORDER BY cl.counseling.counselingDate DESC", CounselingLog.class)
+                .setParameter("loginUserSeq", loginUserSeq)
+                .setParameter("clientSeq", clientSeq)
+                .getResultList();
+    }
+
+    @Override
+    public List<CounselingReview> counselorReviewList(int counselorSeq) {
+        return entityManager.createQuery("SELECT cr FROM CounselingReview cr JOIN FETCH cr.counseling " +
+                        "WHERE cr.counseling.counselorSeq = :counselorSeq", CounselingReview.class)
+                .setParameter("counselorSeq", counselorSeq)
+                .getResultList();
+    }
+
+    @Override
+    public List<Counseling> findAllByCounselorSeq(int counselorSeq) {
+
+        return null;
+    }
+
 
 }

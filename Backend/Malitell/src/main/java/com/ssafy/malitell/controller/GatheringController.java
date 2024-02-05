@@ -1,5 +1,6 @@
 package com.ssafy.malitell.controller;
 
+import com.ssafy.malitell.domain.board.gathering.Gathering;
 import com.ssafy.malitell.dto.request.gathering.GatheringCreateRequestDto;
 import com.ssafy.malitell.dto.request.gathering.GatheringUpdateRequestDto;
 import com.ssafy.malitell.dto.response.gathering.GatheringListResponseDto;
@@ -20,13 +21,13 @@ public class GatheringController {
     private final GatheringService gatheringService;
 
     // 게시물 등록
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Integer> createGathering(@RequestBody GatheringCreateRequestDto requestDto, Principal principal) {
         return new ResponseEntity<>(gatheringService.createGathering(requestDto, principal), HttpStatus.OK);
     }
 
     // 게시물 목록 조회
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<GatheringListResponseDto>> getAllGatherings() {
         return new ResponseEntity<>(gatheringService.findAllGathering(), HttpStatus.OK);
     }
@@ -48,5 +49,4 @@ public class GatheringController {
     public ResponseEntity<Integer> updateGathering(@PathVariable int gatheringSeq, @RequestBody GatheringUpdateRequestDto requestDto) {
         return new ResponseEntity<>(gatheringService.updateGathering(gatheringSeq, requestDto), HttpStatus.OK);
     }
-
 }

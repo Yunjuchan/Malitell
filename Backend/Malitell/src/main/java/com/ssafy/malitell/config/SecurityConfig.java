@@ -67,7 +67,7 @@ public class SecurityConfig {
         // 경로별 인가 작업
         http.authorizeHttpRequests((auth) -> auth
                 .requestMatchers("/", "/user/join/**", "/login", "/oauth2/**", "/user/reissue", "/chat/**", "/user/exists/**", "/auth/**", "/ws-stomp/**", "/getCounselorList").permitAll()
-                .requestMatchers("/reserve", "/board", "/mypage/counselingLog/**").hasRole("CLIENT")
+                .requestMatchers("/reserve", "/board", "/counseling/review/**").hasRole("CLIENT")
 //                .requestMatchers("/board").hasRole("COUNSELOR") // 상담자, 관리자 권한 처리하기
                 .anyRequest().authenticated());
 
@@ -93,10 +93,10 @@ public class SecurityConfig {
     @Bean
     protected CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowCredentials(true);
         corsConfiguration.addAllowedOriginPattern("*");
         corsConfiguration.addAllowedMethod("*");
         corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);

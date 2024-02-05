@@ -1,18 +1,32 @@
 import styled from "styled-components";
 
-export const SearchWrapper = styled.div`
-  display: flex;
+export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  justify-content: center;
+  display: flex;
+  .focus {
+    box-shadow: 1px 1px 1px 1px lightgray inset;
+  }
+`
+
+export const InputBox = styled.div`
+  width: 98%;
+  height: 70%;
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
   align-items: center;
-  
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
 `;
 
-export const Search = styled.div`
-  width: 97%;
-  height: 80%;
-  box-shadow: 1px 1px 1px 1px lightgray inset;
-  border-radius: 20px;
-  background-color: #fbf3fd;
+export const Search = styled.input`
+  border: none;
+  width: 70%;
+  height: 70%;
+  font-size: 15px;
+  &:focus {
+    outline: none;
+  }
 `;

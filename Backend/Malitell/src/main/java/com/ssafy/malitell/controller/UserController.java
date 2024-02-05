@@ -30,16 +30,16 @@ public class UserController {
 
     // 상담자 회원가입
     @PostMapping("/user/join/counselor")
-    public String joinCounselor(@RequestBody CounselorJoinRequestDto counselorJoinRequestDto) {
+    public ResponseEntity<?> joinCounselor(@RequestBody CounselorJoinRequestDto counselorJoinRequestDto) {
         userService.joinCounselor(counselorJoinRequestDto);
-        return "Join Success";
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     // 내담자 회원가입
     @PostMapping("/user/join/client")
-    public String joinClient(@RequestBody ClientJoinRequestDto clientJoinRequestDto) {
+    public ResponseEntity<?> joinClient(@RequestBody ClientJoinRequestDto clientJoinRequestDto) {
         userService.joinClient(clientJoinRequestDto);
-        return "Join Success";
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     // 아이디 중복 검증
@@ -102,7 +102,8 @@ public class UserController {
     public ResponseEntity<?> updateClientInfo(Principal principal, ClientUpdateRequestDto clientUpdateRequestDto) {
         String userId = principal.getName();
         if (userService.findUser(userId).getRole().equals("ROLE_CLIENT")) {
-            return new ResponseEntity<>(userService.updateClientInfo(userId, clientUpdateRequestDto), HttpStatus.OK);
+            userService.updateClientInfo(userId, clientUpdateRequestDto);
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // CLIENT가 아닐 경우
         }
@@ -113,7 +114,8 @@ public class UserController {
     public ResponseEntity<?> updateCounselorInfo(Principal principal, CounselorUpdateRequestDto counselorRequestDto) {
         String userId = principal.getName();
         if (userService.findUser(userId).getRole().equals("ROLE_COUNSELOR")) {
-            return new ResponseEntity<>(userService.updateCounselorInfo(userId, counselorRequestDto), HttpStatus.OK);
+            userService.updateCounselorInfo(userId, counselorRequestDto);
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // COUNSELOR가 아닐 경우
         }
@@ -130,5 +132,13 @@ public class UserController {
     public ResponseEntity<?> updatePassword(Principal principal, @RequestBody PasswordRequestDto passwordRequestDto) {
         String userId = principal.getName();
         return new ResponseEntity<>(userService.updatePassword(userId, passwordRequestDto), HttpStatus.OK);
+    }
+
+    // 유저 쪽지 기능
+    @GetMapping("/getMemo")
+    public ResponseEntity<?> getMemo(Principal principal) {
+        String name = principal.getName();
+        String message = userService.readMemo(name);
+        return new ResponseEntity<>(message, HttpStatus.OK);
     }
 }

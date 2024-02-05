@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.sql.Timestamp;
 
@@ -24,12 +25,6 @@ public class Counseling {
     private int round; // 회차
     private Timestamp reservationDate; // 상담 예약일
     private String counselingRoomUrl; // 상담방 url
-
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "counselingSeq")
-////    @OneToOne(mappedBy = "counselingLog")
-////    @JoinColumn(name = "counselingSeq")
-//    private CounselingLog counselingLog;
 
     public Counseling(int counselorSeq, ReserveRequestDto reserveRequestDto, User user, int round) {
         this.counselorSeq = counselorSeq;

@@ -40,10 +40,12 @@ public class GatheringService {
 
 
     // 게시글 조회
+    @Transactional
     public GatheringResponseDto findOneGathering(int gatheringSeq) {
         Gathering gathering = gatheringRepository.findById(gatheringSeq).orElseThrow(
                 () -> new IllegalArgumentException("조회 실패")
         );
+        gathering.hitCountUp();
         return new GatheringResponseDto(gathering);
     }
 
@@ -88,4 +90,7 @@ public class GatheringService {
         return null;
     }
 
+//    public List<Gathering> userScrapList(String userId) {
+//        return gatheringRepository.findUserScrapList(userId);
+//    }
 }

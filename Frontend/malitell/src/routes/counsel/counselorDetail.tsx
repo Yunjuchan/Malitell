@@ -1,9 +1,9 @@
 import React from "react";
 import * as g from "../../styles/grid";
-import CounselorInfo from "../../components/counsel/counselorInfo";
-import ReviewList from "../../components/counsel/reviewList";
-import ButtonBox from "../../components/counsel/buttonBox";
-import ProfileBox from "../../components/counsel/profileBox";
+import CounselorInfo from "../../components/counsel/counsellorDetail/counselorInfo";
+import ReviewList from "../../components/counsel/counsellorDetail/reviewList";
+import ButtonBox from "../../components/counsel/counsellorDetail/buttonBox";
+import ProfileBox from "../../components/counsel/counsellorDetail/profileBox";
 
 export default function CounselorDetail() {
   return (
