@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{EE81B5C4-11D1-A69F-E00B-76A75AB6D0D9}</ProjectGuid>
+    <ProjectGuid>{33C4D757-836B-A6E9-87BB-BE67AA45BDEC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>UltimateIsometricToolkit</AssemblyName>
