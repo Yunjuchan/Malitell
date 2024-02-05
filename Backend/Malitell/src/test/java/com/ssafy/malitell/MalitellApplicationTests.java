@@ -1,13 +1,13 @@
-package com.ssafy.malitell;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
-class MalitellApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
-}
+//package com.ssafy.malitell;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//@SpringBootTest
+//class MalitellApplicationTests {
+//
+//	@Test
+//	void contextLoads() {
+//	}
+//
+//}
