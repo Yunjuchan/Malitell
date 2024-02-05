@@ -1,6 +1,5 @@
 package com.ssafy.malitell.controller;
 
-import com.ssafy.malitell.domain.board.gathering.Gathering;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.auth.PasswordRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
@@ -15,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.List;
 
 @RestController
 public class UserController {
@@ -32,16 +30,16 @@ public class UserController {
 
     // 상담자 회원가입
     @PostMapping("/user/join/counselor")
-    public String joinCounselor(@RequestBody CounselorJoinRequestDto counselorJoinRequestDto) {
+    public ResponseEntity<?> joinCounselor(@RequestBody CounselorJoinRequestDto counselorJoinRequestDto) {
         userService.joinCounselor(counselorJoinRequestDto);
-        return "Join Success";
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     // 내담자 회원가입
     @PostMapping("/user/join/client")
-    public String joinClient(@RequestBody ClientJoinRequestDto clientJoinRequestDto) {
+    public ResponseEntity<?> joinClient(@RequestBody ClientJoinRequestDto clientJoinRequestDto) {
         userService.joinClient(clientJoinRequestDto);
-        return "Join Success";
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     // 아이디 중복 검증

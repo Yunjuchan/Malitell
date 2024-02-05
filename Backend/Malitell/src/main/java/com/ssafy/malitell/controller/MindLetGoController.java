@@ -30,9 +30,10 @@ public class MindLetGoController {
 
     // MindLetGo 작성
     @PostMapping
-    public ResponseEntity<Integer> createMindLetGo(@RequestBody MindLetGoRequestDto mindLetGoRequestDto) {
+    public ResponseEntity<?> createMindLetGo(@RequestBody MindLetGoRequestDto mindLetGoRequestDto) {
         mindLetGoRequestDto.setMindLetGoTopicSeq(mindLetGoService.findTopic());
-        return new ResponseEntity<>(mindLetGoService.createMindLetGo(mindLetGoRequestDto), HttpStatus.OK);
+        mindLetGoService.createMindLetGo(mindLetGoRequestDto);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     // MindLetGo 목록

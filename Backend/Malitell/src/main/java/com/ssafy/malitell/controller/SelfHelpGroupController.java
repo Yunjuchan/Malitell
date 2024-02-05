@@ -1,6 +1,5 @@
 package com.ssafy.malitell.controller;
 
-import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
 import com.ssafy.malitell.dto.response.SelfHelpGroupResponseDto;
 import com.ssafy.malitell.service.SelfHelpGroupService;
 import lombok.RequiredArgsConstructor;
@@ -32,10 +31,10 @@ public class SelfHelpGroupController {
         return new ResponseEntity<>(selfHelpGroupList, HttpStatus.OK);
     }
 
-        // 자조모임 삭제
-        @DeleteMapping("/leave")
-        public ResponseEntity<?> leaveSelfHelpGroup(int SelfHelpGroupSeq, Principal principal) {
-            selfHelpGroupService.leaveSelfHelpGroup(SelfHelpGroupSeq, principal);
-            return new ResponseEntity<>(HttpStatus.OK);
+    // 자조모임 삭제
+    @DeleteMapping("/leave")
+    public ResponseEntity<?> leaveSelfHelpGroup(int SelfHelpGroupSeq, Principal principal) {
+        selfHelpGroupService.leaveSelfHelpGroup(SelfHelpGroupSeq, principal);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

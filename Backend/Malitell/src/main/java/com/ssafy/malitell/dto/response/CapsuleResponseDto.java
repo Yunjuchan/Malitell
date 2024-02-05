@@ -8,5 +8,5 @@ import lombok.Getter;
 public class CapsuleResponseDto {
 
     private String phrases;
-    private String videoLink;
+    private String videoUrl;
 }
