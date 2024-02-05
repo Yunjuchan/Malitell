@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import React, { HTMLInputTypeAttribute, useState } from "react";
+import React, { useState } from "react";
 import {
   Form,
   InputBox,
@@ -32,6 +32,18 @@ import {
   setBirthday,
   setPhone,
 } from "../../../../store/auth/signupFocusSlice";
+import {
+  Wrapper,
+  Image,
+  TextBox,
+  MailText,
+  Explanation,
+  Number,
+  Button,
+} from "../../../../styles/auth/signup/emailCertification";
+import malitell from "../../../../assets/images/malitell.png";
+
+import EmailCertification from "../emailCertification";
 import { error } from "console";
 
 interface SignupProps {
@@ -51,6 +63,7 @@ export default function ClientForm({ setSuccess, success }: SignupProps) {
     birth: string;
     phone: string;
     role: string;
+    certificationNumber: string;
   }
 
   const {
@@ -64,16 +77,6 @@ export default function ClientForm({ setSuccess, success }: SignupProps) {
     },
   });
 
-  /* 
-  이메일 정규식
-  [공백(띄어쓰기)와 @제외 아무 글자 1글자 이상] + @ + [공백(띄어쓰기)와 @제외 아무 글자 1글자 이상] + . + [공백(띄어쓰기)와 @제외 아무 글자 1글자 이상]
-  
-  이름 정규식 
-  1글자이상 30글자 이하
-
-  비밀번호 정규식
-  소문자 1글자이상, 숫자1글자이상, !@#중 1글자 이상, 숫자,대소문자,앞의특수문자를 포함한 8~16글자
-  */
   const idRegex = /^[a-z0-9]{8,20}$/;
   const passwordRegex =
     /^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()])[\da-zA-Z!@#]{8,16}$/;
@@ -88,6 +91,7 @@ export default function ClientForm({ setSuccess, success }: SignupProps) {
   // 폼 제출 체크
   const onSubmit = (data: FormData) => {
     console.log("데이터: ", data);
+    // setSuccess(true);
 
     fetch(`http://localhost:8080/user/join/client`, {
       method: "POST",
@@ -99,34 +103,24 @@ export default function ClientForm({ setSuccess, success }: SignupProps) {
       .then((res) => {
         console.log(res);
       })
-      // .then(() => {
-      //   fetch(`http://localhost:8080/auth/email-certification`, {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify(data),
-      //   })
-          .then((res) => {
-            console.log(res);
-          })
-          .then(() => {
-            setSuccess(true);
-          });
-      // });
+      .then(() => {
+        setSuccess(true);
+      });
   };
 
-  // 회원가입 완료여부 확인 state
-  // input css용
-  // const [idFocus, setIdFocus] = useState(false);
-  // const [pwFocus, setPwFocus] = useState(false);
-  // const [pwCheckFocus, setPwCheckFocus] = useState(false);
-  // const [emailFocus, setEmailFocus] = useState(false);
-  // const [nameFocus, setNameFocus] = useState(false);
-  // const [genderFocus, setGenderFocus] = useState(false);
-  // const [nicknameFocus, setNicknameFocus] = useState(false);
-  // const [birthdayFocus, setBirthdayFocus] = useState(false);
-  // const [phoneFocus, setPhoneFocus] = useState(false);
+  const submitCertification = (data: FormData) => {
+    console.log(data);
+
+    fetch(`http://localhost:8080/auth/email-certification`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => {
+      console.log(res);
+    });
+  };
 
   const dispatch: AppDispatch = useDispatch();
   const focus = useSelector((state: RootState) => state.signupFocus);
@@ -157,7 +151,34 @@ export default function ClientForm({ setSuccess, success }: SignupProps) {
 
   return (
     <>
-      {success ? null : (
+      {success ? (
+        <Wrapper>
+          {/* {인중? : } */}
+          <Image src={malitell} alt="malitell" />
+          <TextBox>
+            <MailText>인증메일이 발송되었습니다.</MailText>
+            <Explanation>
+              가입하신 메일로 인증메일이 발송되며,
+              <br />
+              메일을 확인 후 하단에 인증번호를 입력해 주세요.
+              <br />
+            </Explanation>
+          </TextBox>
+          <form onSubmit={handleSubmit(submitCertification)}>
+            <Number
+              {...register("certificationNumber", {
+                required: "인증번호를 입력해 주세요",
+              })}
+            />
+            <Button type="submit" value={"인증하기"} />
+          </form>
+          <Message>
+            {errors.certificationNumber
+              ? errors.certificationNumber.message
+              : ""}
+          </Message>
+        </Wrapper>
+      ) : (
         <Form onSubmit={handleSubmit(onSubmit)}>
           <InputBox className={focus.id ? "focus" : "normal"}>
             <FontAwesomeIcon

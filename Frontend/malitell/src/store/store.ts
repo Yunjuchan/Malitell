@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import signupFocusReducer from './auth/signupFocusSlice';
+import signupFormDataReducer from './auth/signupFormDataSlice';
+
 export const store = configureStore({
   reducer: {
     // 사용하고 싶은 이름: import한 실제 slice
-    signupFocus: signupFocusReducer
+    signupFocus: signupFocusReducer,
+    signupFormData: signupFormDataReducer,
   },
 });
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function EmailCertification() {
+export default function emailCertification() {
   return (
-    <div>EmailCertification</div>
+    <div>emailCertification</div>
   )
 }
