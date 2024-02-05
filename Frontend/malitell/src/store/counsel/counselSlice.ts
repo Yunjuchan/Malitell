@@ -47,6 +47,31 @@ export const fetchCounselorDetail = (counselSeq: number) => {
     return data
 }
 
+// 상담 후기 작성 
+// counselingSeq: number, content: string, grade: number
+export const createReview = (data: object) => {
+    api.post(`/counseling/review/${"data.counselingSeq"}`)   // 일단 $ 안 string으로 바꿔둠
+    .then((response) => {
+        return response.data
+    })
+    .catch((error) => {
+        console.error("Failed to create:", error)
+    })
+}
+
+// 특정 상담가 상담 후기 데이터
+// 이거 api 매핑 이미 연결되어있으니깐 getCounselorList로 한거겠지??
+export const fetchReviewList = (counselorSeq: number) => {
+    api.get(`/getCounselorList/${counselorSeq}`)
+    .then((response) => {
+        return response.data
+    })
+    .catch((error) => {
+        console.error("Failed to load:", error)
+    })
+}
+
+
 export const counselSlice = createSlice({
     name: "counsel",
     initialState,
