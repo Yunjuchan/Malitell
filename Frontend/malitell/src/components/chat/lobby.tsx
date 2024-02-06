@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 
 type ChatRoom = {
@@ -8,6 +9,25 @@ type ChatRoom = {
 };
 
 const Lobby: React.FC = () => {
+  interface FormData {
+    counselorSeq: string;
+    clientSeq: string;
+  }
+
+  const { register, handleSubmit } = useForm<FormData>({});
+
+  const create = (data: FormData) => {
+    fetch(`http://localhost:8080/chat/room`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data)
+    }).then((res) => {
+      console.log(res);
+    })
+  }
+
   const [roomName, setRoomName] = useState("");
   const [chatRooms, setChatRooms] = useState<ChatRoom[]>([]);
 
@@ -31,7 +51,10 @@ const Lobby: React.FC = () => {
       const params = new URLSearchParams();
       params.append("name", roomName);
 
-      const response = await axios.post("http://localhost:8080/chat/room", params);
+      const response = await axios.post(
+        "http://localhost:8080/chat/room",
+        params
+      );
       alert(`${response.data.name} 방 개설에 성공하였습니다.`);
       setRoomName("");
       await findAllRooms();
@@ -42,12 +65,12 @@ const Lobby: React.FC = () => {
 
   const enterRoom = (chatRoomSeq: string) => {
     console.log(chatRoomSeq);
-    const sender = prompt("대화명을 입력해 주세요.");
-    if (sender !== null && sender !== "") {
-      localStorage.setItem("wschat.sender", sender);
+    // const sender = prompt("대화명을 입력해 주세요.");
+    // if (sender !== null && sender !== "") {
+      // localStorage.setItem("wschat.sender", sender);
       localStorage.setItem("wschat.roomId", chatRoomSeq);
       window.location.href = `/chat/room/${chatRoomSeq}`;
-    }
+    // }
   };
 
   return (
@@ -55,13 +78,19 @@ const Lobby: React.FC = () => {
       <h3>채팅방 리스트</h3>
       <div>
         <label>방제목</label>
-        <input
-          type="text"
-          value={roomName}
-          onChange={(e) => setRoomName(e.target.value)}
-          onKeyUp={(e) => e.key === "Enter" && createRoom()}
-        />
-        <button onClick={createRoom}>채팅방 개설</button>
+        <form onSubmit={handleSubmit(create)}>
+          <input
+            {...register("clientSeq", {
+              required: "내담자 번호",
+            })}
+          />
+          <input
+            {...register("counselorSeq", {
+              required: "상담가 번호",
+            })}
+          />
+          <button type="submit">채팅방 개설</button>
+        </form>
       </div>
       <ul>
         {chatRooms.map((room) => (
