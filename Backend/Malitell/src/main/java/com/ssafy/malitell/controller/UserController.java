@@ -1,5 +1,6 @@
 package com.ssafy.malitell.controller;
 
+import com.ssafy.malitell.domain.tag.StatusTag;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.auth.PasswordRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;

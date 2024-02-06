@@ -17,8 +17,8 @@ public class SelfHelpGroupController {
 
     // 자조모임 참가
     @PostMapping("/selfHelpGroup/participate")
-    public ResponseEntity<?> participate(int GatheringSeq, Principal principal) {
-        selfHelpGroupService.participate(GatheringSeq, principal);
+    public ResponseEntity<?> participate(int gatheringSeq, Principal principal) {
+        selfHelpGroupService.participate(gatheringSeq, principal);
         return new ResponseEntity<>(HttpStatus.OK);
 
     }
