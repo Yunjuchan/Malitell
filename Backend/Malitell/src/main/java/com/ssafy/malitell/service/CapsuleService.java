@@ -21,6 +21,6 @@ public class CapsuleService {
         Random random = new Random();
         Capsule capsule = allCapsule.get(random.nextInt(allCapsule.size()));
 
-        return new CapsuleResponseDto(capsule.getPhrases(), capsule.getVideoLink());
+        return new CapsuleResponseDto(capsule.getPhrases(), capsule.getVideoUrl());
     }
 }
