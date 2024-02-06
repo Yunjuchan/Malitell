@@ -2,12 +2,11 @@ package com.ssafy.malitell.service.implement;
 
 
 import com.ssafy.malitell.common.CertificationNumber;
-import com.ssafy.malitell.domain.auth.CertificationEntity;
+import com.ssafy.malitell.domain.auth.emailAuth;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.auth.*;
 import com.ssafy.malitell.dto.response.ResponseDto;
 import com.ssafy.malitell.dto.response.auth.*;
-import com.ssafy.malitell.jwt.JWTUtil;
 import com.ssafy.malitell.repository.CertificationRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import com.ssafy.malitell.service.AuthService;
@@ -62,8 +61,8 @@ public class AuthServiceImplement implements AuthService {
             boolean isSuccessed = emailUtil.sendCertificationMail(email, certificationNumber);
             if (!isSuccessed) return EmailCertificationResponseDto.mailSendFail();
 
-            CertificationEntity certificationEntity = new CertificationEntity(userId, email, certificationNumber);
-            certificationRepository.save(certificationEntity);
+            emailAuth emailAuth = new emailAuth(userId, email, certificationNumber);
+            certificationRepository.save(emailAuth);
 
         } catch (Exception exception) {
             log.error(exception.getMessage());
@@ -81,12 +80,12 @@ public class AuthServiceImplement implements AuthService {
             String email = dto.getEmail();
             String certificationNumber = dto.getCertificationNumber();
 
-            CertificationEntity certificationEntity = certificationRepository.findByUserId(userId);
-            if (certificationEntity == null) {
+            emailAuth emailAuth = certificationRepository.findByUserId(userId);
+            if (emailAuth == null) {
                 return CheckCertificationResponseDto.certificationFail();
             }
 
-            boolean isMatched = certificationEntity.getEmail().equals(email) && certificationEntity.getCertificationNumber().equals(certificationNumber);
+            boolean isMatched = emailAuth.getEmail().equals(email) && emailAuth.getCertificationNumber().equals(certificationNumber);
             if (!isMatched) return CheckCertificationResponseDto.certificationFail();
 
         } catch (Exception exception) {
@@ -108,8 +107,8 @@ public class AuthServiceImplement implements AuthService {
 
             String email = dto.getEmail();
             String certificationNumber = dto.getCertificationNumber();
-            CertificationEntity certificationEntity = certificationRepository.findByUserId(userId);
-            boolean isMatched = certificationEntity.getEmail().equals(email) && certificationEntity.getCertificationNumber().equals(certificationNumber);
+            emailAuth emailAuth = certificationRepository.findByUserId(userId);
+            boolean isMatched = emailAuth.getEmail().equals(email) && emailAuth.getCertificationNumber().equals(certificationNumber);
             if (!isMatched) {
                 return SignUpResponseDto.certificationFail();
             }

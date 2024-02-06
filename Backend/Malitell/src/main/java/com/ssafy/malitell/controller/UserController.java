@@ -128,6 +128,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    // 회원 비밀번호 변경
     @PutMapping("/mypage/user/updatePassword")
     public ResponseEntity<?> updatePassword(Principal principal, @RequestBody PasswordRequestDto passwordRequestDto) {
         String userId = principal.getName();
