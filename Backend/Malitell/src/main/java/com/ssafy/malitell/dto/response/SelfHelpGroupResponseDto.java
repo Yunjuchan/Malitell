@@ -26,4 +26,7 @@ public class SelfHelpGroupResponseDto {
 
     // 자조모임 태그
     private SelfHelpType selfHelpType;
+
+    // 자조모임 번호
+    private int selfHelpGroupSeq;
 }

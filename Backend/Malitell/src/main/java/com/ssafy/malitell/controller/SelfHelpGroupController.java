@@ -12,12 +12,11 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/selfHelpGroup")
 public class SelfHelpGroupController {
     private final SelfHelpGroupService selfHelpGroupService;
 
     // 자조모임 참가
-    @PostMapping("/participate")
+    @PostMapping("/selfHelpGroup/participate")
     public ResponseEntity<?> participate(int GatheringSeq, Principal principal) {
         selfHelpGroupService.participate(GatheringSeq, principal);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -25,16 +24,16 @@ public class SelfHelpGroupController {
     }
 
     // 자조모임 조회
-    @GetMapping("/all")
+    @GetMapping("/mypage/selfHelpGroup/all")
     public ResponseEntity<List<SelfHelpGroupResponseDto>> getAllSelfHelpGroups(Principal principal) {
         List<SelfHelpGroupResponseDto> selfHelpGroupList = selfHelpGroupService.getAllSelfHelpGroups(principal);
         return new ResponseEntity<>(selfHelpGroupList, HttpStatus.OK);
     }
 
     // 자조모임 삭제
-    @DeleteMapping("/leave")
-    public ResponseEntity<?> leaveSelfHelpGroup(int SelfHelpGroupSeq, Principal principal) {
-        selfHelpGroupService.leaveSelfHelpGroup(SelfHelpGroupSeq, principal);
+    @DeleteMapping("/mypage/selfHelpGroup/leave/{selfHelpGroupSeq}")
+    public ResponseEntity<?> leaveSelfHelpGroup(@PathVariable int selfHelpGroupSeq, Principal principal) {
+        selfHelpGroupService.leaveSelfHelpGroup(selfHelpGroupSeq, principal);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
