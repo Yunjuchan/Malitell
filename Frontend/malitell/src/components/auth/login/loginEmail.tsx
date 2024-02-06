@@ -14,6 +14,7 @@ import { faBackward, faLock, faXmark } from "@fortawesome/free-solid-svg-icons";
 import malitell from "../../../assets/images/malitell.png";
 import { useForm } from "react-hook-form";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
+import {login} from '../../../store/auth/userSlice';
 
 // 로그인 선택 모달에서 전달받은 Props(백그라운드 제어, 모달제어)
 interface LoginProps {
@@ -53,6 +54,7 @@ export default function LoginEmail({
   const handleFocusPw = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
     setFocusPw(!focusPw);
   };
+  
 
   return (
     <Wrapper>
