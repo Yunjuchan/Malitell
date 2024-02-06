@@ -1,6 +1,5 @@
 package com.ssafy.malitell.service;
 
-import com.ssafy.malitell.domain.board.gathering.Gathering;
 import com.ssafy.malitell.domain.counseling.Counseling;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.auth.PasswordRequestDto;
@@ -146,11 +145,11 @@ public class UserService {
                 User findClient = userRepository.findByUserSeq(clientSeq);
                 User findCounselor = userRepository.findByUserSeq(counselorSeq);
 
-                findClient.setMessage("오늘 상담이 있는 날입니다.");
-                findClient.setReadChk(1);
+                findClient.setAlramMessage("오늘 상담이 있는 날입니다.");
+                findClient.setReadCheck(1);
 
-                findCounselor.setMessage("오늘 상담이 있는 날입니다.");
-                findCounselor.setReadChk(1);
+                findCounselor.setAlramMessage("오늘 상담이 있는 날입니다.");
+                findCounselor.setReadCheck(1);
 
             } else {
                 System.out.println("현재 Timestamp는 오늘 날짜가 아닙니다.");
@@ -163,7 +162,7 @@ public class UserService {
     @Transactional
     public String readMemo(String userId) {
         User findUser = userRepository.findByUserId(userId);
-        findUser.setReadChk(0);
-        return findUser.getMessage();
+        findUser.setReadCheck(0);
+        return findUser.getAlramMessage();
     }
 }

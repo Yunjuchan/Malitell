@@ -1,7 +1,7 @@
 package com.ssafy.malitell.domain.user;
 
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
-import com.ssafy.malitell.dto.request.auth.PasswordRequestDto;
+import com.ssafy.malitell.domain.tag.StatusTag;
 import com.ssafy.malitell.dto.request.auth.SignUpRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
@@ -49,12 +49,15 @@ public class User {
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
 //    List<Board> boards = new ArrayList<>();
 
-    private String message;
-    private int readChk; // 안 읽었으면 1 , 읽었으면 0
+    private String alramMessage;
+    private int readCheck; // 안 읽었으면 1 , 읽었으면 0
 
     // 참가하고 있는 자조모임
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<SelfHelpGroupUser> selfHelpGroupUsers = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<StatusTag> statusTags = new ArrayList<>();
 
     public void addSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {
         selfHelpGroupUsers.add(selfHelpGroupUser);

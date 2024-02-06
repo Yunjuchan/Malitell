@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity(name = "certification")
 @Table(name = "certification")
-public class CertificationEntity {
+public class emailAuth {
     
     @Id
     private String userId;
