@@ -1,18 +1,13 @@
 package com.ssafy.malitell.controller;
 
-import com.ssafy.malitell.domain.chat.ChatMessage;
 import com.ssafy.malitell.domain.chat.ChatRoom;
 import com.ssafy.malitell.dto.request.chat.ChatRequestDto;
 import com.ssafy.malitell.dto.response.chat.ChatMessageResponseDto;
 import com.ssafy.malitell.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.messaging.handler.annotation.DestinationVariable;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -21,11 +16,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ChatController {
     private final ChatService chatService;
-    private final SimpMessageSendingOperations sendingOperations;
 
     // 채팅방 생성
     @PostMapping("/room")
-    public ChatRoom createRoom(@RequestBody ChatRequestDto chatRequestDto) {
+    public ChatRoom createRoom(@RequestBody ChatRequestDto chatRequestDto) throws Exception {
         return chatService.createChatRoom(chatRequestDto);
     }
 

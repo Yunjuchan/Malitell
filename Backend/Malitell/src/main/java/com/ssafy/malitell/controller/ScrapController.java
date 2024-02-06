@@ -18,15 +18,15 @@ import java.util.List;
 public class ScrapController {
     private final ScrapService scrapService;
 
-    @GetMapping("/scrap")
+    @PostMapping("/scrap")
     public ResponseEntity<?> createScrap(@RequestBody ScrapRequestDto scrapRequestDto, Principal principal) {
         scrapService.createScrap(scrapRequestDto, principal);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/scrap")
-    public ResponseEntity<?> deleteScrap(@RequestBody ScrapRequestDto scrapRequestDto) {
-        scrapService.deleteScrap(scrapRequestDto.getGatheringSeq());
+    @DeleteMapping("/scrap/{scrapSeq}")
+    public ResponseEntity<?> deleteScrap(@PathVariable int scrapSeq) {
+        scrapService.deleteScrap(scrapSeq);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

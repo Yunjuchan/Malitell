@@ -20,12 +20,27 @@ public class ChatService {
     private final ChatMessageRepository chatMessageRepository;
     private final UserRepository userRepository;
 
-    public ChatRoom createChatRoom(ChatRequestDto chatRequestDto) {
+    public boolean isExists(User counselor, User client) {
+        return chatRoomRepository.findRoomCounselorAndClient(counselor.getUserSeq(), client.getUserSeq()) != null;
+    }
+
+    public ChatRoom createChatRoom(ChatRequestDto chatRequestDto) throws Exception {
         int counselorSeq = chatRequestDto.getCounselorSeq();
         int clientSeq = chatRequestDto.getClientSeq();
 
         User counselor = userRepository.findByUserSeq(counselorSeq);
         User client = userRepository.findByUserSeq(clientSeq);
+
+
+        // counselor나 client가 존재하지 않을 경우
+        if (counselor == null || client == null) {
+            throw new Exception("counselor 혹은 client가 존재하지 않습니다.");
+        }
+
+        // 이미 존재하는 채팅방일 경우 해당 채팅방 return
+        if (isExists(counselor, client)) {
+            return chatRoomRepository.findRoomCounselorAndClient(counselor.getUserSeq(), client.getUserSeq());
+        }
 
         ChatRoom chatRoom = chatRoomRepository.createChatRoom(counselor, client);
 
