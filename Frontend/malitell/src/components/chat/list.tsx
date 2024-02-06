@@ -1,67 +1,32 @@
-import { create } from "domain";
-import React, { useEffect } from "react";
-import styled from "styled-components";
+import * as s from "../../styles/chat/list";
+import profile from "../../assets/images/favicon.png";
+import { useState } from "react";
+import Chatting from "./chatting";
 
-interface LobbyProps {
-  setCreate: React.Dispatch<React.SetStateAction<boolean>>;
-  setRoom: React.Dispatch<React.SetStateAction<number>>;
-}
+export default function List() {
+  // 방 정보 불러온 뒤 참여자 정보 확인 후 본인이 아닌 이용자의 프로필 사진, 닉네임(이름) 불러오기
+  // 채팅 내역 불러와서 가장 최근 메시지 불러와서 띄워줄 것
+  const [join, setJoin] = useState(false);
 
-const Wrapper = styled.div`
-  width: 95%;
-  height: 95%;
-  margin: 2% auto;
-  text-align: center;
-  background-color: white;
-`;
-
-const Room = styled.div`
-  width: 50%;
-  height: 30px;
-  margin: 10px auto;
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 10px;
-`;
-
-const Btn = styled.button`
-  width: 30%;
-  height: 30px;
-  margin: 10px auto;
-  padding: 10px;
-`;
-
-export default function List({ setCreate, setRoom }: LobbyProps) {
-  useEffect(() => {
-    fetch(`http://localhost:8080/chat/room/014abae6-5dd7-4474-971a-cefd5ef22e16`, {
-      method: "GET",
-      // headers: {
-      // "Content-Type": "application/json",
-      // },
-      // body: JSON.stringify(data),
-    }).then((res) => {
-      console.log(res.json());
-      return res;
-    })
-    // .then((res) => {
-      // console.log(res.json())
-    // })
-  });
-
-  // api호출받고 push를 통해 rooms에 방 목록 추가
-  let rooms = [1, 2, 3];
-
-  const handleCreate = (event: React.MouseEvent) => {
-    setCreate(true);
+  const handleJoin = (e: React.MouseEvent) => {
+    setJoin(!join);
   };
 
   return (
-    <Wrapper>
-      <h1>방목록</h1>
-      {rooms.map((room, index) => (
-        <Room key={index}>방 {room}</Room>
-      ))}
-      <Btn onClick={handleCreate}>방 만들기</Btn>
-    </Wrapper>
+    <>
+      {join ? (
+        <Chatting />
+      ) : (
+        <s.Wrapper>
+          <s.Room onClick={handleJoin}>
+            <s.Profile src={profile} />
+            <s.RoomInfo>
+              <s.Name>테스트</s.Name>
+              <s.Message>글자 사이즈 15px입니다.</s.Message>
+            </s.RoomInfo>
+          </s.Room>
+        </s.Wrapper>
+      )}
+    </>
   );
 }
