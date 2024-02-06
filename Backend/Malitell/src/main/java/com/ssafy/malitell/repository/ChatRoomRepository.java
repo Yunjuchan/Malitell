@@ -33,7 +33,7 @@ public class ChatRoomRepository {
     }
 
     public ChatRoom findRoomCounselorAndClient(int counselorSeq, int clientSeq) {
-        return (ChatRoom) entityManager.createQuery("SELECT cr FROM ChatRoom cr WHERE cr.counselor.userSeq = :counselor AND cr.client.userSeq = :client")
+        return entityManager.createQuery("SELECT cr FROM ChatRoom cr WHERE cr.counselor.userSeq = :counselor AND cr.client.userSeq = :client", ChatRoom.class)
                 .setParameter("counselor", counselorSeq)
                 .setParameter("client", clientSeq)
                 .getSingleResult();
@@ -54,6 +54,5 @@ public class ChatRoomRepository {
             chatMessageResponseDtos.add(new ChatMessageResponseDto(chatMessage));
         }
         return chatMessageResponseDtos;
-
     }
 }
