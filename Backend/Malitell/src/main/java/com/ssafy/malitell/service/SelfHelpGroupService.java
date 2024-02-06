@@ -58,18 +58,18 @@ public class SelfHelpGroupService {
 
         List<SelfHelpGroupResponseDto> selfHelpGroupList = new ArrayList<>();
         for (SelfHelpGroupUser selfHelpGroupUser : findUser.getSelfHelpGroupUsers()) {
-            selfHelpGroupList.add(new SelfHelpGroupResponseDto(selfHelpGroupUser.getSelfHelpGroup().getTitle(), selfHelpGroupUser.getSelfHelpGroup().getContent(), selfHelpGroupUser.getSelfHelpGroup().getTimes(), selfHelpGroupUser.getSelfHelpGroup().getSelfHelpType()));
+            selfHelpGroupList.add(new SelfHelpGroupResponseDto(selfHelpGroupUser.getSelfHelpGroup().getTitle(), selfHelpGroupUser.getSelfHelpGroup().getContent(), selfHelpGroupUser.getSelfHelpGroup().getTimes(), selfHelpGroupUser.getSelfHelpGroup().getSelfHelpType(), selfHelpGroupUser.getSelfHelpGroup().getSelfHelpGroupSeq()));
         }
         return selfHelpGroupList;
     }
 
     // 자조모임 탈퇴
     @Transactional
-    public void leaveSelfHelpGroup(int SelfHelpGroupSeq, Principal principal) {
+    public void leaveSelfHelpGroup(int selfHelpGroupSeq, Principal principal) {
         String userId = principal.getName();
         User user = userRepository.findByUserId(userId);
 
-        Optional<SelfHelpGroup> findSelfHelpGroup = selfHelpGroupRepository.findById(SelfHelpGroupSeq);
+        Optional<SelfHelpGroup> findSelfHelpGroup = selfHelpGroupRepository.findById(selfHelpGroupSeq);
         SelfHelpGroup selfHelpGroup = findSelfHelpGroup.get();
 
         SelfHelpGroupUser selfHelpGroupUser = selfHelpGroupUserRepository.findSelfHelpGroupUserBySelfHelpGroupAndUser(selfHelpGroup, user);
