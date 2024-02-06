@@ -66,7 +66,7 @@ public class SecurityConfig {
 
         // 경로별 인가 작업
         http.authorizeHttpRequests((auth) -> auth
-                .requestMatchers("/", "/user/join/**", "/login", "/oauth2/**", "/user/reissue", "/chat/**", "/user/exists/**", "/auth/**", "/ws-stomp/**", "/getCounselorList").permitAll()
+                .requestMatchers("/", "/user/join/**", "/login", "/oauth2/**", "/user/reissue", "/chat/**", "/user/exists/**", "/auth/**", "/ws-stomp/**", "/getCounselorList", "/getCounselor/**").permitAll()
                 .requestMatchers("/reserve", "/board", "/counseling/review/**", "/mypage/counselingLog", "/mypage/counselingReviewList/**").hasRole("CLIENT")
                 .requestMatchers("/counseling/saveCounselingLog/**").hasRole("COUNSELOR") // 상담자, 관리자 권한 처리하기
                 .anyRequest().authenticated());

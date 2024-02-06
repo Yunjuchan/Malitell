@@ -45,6 +45,7 @@ public class User {
     private String professionalField; // 전문분야
     private int careerPeriod; // 경력
     private double grade; // 평점
+    private String comment; // 소개 멘트
     private String type; // 타입 (kakao, naver)
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
 //    List<Board> boards = new ArrayList<>();
