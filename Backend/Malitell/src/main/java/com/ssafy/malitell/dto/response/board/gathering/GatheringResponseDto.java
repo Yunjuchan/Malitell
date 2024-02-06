@@ -1,7 +1,7 @@
 package com.ssafy.malitell.dto.response.board.gathering;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.ssafy.malitell.domain.board.gathering.Gathering;
+import com.ssafy.malitell.domain.board.Gathering;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
 import lombok.Getter;
 
@@ -22,7 +22,7 @@ public class GatheringResponseDto {
         this.title = gathering.getTitle();
         this.content = gathering.getContent();
         this.selfHelpGroup = gathering.getSelfHelpGroup();
-        this.name = gathering.getName();
+        this.name = gathering.getUser().getName();
         this.hit = gathering.getHit();
         this.time = gathering.getTime();
     }

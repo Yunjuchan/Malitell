@@ -1,6 +1,6 @@
 package com.ssafy.malitell.service;
 
-import com.ssafy.malitell.domain.board.gathering.Gathering;
+import com.ssafy.malitell.domain.board.Gathering;
 import com.ssafy.malitell.domain.scrap.Scrap;
 import com.ssafy.malitell.dto.request.scrap.ScrapRequestDto;
 import com.ssafy.malitell.repository.GatheringRepository;
