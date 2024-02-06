@@ -69,6 +69,11 @@ public class User {
         selfHelpGroupUser.setUser(null);
     }
 
+    public void addTag(List<StatusTag> statusTags) {
+        this.statusTags = statusTags;
+    }
+
+
     public User(SignUpRequestDto dto) {
         this.userId = dto.getUserId();
         this.password = dto.getPassword();
