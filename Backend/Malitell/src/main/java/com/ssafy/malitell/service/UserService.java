@@ -39,7 +39,7 @@ public class UserService {
 
         Boolean isExist = userRepository.existsByUserId(userId);
 
-        if(isExist) {
+        if (isExist) {
             return;
         }
 
@@ -61,6 +61,15 @@ public class UserService {
     }
 
     public void joinCounselor(CounselorJoinRequestDto counselorJoinRequestDto) {
+        
+        // 중복 검증
+
+        String userId = counselorJoinRequestDto.getUserId();
+        Boolean isExist = userRepository.existsByUserId(userId);
+
+        if (isExist) {
+            return;
+        }
         User user = new User();
         user.setUserId(counselorJoinRequestDto.getUserId());
         user.setName(counselorJoinRequestDto.getName());
