@@ -103,8 +103,9 @@ public class ReserveRepositoryImpl implements ReserveRepositoryCustom {
 
     @Override
     public List<Counseling> findAllByCounselorSeq(int counselorSeq) {
-
-        return null;
+        return entityManager.createQuery("SELECT c FROM Counseling c WHERE c.counselorSeq = :counselorSeq", Counseling.class)
+                .setParameter("counselorSeq", counselorSeq)
+                .getResultList();
     }
 
     @Override
@@ -119,11 +120,10 @@ public class ReserveRepositoryImpl implements ReserveRepositoryCustom {
 
     @Override
     public List<CounselingReview> getCounselingReviewList(int loginUserSeq) {
-        List<CounselingReview> counselingReviewList = entityManager.createQuery("SELECT cr FROM CounselingReview cr JOIN FETCH cr.counseling WHERE cr.counseling.clientSeq = :loginUserSeq")
+        List<CounselingReview> counselingReviewList = entityManager.createQuery("SELECT cr FROM CounselingReview cr JOIN FETCH cr.counseling WHERE cr.counseling.clientSeq = :loginUserSeq", CounselingReview.class)
                 .setParameter("loginUserSeq", loginUserSeq)
                 .getResultList();
         return counselingReviewList;
     }
-
 
 }
