@@ -31,4 +31,8 @@ public interface ReserveRepositoryCustom {
 
     public List<Counseling> findAllByCounselorSeq(int counselorSeq);
 
+    public List<CounselingReview> getCounselingReviewListOrderByDate(int loginUserSeq);
+
+    public List<CounselingReview> getCounselingReviewList(int loginUserSeq);
+
 }
