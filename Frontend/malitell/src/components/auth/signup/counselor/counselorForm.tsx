@@ -46,7 +46,7 @@ export default function CounselorForm({ setSuccess }: SignupProps) {
   const onSubmit = (data: FormData) => {
     console.log("데이터: ", JSON.stringify(data));
 
-    fetch(`http://localhost:8080/user/join/counselor`, {
+    fetch(`http://localhost:8080/auth/email-certification`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +59,7 @@ export default function CounselorForm({ setSuccess }: SignupProps) {
       })
       .then((res) => {
         if (res.status === 200) {
-          fetch(`http://localhost:8080/auth/email-certification`, {
+          fetch(`http://localhost:8080/user/join/counselor`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

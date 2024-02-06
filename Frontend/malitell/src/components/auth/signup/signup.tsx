@@ -41,10 +41,10 @@ export default function Signup({
       <ToolBox>
         <FontAwesomeIcon
           onClick={
-            client
-              ? success
-                ? handleSignup
-                : handleClient
+            success
+              ? handleSignup
+              : client
+              ? handleClient
               : counselor
               ? handleCounselor
               : handleSignup
