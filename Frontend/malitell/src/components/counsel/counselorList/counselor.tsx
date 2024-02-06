@@ -1,5 +1,14 @@
+import { Link } from "react-router-dom";
 import { Wrapper } from "../../../styles/counsel/counselor";
 
-export default function Counselor() {
-  return <Wrapper>asd</Wrapper>;
+interface CounselorProps {
+  counselorSeq: number;
+}
+
+export default function Counselor({ counselorSeq }: CounselorProps) {
+  return (
+    <Wrapper>
+      counselor {counselorSeq}
+    </Wrapper>
+  );
 }
