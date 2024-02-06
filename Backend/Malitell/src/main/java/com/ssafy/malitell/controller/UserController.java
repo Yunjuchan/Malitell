@@ -142,4 +142,11 @@ public class UserController {
         String message = userService.readMemo(name);
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
+
+    @GetMapping("/mypage/getAllBoards")
+    public ResponseEntity<?> getAllBoards(Principal principal) {
+        String userId = principal.getName();
+        ResponseEntity<?> allBoards = userService.getAllBoards(userId);
+        return new ResponseEntity<>(allBoards, HttpStatus.OK);
+    }
 }

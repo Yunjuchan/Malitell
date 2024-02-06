@@ -1,6 +1,5 @@
 package com.ssafy.malitell.repository.user;
 
-import com.ssafy.malitell.domain.board.gathering.Gathering;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.response.user.ClientResponseDto;
 import com.ssafy.malitell.dto.response.user.CounselorResponseDto;

@@ -1,11 +1,13 @@
 package com.ssafy.malitell.service;
 
-import com.ssafy.malitell.domain.board.overcoming.OverComing;
+import com.ssafy.malitell.domain.board.OverComing;
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.board.overcoming.OverComingRequestDto;
 import com.ssafy.malitell.dto.request.board.overcoming.OverComingUpdateRequestDto;
 import com.ssafy.malitell.dto.response.board.overcoming.OverComingListResponseDto;
 import com.ssafy.malitell.dto.response.board.overcoming.OverComingResponseDto;
 import com.ssafy.malitell.repository.OverComingRepository;
+import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,11 +22,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OverComingService {
     private final OverComingRepository overComingRepository;
+    private final UserRepository userRepository;
 
     // 게시글 작성
     public void createOverComing(OverComingRequestDto requestDto, Principal principal) {
-        String name = principal.getName();
-        OverComing overComing = new OverComing(name, requestDto);
+        String userId = principal.getName();
+        User findUser = userRepository.findByUserId(userId);
+        OverComing overComing = new OverComing(findUser, requestDto);
 
         overComingRepository.save(overComing);
     }

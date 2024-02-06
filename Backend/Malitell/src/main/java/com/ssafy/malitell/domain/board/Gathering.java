@@ -1,7 +1,8 @@
-package com.ssafy.malitell.domain.board.gathering;
+package com.ssafy.malitell.domain.board;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.board.gathering.GatheringUpdateRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,8 +28,9 @@ public class Gathering {
     @JoinColumn(name = "selfHelpGroup_seq")
     private SelfHelpGroup selfHelpGroup;
 
-    // 작성자 이름
-    private String name;
+    // 작성자
+    @ManyToOne
+    private User user;
 
     // 게시물 제목
     private String title;
@@ -43,9 +45,9 @@ public class Gathering {
     // 게시물 조회수
     private int hit;
 
-    public Gathering(SelfHelpGroup selfHelpGroup, String name, String title, String content) {
+    public Gathering(SelfHelpGroup selfHelpGroup, User user, String title, String content) {
         this.selfHelpGroup = selfHelpGroup;
-        this.name = name;
+        this.user = user;
         this.title = title;
         this.content = content;
         this.hit = 0;
