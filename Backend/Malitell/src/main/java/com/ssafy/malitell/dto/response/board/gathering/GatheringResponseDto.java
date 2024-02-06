@@ -24,7 +24,7 @@ public class GatheringResponseDto {
         this.selfHelpGroup = gathering.getSelfHelpGroup();
         this.name = gathering.getName();
         this.hit = gathering.getHit();
-        this.time = getTime();
+        this.time = gathering.getTime();
     }
 
 }
