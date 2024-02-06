@@ -25,6 +25,7 @@ import CounselingClient from "./routes/counsel/counselingClient";
 import Vendingmachine from "./components/common/vendingmachine";
 import Chat from "./routes/chat";
 import Room from "./components/chat/room";
+import List from "./components/chat/list";
 
 // 중첩라우팅
 const router = createBrowserRouter([
@@ -105,8 +106,12 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/chat",
+    path: "/chat12",
     element: <Chat />,
+  },
+  {
+    path: "/chat",
+    element: <List />,
   },
   {
     path: "/chat/room/:roomId",

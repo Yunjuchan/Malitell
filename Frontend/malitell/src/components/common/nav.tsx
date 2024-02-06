@@ -22,6 +22,10 @@ export default function Nav() {
   const handleLogin = (e: React.MouseEvent): void => {
     setLogin(!login);
   };
+  const openChat = () => {
+    const url = '/chat'
+    window.open(url, "_blank", "width=400, height=530");
+  }
 
   return (
     <>
@@ -76,6 +80,7 @@ export default function Nav() {
           <s.NavItems $col="11/13" $row="2/4" $align="end">
             <s.NavItem $width="70px">
               <FontAwesomeIcon
+              onClick={openChat}
                 icon={faComment}
                 style={{ color: "#BF94E4" }}
                 size="2x"

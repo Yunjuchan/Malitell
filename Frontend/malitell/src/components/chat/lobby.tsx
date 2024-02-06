@@ -22,11 +22,12 @@ const Lobby: React.FC = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     }).then((res) => {
       console.log(res);
-    })
-  }
+      console.log(data);
+    });
+  };
 
   const [roomName, setRoomName] = useState("");
   const [chatRooms, setChatRooms] = useState<ChatRoom[]>([]);
@@ -65,12 +66,12 @@ const Lobby: React.FC = () => {
 
   const enterRoom = (chatRoomSeq: string) => {
     console.log(chatRoomSeq);
-    // const sender = prompt("대화명을 입력해 주세요.");
-    // if (sender !== null && sender !== "") {
-      // localStorage.setItem("wschat.sender", sender);
-      localStorage.setItem("wschat.roomId", chatRoomSeq);
-      window.location.href = `/chat/room/${chatRoomSeq}`;
-    // }
+    const sender = prompt("대화명을 입력해 주세요.");
+    if (sender !== null && sender !== "") {
+    localStorage.setItem("wschat.sender", sender);
+    localStorage.setItem("wschat.roomId", chatRoomSeq);
+    window.location.href = `/chat/room/${chatRoomSeq}`;
+    }
   };
 
   return (
