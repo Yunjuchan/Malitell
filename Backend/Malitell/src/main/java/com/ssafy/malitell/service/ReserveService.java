@@ -4,9 +4,11 @@ import com.ssafy.malitell.domain.counseling.Counseling;
 import com.ssafy.malitell.domain.counseling.CounselingLog;
 import com.ssafy.malitell.domain.counseling.CounselingReview;
 import com.ssafy.malitell.domain.user.User;
+import com.ssafy.malitell.dto.request.reserve.CounselingLogRequestDto;
 import com.ssafy.malitell.dto.request.reserve.CounselingReviewRequestDto;
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
 import com.ssafy.malitell.dto.response.reserve.*;
+import com.ssafy.malitell.repository.CounselingLogRepository;
 import com.ssafy.malitell.repository.CounselingReviewRepository;
 import com.ssafy.malitell.repository.ReserveRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
@@ -26,6 +28,7 @@ public class ReserveService {
 
     private final ReserveRepository reserveRepository;
     private final UserRepository userRepository;
+    private final CounselingLogRepository counselingLogRepository;
     private final CounselingReviewRepository counselingReviewRepository;
 
     public List<CounselorListResponseDto> getCounselorList() {
@@ -99,6 +102,17 @@ public class ReserveService {
             reservationList.add(new ReservationListResponseDto(counselingDate, name));
         }
         return reservationList;
+    }
+
+    public void saveCounselingLog(int counselingSeq, CounselingLogRequestDto counselingLogRequestDto) {
+        String content = counselingLogRequestDto.getContent();
+        Optional<Counseling> counseling = reserveRepository.findById(counselingSeq);
+        if(counseling.isPresent()) {
+            CounselingLog counselingLog = new CounselingLog(content, counseling.get());
+            counselingLogRepository.save(counselingLog);
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 
     public List<?> getCounselingLogList(Principal principal) {

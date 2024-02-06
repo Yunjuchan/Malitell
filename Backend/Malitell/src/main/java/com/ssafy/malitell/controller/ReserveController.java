@@ -1,6 +1,7 @@
 package com.ssafy.malitell.controller;
 
 import com.ssafy.malitell.domain.counseling.CounselingReview;
+import com.ssafy.malitell.dto.request.reserve.CounselingLogRequestDto;
 import com.ssafy.malitell.dto.request.reserve.CounselingReviewRequestDto;
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
 import com.ssafy.malitell.dto.response.reserve.CounselorListResponseDto;
@@ -28,12 +29,6 @@ public class ReserveController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    // 상담 예약 폼 조회
-//    @GetMapping("/reserve/{counselorSeq}")
-//    public ResponseEntity<Void> reserve(@PathVariable int counselorSeq) {
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
-
     // 상담 예약
     @PostMapping("/reserve/{counselorSeq}")
     public ResponseEntity<Integer> reserve(@PathVariable int counselorSeq, @RequestBody ReserveRequestDto reserveRequestDtoDto, Principal principal) {
@@ -48,6 +43,14 @@ public class ReserveController {
 
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
+    // [상담자] 상담일지 저장
+    @PostMapping("/counseling/saveCounselingLog/{counselingSeq}")
+    public ResponseEntity<Void> saveCounselingLog(@PathVariable int counselingSeq, @RequestBody CounselingLogRequestDto counselingLogRequestDto) {
+        reserveService.saveCounselingLog(counselingSeq, counselingLogRequestDto);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
     // [내담자/상담자] 나의 상담일지 목록 조회
     // 마이페이지-나의상담일지 -> 디폴트는 최근순

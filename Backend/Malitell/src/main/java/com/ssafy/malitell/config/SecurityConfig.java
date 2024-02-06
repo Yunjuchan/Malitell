@@ -68,7 +68,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests((auth) -> auth
                 .requestMatchers("/", "/user/join/**", "/login", "/oauth2/**", "/user/reissue", "/chat/**", "/user/exists/**", "/auth/**", "/ws-stomp/**", "/getCounselorList").permitAll()
                 .requestMatchers("/reserve", "/board", "/counseling/review/**", "/mypage/counselingLog", "/mypage/counselingReviewList/**").hasRole("CLIENT")
-//                .requestMatchers("/board").hasRole("COUNSELOR") // 상담자, 관리자 권한 처리하기
+                .requestMatchers("/counseling/saveCounselingLog/**").hasRole("COUNSELOR") // 상담자, 관리자 권한 처리하기
                 .anyRequest().authenticated());
 
         // OAuth2
