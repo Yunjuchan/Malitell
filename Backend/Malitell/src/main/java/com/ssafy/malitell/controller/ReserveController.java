@@ -4,6 +4,7 @@ import com.ssafy.malitell.domain.counseling.CounselingReview;
 import com.ssafy.malitell.dto.request.reserve.CounselingReviewRequestDto;
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
 import com.ssafy.malitell.dto.response.reserve.CounselorListResponseDto;
+import com.ssafy.malitell.dto.response.reserve.MyCounselingLogResponseDto;
 import com.ssafy.malitell.dto.response.reserve.ReservationListResponseDto;
 import com.ssafy.malitell.service.ReserveService;
 import lombok.RequiredArgsConstructor;
@@ -28,10 +29,10 @@ public class ReserveController {
     }
 
     // 상담 예약 폼 조회
-    @GetMapping("/reserve/{counselorSeq}")
-    public ResponseEntity<Void> reserve(@PathVariable int counselorSeq) {
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+//    @GetMapping("/reserve/{counselorSeq}")
+//    public ResponseEntity<Void> reserve(@PathVariable int counselorSeq) {
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 
     // 상담 예약
     @PostMapping("/reserve/{counselorSeq}")
@@ -50,17 +51,28 @@ public class ReserveController {
 
     // [내담자/상담자] 나의 상담일지 목록 조회
     // 마이페이지-나의상담일지 -> 디폴트는 최근순
-    @GetMapping("/mypage/counselingLog/{filter}")
-    public ResponseEntity<?> getCounselingLogList(@PathVariable String filter, Principal principal) {
-        if(filter.equals("최근순")) {
-            List<?> list = reserveService.getCounselingLogListOrderByDate(principal);
-            return new ResponseEntity<>(list, HttpStatus.OK);
-        } else if( filter.equals("이름순")) {
-            List<?> list = reserveService.getListOrderByName(principal);
-            return new ResponseEntity<>(list, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        }
+//    @GetMapping("/mypage/counselingLog/{filter}")
+//    public ResponseEntity<?> getCounselingLogList(@PathVariable String filter, Principal principal) {
+//        if(filter.equals("최근순")) {
+//            List<?> list = reserveService.getCounselingLogListOrderByDate(principal);
+//            return new ResponseEntity<>(list, HttpStatus.OK);
+//        } else if( filter.equals("이름순")) {
+//            List<?> list = reserveService.getListOrderByName(principal);
+//            return new ResponseEntity<>(list, HttpStatus.OK);
+//        } else {
+//            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+//        }
+//    }
+
+    // [내담자/상담자] 마이페이지 - 나의 상담일지 목록 조회
+    // 상담일지 목록이랑 상담자명 목록 DTO에 담아서 return
+    @GetMapping("/mypage/counselingLog")
+    public ResponseEntity<MyCounselingLogResponseDto> getCounselingLogListAndNameList(Principal principal) {
+        List<?> counselingLogList = reserveService.getCounselingLogList(principal);
+        List<String> nameList = reserveService.getNameList(principal);
+        // dto에 담기
+        MyCounselingLogResponseDto myCounselingLogResponseDto = new MyCounselingLogResponseDto(counselingLogList, nameList);
+        return new ResponseEntity<>(myCounselingLogResponseDto, HttpStatus.OK);
     }
 
     // [내담자/상담자] 나의 상담일지 - 이름순
@@ -91,10 +103,28 @@ public class ReserveController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    // 나의 상담후기 조회 (최근순-디폴트/이름순)
+//    @GetMapping("/mypage/counselingReviewList")
+//    public ResponseEntity<?> getCounselingReview(@RequestParam(required = false) String filter, Principal principal) {
+//        // 디폴트 param = 0
+//        // filter -> int? String?
+//        if(filter.equals("latest")) {
+//            List<?> list = reserveService.getCounselingReviewListOrderByDate(principal);
+//            return new ResponseEntity<>(list, HttpStatus.OK);
+//        } else if( filter.equals("name")) {
+//            List<?> list = reserveService.getCounselorListOrderByName(principal);
+//            return new ResponseEntity<>(list, HttpStatus.OK);
+//        } else {
+//            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+//        }
+//    }
+
     // 상담후기 삭제
 //    @DeleteMapping()
 //    public ResponseEntity<> deleteCounselingReview() {
 //
 //    }
+
+
 
 }
