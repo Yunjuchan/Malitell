@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviourPun
 {
@@ -29,7 +30,7 @@ public class PlayerMovement : MonoBehaviourPun
         else
         {
             nicknameText.text = photonView.Owner.NickName;
-            nicknameText.color = Color.red;
+            nicknameText.color = new Color(Random.value, Random.value, Random.value);
         }
         // Animator 컴포넌트
         animator = GetComponent<Animator>();
@@ -63,14 +64,14 @@ public class PlayerMovement : MonoBehaviourPun
                 if (moveX < 0)
                 {
                     transform.localScale = new Vector3(1f, 1f, 1f);
-                    // 플레이어가 왼쪽을 바라볼 때, 닉네임 텍스트만 왼쪽으로 회전하도록 설정
+                    // 플레이어가 왼쪽을 바라볼 때, 닉네임 텍스트, 마이크 버튼, 패널만 왼쪽으로 회전하도록 설정
                     nicknameText.rectTransform.localRotation = Quaternion.Euler(0f, 0f, 0f);
                 }
                 // 오른쪽으로 이동할 때 오른쪽 바라보기
                 else if (moveX > 0)
                 {
                     transform.localScale = new Vector3(-1f, 1f, 1f);
-                    // 플레이어가 오른쪽을 바라볼 때, 닉네임 텍스트만 오른쪽으로 회전하도록 설정
+                    // 플레이어가 오른쪽을 바라볼 때, 닉네임, 마이크 버튼, 패널 텍스트만 오른쪽으로 회전하도록 설정
                     nicknameText.rectTransform.localRotation = Quaternion.Euler(0f, 180f, 0f);
                 }
                 // 왼쪽 쉬프트 누를 때 runNumber 변수 변경, moveSpeed 변경
@@ -138,7 +139,7 @@ public class PlayerMovement : MonoBehaviourPun
                 animator.SetTrigger("Action");
             }
             // F 키 눌렀을 때 키 누르고 있을 동안 애니메이션 반복
-            else if (Input.GetKey(KeyCode.F))
+            else if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
             {
                 // 인사1 애니메이션에 해당하는 actionState 0.2f로 변경 후 애니메이션 실행
                 actionState = 0.2f;
@@ -146,7 +147,7 @@ public class PlayerMovement : MonoBehaviourPun
                 animator.SetTrigger("Action");
             }
             // G 키 눌렀을 때 키 누르고 있을 동안 애니메이션 반복
-            else if (Input.GetKey(KeyCode.G))
+            else if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.Keypad2))
             {
                 // 인사2 애니메이션에 해당하는 actionState 0.3f로 변경 후 애니메이션 실행
                 actionState = 0.3f;
@@ -154,7 +155,7 @@ public class PlayerMovement : MonoBehaviourPun
                 animator.SetTrigger("Action");
             }
             // H 키 눌렀을 떄
-            else if (Input.GetKeyDown(KeyCode.H))
+            else if (Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Keypad3))
             {
                 // 인사3 애니메이션에 해당하는 actionState 0.3f로 변경 후 애니메이션 실행
                 actionState = 0.4f;
