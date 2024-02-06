@@ -1,6 +1,6 @@
 package com.ssafy.malitell.dto.response.board.gathering;
 
-import com.ssafy.malitell.domain.board.gathering.Gathering;
+import com.ssafy.malitell.domain.board.Gathering;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +22,7 @@ public class GatheringListResponseDto {
 
     public GatheringListResponseDto(Gathering gathering) {
         this.title = gathering.getTitle();
-        this.username = gathering.getName();
+        this.username = gathering.getUser().getName();
         this.hit = gathering.getHit();
         this.time = gathering.getTime();
     }

@@ -1,29 +1,33 @@
-package com.ssafy.malitell.domain.board.overcoming;
+package com.ssafy.malitell.domain.board;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.ssafy.malitell.domain.user.User;
+import com.ssafy.malitell.dto.request.board.CommunityRequestDto;
+import com.ssafy.malitell.dto.request.board.CommunityUpdateRequestDto;
 import com.ssafy.malitell.dto.request.board.overcoming.OverComingRequestDto;
 import com.ssafy.malitell.dto.request.board.overcoming.OverComingUpdateRequestDto;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.sql.Timestamp;
 
 @Entity
+@Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OverComing {
+public class Community {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int overcomingSeq;
+    private int communitySeq;
 
-    // 작성자 이름
-    private String name;
+    // 작성자
+    @ManyToOne
+    private User user;
 
     // 게시물 제목
     private String title;
@@ -38,16 +42,16 @@ public class OverComing {
     // 게시물 조회수
     private int hit;
 
-    public OverComing(String name, OverComingRequestDto overComingRequestDto) {
-        this.name = name;
-        this.title = overComingRequestDto.getTitle();
-        this.content = overComingRequestDto.getContent();
+    public Community(User user, CommunityRequestDto communityRequestDto) {
+        this.user = user;
+        this.title = communityRequestDto.getTitle();
+        this.content = communityRequestDto.getContent();
         this.hit = 0;
         this.time = new Timestamp(System.currentTimeMillis());
     }
 
-    public void update(OverComingUpdateRequestDto requestDto) {
-        this.title = requestDto.getTitle();
-        this.content = requestDto.getContent();
+    public void update(CommunityUpdateRequestDto communityUpdateRequestDto) {
+        this.title = communityUpdateRequestDto.getTitle();
+        this.content = communityUpdateRequestDto.getContent();
     }
 }

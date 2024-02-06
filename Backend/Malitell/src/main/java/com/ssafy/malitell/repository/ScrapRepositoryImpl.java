@@ -1,6 +1,6 @@
 package com.ssafy.malitell.repository;
 
-import com.ssafy.malitell.domain.board.gathering.Gathering;
+import com.ssafy.malitell.domain.board.Gathering;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

@@ -1,13 +1,15 @@
 package com.ssafy.malitell.service;
 
-import com.ssafy.malitell.domain.board.gathering.Gathering;
+import com.ssafy.malitell.domain.board.Gathering;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.board.gathering.GatheringCreateRequestDto;
 import com.ssafy.malitell.dto.request.board.gathering.GatheringUpdateRequestDto;
 import com.ssafy.malitell.dto.response.board.gathering.GatheringListResponseDto;
 import com.ssafy.malitell.dto.response.board.gathering.GatheringResponseDto;
 import com.ssafy.malitell.repository.GatheringRepository;
 import com.ssafy.malitell.repository.SelfHelpGroupRepository;
+import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,13 +27,15 @@ public class GatheringService {
 
     private final GatheringRepository gatheringRepository;
     private final SelfHelpGroupRepository selfHelpGroupRepository;
+    private final UserRepository userRepository;
 
     // 글 작성
     public int createGathering(GatheringCreateRequestDto requestDto, Principal principal) {
         String name = principal.getName();
+        User findUser = userRepository.findByUserId(name);
         SelfHelpGroup selfHelpGroup = new SelfHelpGroup(requestDto);
 
-        Gathering gathering = new Gathering(selfHelpGroup, name, requestDto.getTitle(), requestDto.getContent());
+        Gathering gathering = new Gathering(selfHelpGroup, findUser, requestDto.getTitle(), requestDto.getContent());
 
         selfHelpGroupRepository.save(selfHelpGroup);
         gatheringRepository.save(gathering);
@@ -90,7 +94,4 @@ public class GatheringService {
         return null;
     }
 
-//    public List<Gathering> userScrapList(String userId) {
-//        return gatheringRepository.findUserScrapList(userId);
-//    }
 }

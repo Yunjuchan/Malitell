@@ -1,6 +1,8 @@
 package com.ssafy.malitell.service;
 
-import com.ssafy.malitell.domain.board.gathering.Gathering;
+import com.ssafy.malitell.domain.board.Community;
+import com.ssafy.malitell.domain.board.Gathering;
+import com.ssafy.malitell.domain.board.OverComing;
 import com.ssafy.malitell.domain.counseling.Counseling;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.auth.PasswordRequestDto;
@@ -8,15 +10,22 @@ import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
+import com.ssafy.malitell.dto.response.board.BoardsListResponseDto;
 import com.ssafy.malitell.dto.response.user.ClientResponseDto;
 import com.ssafy.malitell.dto.response.user.CounselorResponseDto;
+import com.ssafy.malitell.repository.CommunityRepository;
+import com.ssafy.malitell.repository.GatheringRepository;
+import com.ssafy.malitell.repository.OverComingRepository;
 import com.ssafy.malitell.repository.ReserveRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.security.Principal;
 import java.sql.Timestamp;
@@ -32,6 +41,10 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ReserveRepository reserveRepository;
+    private final GatheringRepository gatheringRepository;
+    private final CommunityRepository communityRepository;
+    private final OverComingRepository overComingRepository;
+
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public void joinClient(ClientJoinRequestDto clientJoinRequestDto) {
@@ -165,5 +178,15 @@ public class UserService {
         User findUser = userRepository.findByUserId(userId);
         findUser.setReadChk(0);
         return findUser.getMessage();
+    }
+
+    public ResponseEntity<?> getAllBoards(String userId) {
+        User findUser = userRepository.findByUserId(userId);
+
+        List<Gathering> gatheringByUser = gatheringRepository.findGatheringByUser(findUser);
+        List<OverComing> overComingByUser = overComingRepository.findOverComingByUser(findUser);
+        List<Community> communityByUser = communityRepository.findCommunityByUser(findUser);
+
+        return new ResponseEntity<>(new BoardsListResponseDto(gatheringByUser, overComingByUser, communityByUser), HttpStatus.OK);
     }
 }
