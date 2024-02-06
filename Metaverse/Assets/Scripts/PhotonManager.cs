@@ -72,25 +72,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         // 연결 상태 표시 업데이트
         ConnectionStatus.text = "로비에 접속";
     }
-
-    public override void OnJoinRandomFailed(short returnCode, string message)
-    {
-        // 연결 상태 표시 업데이트
-        ConnectionStatus.text = "랜덤 룸 접속 실패";
-
-        // 룸 속성 설정
-        RoomOptions ro = new RoomOptions();
-        ro.IsOpen = true;
-        ro.IsVisible = true;
-        ro.MaxPlayers = 10;
-
-        // 랜덤 룸 이름 생성
-        roomNameText.text = $"Room_{Random.Range(1, 100):000}";
-
-        // 룸 생성 (자동으로 입장됨)
-        PhotonNetwork.CreateRoom("room_1", ro);
-    }
-
+   
     public override void OnCreatedRoom()
     {
         // 연결 상태 표시 업데이트
@@ -107,7 +89,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         // PhotonNetwork.Instantiate를 사용하여 플레이어 프리팹 생성
         GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab.name, Vector2.zero, Quaternion.identity);
     }
-   
+
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         GameObject tempRoom = null;
@@ -145,28 +127,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     }
 
     #region UI_BUTTON_CALLBACK
-    // 랜덤 버튼 클릭 시 호출
-    public void OnRandomBtn()
-    {
-        // ID 인풋필드가 비어 있으면
-        if (string.IsNullOrEmpty(userIdText.text))
-        {
-            // 랜덤 아이디 부여
-            userId = $"User_{Random.Range(0, 100):00}";
-            PlayerPrefs.SetString("User_ID", userId);
-            PhotonNetwork.NickName = userId;
-        }
-        else
-        {
-            // ID 인풋필드가 비어 있지 않으면 그 값을 사용
-            PlayerPrefs.SetString("User_ID", userIdText.text);
-            PhotonNetwork.NickName = userIdText.text;
-        }
-
-        // 랜덤 룸 입장 시도
-        PhotonNetwork.JoinRandomRoom();
-    }
-
     // Room 버튼 클릭 시 호출 (룸 생성)
     public void OnMakeRoomClick()
     {

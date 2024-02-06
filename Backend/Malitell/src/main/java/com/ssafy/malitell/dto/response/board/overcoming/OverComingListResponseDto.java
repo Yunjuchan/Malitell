@@ -1,6 +1,6 @@
 package com.ssafy.malitell.dto.response.board.overcoming;
 
-import com.ssafy.malitell.domain.board.overcoming.OverComing;
+import com.ssafy.malitell.domain.board.OverComing;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +22,7 @@ public class OverComingListResponseDto {
 
     public OverComingListResponseDto(OverComing overComing) {
         this.title = overComing.getTitle();
-        this.username = overComing.getName();
+        this.username = overComing.getUser().getName();
         this.hit = overComing.getHit();
         this.time = overComing.getTime();
     }

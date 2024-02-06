@@ -1,6 +1,6 @@
 package com.ssafy.malitell.service;
 
-import com.ssafy.malitell.domain.board.gathering.Gathering;
+import com.ssafy.malitell.domain.board.Gathering;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
 import com.ssafy.malitell.domain.user.User;

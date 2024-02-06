@@ -107,5 +107,23 @@ public class ReserveRepositoryImpl implements ReserveRepositoryCustom {
         return null;
     }
 
+    @Override
+    public List<CounselingReview> getCounselingReviewListOrderByDate(int loginUserSeq) {
+        List<CounselingReview> counselingReviewList = entityManager.createQuery("SELECT cr FROM CounselingReview cr JOIN FETCH cr.counseling " +
+                        "WHERE cr.counseling.clientSeq = :loginUserSeq " +
+                        "ORDER BY cr.counseling.counselingDate DESC", CounselingReview.class)
+                .setParameter("loginUserSeq", loginUserSeq)
+                .getResultList();
+        return counselingReviewList;
+    }
+
+    @Override
+    public List<CounselingReview> getCounselingReviewList(int loginUserSeq) {
+        List<CounselingReview> counselingReviewList = entityManager.createQuery("SELECT cr FROM CounselingReview cr JOIN FETCH cr.counseling WHERE cr.counseling.clientSeq = :loginUserSeq")
+                .setParameter("loginUserSeq", loginUserSeq)
+                .getResultList();
+        return counselingReviewList;
+    }
+
 
 }
