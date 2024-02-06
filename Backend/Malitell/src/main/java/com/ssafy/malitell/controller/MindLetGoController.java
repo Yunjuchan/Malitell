@@ -19,10 +19,8 @@ import java.util.List;
 public class MindLetGoController {
     private final MindLetGoService mindLetGoService;
 
-
     // MinLetGo 주제 랜덤 변경
     @Scheduled(fixedRate = 1209600000)
-    @GetMapping("/updateTopic")
     public void updateTopic() {
         mindLetGoService.deleteAll();
         mindLetGoService.updateTopic();
