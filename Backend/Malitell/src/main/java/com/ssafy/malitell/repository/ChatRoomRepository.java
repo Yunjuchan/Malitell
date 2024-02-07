@@ -33,9 +33,9 @@ public class ChatRoomRepository {
     }
 
     public ChatRoom findRoomCounselorAndClient(int counselorSeq, int clientSeq) {
-        return entityManager.createQuery("SELECT cr FROM ChatRoom cr WHERE cr.counselor.userSeq = :counselor AND cr.client.userSeq = :client", ChatRoom.class)
-                .setParameter("counselor", counselorSeq)
-                .setParameter("client", clientSeq)
+        return entityManager.createQuery("SELECT cr FROM ChatRoom cr WHERE cr.counselor.userSeq = :counselorSeq AND cr.client.userSeq = :clientSeq", ChatRoom.class)
+                .setParameter("counselorSeq", counselorSeq)
+                .setParameter("clientSeq", clientSeq)
                 .getSingleResult();
     }
 
