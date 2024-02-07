@@ -27,7 +27,7 @@ public class OverComingController {
     }
 
     // 게시물 목록 조회
-    @GetMapping
+    @GetMapping("/getBoardList")
     public ResponseEntity<List<OverComingListResponseDto>> getAllOverComings() {
         return new ResponseEntity<>(overComingService.findAllOverComing(), HttpStatus.OK);
     }

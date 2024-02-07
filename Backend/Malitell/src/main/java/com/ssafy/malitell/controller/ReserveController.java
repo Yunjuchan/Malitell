@@ -52,7 +52,11 @@ public class ReserveController {
 
 
     // [내담자] 상담 예약 취소
-
+    @DeleteMapping("/mypage/cancelReservation/{counselingSeq}")
+    public ResponseEntity<Void> cancelReservation(@PathVariable int counselingSeq) {
+        reserveService.cancelReservation(counselingSeq);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     // [상담자] 상담일지 저장
     @PostMapping("/counseling/saveCounselingLog/{counselingSeq}")

@@ -18,6 +18,13 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChatMessage {
+    @Override
+    public String toString() {
+        return "ChatMessage{" +
+                "content='" + content + '\'' +
+                "roomSeq='" + chatRoom + '\'' +
+                '}';
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long chatMessageSeq;

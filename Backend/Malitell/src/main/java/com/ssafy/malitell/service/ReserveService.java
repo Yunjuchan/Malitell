@@ -135,6 +135,10 @@ public class ReserveService {
         return reservationList;
     }
 
+    public void cancelReservation(int counselingSeq) {
+        reserveRepository.deleteById(counselingSeq);
+    }
+
     public void saveCounselingLog(int counselingSeq, CounselingLogRequestDto counselingLogRequestDto) {
         String content = counselingLogRequestDto.getContent();
         Optional<Counseling> counseling = reserveRepository.findById(counselingSeq);
