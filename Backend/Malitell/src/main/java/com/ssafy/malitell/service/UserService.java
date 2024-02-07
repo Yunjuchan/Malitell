@@ -113,12 +113,16 @@ public class UserService {
         return userRepository.findByUserId(userId);
     }
 
-//    @Transactional
-//    public void updateClientInfo(String userId, ClientUpdateRequestDto clientUpdateRequestDto) {
-//        User user = userRepository.findByUserId(userId);
-////        List<Statsu>
-//        user.updateClient(clientUpdateRequestDto);
-//    }
+    @Transactional
+    public void updateClientInfo(String userId, ClientUpdateRequestDto clientUpdateRequestDto) {
+        User user = userRepository.findByUserId(userId);
+        List<StatusTag> statusTags = new ArrayList<>();
+        List<Integer> statusTagSeqs = clientUpdateRequestDto.getStatusTags();
+        for (int seq : statusTagSeqs) {
+            statusTags.add(statusTagRepository.findById(seq).get());
+        }
+        user.updateClient(clientUpdateRequestDto, statusTags);
+    }
 
     @Transactional
     public void updateCounselorInfo(String userId, CounselorUpdateRequestDto counselorRequestDto) {
