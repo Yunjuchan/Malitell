@@ -23,10 +23,6 @@ public interface ReserveRepositoryCustom {
 
     public List<CounselingLog> getCounselingLogList2(int loginUserSeq);
 
-    public List<CounselingLog> getCounselingLogsForOne1(int loginUserSeq, int counselorSeq);
-
-    public List<CounselingLog> getCounselingLogsForOne2(int loginUserSeq, int clientSeq);
-
     public List<CounselingReview> counselorReviewList(int counselorSeq);
 
     public List<Counseling> findAllByCounselorSeq(int counselorSeq);
