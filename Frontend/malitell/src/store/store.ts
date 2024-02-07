@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import signupFocusReducer from './auth/signupFocusSlice';
 import signupFormDataReducer from './auth/signupFormDataSlice';
 import userReducer from "./auth/userSlice";
+import boardTypeReducer from "./article/boardSlice";
 
 export const store = configureStore({
   reducer: {
@@ -9,6 +10,7 @@ export const store = configureStore({
     signupFocus: signupFocusReducer,
     signupFormData: signupFormDataReducer,
     user: userReducer,
+    board: boardTypeReducer,
   },
 });
 
