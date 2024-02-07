@@ -42,27 +42,27 @@ const Lobby: React.FC = () => {
     setChatRooms(response.data);
   };
 
-  const createRoom = async () => {
-    if (roomName === "") {
-      alert("방 제목을 입력해 주십시요.");
-      return;
-    }
+  // const createRoom = async () => {
+  //   if (roomName === "") {
+  //     alert("방 제목을 입력해 주십시요.");
+  //     return;
+  //   }
 
-    try {
-      const params = new URLSearchParams();
-      params.append("name", roomName);
+  //   try {
+  //     const params = new URLSearchParams();
+  //     params.append("name", roomName);
 
-      const response = await axios.post(
-        "http://localhost:8080/chat/room",
-        params
-      );
-      alert(`${response.data.name} 방 개설에 성공하였습니다.`);
-      setRoomName("");
-      await findAllRooms();
-    } catch {
-      alert("채팅방 개설에 실패하였습니다.");
-    }
-  };
+  //     const response = await axios.post(
+  //       "http://localhost:8080/chat/room",
+  //       params
+  //     );
+  //     alert(`${response.data.name} 방 개설에 성공하였습니다.`);
+  //     setRoomName("");
+  //     await findAllRooms();
+  //   } catch {
+  //     alert("채팅방 개설에 실패하였습니다.");
+  //   }
+  // };
 
   const enterRoom = (chatRoomSeq: string) => {
     console.log(chatRoomSeq);
@@ -94,8 +94,8 @@ const Lobby: React.FC = () => {
         </form>
       </div>
       <ul>
-        {chatRooms.map((room) => (
-          <li key={room.roomId} onClick={() => enterRoom(room.chatRoomSeq)}>
+        {chatRooms.map((room, index) => (
+          <li key={index} onClick={() => enterRoom(room.chatRoomSeq)}>
             {room.chatRoomSeq}
           </li>
         ))}

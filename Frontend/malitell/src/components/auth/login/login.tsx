@@ -32,6 +32,12 @@ export default function Login({ handleLogin, handleBack }: NavProps) {
     setSignup(!signup);
   };
 
+  const loginKakao = (e: React.MouseEvent): void => {
+    fetch(`http://localhost:8080/auth/oauth2/kakao`, {
+      method: "POST",
+    }).then((res) => console.log(res));
+  };
+
   return (
     <>
       {email ? (
@@ -60,7 +66,7 @@ export default function Login({ handleLogin, handleBack }: NavProps) {
           </Close>
           <Img src={malitell} alt="malitellImage" />
           <BtnBox>
-            <LoginBtn color="#FEE102">
+            <LoginBtn color="#FEE102" onClick={loginKakao}>
               <MethodIcon src={kakao} />
               <MethodText>카카오로 계속하기</MethodText>
             </LoginBtn>

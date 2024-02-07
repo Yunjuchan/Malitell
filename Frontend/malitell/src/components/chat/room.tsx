@@ -26,29 +26,46 @@ export default function RoomComponent() {
         "http://localhost:8080/chat/room/" + roomId.current
       );
       setRoom(response.data);
+      console.log(response.data);
     }
   };
 
+  // const sendMessage = () => {
+  //   if (roomId.current) {
+  //     clientRef.current.sendMessage(
+  //       "/chat/message",
+  //       JSON.stringify({
+  //         chatRoom: {
+  //           chatRoomSeq: roomId.current,
+  //         },
+  //         sender,
+  //         message,
+  //       })
+  //     );
+  //     setMessage("");
+  //   }
+  // };
+
   const sendMessage = () => {
-    console.log(sender);
-    console.log(clientRef.current);
-    console.log(clientRef.current.connected);
-    console.log("send");
-    if (
-      roomId.current &&
-      sender &&
-      clientRef.current
-    ) {
-      console.log("123123")
+    // console.log("send");
+    // console.log(sender);
+    // console.log(clientRef.current);
+    // // console.log(clientRef.current.connected);
+    // console.log("-------------------------");
+    if (roomId.current) {
       clientRef.current.sendMessage(
-        "http://localhost:8080/pub/chat/message",
+        "/pub/chat/message",
         JSON.stringify({
-          type: "TALK",
-          roomId: roomId.current,
-          sender,
-          message,
+          // type: "TALK",
+          "chatRoomSeq": roomId.current,
+          "userSeq": sender,
+          "content": message,
+          "sendTiem": Date()
         })
       );
+      // console.log(clientRef.current.sendMessage);
+      // console.log(message);
+      // console.log(Date());
       setMessage("");
     }
   };
@@ -63,6 +80,18 @@ export default function RoomComponent() {
       ...prevMessages,
     ]);
   };
+
+  // const recvMessage = (recv: Message) => {
+  //   setMessages((prevMessages) => [
+  //     // {
+  //     //   sender: recv.sender,
+  //     //   message: recv.message,
+  //     // },
+  //     recv,
+  //     ...prevMessages,
+  //   ]);
+  //   console.log(recv);
+  // };
 
   useEffect(() => {
     setSender(localStorage.getItem("wschat.sender"));
@@ -92,7 +121,7 @@ export default function RoomComponent() {
       </div>
       <SockJsClient
         url="http://localhost:8080/ws-stomp"
-        topics={["http://localhost:8080/sub/chat/" + roomId.current]}
+        topics={["/chat/room/" + roomId.current]}
         onMessage={recvMessage}
         ref={(client: any) => {
           clientRef.current = client;
