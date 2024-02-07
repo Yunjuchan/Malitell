@@ -16,9 +16,11 @@ public class PlayerMovement : MonoBehaviourPun
     private bool isSleeping = false;
     public GameObject mainScene;
     public TMP_Text nicknameText;
+    private Rigidbody2D rb;
     public void Start()
     {
         mainScene = GameObject.Find("MainScene");
+        rb = GetComponent<Rigidbody2D>();
     }
     private void Awake()
     {
@@ -52,10 +54,10 @@ public class PlayerMovement : MonoBehaviourPun
             float actionState = 0.0f;
 
             // 움직임 제어
-            moveDirection = new Vector3(moveX, moveY, 0);
+            Vector2 moveDirection = new Vector2(moveX, moveY).normalized;
 
-            // 움직임에 따라 위치 변경
-            transform.position += moveDirection * moveSpeed * Time.deltaTime;
+            // Rigidbody 2D의 velocity 속성을 사용하여 이동
+            rb.velocity = moveDirection * moveSpeed;
 
             // 움직임이 있을 때
             if (moveX != 0 || moveY != 0)

@@ -11,13 +11,13 @@ C:\Program Files\Unity\Hub\Editor\2021.3.33f1\Editor\Unity.exe
 -name
 AssetImportWorker7
 -projectPath
-C:/Users/SSAFY/Documents/Unity Projects/Mind Listen and Tell
+C:/Users/SSAFY/Documents/Unity Projects/MaLiTell
 -logFile
 Logs/AssetImportWorker7.log
 -srvPort
-50149
-Successfully changed project path to: C:/Users/SSAFY/Documents/Unity Projects/Mind Listen and Tell
-C:/Users/SSAFY/Documents/Unity Projects/Mind Listen and Tell
+60628
+Successfully changed project path to: C:/Users/SSAFY/Documents/Unity Projects/MaLiTell
+C:/Users/SSAFY/Documents/Unity Projects/MaLiTell
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,16 +47,16 @@ C:/Users/SSAFY/Documents/Unity Projects/Mind Listen and Tell
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [2884] Host "[IP] 192.168.100.47 [Port] 0 [Flags] 2 [Guid] 3582912727 [EditorId] 3582912727 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LL832F4) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [19076] Host "[IP] 192.168.100.47 [Port] 0 [Flags] 2 [Guid] 2379200230 [EditorId] 2379200230 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LL832F4) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [2884] Host "[IP] 192.168.100.47 [Port] 0 [Flags] 2 [Guid] 3582912727 [EditorId] 3582912727 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LL832F4) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [19076] Host "[IP] 192.168.100.47 [Port] 0 [Flags] 2 [Guid] 2379200230 [EditorId] 2379200230 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LL832F4) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with {0} workers.
-Refreshing native plugins compatible for Editor in 97.32 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 1.49 ms.
+Refreshing native plugins compatible for Editor in 80.25 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.33f1 (ee5a2aa03ab2)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/SSAFY/Documents/Unity Projects/Mind Listen and Tell/Assets
+[Subsystems] Discovering subsystems at path C:/Users/SSAFY/Documents/Unity Projects/MaLiTell/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
@@ -68,45 +68,45 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56588
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56316
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.005853 seconds.
+Registered in 0.005435 seconds.
 Native extension for WindowsStandalone target not found
 [usbmuxd] Start listen thread
 [usbmuxd] Listen thread started
 Native extension for iOS target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 1354 ms
+Android Extension - Scanning For ADB Devices 1295 ms
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 113.34 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
+Refreshing native plugins compatible for Editor in 49.44 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.970 seconds
+- Completed reload, in  1.815 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1971ms)
-		BeginReloadAssembly (80ms)
+	ReloadAssembly (1816ms)
+		BeginReloadAssembly (78ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (1816ms)
-			LoadAssemblies (80ms)
+		EndReloadAssembly (1668ms)
+			LoadAssemblies (78ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (100ms)
+			SetupTypeCache (81ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (21ms)
-			SetupLoadedEditorAssemblies (1662ms)
+			RebuildScriptCaches (20ms)
+			SetupLoadedEditorAssemblies (1535ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (1434ms)
+				InitializePlatformSupportModulesInManaged (1372ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (113ms)
-				BeforeProcessingInitializeOnLoad (2ms)
+				RefreshPlugins (50ms)
+				BeforeProcessingInitializeOnLoad (1ms)
 				ProcessInitializeOnLoadAttributes (80ms)
 				ProcessInitializeOnLoadMethodAttributes (32ms)
 				AfterProcessingInitializeOnLoad (0ms)
@@ -115,41 +115,42 @@ Domain Reload Profiling:
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.007888 seconds.
+Registered in 0.008905 seconds.
 Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 82.88 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
+Refreshing native plugins compatible for Editor in 0.96 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
 Package Manager log level set to [2]
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Completed reload, in  1.311 seconds
+- Completed reload, in  1.962 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1311ms)
-		BeginReloadAssembly (102ms)
+	ReloadAssembly (1963ms)
+		BeginReloadAssembly (99ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
+			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (15ms)
-		EndReloadAssembly (1131ms)
-			LoadAssemblies (95ms)
+		EndReloadAssembly (1768ms)
+			LoadAssemblies (892ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (199ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (49ms)
-			SetupLoadedEditorAssemblies (764ms)
+			SetupTypeCache (155ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (677ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (23ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (83ms)
-				BeforeProcessingInitializeOnLoad (77ms)
-				ProcessInitializeOnLoadAttributes (548ms)
-				ProcessInitializeOnLoadMethodAttributes (29ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (56ms)
+				ProcessInitializeOnLoadAttributes (503ms)
+				ProcessInitializeOnLoadMethodAttributes (90ms)
 				AfterProcessingInitializeOnLoad (4ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
@@ -158,12 +159,12 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 1.00 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.05 ms.
-Unloading 4392 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 89 unused Assets / (48.0 KB). Loaded Objects now: 4804.
-Memory consumption went from 175.7 MB to 175.7 MB.
-Total: 2.980100 ms (FindLiveObjects: 0.251700 ms CreateObjectMapping: 0.124200 ms MarkObjects: 2.520200 ms  DeleteObjects: 0.082700 ms)
+Refreshing native plugins compatible for Editor in 0.99 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2897 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 98 unused Assets / (49.6 KB). Loaded Objects now: 3297.
+Memory consumption went from 119.9 MB to 119.8 MB.
+Total: 5.447800 ms (FindLiveObjects: 0.239100 ms CreateObjectMapping: 0.069100 ms MarkObjects: 5.048700 ms  DeleteObjects: 0.089900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -178,185 +179,230 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.008506 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.25 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.11 ms.
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Completed reload, in  1.280 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1281ms)
-		BeginReloadAssembly (147ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (41ms)
-		EndReloadAssembly (1060ms)
-			LoadAssemblies (117ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (246ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (36ms)
-			SetupLoadedEditorAssemblies (646ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (32ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (59ms)
-				ProcessInitializeOnLoadAttributes (518ms)
-				ProcessInitializeOnLoadMethodAttributes (32ms)
-				AfterProcessingInitializeOnLoad (4ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 1.35 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 4363 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 77 unused Assets / (22.9 KB). Loaded Objects now: 4808.
-Memory consumption went from 172.6 MB to 172.6 MB.
-Total: 2.710200 ms (FindLiveObjects: 0.284200 ms CreateObjectMapping: 0.119000 ms MarkObjects: 2.264700 ms  DeleteObjects: 0.041500 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:CustomObjectIndexerAttribute: bc11b3a6c3213fcdd17b65e7da85e133 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+Received Import Request.
+  Time since last request: 22987.451427 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_12.png
+  artifactKey: Guid(3b46160b8caecdc40aef987b0c019656) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_12.png using Guid(3b46160b8caecdc40aef987b0c019656) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e26b5f542af1519e87640da2e034d729') in 0.092790 seconds 
+Number of asset objects unloaded after import = 3
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.008009 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.00 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.06 ms.
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Completed reload, in  1.236 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1236ms)
-		BeginReloadAssembly (130ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (32ms)
-		EndReloadAssembly (1028ms)
-			LoadAssemblies (99ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (228ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (37ms)
-			SetupLoadedEditorAssemblies (639ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (24ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (60ms)
-				ProcessInitializeOnLoadAttributes (519ms)
-				ProcessInitializeOnLoadMethodAttributes (30ms)
-				AfterProcessingInitializeOnLoad (4ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 1.05 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.06 ms.
-Unloading 4363 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 77 unused Assets / (23.0 KB). Loaded Objects now: 4812.
-Memory consumption went from 172.6 MB to 172.6 MB.
-Total: 2.384700 ms (FindLiveObjects: 0.269000 ms CreateObjectMapping: 0.118900 ms MarkObjects: 1.967200 ms  DeleteObjects: 0.029000 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:CustomObjectIndexerAttribute: bc11b3a6c3213fcdd17b65e7da85e133 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_19.png
+  artifactKey: Guid(98a26714d64052348a4ef3be0ab9cc1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_19.png using Guid(98a26714d64052348a4ef3be0ab9cc1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f259df715ab66cd60dc1499626cf08b8') in 0.016071 seconds 
+Number of asset objects unloaded after import = 3
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.007188 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.99 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.05 ms.
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Completed reload, in  1.245 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1245ms)
-		BeginReloadAssembly (138ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (34ms)
-		EndReloadAssembly (1031ms)
-			LoadAssemblies (109ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (243ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (36ms)
-			SetupLoadedEditorAssemblies (623ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (23ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (58ms)
-				ProcessInitializeOnLoadAttributes (507ms)
-				ProcessInitializeOnLoadMethodAttributes (30ms)
-				AfterProcessingInitializeOnLoad (5ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.99 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.05 ms.
-Unloading 4363 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 77 unused Assets / (23.0 KB). Loaded Objects now: 4816.
-Memory consumption went from 172.6 MB to 172.6 MB.
-Total: 2.518500 ms (FindLiveObjects: 0.296700 ms CreateObjectMapping: 0.120400 ms MarkObjects: 2.065900 ms  DeleteObjects: 0.033600 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:CustomObjectIndexerAttribute: bc11b3a6c3213fcdd17b65e7da85e133 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_14.png
+  artifactKey: Guid(bc2b877a701205f458d9b57a458246f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_14.png using Guid(bc2b877a701205f458d9b57a458246f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b97c64466eea18f2505495caf6872cf') in 0.019270 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.654272 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_21.png
+  artifactKey: Guid(1c991892df3685340b625db2253bc4bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_21.png using Guid(1c991892df3685340b625db2253bc4bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40a935bb42fb0a4d1592122949c504d5') in 0.014818 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.215340 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_24.png
+  artifactKey: Guid(8dab62465ec12504a8fb51c01a522595) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_24.png using Guid(8dab62465ec12504a8fb51c01a522595) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed5130540cdb8cc4779105340de19dbb') in 0.017353 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.030022 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_26.png
+  artifactKey: Guid(971e649064469a4478a2bb994743a49c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_26.png using Guid(971e649064469a4478a2bb994743a49c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd911713a62e63dc3be89799f48bb383') in 0.021994 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.166038 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_28.png
+  artifactKey: Guid(ca3fee2c8edc1f64e8cf07da08a87ce7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_28.png using Guid(ca3fee2c8edc1f64e8cf07da08a87ce7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b3eab72e7f2ad1a9c78fcbc7785c407') in 0.014100 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.022784 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_30.png
+  artifactKey: Guid(d5285ccd1bdda4c43aaa353f27b2ed7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_30.png using Guid(d5285ccd1bdda4c43aaa353f27b2ed7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e20073260506d431ba670dc0bc3acf7c') in 0.013110 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.166305 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_32.png
+  artifactKey: Guid(18ce09c8ac344f84b91a2aa12c16db02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_32.png using Guid(18ce09c8ac344f84b91a2aa12c16db02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e905ac0f23eca4c2c12c2fe9de3c220') in 0.015293 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.024823 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_34.png
+  artifactKey: Guid(7d14ecfd0941fd04bb564bc2a8a4e54a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_34.png using Guid(7d14ecfd0941fd04bb564bc2a8a4e54a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f40267084b740e3a6951e19543418ef') in 0.014056 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.199450 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_37.png
+  artifactKey: Guid(90d8c4c7918171b4798c83349eb46ca7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_37.png using Guid(90d8c4c7918171b4798c83349eb46ca7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51a3bc694a1d8eed0464549cf1b03654') in 0.014655 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.179286 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_39.png
+  artifactKey: Guid(505d1415f916f4f408eaa8e5f9e7478a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_39.png using Guid(505d1415f916f4f408eaa8e5f9e7478a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54f9a06030a5d671ef35cd4c53631e06') in 0.013975 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.026715 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_41.png
+  artifactKey: Guid(b88b833c4d27c9c428a602504ab78c34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_41.png using Guid(b88b833c4d27c9c428a602504ab78c34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b88e2453c49e12dd8c61c689f2762850') in 0.013990 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.175883 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_43.png
+  artifactKey: Guid(13cd1e85e78451d4a9f9f6a430a382c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_43.png using Guid(13cd1e85e78451d4a9f9f6a430a382c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f9f601c8e0fb485e2c82dd2d27e4577') in 0.016527 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.040737 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_45.png
+  artifactKey: Guid(49e79caf4c13ef34abbb1eaa8483f3a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_45.png using Guid(49e79caf4c13ef34abbb1eaa8483f3a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f0ceba07d4d0d9d96327198bfce10c2') in 0.013966 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.185598 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_48.png
+  artifactKey: Guid(2c8708f859c27ec45be5667ff7810c6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_48.png using Guid(2c8708f859c27ec45be5667ff7810c6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f1130402b12dacdd06593cd91277378') in 0.015391 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_49.png
+  artifactKey: Guid(b4bb79c8876af5042a3bbaa18bb671fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_49.png using Guid(b4bb79c8876af5042a3bbaa18bb671fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa8936fffe2b7da469ba4b2c684e0d0d') in 0.015393 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.184553 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_51.png
+  artifactKey: Guid(1e1f5e69a3ecc3a4f86de5f2da247960) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_51.png using Guid(1e1f5e69a3ecc3a4f86de5f2da247960) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d6436917121a5e7dc7d01ecba74c383') in 0.017077 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.229916 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_56.png
+  artifactKey: Guid(c4a753c8318d44f428514cd46d337970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_56.png using Guid(c4a753c8318d44f428514cd46d337970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'baff4a8c8eabc396143e48d106a0c5f0') in 0.015782 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.201475 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_59.png
+  artifactKey: Guid(e2f598b1f4a7d2d4fac9b327032f82fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_59.png using Guid(e2f598b1f4a7d2d4fac9b327032f82fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5da796d1c8fc54769c1fcabd467a5ce1') in 0.017294 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.031738 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_61.png
+  artifactKey: Guid(f7002f1b3544e3f46ba281704ddd884a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_61.png using Guid(f7002f1b3544e3f46ba281704ddd884a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8f7071e822f9738d0bd77fd60ce1525') in 0.020284 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.166789 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_63.png
+  artifactKey: Guid(e493b254f0594dd47a892d5b04bcfae6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_63.png using Guid(e493b254f0594dd47a892d5b04bcfae6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbb2168554e5c55d15b104e83ed5c7f8') in 0.014605 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.202440 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_66.png
+  artifactKey: Guid(939c40d652e60924595d09ac6f49178c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_66.png using Guid(939c40d652e60924595d09ac6f49178c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3c050fc56a85f6d5290bef76495b1a4') in 0.016353 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.024364 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_68.png
+  artifactKey: Guid(5c7959c5f7caafa48a3195dae52a6e46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_68.png using Guid(5c7959c5f7caafa48a3195dae52a6e46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd1d4abb1f63efe6955c5052a746f5d9') in 0.014057 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.174885 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_70.png
+  artifactKey: Guid(9f71c57722f81b84b9e04bf7497c49f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_70.png using Guid(9f71c57722f81b84b9e04bf7497c49f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b49a176046cf480ff376f16bd9824fe3') in 0.019667 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.226461 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_74.png
+  artifactKey: Guid(eb5400b94132fc648bd271007e53809e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_74.png using Guid(eb5400b94132fc648bd271007e53809e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '124c8319701b2f6548f98165a95b6e9d') in 0.019920 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.196277 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_77.png
+  artifactKey: Guid(7d266a2d7cf3593469307ce4da8ef63f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_77.png using Guid(7d266a2d7cf3593469307ce4da8ef63f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ae63df24fe641ffbd89987ce8466d47') in 0.016092 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.027089 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_79.png
+  artifactKey: Guid(234793ddefd4d384d93edae628848c28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_79.png using Guid(234793ddefd4d384d93edae628848c28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1bef63cc95e0b9b9974a1f9ccd8fe7e') in 0.015849 seconds 
+Number of asset objects unloaded after import = 3
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
