@@ -6,11 +6,15 @@ import com.ssafy.malitell.domain.chat.ChatRoom;
 import com.ssafy.malitell.dto.request.chat.ChatRequestDto;
 import com.ssafy.malitell.dto.response.chat.ChatMessageResponseDto;
 import com.ssafy.malitell.repository.ChatMessageRepository;
+import com.ssafy.malitell.repository.ChatMessageRepositoryImpl;
 import com.ssafy.malitell.repository.ChatRoomRepository;
+import com.ssafy.malitell.repository.RedisRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 
 @Service
@@ -18,7 +22,9 @@ import java.util.List;
 public class ChatService {
     private final ChatRoomRepository chatRoomRepository;
     private final ChatMessageRepository chatMessageRepository;
+    private final ChatMessageRepositoryImpl chatMessageRepositoryImpl;
     private final UserRepository userRepository;
+    private final RedisRepository redisRepository;
 
     public boolean isExists(User counselor, User client) {
         return chatRoomRepository.findRoomCounselorAndClient(counselor.getUserSeq(), client.getUserSeq()) != null;
@@ -62,5 +68,18 @@ public class ChatService {
 
     public ChatMessage save(ChatMessage chatMessage) {
         return chatMessageRepository.save(chatMessage);
+    }
+
+    public void falseMessageList(String chatRoomSeq, Principal principal) {
+        String loginUserId = principal.getName();
+        List<ChatMessage> chatMessageList = chatMessageRepositoryImpl.findAllByIsReadFalse(chatRoomSeq);
+
+        if (chatMessageList != null) {
+            for (ChatMessage chatMessage : chatMessageList) {
+                if (!chatMessage.getUser().getUserId().equals(loginUserId)) {
+                    chatMessage.updateIsReadTrue();
+                }
+            }
+        }
     }
 }

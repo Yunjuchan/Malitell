@@ -99,20 +99,20 @@ public class UserController {
     }
 
     // 내담자 정보 수정
-    @PutMapping("/mypage/user/client")
-    public ResponseEntity<?> updateClientInfo(Principal principal, ClientUpdateRequestDto clientUpdateRequestDto) {
-        String userId = principal.getName();
-        if (userService.findUser(userId).getRole().equals("ROLE_CLIENT")) {
-            userService.updateClientInfo(userId, clientUpdateRequestDto);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // CLIENT가 아닐 경우
-        }
-    }
+//    @PutMapping("/mypage/user/client")
+//    public ResponseEntity<?> updateClientInfo(Principal principal, @RequestBody ClientUpdateRequestDto clientUpdateRequestDto) {
+//        String userId = principal.getName();
+//        if (userService.findUser(userId).getRole().equals("ROLE_CLIENT")) {
+//            userService.updateClientInfo(userId, clientUpdateRequestDto);
+//            return new ResponseEntity<>(HttpStatus.OK);
+//        } else {
+//            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // CLIENT가 아닐 경우
+//        }
+//    }
 
     // 상담자 정보 수정
     @PutMapping("/mypage/user/counselor")
-    public ResponseEntity<?> updateCounselorInfo(Principal principal, CounselorUpdateRequestDto counselorRequestDto) {
+    public ResponseEntity<?> updateCounselorInfo(Principal principal, @RequestBody CounselorUpdateRequestDto counselorRequestDto) {
         String userId = principal.getName();
         if (userService.findUser(userId).getRole().equals("ROLE_COUNSELOR")) {
             userService.updateCounselorInfo(userId, counselorRequestDto);
