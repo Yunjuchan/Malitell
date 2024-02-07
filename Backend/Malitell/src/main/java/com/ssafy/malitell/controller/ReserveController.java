@@ -4,9 +4,7 @@ import com.ssafy.malitell.domain.counseling.CounselingReview;
 import com.ssafy.malitell.dto.request.reserve.CounselingLogRequestDto;
 import com.ssafy.malitell.dto.request.reserve.CounselingReviewRequestDto;
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
-import com.ssafy.malitell.dto.response.reserve.CounselorResponseDto;
-import com.ssafy.malitell.dto.response.reserve.MyCounselingLogResponseDto;
-import com.ssafy.malitell.dto.response.reserve.ReservationListResponseDto;
+import com.ssafy.malitell.dto.response.reserve.*;
 import com.ssafy.malitell.service.ReserveService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -85,19 +83,12 @@ public class ReserveController {
         return new ResponseEntity<>(myCounselingLogResponseDto, HttpStatus.OK);
     }
 
-    // [내담자/상담자] 나의 상담일지 - 이름순
-    // 이름 클릭 시 상담일지 최근순으로 반환
-    @GetMapping("/mypage/counselingLog/이름순/{userSeq}")
-    public ResponseEntity<List<?>> getCounselingLogsForOne(@PathVariable int userSeq, Principal principal) {
-        List<?> list = reserveService.getCounselingLogsForOne(userSeq, principal);
-        return new ResponseEntity<>(list, HttpStatus.OK);
+    // [내담자/상담자] 상담일지 상세조회
+    @GetMapping("/mypage/counselingLog/{counselingLogSeq}")
+    public ResponseEntity<CounselingLogResponseDto> getOneCounselingLog(@PathVariable int counselingLogSeq, Principal principal) {
+        CounselingLogResponseDto counselingLogResponseDto = reserveService.getOneCounselingLog(counselingLogSeq, principal);
+        return new ResponseEntity<>(counselingLogResponseDto, HttpStatus.OK);
     }
-
-    // 상담일지 상세조회
-//    @GetMapping("/mypage/counselingLog/{filter}/{counselingLogSeq}")
-//    public ResponseEntity<?> getOneCounselingLog(@PathVariable int counselingLogSeq, Principal principal) {
-//        reserveService.getOneCounselingLog(counselingLogSeq, principal);
-//    }
 
     // 상담후기 작성
     @PostMapping("/counseling/review/{counselingSeq}")
@@ -113,21 +104,16 @@ public class ReserveController {
 //        return new ResponseEntity<>(list, HttpStatus.OK);
 //    }
 
-    // 나의 상담후기 조회 (최근순-디폴트/이름순)
-//    @GetMapping("/mypage/counselingReviewList")
-//    public ResponseEntity<?> getCounselingReview(@RequestParam(required = false) String filter, Principal principal) {
-//        // 디폴트 param = 0
-//        // filter -> int? String?
-//        if(filter.equals("latest")) {
-//            List<?> list = reserveService.getCounselingReviewListOrderByDate(principal);
-//            return new ResponseEntity<>(list, HttpStatus.OK);
-//        } else if( filter.equals("name")) {
-//            List<?> list = reserveService.getCounselorListOrderByName(principal);
-//            return new ResponseEntity<>(list, HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-//        }
-//    }
+    // [내담자] 마이페이지 - 나의 상담후기 조회
+    // 상담후기 목록이랑 상담자명 목록 DTO에 담아서 return
+    @GetMapping("/mypage/counselingReviewList")
+    public ResponseEntity<MyCounselingReviewResponseDto> getCounselingReviewListAndCounselorList(Principal principal) {
+        List<CounselorReviewResponseDto> counselingReviewList = reserveService.getCounselingReviewList(principal);
+        List<String> counselorList = reserveService.getCounselorNameList(principal);
+        // dto에 담기
+        MyCounselingReviewResponseDto myCounselingReviewResponseDto = new MyCounselingReviewResponseDto(counselingReviewList, counselorList);
+        return new ResponseEntity<>(myCounselingReviewResponseDto, HttpStatus.OK);
+    }
 
     // 상담후기 삭제
 //    @DeleteMapping()
