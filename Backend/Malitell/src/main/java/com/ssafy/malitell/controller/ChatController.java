@@ -3,6 +3,7 @@ package com.ssafy.malitell.controller;
 import com.ssafy.malitell.domain.chat.ChatRoom;
 import com.ssafy.malitell.dto.request.chat.ChatRequestDto;
 import com.ssafy.malitell.dto.response.chat.ChatMessageResponseDto;
+import com.ssafy.malitell.dto.response.chat.ChatRoomResponseDto;
 import com.ssafy.malitell.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,7 @@ public class ChatController {
 
     // 채팅방 생성
     @PostMapping("/room")
-    public ChatRoom createRoom(@RequestBody ChatRequestDto chatRequestDto) throws Exception {
+    public ChatRoomResponseDto createRoom(@RequestBody ChatRequestDto chatRequestDto) throws Exception {
         return chatService.createChatRoom(chatRequestDto);
     }
 

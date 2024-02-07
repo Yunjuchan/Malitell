@@ -5,6 +5,7 @@ import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.domain.chat.ChatRoom;
 import com.ssafy.malitell.dto.request.chat.ChatRequestDto;
 import com.ssafy.malitell.dto.response.chat.ChatMessageResponseDto;
+import com.ssafy.malitell.dto.response.chat.ChatRoomResponseDto;
 import com.ssafy.malitell.repository.ChatMessageRepository;
 import com.ssafy.malitell.repository.ChatMessageRepositoryImpl;
 import com.ssafy.malitell.repository.ChatRoomRepository;
@@ -30,7 +31,7 @@ public class ChatService {
         return chatRoomRepository.findRoomCounselorAndClient(counselor.getUserSeq(), client.getUserSeq()) != null;
     }
 
-    public ChatRoom createChatRoom(ChatRequestDto chatRequestDto) throws Exception {
+    public ChatRoomResponseDto createChatRoom(ChatRequestDto chatRequestDto) throws Exception {
         int counselorSeq = chatRequestDto.getCounselorSeq();
         int clientSeq = chatRequestDto.getClientSeq();
 
@@ -44,14 +45,15 @@ public class ChatService {
         }
 
         // 이미 존재하는 채팅방일 경우 해당 채팅방 return
-        if (isExists(counselor, client)) {
-            return chatRoomRepository.findRoomCounselorAndClient(counselor.getUserSeq(), client.getUserSeq());
-        }
+//        if (isExists(counselor, client)) {
+//            return chatRoomRepository.findRoomCounselorAndClient(counselor.getUserSeq(), client.getUserSeq());
+//        }
 
         ChatRoom chatRoom = chatRoomRepository.createChatRoom(counselor, client);
+        ChatRoomResponseDto chatRoomResponseDto = new ChatRoomResponseDto(chatRoom);
 
         chatRoomRepository.save(chatRoom);
-        return chatRoom;
+        return chatRoomResponseDto;
     }
 
     public List<ChatRoom> chatRoomList() {

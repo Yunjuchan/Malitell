@@ -71,28 +71,6 @@ public class ReserveRepositoryImpl implements ReserveRepositoryCustom {
         return counselingLogList;
     }
 
-    // 내담자
-    @Override
-    public List<CounselingLog> getCounselingLogsForOne1(int loginUserSeq, int counselorSeq) {
-        return entityManager.createQuery("SELECT cl FROM CounselingLog cl JOIN FETCH cl.counseling " +
-                        "WHERE cl.counseling.clientSeq = :loginUserSeq and cl.counseling.counselorSeq = :counselorSeq " +
-                        "ORDER BY cl.counseling.counselingDate DESC", CounselingLog.class)
-                .setParameter("loginUserSeq", loginUserSeq)
-                .setParameter("counselorSeq", counselorSeq)
-                .getResultList();
-    }
-
-    // 상담자
-    @Override
-    public List<CounselingLog> getCounselingLogsForOne2(int loginUserSeq, int clientSeq) {
-        return entityManager.createQuery("SELECT cl FROM CounselingLog cl JOIN FETCH cl.counseling " +
-                        "WHERE cl.counseling.counselorSeq = :loginUserSeq and cl.counseling.clientSeq = :clientSeq " +
-                        "ORDER BY cl.counseling.counselingDate DESC", CounselingLog.class)
-                .setParameter("loginUserSeq", loginUserSeq)
-                .setParameter("clientSeq", clientSeq)
-                .getResultList();
-    }
-
     @Override
     public List<CounselingReview> counselorReviewList(int counselorSeq) {
         return entityManager.createQuery("SELECT cr FROM CounselingReview cr JOIN FETCH cr.counseling " +

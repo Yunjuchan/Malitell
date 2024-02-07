@@ -21,8 +21,8 @@ export default function Counselors() {
   const [counselors, setCounselors] = useState<CounselorInfo[]>([]);
 
   useEffect(() => {
-    fetchCounselorList().then((res) => {
-      // console.log(res);
+    fetchCounselorList()
+    .then((res) => {
       setCounselors(res);
     });
   }, []);
@@ -30,9 +30,8 @@ export default function Counselors() {
   return (
     <s.Wrapper>
       {counselors.map((counselor: CounselorInfo, index) => (
-        <s.Counselor>
+        <s.Counselor key={index}>
         <Link
-          key={index}
           to={{
             pathname: `/counselors/${counselor.userSeq}`,
           }}

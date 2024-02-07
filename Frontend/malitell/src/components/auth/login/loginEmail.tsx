@@ -15,6 +15,8 @@ import malitell from "../../../assets/images/malitell.png";
 import { useForm } from "react-hook-form";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import {login} from '../../../store/auth/userSlice';
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../store/store";
 
 // 로그인 선택 모달에서 전달받은 Props(백그라운드 제어, 모달제어)
 interface LoginProps {
@@ -24,7 +26,7 @@ interface LoginProps {
 }
 
 interface FormData {
-  id: string;
+  username: string;
   password: string;
 }
 
@@ -39,9 +41,10 @@ export default function LoginEmail({
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-
+  const dispatch = useDispatch<AppDispatch>();
   const onSubmit = (data: FormData) => {
     console.log("데이터: ", data);
+    dispatch(login(data))
   };
 
   // input CSS용 state 및 함수
@@ -83,7 +86,7 @@ export default function LoginEmail({
             color={focusId ? "#bf94e4" : "#D3D3D3"}
           />
           <Input
-            {...register("id", {
+            {...register("username", {
               required: "아이디를 입력해 주세요.",
             })}
             onFocus={handleFocusId}
@@ -109,8 +112,8 @@ export default function LoginEmail({
         <Submit type="submit" value="로그인" />
         <Message>
           <>
-            {errors.id ? (
-              <>{errors.id.message}</>
+            {errors.username ? (
+              <>{errors.username.message}</>
             ) : errors.password ? (
               <>{errors.password}</>
             ) : (
