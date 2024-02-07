@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { Dispatch, PayloadAction } from "@reduxjs/toolkit";
-import { api, authApi } from "../axiosInstance";
-import { FormData } from "./authTypes";
+import { api, authApi, loginApi } from "../axiosInstance";
+import { toFormData } from "axios";
+
 
 export interface UserState {
   userId: string;
@@ -17,18 +18,23 @@ const initialState: UserState = {
   userImg: "",
 };
 
+export interface loginData {
+  username: string;
+  password: string;
+}
+
 // 이메일 로그인
-export const login = (data: FormData) => {
+export const login = (data: loginData) => {
+  console.log("로그인 할때 들어오는 data", data)
   return (dispatch: Dispatch) => {
-    authApi
-      .post("/login", {
-        body: JSON.stringify(data)
-      })
+    loginApi
+      .post("/login", toFormData(data))
       .then((res) => {
         // 서버에서 받은 user 정보를 Redux store에 저장
         // 서버에서 받은 데이터가 수정해야한다면 더 작성해야함.
         console.log(res);
-        // dispatch(saveUserInfo(response.data));
+        console.log(res.headers.access_token)
+        dispatch(saveUserInfo(res.data));
       })
       .catch((error) => {
         console.error("Failed to login:", error);
