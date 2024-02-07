@@ -28,7 +28,15 @@ public class ChatService {
     private final RedisRepository redisRepository;
 
     public boolean isExists(User counselor, User client) {
-        return chatRoomRepository.findRoomCounselorAndClient(counselor.getUserSeq(), client.getUserSeq()) != null;
+        boolean result;
+
+        try {
+            result = chatRoomRepository.findRoomCounselorAndClient(counselor.getUserSeq(), client.getUserSeq()) != null;
+            return result;
+        } catch(Exception e) {
+            return false;
+        }
+//        return chatRoomRepository.findRoomCounselorAndClient(counselor.getUserSeq(), client.getUserSeq()) != null;
     }
 
     public ChatRoomResponseDto createChatRoom(ChatRequestDto chatRequestDto) throws Exception {
