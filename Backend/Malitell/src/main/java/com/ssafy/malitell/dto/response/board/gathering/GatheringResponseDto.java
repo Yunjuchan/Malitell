@@ -2,10 +2,14 @@ package com.ssafy.malitell.dto.response.board.gathering;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ssafy.malitell.domain.board.Gathering;
+import com.ssafy.malitell.domain.board.GatheringComment;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
+import com.ssafy.malitell.dto.response.board.CommentResponseDto;
 import lombok.Getter;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 public class GatheringResponseDto {
@@ -17,10 +21,10 @@ public class GatheringResponseDto {
     private final int hit;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private final Timestamp time;
-
     private final int userSeq;
+    private final List<CommentResponseDto> gatheringComments = new ArrayList<>();
 
-    public GatheringResponseDto(Gathering gathering) {
+    public GatheringResponseDto(Gathering gathering, List<GatheringComment> commentResponseDtos) {
         this.title = gathering.getTitle();
         this.content = gathering.getContent();
         this.selfHelpGroup = gathering.getSelfHelpGroup();
@@ -28,6 +32,9 @@ public class GatheringResponseDto {
         this.hit = gathering.getHit();
         this.time = gathering.getTime();
         this.userSeq = gathering.getUser().getUserSeq();
+        for (GatheringComment commentResponseDto : commentResponseDtos) {
+            gatheringComments.add(new CommentResponseDto(commentResponseDto));
+        }
     }
 
 }
