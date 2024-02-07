@@ -68,7 +68,7 @@ export default function Nav() {
               <Link to="/comingsoon">메타버스</Link>
             </s.NavItem>
             <s.NavItem $width="150px" $size="17px">
-              <Link to="/articles">커뮤니티</Link>
+              <Link to="/articles/free">커뮤니티</Link>
             </s.NavItem>
             <s.NavItem $width="150px" $size="17px">
               <Link to="/counselors">전문가 찾기</Link>

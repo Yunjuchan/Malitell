@@ -73,11 +73,11 @@ const router = createBrowserRouter([
           // },
           // // article
           {
-            path: "/articles",
+            path: "/articles/:boardType",
             element: <Articles />,
           },
           {
-            path: "/articles/:id",
+            path: "/articles/:boardType/:id",
             element: <ArticleDetail />,
           },
           {
