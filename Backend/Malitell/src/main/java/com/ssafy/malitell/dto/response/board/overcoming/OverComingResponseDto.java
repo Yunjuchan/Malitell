@@ -15,6 +15,7 @@ public class OverComingResponseDto {
     private final int hit;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private final Timestamp time;
+    private final int userSeq;
 
     public OverComingResponseDto(OverComing overComing) {
         this.title = overComing.getTitle();
@@ -22,6 +23,7 @@ public class OverComingResponseDto {
         this.name = overComing.getUser().getName();
         this.hit = overComing.getHit();
         this.time = overComing.getTime();
+        this.userSeq = overComing.getUser().getUserSeq();
     }
 
 }

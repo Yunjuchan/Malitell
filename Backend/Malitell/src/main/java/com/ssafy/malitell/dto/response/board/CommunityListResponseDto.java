@@ -19,11 +19,14 @@ public class CommunityListResponseDto {
     private int hit;
     private Timestamp time;
 
+    private int boardSeq;
+
     public CommunityListResponseDto(Community community) {
         this.title = community.getTitle();
         this.username = community.getUser().getName();
         this.hit = community.getHit();
         this.time = community.getTime();
+        this.boardSeq = community.getCommunitySeq();
     }
 }
 

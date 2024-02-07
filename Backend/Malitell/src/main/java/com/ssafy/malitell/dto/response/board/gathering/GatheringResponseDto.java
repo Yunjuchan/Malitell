@@ -18,6 +18,8 @@ public class GatheringResponseDto {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private final Timestamp time;
 
+    private final int userSeq;
+
     public GatheringResponseDto(Gathering gathering) {
         this.title = gathering.getTitle();
         this.content = gathering.getContent();
@@ -25,6 +27,7 @@ public class GatheringResponseDto {
         this.name = gathering.getUser().getName();
         this.hit = gathering.getHit();
         this.time = gathering.getTime();
+        this.userSeq = gathering.getUser().getUserSeq();
     }
 
 }

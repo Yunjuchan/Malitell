@@ -19,11 +19,13 @@ public class GatheringListResponseDto {
     private String username;
     private int hit;
     private Timestamp time;
+    private int boardSeq;
 
     public GatheringListResponseDto(Gathering gathering) {
         this.title = gathering.getTitle();
         this.username = gathering.getUser().getName();
         this.hit = gathering.getHit();
         this.time = gathering.getTime();
+        this.boardSeq = gathering.getGatheringSeq();
     }
 }
