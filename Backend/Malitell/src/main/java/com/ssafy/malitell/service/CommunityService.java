@@ -2,15 +2,15 @@ package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.board.Community;
 import com.ssafy.malitell.domain.board.CommunityComment;
-import com.ssafy.malitell.domain.board.OverComing;
+import com.ssafy.malitell.domain.tag.WorryTag;
 import com.ssafy.malitell.domain.user.User;
-import com.ssafy.malitell.dto.request.board.CommunityRequestDto;
-import com.ssafy.malitell.dto.request.board.CommunityUpdateRequestDto;
-import com.ssafy.malitell.dto.response.board.CommunityListResponseDto;
-import com.ssafy.malitell.dto.response.board.CommunityResponseDto;
-import com.ssafy.malitell.dto.response.board.overcoming.OverComingListResponseDto;
+import com.ssafy.malitell.dto.request.board.community.CommunityRequestDto;
+import com.ssafy.malitell.dto.request.board.community.CommunityUpdateRequestDto;
+import com.ssafy.malitell.dto.response.board.community.CommunityListResponseDto;
+import com.ssafy.malitell.dto.response.board.community.CommunityResponseDto;
 import com.ssafy.malitell.repository.CommunityCommentRepository;
 import com.ssafy.malitell.repository.CommunityRepository;
+import com.ssafy.malitell.repository.WorryTagRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -29,12 +29,15 @@ public class CommunityService {
     private final CommunityRepository communityRepository;
     private final CommunityCommentRepository communityCommentRepository;
     private final UserRepository userRepository;
+    private final WorryTagRepository worryTagRepository;
 
     // 게시글 작성
     public int createCommunity(CommunityRequestDto requestDto, Principal principal) {
         String userId = principal.getName();
         User findUser = userRepository.findByUserId(userId);
-        Community community = new Community(findUser, requestDto);
+
+        WorryTag worryTag = worryTagRepository.findById(requestDto.getWorryTagSeq()).get();
+        Community community = new Community(findUser, requestDto, worryTag);
 
         communityRepository.save(community);
         return community.getCommunitySeq();
@@ -55,7 +58,8 @@ public class CommunityService {
         Community community = communityRepository.findById(communitySeq).orElseThrow(
                 () -> new IllegalArgumentException("게시물이 존재하지 않습니다.")
         );
-        community.update(requestDto);
+        WorryTag worryTag = worryTagRepository.findById(requestDto.getWorryTagSeq()).get();
+        community.update(requestDto, worryTag);
     }
 
     // 게시글 삭제

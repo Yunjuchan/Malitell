@@ -1,9 +1,9 @@
 package com.ssafy.malitell.controller;
 
-import com.ssafy.malitell.dto.request.board.CommunityRequestDto;
-import com.ssafy.malitell.dto.request.board.CommunityUpdateRequestDto;
-import com.ssafy.malitell.dto.response.board.CommunityListResponseDto;
-import com.ssafy.malitell.dto.response.board.CommunityResponseDto;
+import com.ssafy.malitell.dto.request.board.community.CommunityRequestDto;
+import com.ssafy.malitell.dto.request.board.community.CommunityUpdateRequestDto;
+import com.ssafy.malitell.dto.response.board.community.CommunityListResponseDto;
+import com.ssafy.malitell.dto.response.board.community.CommunityResponseDto;
 import com.ssafy.malitell.service.CommunityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

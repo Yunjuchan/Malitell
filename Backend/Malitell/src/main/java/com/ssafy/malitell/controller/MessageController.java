@@ -21,7 +21,7 @@ public class MessageController {
     private final SimpMessagingTemplate template;
 
     @MessageMapping("/chat/message")
-    public void message(@RequestBody ChatMessage message, Principal principal){
+    public void message(@RequestBody ChatMessage message, Principal principal) {
         log.info("message(message = {})", message);
         String chatRoomSeq = message.getChatRoom().getChatRoomSeq();
         chatService.falseMessageList(chatRoomSeq, principal);
