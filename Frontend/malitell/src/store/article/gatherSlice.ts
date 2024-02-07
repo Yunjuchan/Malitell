@@ -1,21 +1,20 @@
-import { api } from "../axiosInstance";
+import { api, authApi } from "../axiosInstance";
 
 // 자조모임 모집 게시글 작성
 //SH는 self-helf 귀찮아서 줄였음
 // selfHelpGroupTitle: string, selfHelpGroupContent: string, times: number, selfHelpType:string, selfHelpGroupHeadCount: number, title:string, content:string
-export const creaeteSHGroup = (data: object) => {
+export const createSHGroup = (data: object) => {
   api.post("/gathering", {data})
-  .then((response) => {
+  .then((res) => {
     // 응답 데이터 : 자조모임 게시글 번호
-    return response.data
+    return res.data
   })
 }
 
 // 자조모임 모집 게시글 조회
 //SH는 self-helf 귀찮아서 줄였음
-// selfHelpGroupTitle: string, selfHelpGroupContent: string, times: number, selfHelpType:string, selfHelpGroupHeadCount: number, title:string, content:string
 export const fetchSHGroup = () => {
-  api.get("/gathering")
+  const res = authApi.get("/gathering")
   .then((response) => {
     // 응답 데이터 : 자조모임 게시글 번호
     // 게시글 제목 : title
@@ -25,9 +24,11 @@ export const fetchSHGroup = () => {
     // 200 상태 코드를 담은 ResponseEntity
     return response.data
   })
+  return res
 }
 
 // 자조모임 게시글 수정
+// 요청데이터 / gatheringSeq: number, title: string, content: string, worryTagSeq: number;
 export const editSHGroup = (gatheringSeq: number) => {
   api.put(`/gathering/${gatheringSeq}`)
   .then((response) => {
@@ -45,7 +46,7 @@ export const sHGroupDetail = (gatheringSeq: number) => {
   })
 }
 
-// 자조모임 게시글 상세 조회
+// 자조모임 게시글 삭제
 export const deleteSHGroup = (gatheringSeq: number) => {
   api.delete(`/gathering/${gatheringSeq}`)
   .then((response) => {

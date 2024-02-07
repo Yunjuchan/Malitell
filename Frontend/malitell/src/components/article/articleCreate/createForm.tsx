@@ -1,14 +1,15 @@
-import { Wrapper, TopBox, Filter, Title, Input, Submit } from "../../../styles/article/createForm";
+import * as s from "../../../styles/article/createForm";
 
 export default function CreateForm() {
   return (
-    <Wrapper>
-      <TopBox>
-        <Filter></Filter>
-        <Title></Title>
-      </TopBox>
-      <Input></Input>
-      <Submit type="submit" />
-    </Wrapper>
-  )
+    <s.Wrapper>
+      <s.TopBox>
+        <s.Filter></s.Filter>
+        <s.Title></s.Title>
+      </s.TopBox>
+      <s.Input></s.Input>
+      {/* <MyCalendar /> */}
+      <s.Submit type="submit" />
+    </s.Wrapper>
+  );
 }

@@ -7,7 +7,7 @@ export interface boardState {
 }
 
 const initialState: boardState = {
-  boardType: "free",
+  boardType: "community",
   q: null,
   tag: "all",
 };
@@ -23,18 +23,19 @@ export const boardSlice = createSlice({
         state.tag = null;
     },
 
-    setTagInfo: (start, action) => {
+    setTagInfo: (state, action) => {
         
     },
+    setQInfo: (state, action) => {},
 
     initBoardInfo: (state) => {
-      state.boardType = "free";
+      state.boardType = "community";
       state.q = null;
-      state.tag = null;
+      state.tag = "all";
     },
   },
 });
 
-export const { setBoardTypeInfo, setTagInfo, initBoardInfo } = boardSlice.actions;
+export const { setBoardTypeInfo, setTagInfo, setQInfo ,initBoardInfo } = boardSlice.actions;
 
 export default boardSlice.reducer;

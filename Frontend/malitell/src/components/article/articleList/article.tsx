@@ -1,12 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import {Wrapper} from '../../../styles/article/article';
-
-export default function Article() {
-  const navigate = useNavigate();
-  const goToOvercomingDetail = (overcomingSeq: number) => {
-    navigate(`/articles/overcoming/${overcomingSeq}`)
-  }
+interface ArticleProps {
+  onClick: () => void;
+}
+export default function Article({onClick}: ArticleProps) {
   return (
-    <Wrapper onClick={() => goToOvercomingDetail(1)}>aaa</Wrapper>
+    <Wrapper onClick={onClick}>aaaa</Wrapper>
   )
 }
