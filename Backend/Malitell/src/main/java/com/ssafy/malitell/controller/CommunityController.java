@@ -26,7 +26,7 @@ public class CommunityController {
     }
 
     // 게시물 목록 조회
-    @GetMapping
+    @GetMapping("/getBoardList")
     public ResponseEntity<List<CommunityListResponseDto>> getAllCommunities() {
         return new ResponseEntity<>(communityService.findAllCommunity(), HttpStatus.OK);
     }
