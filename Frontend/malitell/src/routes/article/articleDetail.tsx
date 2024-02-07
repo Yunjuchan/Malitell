@@ -5,8 +5,14 @@ import Content from "../../components/article/articleDetail/content";
 import CommentList from "../../components/article/articleDetail/commentList";
 import { Back, Box } from "../../styles/grid";
 import { GridDetail } from "../../styles/article/grid";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function ArticleDetail() {
+  const {boardSeq} = useParams();
+  useEffect(() => {
+    console.log(boardSeq)
+  }, [])
   return (
     <>
       <Back />

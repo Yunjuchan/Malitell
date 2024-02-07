@@ -77,7 +77,7 @@ const router = createBrowserRouter([
             element: <Articles />,
           },
           {
-            path: "/articles/:boardType/:id",
+            path: "/articles/:boardType/:boardSeq",
             element: <ArticleDetail />,
           },
           {
