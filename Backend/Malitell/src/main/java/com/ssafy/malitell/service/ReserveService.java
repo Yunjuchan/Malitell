@@ -370,62 +370,8 @@ public class ReserveService {
         return counselorNameList;
     }
 
-    public List<CounselingReview> getCounselingReviewListOrderByDate(Principal principal) {
-        String loginUser = principal.getName();
-        User user = reserveRepository.findByUserId(loginUser);
-        int loginUserSeq = user.getUserSeq();
-
-        List<CounselingReview> counselingReviewList = new ArrayList<>();
-
-        counselingReviewList = reserveRepository.getCounselingReviewListOrderByDate(loginUserSeq);
-
-//        List<CounselingLogOrderByDateResponseDto1> counselingLogOrderByDateList1 = new ArrayList<>();
-
-//        for(CounselingLog log : counselingLoglist) {
-//            int counselingLogSeq = log.getCounselingLogSeq();
-//            int counselorSeq = log.getCounseling().getCounselorSeq();
-//            Optional<User> counselor = userRepository.findById(counselorSeq);
-//            String counselorName = counselor.get().getName();
-//
-//            Timestamp counselingDate = log.getCounseling().getCounselingDate();
-//            int round = log.getCounseling().getRound();
-//            String content = log.getContent();
-//
-//            CounselingLogOrderByDateResponseDto1 dto = new CounselingLogOrderByDateResponseDto1(counselingLogSeq, counselorName, counselingDate, round, content);
-//
-//            counselingLogOrderByDateList1.add(dto);
-//        }
-
-        return counselingReviewList;
+    public void deleteCounselingReview(int counselingReviewSeq) {
+        counselingReviewRepository.deleteById(counselingReviewSeq);
     }
-
-    // 나의 상담후기(이름순) - 상담자명 가져오기
-//    public List<CounselingReview> getCounselorListOrderByName(Principal principal) {
-//        String loginUser = principal.getName();
-//        User user = reserveRepository.findByUserId(loginUser);
-//        int loginUserSeq = user.getUserSeq();
-//
-//        // 내담자의 상담후기 목록 가져오기
-//        List<CounselingReview> counselingReviewList = reserveRepository.getCounselingReviewList(loginUserSeq);
-//
-//        // 상담자 식별키 중복 제거
-//        Set<Integer> counselorSeqSet = new HashSet<>();
-//        for(CounselingReview review : counselingReviewList) {
-//            int counselorSeq = review.getCounseling().getCounselorSeq();
-//            counselorSeqSet.add(counselorSeq);
-//        }
-//
-//        // 내 상담일지를 작성해준 상담자 목록 (이름순)
-//        List<String> counselorList = new ArrayList<>();
-//
-//        for(int counselorSeq : counselorSeqSet) {
-//            Optional<User> counselor = userRepository.findById(counselorSeq);
-//            String counselorName = counselor.get().getName();
-//            counselorList.add(counselorName);
-//        }
-//
-//        Collections.sort(counselorList);
-//        return counselorList;
-//    }
 
 }
