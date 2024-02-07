@@ -19,4 +19,6 @@ public class CounselorUpdateRequestDto {
     private String professionalField;
     @NotNull
     private int careerPeriod;
+    @NotNull
+    private String comment;
 }

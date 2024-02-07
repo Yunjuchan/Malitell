@@ -4,6 +4,7 @@ import com.ssafy.malitell.domain.board.Community;
 import com.ssafy.malitell.domain.board.Gathering;
 import com.ssafy.malitell.domain.board.OverComing;
 import com.ssafy.malitell.domain.counseling.Counseling;
+import com.ssafy.malitell.domain.tag.StatusTag;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.auth.PasswordRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
@@ -13,10 +14,7 @@ import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import com.ssafy.malitell.dto.response.board.BoardsListResponseDto;
 import com.ssafy.malitell.dto.response.user.ClientResponseDto;
 import com.ssafy.malitell.dto.response.user.CounselorResponseDto;
-import com.ssafy.malitell.repository.CommunityRepository;
-import com.ssafy.malitell.repository.GatheringRepository;
-import com.ssafy.malitell.repository.OverComingRepository;
-import com.ssafy.malitell.repository.ReserveRepository;
+import com.ssafy.malitell.repository.*;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +29,7 @@ import java.security.Principal;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -44,6 +43,8 @@ public class UserService {
     private final GatheringRepository gatheringRepository;
     private final CommunityRepository communityRepository;
     private final OverComingRepository overComingRepository;
+    private final StatusTagRepository statusTagRepository;
+
 
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -112,11 +113,12 @@ public class UserService {
         return userRepository.findByUserId(userId);
     }
 
-    @Transactional
-    public void updateClientInfo(String userId, ClientUpdateRequestDto clientUpdateRequestDto) {
-        User user = userRepository.findByUserId(userId);
-        user.updateClient(clientUpdateRequestDto);
-    }
+//    @Transactional
+//    public void updateClientInfo(String userId, ClientUpdateRequestDto clientUpdateRequestDto) {
+//        User user = userRepository.findByUserId(userId);
+////        List<Statsu>
+//        user.updateClient(clientUpdateRequestDto);
+//    }
 
     @Transactional
     public void updateCounselorInfo(String userId, CounselorUpdateRequestDto counselorRequestDto) {

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalTime;
 
@@ -23,5 +24,10 @@ public class ChatMessage {
     private User user;
     private String content;
     private LocalTime sendTime;
+    @ColumnDefault("false")
     private boolean isRead;
+
+    public void updateIsReadTrue() {
+        this.isRead = true;
+    }
 }

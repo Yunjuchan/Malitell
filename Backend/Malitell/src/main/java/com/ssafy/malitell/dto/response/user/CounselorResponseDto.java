@@ -18,6 +18,7 @@ public class CounselorResponseDto {
     private String profileImg;
     private String professionalField;
     private int careerPeriod;
+    private String comment;
 
     public CounselorResponseDto(User user) {
         this.userId = user.getUserId();
@@ -29,5 +30,6 @@ public class CounselorResponseDto {
         this.profileImg = user.getProfileImg();
         this.professionalField = user.getProfessionalField();
         this.careerPeriod = user.getCareerPeriod();
+        this.comment = user.getComment();
     }
 }

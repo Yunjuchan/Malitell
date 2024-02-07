@@ -95,10 +95,11 @@ public class User {
         this.gender = gender;
     }
 
-    public void updateClient(ClientUpdateRequestDto clientUpdateRequestDto) {
+    public void updateClient(ClientUpdateRequestDto clientUpdateRequestDto, List<StatusTag> statusTags) {
         this.name = clientUpdateRequestDto.getName();
         this.email = clientUpdateRequestDto.getEmail();
         this.phone = clientUpdateRequestDto.getPhone();
+        this.statusTags = statusTags;
     }
 
     public void updateCounselor(CounselorUpdateRequestDto counselorUpdateRequestDto) {
