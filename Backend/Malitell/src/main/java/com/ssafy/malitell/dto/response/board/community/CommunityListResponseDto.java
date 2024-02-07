@@ -1,4 +1,4 @@
-package com.ssafy.malitell.dto.response.board;
+package com.ssafy.malitell.dto.response.board.community;
 
 import com.ssafy.malitell.domain.board.Community;
 import lombok.AllArgsConstructor;
@@ -21,12 +21,16 @@ public class CommunityListResponseDto {
 
     private int boardSeq;
 
+    // 태그
+    private String tag;
+
     public CommunityListResponseDto(Community community) {
         this.title = community.getTitle();
         this.username = community.getUser().getName();
         this.hit = community.getHit();
         this.time = community.getTime();
         this.boardSeq = community.getCommunitySeq();
+        this.tag = community.getWorryTag().getTag();
     }
 }
 

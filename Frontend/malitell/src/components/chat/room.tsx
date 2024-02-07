@@ -57,7 +57,7 @@ export default function RoomComponent() {
         "/pub/chat/message",
         JSON.stringify({
           // type: "TALK",
-          "chatRoomSeq": roomId.current,
+          "chatRoom": roomId.current,
           "userSeq": sender,
           "content": message,
           "sendTiem": Date()

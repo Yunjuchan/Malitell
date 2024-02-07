@@ -26,7 +26,7 @@ public class GatheringController {
     }
 
     // 게시물 목록 조회
-    @GetMapping
+    @GetMapping("/getBoardList")
     public ResponseEntity<List<GatheringListResponseDto>> getAllGatherings() {
         return new ResponseEntity<>(gatheringService.findAllGathering(), HttpStatus.OK);
     }
