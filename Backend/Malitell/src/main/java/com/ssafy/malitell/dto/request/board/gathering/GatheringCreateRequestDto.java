@@ -1,5 +1,6 @@
 package com.ssafy.malitell.dto.request.board.gathering;
 
+import com.ssafy.malitell.domain.tag.WorryTag;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -32,4 +33,6 @@ public class GatheringCreateRequestDto {
     // 게시물 내용
     private String content;
 
+    // 태그
+    private int worryTagSeq;
 }

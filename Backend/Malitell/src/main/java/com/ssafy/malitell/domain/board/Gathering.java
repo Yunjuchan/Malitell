@@ -2,6 +2,7 @@ package com.ssafy.malitell.domain.board;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
+import com.ssafy.malitell.domain.tag.WorryTag;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.board.gathering.GatheringUpdateRequestDto;
 import jakarta.persistence.*;
@@ -45,18 +46,24 @@ public class Gathering {
     // 게시물 조회수
     private int hit;
 
-    public Gathering(SelfHelpGroup selfHelpGroup, User user, String title, String content) {
+    // 태그
+    @OneToOne
+    private WorryTag worryTag;
+
+    public Gathering(SelfHelpGroup selfHelpGroup, User user, String title, String content, WorryTag worryTag) {
         this.selfHelpGroup = selfHelpGroup;
         this.user = user;
         this.title = title;
         this.content = content;
         this.hit = 0;
         this.time = new Timestamp(System.currentTimeMillis());
+        this.worryTag = worryTag;
     }
 
-    public void update(GatheringUpdateRequestDto requestDto) {
+    public void update(GatheringUpdateRequestDto requestDto, WorryTag worryTag) {
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
+        this.worryTag = worryTag;
     }
 
     public void hitCountUp() {

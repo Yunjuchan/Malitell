@@ -12,6 +12,10 @@ import java.util.List;
 public class ChatMessageRepositoryImpl {
     private final EntityManager entityManager;
 
+    public void save(ChatMessage chatMessage) {
+        entityManager.persist(chatMessage);
+    }
+
     public List<ChatMessage> findAllByIsReadFalse(String chatRoomSeq) {
         return entityManager.createQuery("SELECT cm FROM ChatMessage cm WHERE chatRoom.chatRoomSeq = :chatRoomSeq and isRead = false", ChatMessage.class)
                 .setParameter("chatRoomSeq", chatRoomSeq)

@@ -3,6 +3,7 @@ package com.ssafy.malitell.service;
 import com.ssafy.malitell.domain.board.Gathering;
 import com.ssafy.malitell.domain.board.GatheringComment;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
+import com.ssafy.malitell.domain.tag.WorryTag;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.board.gathering.GatheringCreateRequestDto;
 import com.ssafy.malitell.dto.request.board.gathering.GatheringUpdateRequestDto;
@@ -11,6 +12,7 @@ import com.ssafy.malitell.dto.response.board.gathering.GatheringResponseDto;
 import com.ssafy.malitell.repository.GatheringCommentRepository;
 import com.ssafy.malitell.repository.GatheringRepository;
 import com.ssafy.malitell.repository.SelfHelpGroupRepository;
+import com.ssafy.malitell.repository.WorryTagRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -31,20 +33,21 @@ public class GatheringService {
     private final GatheringCommentRepository gatheringCommentRepository;
     private final SelfHelpGroupRepository selfHelpGroupRepository;
     private final UserRepository userRepository;
+    private final WorryTagRepository worryTagRepository;
 
     // 글 작성
     public int createGathering(GatheringCreateRequestDto requestDto, Principal principal) {
         String name = principal.getName();
         User findUser = userRepository.findByUserId(name);
         SelfHelpGroup selfHelpGroup = new SelfHelpGroup(requestDto);
+        WorryTag worryTag = worryTagRepository.findById(requestDto.getWorryTagSeq()).get();
 
-        Gathering gathering = new Gathering(selfHelpGroup, findUser, requestDto.getTitle(), requestDto.getContent());
+        Gathering gathering = new Gathering(selfHelpGroup, findUser, requestDto.getTitle(), requestDto.getContent(), worryTag);
 
         selfHelpGroupRepository.save(selfHelpGroup);
         gatheringRepository.save(gathering);
         return gathering.getGatheringSeq();
     }
-
 
     // 게시글 조회
     @Transactional
@@ -63,7 +66,8 @@ public class GatheringService {
         Gathering gathering = gatheringRepository.findById(gatheringSeq).orElseThrow(
                 () -> new IllegalArgumentException("게시물이 존재하지 않습니다.")
         );
-        gathering.update(requestDto);
+        WorryTag worryTag = worryTagRepository.findById(requestDto.getWorryTagSeq()).get();
+        gathering.update(requestDto, worryTag);
         return gathering.getGatheringSeq();
     }
 
