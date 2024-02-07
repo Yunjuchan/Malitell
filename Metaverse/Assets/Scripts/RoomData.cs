@@ -21,7 +21,8 @@ public class RoomData : MonoBehaviour
         set
         {
             _roomInfo = value;
-            RoomInfoText.text = $"{_roomInfo.Name} ({_roomInfo.PlayerCount}/{_roomInfo.MaxPlayers})";
+            string roomDisplayText = _roomInfo.IsOpen ? $"{_roomInfo.Name} ({_roomInfo.PlayerCount}/{_roomInfo.MaxPlayers})" : $"{_roomInfo.Name} (비밀번호 입력 필요)";
+            RoomInfoText.text = roomDisplayText;
             // 버튼의 클릭 이벤트에 함수를 연결
             GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => OnEnterRoom(_roomInfo.Name));
         }

@@ -14,6 +14,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     // 유니티 에디터 인스펙터에서 할당되는 변수들
     public TMP_InputField userIdText;  // 닉네임 입력 필드
     public TMP_InputField roomNameText;  // 룸 이름 입력 필드
+    public TMP_InputField pwdNameText; // 비밀번호 이름 입력 필드
     public TMP_Text ConnectionStatus;  // 연결 상태 표시 텍스트
 
     // 룸 목록을 저장할 딕셔너리
