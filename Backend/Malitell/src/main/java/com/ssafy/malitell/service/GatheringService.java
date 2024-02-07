@@ -1,12 +1,14 @@
 package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.board.Gathering;
+import com.ssafy.malitell.domain.board.GatheringComment;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.board.gathering.GatheringCreateRequestDto;
 import com.ssafy.malitell.dto.request.board.gathering.GatheringUpdateRequestDto;
 import com.ssafy.malitell.dto.response.board.gathering.GatheringListResponseDto;
 import com.ssafy.malitell.dto.response.board.gathering.GatheringResponseDto;
+import com.ssafy.malitell.repository.GatheringCommentRepository;
 import com.ssafy.malitell.repository.GatheringRepository;
 import com.ssafy.malitell.repository.SelfHelpGroupRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
@@ -26,6 +28,7 @@ import java.util.Optional;
 public class GatheringService {
 
     private final GatheringRepository gatheringRepository;
+    private final GatheringCommentRepository gatheringCommentRepository;
     private final SelfHelpGroupRepository selfHelpGroupRepository;
     private final UserRepository userRepository;
 
@@ -49,8 +52,9 @@ public class GatheringService {
         Gathering gathering = gatheringRepository.findById(gatheringSeq).orElseThrow(
                 () -> new IllegalArgumentException("조회 실패")
         );
+        List<GatheringComment> allByGathering = gatheringCommentRepository.findAllByGathering(gathering);
         gathering.hitCountUp();
-        return new GatheringResponseDto(gathering);
+        return new GatheringResponseDto(gathering, allByGathering);
     }
 
     // 게시글 수정

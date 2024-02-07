@@ -1,6 +1,7 @@
 package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.board.Community;
+import com.ssafy.malitell.domain.board.CommunityComment;
 import com.ssafy.malitell.domain.board.OverComing;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.board.CommunityRequestDto;
@@ -8,6 +9,7 @@ import com.ssafy.malitell.dto.request.board.CommunityUpdateRequestDto;
 import com.ssafy.malitell.dto.response.board.CommunityListResponseDto;
 import com.ssafy.malitell.dto.response.board.CommunityResponseDto;
 import com.ssafy.malitell.dto.response.board.overcoming.OverComingListResponseDto;
+import com.ssafy.malitell.repository.CommunityCommentRepository;
 import com.ssafy.malitell.repository.CommunityRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
@@ -25,6 +27,7 @@ import java.util.List;
 public class CommunityService {
 
     private final CommunityRepository communityRepository;
+    private final CommunityCommentRepository communityCommentRepository;
     private final UserRepository userRepository;
 
     // 게시글 작성
@@ -37,12 +40,13 @@ public class CommunityService {
         return community.getCommunitySeq();
     }
 
-    // 게시글 조회
+    // 게시글 단건 조회
     public CommunityResponseDto findOneCommunity(int communitySeq) {
         Community community = communityRepository.findById(communitySeq).orElseThrow(
                 () -> new IllegalArgumentException("조회 실패")
         );
-        return new CommunityResponseDto(community);
+        List<CommunityComment> allByCommunity = communityCommentRepository.findAllByCommunity(community);
+        return new CommunityResponseDto(community, allByCommunity);
     }
 
     // 게시글 수정

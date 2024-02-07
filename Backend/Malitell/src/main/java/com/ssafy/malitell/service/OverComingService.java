@@ -1,11 +1,13 @@
 package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.board.OverComing;
+import com.ssafy.malitell.domain.board.OverComingComment;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.board.overcoming.OverComingRequestDto;
 import com.ssafy.malitell.dto.request.board.overcoming.OverComingUpdateRequestDto;
 import com.ssafy.malitell.dto.response.board.overcoming.OverComingListResponseDto;
 import com.ssafy.malitell.dto.response.board.overcoming.OverComingResponseDto;
+import com.ssafy.malitell.repository.OverComingCommentRepository;
 import com.ssafy.malitell.repository.OverComingRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
@@ -22,6 +24,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OverComingService {
     private final OverComingRepository overComingRepository;
+    private final OverComingCommentRepository overComingCommentRepository;
     private final UserRepository userRepository;
 
     // 게시글 작성
@@ -33,12 +36,13 @@ public class OverComingService {
         overComingRepository.save(overComing);
     }
 
-    // 게시글 조회
+    // 게시글 단건 조회
     public OverComingResponseDto findOneOverComing(int overComingSeq) {
         OverComing overComing = overComingRepository.findById(overComingSeq).orElseThrow(
                 () -> new IllegalArgumentException("조회 실패")
         );
-        return new OverComingResponseDto(overComing);
+        List<OverComingComment> allByOverComing = overComingCommentRepository.findAllByOverComing(overComing);
+        return new OverComingResponseDto(overComing, allByOverComing);
     }
 
     // 게시글 수정
