@@ -20,10 +20,13 @@ public class OverComingListResponseDto {
     private int hit;
     private Timestamp time;
 
+    private int boardSeq;
+
     public OverComingListResponseDto(OverComing overComing) {
         this.title = overComing.getTitle();
         this.username = overComing.getUser().getName();
         this.hit = overComing.getHit();
         this.time = overComing.getTime();
+        this.boardSeq = overComing.getOvercomingSeq();
     }
 }
