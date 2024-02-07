@@ -2,7 +2,6 @@ package com.ssafy.malitell.dto.response.user;
 
 import com.ssafy.malitell.domain.tag.StatusTag;
 import com.ssafy.malitell.domain.user.User;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +19,7 @@ public class ClientResponseDto {
     private String email;
     private String phone;
     private String birth;
-    private List<StatusTag> statusTagList;
+    private List<StatusTag> statusTags;
 
     public ClientResponseDto(User user) {
         this.userId = user.getUserId();
@@ -29,6 +28,6 @@ public class ClientResponseDto {
         this.email = user.getEmail();
         this.phone = user.getPhone();
         this.birth = user.getBirth();
-        this.statusTagList = user.getStatusTags();
+        this.statusTags = user.getStatusTags();
     }
 }

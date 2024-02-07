@@ -107,6 +107,7 @@ public class User {
         this.email = counselorUpdateRequestDto.getEmail();
         this.phone = counselorUpdateRequestDto.getPhone();
         this.careerPeriod = counselorUpdateRequestDto.getCareerPeriod();
+        this.comment = counselorUpdateRequestDto.getComment();
     }
     public void updatePassword(String password) {
         this.password = password;
