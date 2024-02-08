@@ -1,7 +1,7 @@
 package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.board.Gathering;
-import com.ssafy.malitell.domain.board.GatheringComment;
+import com.ssafy.malitell.domain.board.comment.GatheringComment;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
 import com.ssafy.malitell.domain.tag.WorryTag;
 import com.ssafy.malitell.domain.user.User;
@@ -9,10 +9,10 @@ import com.ssafy.malitell.dto.request.board.gathering.GatheringCreateRequestDto;
 import com.ssafy.malitell.dto.request.board.gathering.GatheringUpdateRequestDto;
 import com.ssafy.malitell.dto.response.board.gathering.GatheringListResponseDto;
 import com.ssafy.malitell.dto.response.board.gathering.GatheringResponseDto;
-import com.ssafy.malitell.repository.GatheringCommentRepository;
-import com.ssafy.malitell.repository.GatheringRepository;
-import com.ssafy.malitell.repository.SelfHelpGroupRepository;
-import com.ssafy.malitell.repository.WorryTagRepository;
+import com.ssafy.malitell.repository.board.gathering.GatheringCommentRepository;
+import com.ssafy.malitell.repository.board.gathering.GatheringRepository;
+import com.ssafy.malitell.repository.selfhelpgroup.SelfHelpGroupRepository;
+import com.ssafy.malitell.repository.tag.WorryTagRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

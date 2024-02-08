@@ -2,9 +2,9 @@ package com.ssafy.malitell.dto.response.board.gathering;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ssafy.malitell.domain.board.Gathering;
-import com.ssafy.malitell.domain.board.GatheringComment;
+import com.ssafy.malitell.domain.board.comment.GatheringComment;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
-import com.ssafy.malitell.dto.response.board.CommentResponseDto;
+import com.ssafy.malitell.dto.response.board.comment.CommentResponseDto;
 import lombok.Getter;
 
 import java.sql.Timestamp;

@@ -1,18 +1,13 @@
 package com.ssafy.malitell.service;
 
-import com.ssafy.malitell.domain.board.Community;
-import com.ssafy.malitell.domain.board.CommunityComment;
 import com.ssafy.malitell.domain.board.Gathering;
-import com.ssafy.malitell.domain.board.GatheringComment;
-import com.ssafy.malitell.dto.request.board.CommentRequestDto;
-import com.ssafy.malitell.dto.response.board.CommentResponseDto;
-import com.ssafy.malitell.repository.GatheringCommentRepository;
-import com.ssafy.malitell.repository.GatheringRepository;
+import com.ssafy.malitell.domain.board.comment.GatheringComment;
+import com.ssafy.malitell.dto.request.board.comment.CommentRequestDto;
+import com.ssafy.malitell.repository.board.gathering.GatheringCommentRepository;
+import com.ssafy.malitell.repository.board.gathering.GatheringRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service

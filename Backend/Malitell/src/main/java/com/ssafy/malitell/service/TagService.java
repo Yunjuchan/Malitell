@@ -2,12 +2,10 @@ package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.tag.StatusTag;
 import com.ssafy.malitell.domain.user.User;
-import com.ssafy.malitell.dto.request.tag.TagRequestDto;
-import com.ssafy.malitell.repository.StatusTagRepository;
-import com.ssafy.malitell.repository.WorryTagRepository;
+import com.ssafy.malitell.repository.tag.StatusTagRepository;
+import com.ssafy.malitell.repository.tag.WorryTagRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;

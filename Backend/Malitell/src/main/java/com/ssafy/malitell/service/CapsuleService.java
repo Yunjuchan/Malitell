@@ -1,8 +1,8 @@
 package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.capsule.Capsule;
-import com.ssafy.malitell.dto.response.CapsuleResponseDto;
-import com.ssafy.malitell.repository.CapsuleRepository;
+import com.ssafy.malitell.dto.response.capsule.CapsuleResponseDto;
+import com.ssafy.malitell.repository.capsule.CapsuleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

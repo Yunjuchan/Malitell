@@ -1,9 +1,8 @@
 package com.ssafy.malitell.jwt;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.UnsupportedJwtException;
+import io.jsonwebtoken.*;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +14,7 @@ import java.util.Date;
 
 // JWT 발급과 검증에 필요한 메서드를 제공하는 클래스
 @Component
+@Slf4j
 public class JWTUtil {
 
     public static final String ACCESS_TOKEN = "Access_Token";
@@ -61,6 +61,31 @@ public class JWTUtil {
                 .signWith(secretKey) // 최종적으로 secretKey를 통해 토큰 암호화
                 .compact();
     }
+
+//    public boolean validateToken(String jwt) {
+//        return this.getClaims(jwt) != null;
+//    }
+//
+//    private Jws<Claims> getClaims(String jwt) {
+//        try {
+//            return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwt);
+//        } catch (SignatureException ex) {
+//            log.error("Invalid JWT signature");
+//            throw ex;
+//        } catch (MalformedJwtException ex) {
+//            log.error("Invalid JWT token");
+//            throw ex;
+//        } catch (ExpiredJwtException ex) {
+//            log.error("Expired JWT token");
+//            throw ex;
+//        } catch (UnsupportedJwtException ex) {
+//            log.error("Unsupported JWT token");
+//            throw ex;
+//        } catch (IllegalArgumentException ex) {
+//            log.error("JWT claims string is empty.");
+//            throw ex;
+//        }
+//    }
 
 //    public boolean validateToken(String token) {
 //        try {
