@@ -14,7 +14,7 @@ export const createSHGroup = (data: object) => {
 // 자조모임 모집 게시글 조회
 //SH는 self-helf 귀찮아서 줄였음
 export const fetchSHGroup = () => {
-  const res = authApi.get("/gathering")
+  const res = api.get("/gathering/getBoardList")
   .then((response) => {
     // 응답 데이터 : 자조모임 게시글 번호
     // 게시글 제목 : title

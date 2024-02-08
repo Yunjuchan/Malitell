@@ -17,6 +17,7 @@ export interface ArticleInfo {
   hit: number;
   time: string;
   boardSeq: number;
+  
   // tag: string | null;
 }
 
@@ -31,10 +32,9 @@ export default function ArticleList() {
   // 컴포넌트 전환을 위한 navigate hook
   const navigate = useNavigate();
 
-  const goToArticleDetail = (seq: number) => {
-    navigate(`/articles/${board.boardType}/${seq}`)
-  }
-
+  // const goToArticleDetail = (e: React.MouseEvent, seq: number) => {
+  //   navigate(`/articles/${board.boardType}/${seq}`)
+  // }
 
   const fetchArticles = () => {
     fetchOvercomingList()
@@ -60,8 +60,10 @@ export default function ArticleList() {
   return (
     <s.Wrapper>
       {articles[board.boardType].map((article: ArticleInfo, index) => (
-        <Article key={index} onClick={() => goToArticleDetail(article.boardSeq)}/>
+        <Article key={index} article={article} />
       ))}
     </s.Wrapper>
   )
 }
+
+        // <Article key={index} onClick={() => goToArticleDetail(article.boardSeq)}/>
