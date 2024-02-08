@@ -3,7 +3,7 @@ import RecommendedArticle from "../../components/article/recommendedArticle";
 import Filter from "../../components/article/articleList/filter";
 import ArticleList from "../../components/article/articleList/articleList";
 import * as g from "../../styles/grid";
-import {GridList} from '../../styles/article/grid';
+import { GridList } from '../../styles/article/grid';
 import Bamboo from "../../components/common/banners/bamboo";
 import Metaverse from "../../components/common/banners/metaverse";
 
