@@ -11,10 +11,14 @@ import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
-import com.ssafy.malitell.dto.response.board.BoardsListResponseDto;
+import com.ssafy.malitell.dto.response.board.MyBoardListResponseDto;
 import com.ssafy.malitell.dto.response.user.ClientResponseDto;
 import com.ssafy.malitell.dto.response.user.CounselorResponseDto;
-import com.ssafy.malitell.repository.*;
+import com.ssafy.malitell.repository.board.community.CommunityRepository;
+import com.ssafy.malitell.repository.board.gathering.GatheringRepository;
+import com.ssafy.malitell.repository.board.overcoming.OverComingRepository;
+import com.ssafy.malitell.repository.counseling.CounselingRepository;
+import com.ssafy.malitell.repository.tag.StatusTagRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +27,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.security.Principal;
 import java.sql.Timestamp;
@@ -39,7 +42,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final ReserveRepository reserveRepository;
+    private final CounselingRepository counselingRepository;
     private final GatheringRepository gatheringRepository;
     private final CommunityRepository communityRepository;
     private final OverComingRepository overComingRepository;
@@ -151,7 +154,7 @@ public class UserService {
 
     @Transactional
     public void sendAlarm() {
-        List<Counseling> allCounseling = reserveRepository.findAll();
+        List<Counseling> allCounseling = counselingRepository.findAll();
         for (Counseling counseling : allCounseling) {
             Timestamp counselingDate = counseling.getCounselingDate();
             LocalDateTime localDateTime = counselingDate.toLocalDateTime();
@@ -193,6 +196,6 @@ public class UserService {
         List<OverComing> overComingByUser = overComingRepository.findOverComingByUser(findUser);
         List<Community> communityByUser = communityRepository.findCommunityByUser(findUser);
 
-        return new ResponseEntity<>(new BoardsListResponseDto(gatheringByUser, overComingByUser, communityByUser), HttpStatus.OK);
+        return new ResponseEntity<>(new MyBoardListResponseDto(gatheringByUser, overComingByUser, communityByUser), HttpStatus.OK);
     }
 }

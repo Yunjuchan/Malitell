@@ -1,10 +1,9 @@
 package com.ssafy.malitell.dto.response.board.overcoming;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.ssafy.malitell.domain.board.GatheringComment;
 import com.ssafy.malitell.domain.board.OverComing;
-import com.ssafy.malitell.domain.board.OverComingComment;
-import com.ssafy.malitell.dto.response.board.CommentResponseDto;
+import com.ssafy.malitell.domain.board.comment.OverComingComment;
+import com.ssafy.malitell.dto.response.board.comment.CommentResponseDto;
 import lombok.Getter;
 
 import java.sql.Timestamp;

@@ -1,6 +1,6 @@
 package com.ssafy.malitell.controller;
 
-import com.ssafy.malitell.dto.response.CapsuleResponseDto;
+import com.ssafy.malitell.dto.response.capsule.CapsuleResponseDto;
 import com.ssafy.malitell.service.CapsuleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,14 +1,14 @@
 package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.board.OverComing;
-import com.ssafy.malitell.domain.board.OverComingComment;
+import com.ssafy.malitell.domain.board.comment.OverComingComment;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.board.overcoming.OverComingRequestDto;
 import com.ssafy.malitell.dto.request.board.overcoming.OverComingUpdateRequestDto;
 import com.ssafy.malitell.dto.response.board.overcoming.OverComingListResponseDto;
 import com.ssafy.malitell.dto.response.board.overcoming.OverComingResponseDto;
-import com.ssafy.malitell.repository.OverComingCommentRepository;
-import com.ssafy.malitell.repository.OverComingRepository;
+import com.ssafy.malitell.repository.board.overcoming.OverComingCommentRepository;
+import com.ssafy.malitell.repository.board.overcoming.OverComingRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

@@ -1,16 +1,16 @@
 package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.board.Community;
-import com.ssafy.malitell.domain.board.CommunityComment;
+import com.ssafy.malitell.domain.board.comment.CommunityComment;
 import com.ssafy.malitell.domain.tag.WorryTag;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.board.community.CommunityRequestDto;
 import com.ssafy.malitell.dto.request.board.community.CommunityUpdateRequestDto;
 import com.ssafy.malitell.dto.response.board.community.CommunityListResponseDto;
 import com.ssafy.malitell.dto.response.board.community.CommunityResponseDto;
-import com.ssafy.malitell.repository.CommunityCommentRepository;
-import com.ssafy.malitell.repository.CommunityRepository;
-import com.ssafy.malitell.repository.WorryTagRepository;
+import com.ssafy.malitell.repository.board.community.CommunityCommentRepository;
+import com.ssafy.malitell.repository.board.community.CommunityRepository;
+import com.ssafy.malitell.repository.tag.WorryTagRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

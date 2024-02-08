@@ -2,10 +2,8 @@ package com.ssafy.malitell.dto.response.board.community;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ssafy.malitell.domain.board.Community;
-import com.ssafy.malitell.domain.board.CommunityComment;
-import com.ssafy.malitell.domain.board.OverComing;
-import com.ssafy.malitell.domain.board.OverComingComment;
-import com.ssafy.malitell.dto.response.board.CommentResponseDto;
+import com.ssafy.malitell.domain.board.comment.CommunityComment;
+import com.ssafy.malitell.dto.response.board.comment.CommentResponseDto;
 import lombok.Getter;
 
 import java.sql.Timestamp;

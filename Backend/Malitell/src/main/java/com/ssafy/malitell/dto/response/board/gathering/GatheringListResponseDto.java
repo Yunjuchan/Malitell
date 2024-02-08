@@ -19,7 +19,7 @@ public class GatheringListResponseDto {
     private String username;
     private int hit;
     private Timestamp time;
-    private int boardSeq;
+    private int gatheringSeq;
     // 태그
     private String tag;
 
@@ -28,7 +28,7 @@ public class GatheringListResponseDto {
         this.username = gathering.getUser().getName();
         this.hit = gathering.getHit();
         this.time = gathering.getTime();
-        this.boardSeq = gathering.getGatheringSeq();
+        this.gatheringSeq = gathering.getGatheringSeq();
         this.tag = gathering.getWorryTag().getTag();
     }
 }

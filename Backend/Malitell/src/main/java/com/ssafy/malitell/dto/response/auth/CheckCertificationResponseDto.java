@@ -1,7 +1,7 @@
 package com.ssafy.malitell.dto.response.auth;
 
-import com.ssafy.malitell.common.ResponseCode;
-import com.ssafy.malitell.common.ResponseMessage;
+import com.ssafy.malitell.util.ResponseCode;
+import com.ssafy.malitell.util.ResponseMessage;
 import com.ssafy.malitell.dto.response.ResponseDto;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
