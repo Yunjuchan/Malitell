@@ -1,7 +1,11 @@
 package com.ssafy.malitell.controller;
 
 import com.ssafy.malitell.domain.chat.ChatMessage;
+import com.ssafy.malitell.domain.chat.ChatRoom;
+import com.ssafy.malitell.domain.user.User;
+import com.ssafy.malitell.dto.request.chat.MessageRequestDto;
 import com.ssafy.malitell.service.ChatService;
+import com.ssafy.malitell.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.LoggerFactory;
@@ -13,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @RestController
 @Slf4j
@@ -24,22 +27,31 @@ public class MessageController {
 
     private final SimpMessagingTemplate template;
 
+    private final UserService userService;
+
     private static final Logger logger = LoggerFactory.getLogger(MessageController.class);
 
 
     @MessageMapping("/chat/message")
-    public void message(@RequestBody ChatMessage message, Principal principal){
+    public void message(@RequestBody MessageRequestDto requestDto, Principal principal){
 
-        log.info("message(message = {})", message);
+        log.info("message(message = {})", requestDto);
         System.out.println("0");
-        System.out.println(message);
-        logger.info(message.toString());
-        String chatRoomSeq = message.getChatRoom().getChatRoomSeq();
+        System.out.println(requestDto);
+        logger.info(requestDto.toString());
+        String chatRoomSeq = requestDto.getChatRoomSeq();
         System.out.println("1");
         chatService.falseMessageList(chatRoomSeq, principal);
         System.out.println("2");
-        chatService.save(message);
+
+        ChatRoom chatRoom = chatService.findRoom(requestDto.getChatRoomSeq());
+        User user = userService.findByUserSeq(requestDto.getUserSeq());
+
+        ChatMessage chatMessage = new ChatMessage(requestDto, chatRoom, user);
+
+
+        chatService.save(chatMessage);
         System.out.println("3");
-        template.convertAndSend("/chat/room/" + message.getChatRoom().getChatRoomSeq(), message);
+        template.convertAndSend("/chat/room/" + chatMessage.getChatRoom().getChatRoomSeq(), chatMessage);
     }
 }
