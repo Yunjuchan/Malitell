@@ -34,7 +34,7 @@ export const login = (data: loginData) => {
         // 서버에서 받은 데이터가 수정해야한다면 더 작성해야함.
         console.log(res);
         console.log(res.headers.access_token)
-        localStorage.setItem("Access_Token", res.headers.access_toekn)
+        localStorage.setItem("Access_Token", res.headers.access_token)
         dispatch(saveUserInfo(res.data));
       })
       .catch((error) => {
@@ -51,6 +51,7 @@ export const logout = (accsessToken: string) => {
       .then((response) => {
         // 로그아웃 요청이 성공하면 Redux store의 user 정보를 삭제
         dispatch(userLogout());
+        localStorage.clear();
       })
       .catch((error) => {
         console.error("Failed to logout:", error);

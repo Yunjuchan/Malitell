@@ -52,12 +52,14 @@ export default function RoomComponent() {
     // console.log(clientRef.current);
     // // console.log(clientRef.current.connected);
     // console.log("-------------------------");
+    // console.log(roomId);
     if (roomId.current) {
       clientRef.current.sendMessage(
         "/pub/chat/message",
         JSON.stringify({
           // type: "TALK",
-          "chatRoom": roomId.current,
+          "chatRoomSeq": roomId.current,
+          // "chatRoom": roomId.current,
           "userSeq": sender,
           "content": message,
           "sendTiem": Date()
@@ -71,6 +73,7 @@ export default function RoomComponent() {
   };
 
   const recvMessage = (recv: Message) => {
+    console.log("메시지가 왔어...?!")
     setMessages((prevMessages) => [
       {
         type: recv.type,

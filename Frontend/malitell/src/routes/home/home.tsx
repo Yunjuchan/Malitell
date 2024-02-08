@@ -13,12 +13,12 @@ export default function home() {
       <g.BackHome />
       <g.Grid>
         {/* 홈 네브 */}
-        <g.Box $col="1/13" $row="1/3">
+        <g.Box $col="1/13" $row="1/2" $color="white">
           <Nav />
         </g.Box>
 
         {/* 배너 */}
-        <g.Box $col="1/6" $row="3/8">
+        <g.Box $col="1/6" $row="3/8" $color="#fbf3fd">
           <Metaverse />
           <Bamboo />
         </g.Box>
@@ -29,7 +29,7 @@ export default function home() {
         </g.Box>
 
         {/* 게시글 */}
-        <g.Box $col="1/13" $row="8/13">
+        <g.Box $col="1/13" $row="8/13" $color="#fbf3fd">
           <Articles />
         </g.Box>
       </g.Grid>
