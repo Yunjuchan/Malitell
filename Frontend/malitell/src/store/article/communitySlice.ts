@@ -6,7 +6,7 @@ interface ArticleForm {
 }
 
 export const fetchArticleList = () => {
-  const res = api.get("/community")
+  const res = api.get("/community/getBoardList")
   .then((res) => {
     // 응답 데이터 : 자조모임 게시글 번호
     // 게시글 제목 : title

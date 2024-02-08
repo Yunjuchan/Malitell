@@ -1,7 +1,7 @@
 import { api, authApi } from "../axiosInstance"
 
 export const fetchOvercomingList = () => {
-    const res = api.get('/overComing')
+    const res = api.get('/overComing/getBoardList')
     .then((res) => {
         return res.data
     })
