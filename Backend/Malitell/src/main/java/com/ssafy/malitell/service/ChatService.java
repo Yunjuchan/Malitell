@@ -79,10 +79,8 @@ public class ChatService {
 
     public void falseMessageList(String chatRoomSeq, Principal principal) {
         String loginUserId = principal.getName();
-        List<ChatMessage> chatMessageList = chatMessageRepositoryImpl.findAllByIsReadFalse(chatRoomSeq);
-
-        if (chatMessageList != null) {
-            for (ChatMessage chatMessage : chatMessageList) {
+        if (chatMessageRepositoryImpl.findAllByIsReadFalse(chatRoomSeq) != null) {
+            for (ChatMessage chatMessage : chatMessageRepositoryImpl.findAllByIsReadFalse(chatRoomSeq)) {
                 if (!chatMessage.getUser().getUserId().equals(loginUserId)) {
                     chatMessage.updateIsReadTrue();
                 }
