@@ -3,6 +3,7 @@ package com.ssafy.malitell.domain.user;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
 import com.ssafy.malitell.domain.tag.StatusTag;
 import com.ssafy.malitell.dto.request.auth.SignUpRequestDto;
+import com.ssafy.malitell.dto.request.chat.MessageRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import jakarta.persistence.*;

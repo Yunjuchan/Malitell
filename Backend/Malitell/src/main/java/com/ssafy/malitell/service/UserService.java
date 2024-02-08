@@ -116,6 +116,10 @@ public class UserService {
         return userRepository.findByUserId(userId);
     }
 
+    public User findByUserSeq(int userSeq) {
+        return userRepository.findByUserSeq(userSeq);
+    }
+
     @Transactional
     public void updateClientInfo(String userId, ClientUpdateRequestDto clientUpdateRequestDto) {
         User user = userRepository.findByUserId(userId);

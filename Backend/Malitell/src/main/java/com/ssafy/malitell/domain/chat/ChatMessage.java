@@ -1,6 +1,7 @@
 package com.ssafy.malitell.domain.chat;
 
 import com.ssafy.malitell.domain.user.User;
+import com.ssafy.malitell.dto.request.chat.MessageRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,5 +40,12 @@ public class ChatMessage {
 
     public void updateIsReadTrue() {
         this.isRead = true;
+    }
+
+    public ChatMessage(MessageRequestDto messageRequestDto, ChatRoom chatRoom, User user) {
+        this.chatRoom = chatRoom;
+        this.user = user;
+        this.content = messageRequestDto.getContent();
+        this.sendTime = messageRequestDto.getSendTime();
     }
 }
