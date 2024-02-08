@@ -17,7 +17,25 @@ export const TopBox = styled.div`
   margin: auto;
   display: flex;
   justify-content: space-around;
-`
+`;
+
+export const TagBox = styled.div`
+width: 250px;
+height: 30px;
+margin: auto;
+display: flex;
+align-items: center;
+justify-content: space-around;
+`;
+
+export const Tag = styled.div`
+border: 1px solid black;
+width: 30%;
+margin-top: 10px;
+height: 50px;
+background-color: white;
+text-align: center;
+`;
 
 export const Filter = styled.div`
 width: 280px;
@@ -26,7 +44,7 @@ margin-top: 20px;
 background-color: white;
 box-shadow: 1px 1px 1px 1px lightgray;
 border-radius: 10px;
-`
+`;
 
 export const Title = styled.input`
 width: 590px;
@@ -42,7 +60,7 @@ border: none;
   outline: none;
   box-shadow: 1px 1px 1px 1px lightgray inset;
 }
-`
+`;
 
 export const Input = styled.textarea`
 width: 928px;
