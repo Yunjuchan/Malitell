@@ -133,6 +133,7 @@
     <Compile Include="Assets\Photon\PhotonVoice\Demos\DemoVoicePun\Scripts\Highlighter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\Photon\PhotonVoice\Demos\DemoVoiceProximityChat\Scripts\ProximityVoiceTrigger.cs" />
+    <Compile Include="Assets\Scripts\EaselControl.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Scripts\MicBtn.cs" />
@@ -181,6 +182,9 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\Photon\PhotonVoice\Demos\DemoVoicePun\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
+    <Compile Include="Assets\Scripts\CancelBtn.cs" />
+    <Compile Include="Assets\Scripts\PaintControl.cs" />
+    <Compile Include="Assets\Scripts\Drawing.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

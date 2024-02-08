@@ -50,3 +50,6 @@ TagManager:
   - name: Collider Debug
     uniqueID: 3310053101
     locked: 0
+  - name: Line
+    uniqueID: 737067669
+    locked: 0
