@@ -4,11 +4,13 @@ import com.ssafy.malitell.domain.chat.ChatMessage;
 import com.ssafy.malitell.domain.chat.ChatRoom;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.chat.MessageRequestDto;
+import com.ssafy.malitell.repository.chat.ChatRoomRepository;
 import com.ssafy.malitell.service.ChatService;
 import com.ssafy.malitell.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +30,8 @@ public class MessageController {
     private final SimpMessagingTemplate template;
 
     private final UserService userService;
+
+    private final RedisTemplate redisTemplate;
 
     private static final Logger logger = LoggerFactory.getLogger(MessageController.class);
 
@@ -53,5 +57,9 @@ public class MessageController {
         chatService.save(chatMessage);
         System.out.println("3");
         template.convertAndSend("/chat/room/" + chatMessage.getChatRoom().getChatRoomSeq(), chatMessage);
+
+//        redisTemplate.convertAndSend(channelTopic.getTopic(), chatMessage);
     }
+
+
 }

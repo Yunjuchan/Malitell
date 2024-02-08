@@ -1,21 +1,27 @@
 package com.ssafy.malitell.repository.chat;
 
 import com.ssafy.malitell.domain.chat.ChatMessage;
-import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.domain.chat.ChatRoom;
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.response.chat.ChatMessageResponseDto;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.redis.core.HashOperations;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class ChatRoomRepository {
-    @Autowired
-    EntityManager entityManager;
+    private final EntityManager entityManager;
+
+    private final RedisTemplate<String, Object> redisTemplate;
+    private HashOperations<String, String, ChatRoom> opsHashChatRoom;
+    private static final String CHAT_ROOMS = "CHAT_ROOM";
 
     @Transactional
     public void save(ChatRoom chatRoom) {
@@ -55,4 +61,26 @@ public class ChatRoomRepository {
         }
         return chatMessageResponseDtos;
     }
+
+//    @PostConstruct
+//    private void init() {
+//        opsHashChatRoom = redisTemplate.opsForHash();
+//    }
+//
+//    public List<ChatRoom> findAllRoom() {
+//        return opsHashChatRoom.values(CHAT_ROOMS);
+//    }
+//
+//    public ChatRoom findRoomById(String id) {
+//        return opsHashChatRoom.get(CHAT_ROOMS, id);
+//    }
+//
+//    /**
+//     * 채팅방 생성 : 서버간 채팅방 공유를 위해 redis hash에 저장한다.
+//     */
+//    public ChatRoom createChatRoom(User counselor, User client) {
+//        ChatRoom chatRoom = ChatRoom.create(counselor, client);
+//        opsHashChatRoom.put(CHAT_ROOMS, chatRoom.getChatRoomSeq(), chatRoom);
+//        return chatRoom;
+//    }
 }
