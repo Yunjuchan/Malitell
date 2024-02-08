@@ -66,9 +66,10 @@ export const Box = styled.div<{
   $position?: string;
   $top?: string;
   $zindex?: string;
+  $color?: string;
 }>`
   /* box-shadow: 0 0 0 1px black inset; */
-  background-color: #f7f7f7;
+  background-color: ${({ $color }) => $color ? $color : "#f7f7f7" };
   grid-column: ${({ $col }) => $col};
   grid-row: ${({ $row }) => $row};
   display: ${({ $display }) => $display};
