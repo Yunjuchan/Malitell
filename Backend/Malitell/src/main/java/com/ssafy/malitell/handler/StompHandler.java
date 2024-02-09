@@ -2,8 +2,10 @@ package com.ssafy.malitell.handler;
 
 // import ... 생략
 
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.jwt.JWTUtil;
 import com.ssafy.malitell.repository.chat.ChatRoomRepository;
+import com.ssafy.malitell.repository.user.UserRepository;
 import com.ssafy.malitell.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,8 +15,8 @@ import org.springframework.messaging.simp.stomp.StompCommand;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.messaging.support.ChannelInterceptor;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
-import java.security.Principal;
 import java.util.Optional;
 
 @Slf4j
@@ -23,6 +25,7 @@ import java.util.Optional;
 public class StompHandler implements ChannelInterceptor {
 
     private final JWTUtil jwtUtil;
+    private final UserRepository userRepository;
     private final ChatRoomRepository chatRoomRepository;
     private final ChatService chatService;
 
@@ -34,6 +37,10 @@ public class StompHandler implements ChannelInterceptor {
         if (StompCommand.CONNECT == accessor.getCommand()) { // websocket 연결 요청
             String jwtToken = accessor.getFirstNativeHeader("ACCESS_TOKEN");
             log.info("CONNECT {}", jwtToken);
+
+            if (StringUtils.hasText(jwtToken) && jwtToken.startsWith("Bearer")) {
+                jwtToken = jwtToken.substring(6, jwtToken.length());
+            }
 
             // Header의 jwt token 검증
             jwtUtil.validateToken(jwtToken);

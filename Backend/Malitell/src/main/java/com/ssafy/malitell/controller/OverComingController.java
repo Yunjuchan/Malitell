@@ -33,20 +33,20 @@ public class OverComingController {
     }
 
     // 게시물 하나 조회
-    @GetMapping("/{overComingSeq}")
+    @GetMapping("/view/{overComingSeq}")
     public ResponseEntity<OverComingResponseDto> getOneOverComing(@PathVariable int overComingSeq) {
         return new ResponseEntity<>(overComingService.findOneOverComing(overComingSeq), HttpStatus.OK);
     }
 
     // 게시물 삭제
-    @DeleteMapping("/{overComingSeq}")
+    @DeleteMapping("/delete/{overComingSeq}")
     public ResponseEntity<?> deleteOverComing(@PathVariable int overComingSeq) {
         overComingService.deleteOverComing(overComingSeq);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     // 게시물 수정
-    @PutMapping("/{overComingSeq}")
+    @PutMapping("/update/{overComingSeq}")
     public ResponseEntity<?> updateOverComing(@PathVariable int overComingSeq, @RequestBody OverComingUpdateRequestDto requestDto) {
         overComingService.updateOverComing(overComingSeq, requestDto);
         return new ResponseEntity<>(HttpStatus.OK);
