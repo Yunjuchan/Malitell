@@ -13,6 +13,8 @@ interface Room {
 }
 
 export default function RoomComponent() {
+  const token = localStorage.getItem("Access_Token");
+  const url = `http:localhost:8080/ws-stomp`;
   const [room, setRoom] = useState<Room | null>(null);
   const [sender, setSender] = useState<string | null>(null);
   const [message, setMessage] = useState("");
@@ -58,11 +60,11 @@ export default function RoomComponent() {
         "/pub/chat/message",
         JSON.stringify({
           // type: "TALK",
-          "chatRoomSeq": roomId.current,
+          chatRoomSeq: roomId.current,
           // "chatRoom": roomId.current,
-          "userSeq": sender,
-          "content": message,
-          "sendTiem": Date()
+          userSeq: sender,
+          content: message,
+          sendTiem: Date(),
         })
       );
       // console.log(clientRef.current.sendMessage);
@@ -73,7 +75,7 @@ export default function RoomComponent() {
   };
 
   const recvMessage = (recv: Message) => {
-    console.log("메시지가 왔어...?!")
+    console.log("메시지가 왔어...?!");
     setMessages((prevMessages) => [
       {
         type: recv.type,
@@ -99,6 +101,7 @@ export default function RoomComponent() {
   useEffect(() => {
     setSender(localStorage.getItem("wschat.sender"));
     findRoom();
+    console.log(JSON.stringify({ token }));
   }, []);
 
   return (
@@ -123,9 +126,22 @@ export default function RoomComponent() {
         </div>
       </div>
       <SockJsClient
-        url="http://localhost:8080/ws-stomp"
+        url={url}
         topics={["/chat/room/" + roomId.current]}
         onMessage={recvMessage}
+        onConnect={() => {
+          const Access_Token = localStorage.getItem("Access_Token");
+
+          // 웹소켓 연결이 성립되면 실행될 함수
+          clientRef.current.sendMessage(
+            "app/connect",
+            JSON.stringify({ Access_Token })
+          );
+        }}
+        onError={(err: any) => {
+          // 웹소켓 연결에서 오류가 발생하면 실행될 함수
+          console.error("Websocket Error:", err);
+        }}
         ref={(client: any) => {
           clientRef.current = client;
         }}
@@ -141,3 +157,4 @@ export default function RoomComponent() {
     </div>
   );
 }
+  
