@@ -49,7 +49,11 @@ public class ReserveController {
     }
 
     // [내담자/상담자] 상담 예약 상세 조회
-
+    @GetMapping("/mypage/reserve/{counselingSeq}")
+    public ResponseEntity<ReservationInfoResponseDto> getOneReservationInfo(@PathVariable int counselingSeq, Principal principal) {
+        ReservationInfoResponseDto dto = reserveService.getOneReservationInfo(counselingSeq, principal);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
 
     // [내담자] 상담 예약 취소
     @DeleteMapping("/mypage/cancelReservation/{counselingSeq}")

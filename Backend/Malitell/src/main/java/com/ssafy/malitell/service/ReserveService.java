@@ -8,6 +8,7 @@ import com.ssafy.malitell.dto.request.reserve.CounselingLogRequestDto;
 import com.ssafy.malitell.dto.request.reserve.CounselingReviewRequestDto;
 import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
 import com.ssafy.malitell.dto.response.reserve.*;
+import com.ssafy.malitell.dto.response.user.ClientResponseDto;
 import com.ssafy.malitell.repository.CounselingLogRepository;
 import com.ssafy.malitell.repository.CounselingReviewRepository;
 import com.ssafy.malitell.repository.ReserveRepository;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.Principal;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -133,6 +135,57 @@ public class ReserveService {
             reservationList.add(new ReservationListResponseDto(counselingDate, name));
         }
         return reservationList;
+    }
+
+    public ReservationInfoResponseDto getOneReservationInfo(int counselingSeq, Principal principal) {
+        ReservationInfoResponseDto dto = new ReservationInfoResponseDto();
+
+        Optional<Counseling> counseling = reserveRepository.findById(counselingSeq);
+
+        Timestamp counselingDate = counseling.get().getCounselingDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String counselingDate1 = sdf.format(counselingDate);
+
+        String counselingSubject = counseling.get().getCounselingSubject();
+        String questionList = counseling.get().getQuestionList();
+
+        String loginUserId = principal.getName();
+        User loginUser = userRepository.findByUserId(loginUserId);
+        int loginUserSeq = loginUser.getUserSeq();
+        String role = loginUser.getRole();
+        User user = new User();
+        ClientResponseDto clientResponseDto = new ClientResponseDto();
+        CounselorResponseDto counselorResponseDto = new CounselorResponseDto();
+        List<Counseling> previousCounselingList = new ArrayList<>();
+        if(role.equals("ROLE_CLIENT")) {
+            // 상담자 정보 불러오기
+            user = userRepository.findById(counseling.get().getCounselorSeq()).get();
+            counselorResponseDto = new CounselorResponseDto(user);
+
+            // 이전 상담 목록 불러오기
+            int counselorSeq = user.getUserSeq();
+            previousCounselingList = reserveRepository.findAllPreviousCounselingListByClientSeqAndCounselorSeq(loginUserSeq, counselorSeq, counselingSeq);
+
+            dto = new ReservationInfoResponseDto(counselingDate1, counselingSubject, counselorResponseDto, previousCounselingList, questionList);
+            return dto;
+
+        } else if(role.equals("ROLE_COUNSELOR")) {
+            // 내담자 정보 불러오기
+            user = userRepository.findById(counseling.get().getClientSeq()).get();
+            clientResponseDto = new ClientResponseDto(user);
+
+            // 이전 상담 목록 불러오기
+            int clientSeq = user.getUserSeq();
+            previousCounselingList = reserveRepository.findAllPreviousCounselingListByClientSeqAndCounselorSeq(loginUserSeq, clientSeq, counselingSeq);
+
+            dto = new ReservationInfoResponseDto(counselingDate1, counselingSubject, clientResponseDto, previousCounselingList, questionList);
+            return dto;
+
+        } else {
+            user = null;
+            previousCounselingList = null;
+            return dto;
+        }
     }
 
     public void cancelReservation(int counselingSeq) {

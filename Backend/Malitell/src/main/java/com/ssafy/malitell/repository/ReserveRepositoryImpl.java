@@ -104,4 +104,22 @@ public class ReserveRepositoryImpl implements ReserveRepositoryCustom {
         return counselingReviewList;
     }
 
+    @Override
+    public List<Counseling> findAllPreviousCounselingListByClientSeqAndCounselorSeq(int clientSeq, int counselorSeq, int counselingSeq) {
+        return entityManager.createQuery("SELECT c FROM Counseling c WHERE c.clientSeq = :clientSeq AND c.counselorSeq = :counselorSeq AND c.counselingSeq < :counselingSeq", Counseling.class)
+                .setParameter("clientSeq", clientSeq)
+                .setParameter("counselorSeq", counselorSeq)
+                .setParameter("counselingSeq", counselingSeq)
+                .getResultList();
+    }
+
+    @Override
+    public List<Counseling> findAllPreviousCounselingListByCounselorSeqAndClientSeq(int counselorSeq, int clientSeq, int counselingSeq) {
+        return entityManager.createQuery("SELECT c FROM Counseling c WHERE c.counselorSeq = :counselorSeq AND c.clientSeq = :clientSeq AND c.counselingSeq < :counselingSeq", Counseling.class)
+                .setParameter("clientSeq", clientSeq)
+                .setParameter("counselorSeq", counselorSeq)
+                .setParameter("counselingSeq", counselingSeq)
+                .getResultList();
+    }
+
 }
