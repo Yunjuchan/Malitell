@@ -12,7 +12,7 @@ interface Board {
   boardType: "community" | "gather" | "overcome";
 }
 
-export default function Article({ key, article }: ArticlesProps) {
+export default function Article({ article }: ArticlesProps) {
   const board: Board = useSelector((state: any) => state.board);
   const navigate = useNavigate();
   const goToArticleDetail = () => {

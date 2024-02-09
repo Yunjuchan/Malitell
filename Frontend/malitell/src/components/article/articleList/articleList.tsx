@@ -6,10 +6,7 @@ import { fetchSHGroup } from '../../../store/article/gatherSlice';
 import { fetchOvercomingList } from '../../../store/article/overcomingSlice';
 import { fetchArticleList } from '../../../store/article/communitySlice';
 import { useSelector } from 'react-redux';
-
-interface Board {
-  boardType: 'community' | 'gather' | 'overcome';
-}
+import { BoardState } from '../../../store/article/boardSlice';
 
 export interface ArticleInfo {
   title: string;
@@ -17,7 +14,6 @@ export interface ArticleInfo {
   hit: number;
   time: string;
   boardSeq: number;
-  
   // tag: string | null;
 }
 
@@ -27,38 +23,43 @@ export default function ArticleList() {
     gather: [],
     overcome: [],
   });
-  const board: Board = useSelector((state: any) => state.board);
-
-  // 컴포넌트 전환을 위한 navigate hook
-  const navigate = useNavigate();
-
-  // const goToArticleDetail = (e: React.MouseEvent, seq: number) => {
-  //   navigate(`/articles/${board.boardType}/${seq}`)
-  // }
+  const board: BoardState = useSelector((state: any) => state.board);
 
   const fetchArticles = () => {
     fetchOvercomingList()
     .then((res) => {
+      if (!res) {
+        res = []
+      }
       setArticles((prev) => ({ ...prev, overcome: res }));
     });
 
     fetchSHGroup()
     .then((res) => {
+      if (!res) {
+        res = []
+      }
       setArticles((prev) => ({ ...prev, gather: res }));
     });
 
     fetchArticleList()
     .then((res) => {
+      if (!res) {
+        res = []
+      }
       setArticles((prev) => ({ ...prev, community: res }));
     });
   }
 
   useEffect(() => {
+    
     fetchArticles();
   }, []);
   
   return (
     <s.Wrapper>
+      <div>{articles.community}</div>
+
       {articles[board.boardType].map((article: ArticleInfo, index) => (
         <Article key={index} article={article} />
       ))}
