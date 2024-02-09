@@ -1,18 +1,16 @@
 package com.ssafy.malitell.service;
 
 import com.ssafy.malitell.domain.chat.ChatMessage;
-import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.domain.chat.ChatRoom;
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.chat.ChatRequestDto;
 import com.ssafy.malitell.dto.response.chat.ChatMessageResponseDto;
 import com.ssafy.malitell.dto.response.chat.ChatRoomResponseDto;
-import com.ssafy.malitell.repository.ChatMessageRepository;
-import com.ssafy.malitell.repository.ChatMessageRepositoryImpl;
-import com.ssafy.malitell.repository.ChatRoomRepository;
-import com.ssafy.malitell.repository.RedisRepository;
+import com.ssafy.malitell.repository.chat.ChatMessageRepositoryImpl;
+import com.ssafy.malitell.repository.chat.ChatRoomRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.parameters.P;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
@@ -22,13 +20,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ChatService {
     private final ChatRoomRepository chatRoomRepository;
-    private final ChatMessageRepository chatMessageRepository;
     private final ChatMessageRepositoryImpl chatMessageRepositoryImpl;
     private final UserRepository userRepository;
-    private final RedisRepository redisRepository;
+    private final MongoTemplate mongoTemplate;
 
     public boolean isExists(User counselor, User client) {
-        return chatRoomRepository.findRoomCounselorAndClient(counselor.getUserSeq(), client.getUserSeq()) != null;
+        boolean result;
+
+        try {
+            result = chatRoomRepository.findRoomCounselorAndClient(counselor.getUserSeq(), client.getUserSeq()) != null;
+            return result;
+        } catch(Exception e) {
+            return false;
+        }
+//        return chatRoomRepository.findRoomCounselorAndClient(counselor.getUserSeq(), client.getUserSeq()) != null;
     }
 
     public ChatRoomResponseDto createChatRoom(ChatRequestDto chatRequestDto) throws Exception {
@@ -68,16 +73,14 @@ public class ChatService {
         return chatRoomRepository.findAllMessageByChatRoomSeq(chatRoomSeq);
     }
 
-    public ChatMessage save(ChatMessage chatMessage) {
-        return chatMessageRepository.save(chatMessage);
+    public void save(ChatMessage chatMessage) {
+        chatMessageRepositoryImpl.save(chatMessage);
     }
 
     public void falseMessageList(String chatRoomSeq, Principal principal) {
         String loginUserId = principal.getName();
-        List<ChatMessage> chatMessageList = chatMessageRepositoryImpl.findAllByIsReadFalse(chatRoomSeq);
-
-        if (chatMessageList != null) {
-            for (ChatMessage chatMessage : chatMessageList) {
+        if (chatMessageRepositoryImpl.findAllByIsReadFalse(chatRoomSeq) != null) {
+            for (ChatMessage chatMessage : chatMessageRepositoryImpl.findAllByIsReadFalse(chatRoomSeq)) {
                 if (!chatMessage.getUser().getUserId().equals(loginUserId)) {
                     chatMessage.updateIsReadTrue();
                 }

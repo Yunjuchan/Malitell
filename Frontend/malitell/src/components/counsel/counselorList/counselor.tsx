@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Wrapper } from "../../../styles/counsel/counselor";
 
 interface CounselorProps {

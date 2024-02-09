@@ -2,9 +2,9 @@ package com.ssafy.malitell.dto.response.board.gathering;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ssafy.malitell.domain.board.Gathering;
-import com.ssafy.malitell.domain.board.GatheringComment;
+import com.ssafy.malitell.domain.board.comment.GatheringComment;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
-import com.ssafy.malitell.dto.response.board.CommentResponseDto;
+import com.ssafy.malitell.dto.response.board.comment.CommentResponseDto;
 import lombok.Getter;
 
 import java.sql.Timestamp;
@@ -23,6 +23,7 @@ public class GatheringResponseDto {
     private final Timestamp time;
     private final int userSeq;
     private final List<CommentResponseDto> gatheringComments = new ArrayList<>();
+    private final String tag;
 
     public GatheringResponseDto(Gathering gathering, List<GatheringComment> commentResponseDtos) {
         this.title = gathering.getTitle();
@@ -32,6 +33,7 @@ public class GatheringResponseDto {
         this.hit = gathering.getHit();
         this.time = gathering.getTime();
         this.userSeq = gathering.getUser().getUserSeq();
+        this.tag = gathering.getWorryTag().getTag();
         for (GatheringComment commentResponseDto : commentResponseDtos) {
             gatheringComments.add(new CommentResponseDto(commentResponseDto));
         }

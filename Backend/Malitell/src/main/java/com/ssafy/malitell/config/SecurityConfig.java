@@ -1,5 +1,6 @@
 package com.ssafy.malitell.config;
 
+import com.ssafy.malitell.handler.StompHandler;
 import com.ssafy.malitell.jwt.JWTFilter;
 import com.ssafy.malitell.jwt.JWTUtil;
 import com.ssafy.malitell.jwt.LoginFilter;
@@ -39,6 +40,7 @@ public class SecurityConfig {
     private final AuthenticationConfiguration authenticationConfiguration;
     private final JWTUtil jwtUtil;
     private final UserRepository userRepository;
+    private final StompHandler stompHandler;
 
 
     // AuthenticationManager 등록

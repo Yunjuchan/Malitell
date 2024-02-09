@@ -1,13 +1,13 @@
 package com.ssafy.malitell.service.implement;
 
 
-import com.ssafy.malitell.common.CertificationNumber;
+import com.ssafy.malitell.util.CertificationNumber;
 import com.ssafy.malitell.domain.auth.emailAuth;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.auth.*;
 import com.ssafy.malitell.dto.response.ResponseDto;
 import com.ssafy.malitell.dto.response.auth.*;
-import com.ssafy.malitell.repository.CertificationRepository;
+import com.ssafy.malitell.repository.user.CertificationRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import com.ssafy.malitell.service.AuthService;
 import com.ssafy.malitell.util.EmailUtil;

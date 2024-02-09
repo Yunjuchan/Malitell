@@ -1,6 +1,6 @@
 package com.ssafy.malitell.controller;
 
-import com.ssafy.malitell.dto.response.SelfHelpGroupResponseDto;
+import com.ssafy.malitell.dto.response.selfhelpgroup.SelfHelpGroupResponseDto;
 import com.ssafy.malitell.service.SelfHelpGroupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

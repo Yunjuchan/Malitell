@@ -1,12 +1,11 @@
 package com.ssafy.malitell.domain.counseling;
 
 import com.ssafy.malitell.domain.user.User;
-import com.ssafy.malitell.dto.request.reserve.ReserveRequestDto;
+import com.ssafy.malitell.dto.request.counseling.ReserveRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.sql.Timestamp;
 

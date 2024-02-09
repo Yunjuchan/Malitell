@@ -1,11 +1,10 @@
 package com.ssafy.malitell.domain.board;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.ssafy.malitell.domain.tag.WorryTag;
 import com.ssafy.malitell.domain.user.User;
-import com.ssafy.malitell.dto.request.board.CommunityRequestDto;
-import com.ssafy.malitell.dto.request.board.CommunityUpdateRequestDto;
-import com.ssafy.malitell.dto.request.board.overcoming.OverComingRequestDto;
-import com.ssafy.malitell.dto.request.board.overcoming.OverComingUpdateRequestDto;
+import com.ssafy.malitell.dto.request.board.community.CommunityRequestDto;
+import com.ssafy.malitell.dto.request.board.community.CommunityUpdateRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.sql.Wrapper;
 
 @Entity
 @Setter
@@ -42,16 +42,22 @@ public class Community {
     // 게시물 조회수
     private int hit;
 
-    public Community(User user, CommunityRequestDto communityRequestDto) {
+    // 태그
+    @OneToOne
+    private WorryTag worryTag;
+
+    public Community(User user, CommunityRequestDto communityRequestDto, WorryTag worryTag) {
         this.user = user;
         this.title = communityRequestDto.getTitle();
         this.content = communityRequestDto.getContent();
         this.hit = 0;
         this.time = new Timestamp(System.currentTimeMillis());
+        this.worryTag = worryTag;
     }
 
-    public void update(CommunityUpdateRequestDto communityUpdateRequestDto) {
+    public void update(CommunityUpdateRequestDto communityUpdateRequestDto, WorryTag worryTag) {
         this.title = communityUpdateRequestDto.getTitle();
         this.content = communityUpdateRequestDto.getContent();
+        this.worryTag = worryTag;
     }
 }

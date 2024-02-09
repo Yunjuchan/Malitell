@@ -1,12 +1,35 @@
-import { useNavigate } from 'react-router-dom';
-import {Wrapper} from '../../../styles/article/article';
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import * as s from "../../../styles/article/article";
+import { ArticleInfo } from "./articleList";
 
-export default function Article() {
+interface ArticlesProps {
+  key: number;
+  article: ArticleInfo;
+}
+
+interface Board {
+  boardType: "community" | "gather" | "overcome";
+}
+
+export default function Article({ key, article }: ArticlesProps) {
+  const board: Board = useSelector((state: any) => state.board);
   const navigate = useNavigate();
-  const goToOvercomingDetail = (overcomingSeq: number) => {
-    navigate(`/articles/${overcomingSeq}`)
-  }
+  const goToArticleDetail = () => {
+    navigate(`/articles/${board.boardType}/${article.boardSeq}`);
+  };
+
+  const handleArticle = (e: React.MouseEvent) => {
+    goToArticleDetail();
+  };
   return (
-    <Wrapper onClick={() => goToOvercomingDetail(1)}>aaa</Wrapper>
-  )
+    <s.Wrapper onClick={handleArticle}>
+      <s.TagProfile>
+        <s.Tag>dasd</s.Tag>
+        <s.Profile>사진</s.Profile>
+      </s.TagProfile>
+      <s.Title >{article.title}</s.Title>
+      <s.Time >{article.time}</s.Time>
+    </s.Wrapper>
+  );
 }

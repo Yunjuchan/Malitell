@@ -11,13 +11,10 @@ import java.time.LocalTime;
 
 @Getter
 @AllArgsConstructor
+@NotNull
 public class MessageRequestDto {
-    @NotNull
-    private Long chatMessageSeq;
-    @NotNull
-    private ChatRoom chatRoom;
-    private User user;
+    private String chatRoomSeq;
+    private int userSeq;
     private String content;
     private LocalTime sendTime;
-    private boolean isRead;
 }

@@ -2,12 +2,14 @@ package com.ssafy.malitell.dto.request.chat;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.stereotype.Repository;
 
 @Getter
+@Setter
+@ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class ChatRequestDto {
     @NotNull
     private int counselorSeq;

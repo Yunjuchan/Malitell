@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faComment } from "@fortawesome/free-regular-svg-icons";
+import { useSelector } from "react-redux";
 import * as s from "../../styles/common/nav";
 import * as g from "../../styles/grid";
 import Login from "../auth/login/login";
 import logo from "../../assets/images/nav/logo.png";
+import { setBoardTypeInfo } from "../../store/article/boardSlice";
+import { useDispatch } from "react-redux";
 
 export default function Nav() {
   const [back, setBack] = useState(false);
   const [login, setLogin] = useState(false);
-
+  const board = useSelector((state: any) => state.board);
+  
   const handleBack = (e: React.MouseEvent): void => {
     if (document.body.style.overflow === "hidden") {
       document.body.style.overflow = "unset";
@@ -26,6 +30,13 @@ export default function Nav() {
     const url = '/chat'
     window.open(url, "_blank", "width=400, height=530");
   }
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const goToCommunity = () => {
+    dispatch(setBoardTypeInfo('community'));
+    navigate("/articles/community");
+  };
 
   return (
     <>
@@ -68,7 +79,7 @@ export default function Nav() {
               <Link to="/comingsoon">메타버스</Link>
             </s.NavItem>
             <s.NavItem $width="150px" $size="17px">
-              <Link to="/articles/free">커뮤니티</Link>
+              <Link to="/articles/community" onClick={goToCommunity} >커뮤니티</Link>
             </s.NavItem>
             <s.NavItem $width="150px" $size="17px">
               <Link to="/counselors">전문가 찾기</Link>
