@@ -24,6 +24,8 @@ public class Counseling {
     private int round; // 회차
     private Timestamp reservationDate; // 상담 예약일
     private String counselingRoomUrl; // 상담방 url
+    private String counselingSubject; // 상담 주제
+    private String questionList; // 질문 목록
 
     public Counseling(int counselorSeq, ReserveRequestDto reserveRequestDto, User user, int round) {
         this.counselorSeq = counselorSeq;
@@ -31,6 +33,8 @@ public class Counseling {
         this.counselingDate = reserveRequestDto.getCounselingDate();
         this.round = round;
         this.reservationDate = new Timestamp(System.currentTimeMillis());
+        this.counselingSubject = reserveRequestDto.getCounselingSubject();
+        this.questionList = reserveRequestDto.getQuestionList();
     }
 
     @Override
