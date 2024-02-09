@@ -13,9 +13,8 @@ import { useDispatch } from "react-redux";
 export default function Nav() {
   const [back, setBack] = useState(false);
   const [login, setLogin] = useState(false);
-  const token = window.localStorage.getItem("Access_Token");
   const board = useSelector((state: any) => state.board);
-  
+
   const handleBack = (e: React.MouseEvent): void => {
     if (document.body.style.overflow === "hidden") {
       document.body.style.overflow = "unset";
@@ -27,25 +26,30 @@ export default function Nav() {
   const handleLogin = (e: React.MouseEvent): void => {
     setLogin(!login);
   };
-  const handleProfile = (e: React.MouseEvent): void => {
-    navigate("/profile")
-  }
 
   const openChat = () => {
-    const url = '/chat'
+    const url = "/chat";
     window.open(url, "_blank", "width=400, height=530");
-  }
+  };
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const goToCommunity = () => {
-    dispatch(setBoardTypeInfo('community'));
+    dispatch(setBoardTypeInfo("community"));
     navigate("/articles/community");
   };
 
-  useEffect(() => {
-    console.log(token);
-  })
+  // 토큰 저장여부에 따른 메뉴 선택 동작 바꾸기
+  const handleProfile = (e: React.MouseEvent): void => {
+    const token = window.localStorage.getItem("Access_Token");
+    if (token) {
+      navigate("/profile");
+    } else {
+      handleBack(e);
+      handleLogin(e);
+    }
+  };
+  useEffect(() => {});
 
   return (
     <>
@@ -88,7 +92,9 @@ export default function Nav() {
               <Link to="/comingsoon">메타버스</Link>
             </s.NavItem>
             <s.NavItem $width="150px" $size="17px">
-              <Link to="/articles/community" onClick={goToCommunity} >커뮤니티</Link>
+              <Link to="/articles/community" onClick={goToCommunity}>
+                커뮤니티
+              </Link>
             </s.NavItem>
             <s.NavItem $width="150px" $size="17px">
               <Link to="/counselors">전문가 찾기</Link>
@@ -100,7 +106,7 @@ export default function Nav() {
           <s.NavItems $col="11/13" $row="2/4" $align="end">
             <s.NavItem $width="70px">
               <FontAwesomeIcon
-              onClick={openChat}
+                onClick={openChat}
                 icon={faComment}
                 style={{ color: "#BF94E4" }}
                 size="2x"
@@ -110,7 +116,7 @@ export default function Nav() {
               <FontAwesomeIcon
                 onClick={handleProfile}
                 icon={faUser}
-                style={{ color: "#BF94E4", cursor:"pointer" }}
+                style={{ color: "#BF94E4", cursor: "pointer" }}
                 size="2x"
                 width="70px"
               />

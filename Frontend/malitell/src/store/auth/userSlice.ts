@@ -36,6 +36,8 @@ export const login = (data: loginData) => {
         console.log(res.headers.access_token)
         localStorage.setItem("Access_Token", res.headers.access_token)
         dispatch(saveUserInfo(res.data));
+      }).then(() => {
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Failed to login:", error);

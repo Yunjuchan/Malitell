@@ -1,10 +1,12 @@
-import React from 'react'
-import * as s from  "../../styles/home/carousel";
+import malitell from "../../assets/images/malitell.png";
+import * as s from "../../styles/home/carousel";
 
 export default function Carousel() {
   return (
-    <s.Box>
-      
-    </s.Box>
-  )
+    <s.Wrapper>
+      <s.Content>
+        <s.Img src={malitell} alt="" />{" "}
+      </s.Content>
+    </s.Wrapper>
+  );
 }

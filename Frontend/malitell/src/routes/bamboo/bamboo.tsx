@@ -5,7 +5,7 @@ import { Grid } from "../../styles/bamboo/grid";
 import Subject from "../../components/bamboo/subject";
 import Filter from "../../components/bamboo/filter";
 import MessageList from "../../components/bamboo/messageList";
-import Metaverse from "../../components/common/banners/metaverse";
+import Metaverse from "../../components/home/banners/metaverse";
 
 const Img = styled.img`
   height: 75px;
