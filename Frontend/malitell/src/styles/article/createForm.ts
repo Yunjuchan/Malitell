@@ -16,25 +16,32 @@ export const TopBox = styled.div`
   height: 80px;
   margin: auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 `;
 
 export const TagBox = styled.div`
-width: 250px;
-height: 30px;
-margin: auto;
 display: flex;
-align-items: center;
+width: 280px;
+height: 50px;
+margin-top: 20px;
+background-color: white;
+box-shadow: 1px 1px 1px 1px lightgray;
+border-radius: 10px;
 justify-content: space-around;
+
 `;
 
-export const Tag = styled.div`
-border: 1px solid black;
-width: 30%;
-margin-top: 10px;
-height: 50px;
-background-color: white;
-text-align: center;
+export const Tag = styled.div<{isSelected: boolean}>`
+  border: 1px solid black;
+  width: 30%;
+  margin: 10px;
+  background-color: ${props => (props.isSelected ? 'blue' : 'white')};
+  color: ${props => (props.isSelected ? 'white' : 'black')};
+  box-shadow: 1px 1px 1px 1px lightgray;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
 `;
 
 export const Filter = styled.div`
@@ -90,3 +97,19 @@ border-radius: 10px;
 box-shadow: 1px 1px 1px 1px lightgray;
 cursor: pointer;
 `
+
+export const GroupTitle = styled.input`
+width: 928px;
+height: 30px;
+margin-top: 20px;
+padding: 10px;
+font-size: 15px;
+background-color: white;
+box-shadow: 1px 1px 1px 1px lightgray;
+border-radius: 10px;
+border: none;
+&:focus {
+  outline: none;
+  box-shadow: 1px 1px 1px 1px lightgray inset;
+}
+`;
