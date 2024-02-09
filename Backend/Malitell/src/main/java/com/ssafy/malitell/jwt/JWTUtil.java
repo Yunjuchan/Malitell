@@ -60,9 +60,6 @@ public class JWTUtil {
                 .compact();
     }
 
-    /**
-     * Jwt Token의 유효성을 체크한다.
-     */
     public boolean validateToken(String jwt) {
         return this.getClaims(jwt) != null;
     }

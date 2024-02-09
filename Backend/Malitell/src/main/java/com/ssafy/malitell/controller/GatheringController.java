@@ -32,19 +32,19 @@ public class GatheringController {
     }
 
     // 게시물 하나 조회
-    @GetMapping("/{gatheringSeq}")
+    @GetMapping("/view/{gatheringSeq}")
     public ResponseEntity<GatheringResponseDto> getOneGathering(@PathVariable int gatheringSeq) {
         return new ResponseEntity<>(gatheringService.findOneGathering(gatheringSeq), HttpStatus.OK);
     }
 
     // 게시물 삭제
-    @DeleteMapping("/{gatheringSeq}")
+    @DeleteMapping("/delete/{gatheringSeq}")
     public ResponseEntity<Integer> deleteGathering(@PathVariable int gatheringSeq) {
         return new ResponseEntity<>(gatheringService.deleteGathering(gatheringSeq), HttpStatus.OK);
     }
 
     // 게시물 수정
-    @PutMapping("/{gatheringSeq}")
+    @PutMapping("/update/{gatheringSeq}")
     public ResponseEntity<Integer> updateGathering(@PathVariable int gatheringSeq, @RequestBody GatheringUpdateRequestDto requestDto) {
         return new ResponseEntity<>(gatheringService.updateGathering(gatheringSeq, requestDto), HttpStatus.OK);
     }

@@ -32,20 +32,20 @@ public class CommunityController {
     }
 
     // 게시물 하나 조회
-    @GetMapping("/{communitySeq}")
+    @GetMapping("/view/{communitySeq}")
     public ResponseEntity<CommunityResponseDto> getOneCommunity(@PathVariable int communitySeq) {
         return new ResponseEntity<>(communityService.findOneCommunity(communitySeq), HttpStatus.OK);
     }
 
     // 게시물 삭제
-    @DeleteMapping("/{communitySeq}")
+    @DeleteMapping("/delete/{communitySeq}")
     public ResponseEntity<?> deleteCommunity(@PathVariable int communitySeq) {
         communityService.deleteCommunity(communitySeq);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     // 게시물 수정
-    @PutMapping("/{communitySeq}")
+    @PutMapping("/update/{communitySeq}")
     public ResponseEntity<?> updateCommunity(@PathVariable int communitySeq, @RequestBody CommunityUpdateRequestDto requestDto) {
         communityService.updateCommunity(communitySeq, requestDto);
         return new ResponseEntity<>(HttpStatus.OK);
