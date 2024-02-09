@@ -23,6 +23,7 @@ export const ToArticles = styled.div`
   margin-top: 15px;
   font-size: 15px;
   color: #bf94e4;
+  cursor: pointer;
 `;
 
 export const ArticleBox = styled.div`

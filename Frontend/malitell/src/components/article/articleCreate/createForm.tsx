@@ -5,10 +5,10 @@ import { BoardState } from "../../../store/article/boardSlice";
 import { RootState } from "../../../store/store";
 
 const tagList = {
-  "community": ["진로", "정서", "대인관계", "경제", "건강"],
-  "gather": ["A", "B", "C"],
-  "overcome": []
-}
+  community: ["진로", "정서", "대인관계", "경제", "건강"],
+  gather: ["A", "B", "C"],
+  overcome: [],
+};
 
 export default function CreateForm() {
   const boardType = useSelector((state: RootState) => state.board.boardType);
@@ -21,13 +21,29 @@ export default function CreateForm() {
     setGroupTag(tagName);
   };
   useEffect(() => {
-    console.log(boardType)
-  }, [boardType])
+    console.log(boardType);
+  }, [boardType]);
 
   return (
     <s.Wrapper>
       <s.TopBox>
         <s.TagBox>
+          <s.Label>주제: </s.Label>
+          <s.Select>
+            <s.Option disabled >선택</s.Option>
+            {tagList[boardType].map((tagName, index) => (
+              <s.Option
+                key={index}
+                onSelect={() => handleWorryTagClick(tagName)}
+                value={tagName}
+                // isSelected={worryTag === tagName}
+              >
+                {tagName}
+              </s.Option>
+            ))}
+          </s.Select>
+        </s.TagBox>
+        {/* <s.TagBox>
           {tagList[boardType].map((tagName, index) => (
             <s.Tag 
             key={index} 
@@ -37,7 +53,7 @@ export default function CreateForm() {
             {tagName}
           </s.Tag>
           ))}
-        </s.TagBox>
+        </s.TagBox> */}
         <s.Title></s.Title>
         {/* <s.GroupTitle></s.GroupTitle> */}
       </s.TopBox>

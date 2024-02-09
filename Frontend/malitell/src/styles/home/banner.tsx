@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
   background-color: ${({ color }) => (color ? color : null)};
+  cursor: pointer;
 `;
 
 export const TextBox = styled.div`

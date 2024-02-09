@@ -58,7 +58,9 @@ export default function ArticleList() {
   
   return (
     <s.Wrapper>
-      <div>{articles.community}</div>
+
+      {/* <div>{articles.community}</div> */}
+      
 
       {articles[board.boardType].map((article: ArticleInfo, index) => (
         <Article key={index} article={article} />
