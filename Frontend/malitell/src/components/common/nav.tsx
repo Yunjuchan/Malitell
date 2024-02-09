@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faComment } from "@fortawesome/free-regular-svg-icons";
@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 export default function Nav() {
   const [back, setBack] = useState(false);
   const [login, setLogin] = useState(false);
+  const token = window.localStorage.getItem("Access_Token");
   const board = useSelector((state: any) => state.board);
   
   const handleBack = (e: React.MouseEvent): void => {
@@ -26,6 +27,10 @@ export default function Nav() {
   const handleLogin = (e: React.MouseEvent): void => {
     setLogin(!login);
   };
+  const handleProfile = (e: React.MouseEvent): void => {
+    navigate("/profile")
+  }
+
   const openChat = () => {
     const url = '/chat'
     window.open(url, "_blank", "width=400, height=530");
@@ -37,6 +42,10 @@ export default function Nav() {
     dispatch(setBoardTypeInfo('community'));
     navigate("/articles/community");
   };
+
+  useEffect(() => {
+    console.log(token);
+  })
 
   return (
     <>
@@ -99,8 +108,9 @@ export default function Nav() {
             </s.NavItem>
             <s.NavItem $width="70px">
               <FontAwesomeIcon
+                onClick={handleProfile}
                 icon={faUser}
-                style={{ color: "#BF94E4" }}
+                style={{ color: "#BF94E4", cursor:"pointer" }}
                 size="2x"
                 width="70px"
               />
