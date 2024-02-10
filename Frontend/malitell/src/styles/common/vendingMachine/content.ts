@@ -18,7 +18,6 @@ export const Wrapper = styled.div<{ $display?: string }>`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* background-color: white; */
   animation: ${fadeIn} 1s ease-in-out;
 `;
 
