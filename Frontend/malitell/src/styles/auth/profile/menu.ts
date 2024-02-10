@@ -43,3 +43,10 @@ export const Nav = styled.div`
   box-shadow:  1.5px 1.5px 1.5px 1.5px lightgray;
   background-color: white;
 `
+export const NavItem = styled.div`
+  width: 100%;
+  height: 12.5%;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: white;
+`

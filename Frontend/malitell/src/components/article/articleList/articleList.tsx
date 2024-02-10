@@ -52,8 +52,8 @@ export default function ArticleList() {
   }
 
   useEffect(() => {
-    
     fetchArticles();
+    console.log(articles)
   }, []);
   
   return (
