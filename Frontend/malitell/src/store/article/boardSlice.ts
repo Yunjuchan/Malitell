@@ -10,6 +10,7 @@ const initialState: BoardState = {
   boardType: "community",
   q: null,
   tag: "all",
+
 };
 
 export const boardSlice = createSlice({

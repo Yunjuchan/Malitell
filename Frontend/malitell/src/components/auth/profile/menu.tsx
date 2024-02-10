@@ -7,7 +7,16 @@ export default function Menu() {
       <s.Title>프로필</s.Title>
       <s.Image src={malitell} alt='malitell' />
       <s.Tag>여기에 프로필 태그 들어가요~~</s.Tag>
-      <s.Nav>여기에 매뉴 들어가요~~</s.Nav>
+      <s.Nav>
+          <s.NavItem>내 정보</s.NavItem>
+          <s.NavItem>내 스크랩</s.NavItem>
+          <s.NavItem>내 예약</s.NavItem>
+          <s.NavItem>내 글</s.NavItem>
+          <s.NavItem>내 리뷰</s.NavItem>
+          <s.NavItem>내 상담 일지</s.NavItem>
+          <s.NavItem>내 모임</s.NavItem>
+          <s.NavItem>비밀번호 변경 / 회원 탈퇴</s.NavItem>
+      </s.Nav>
     </s.Wrapper>
   )
 }
