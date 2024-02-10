@@ -40,3 +40,10 @@ export const Gatcha = styled.img`
   width: 40%;
   height: 40%;
 `;
+
+export const Bomb = styled.img<{$display: string}>`
+  position: absolute;
+  display: ${({$display}) => $display};
+  top: 60%;
+  left: 25%;
+`
