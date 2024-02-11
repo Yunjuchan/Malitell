@@ -48,28 +48,49 @@ export default function RoomComponent() {
   //   }
   // };
 
+  // const sendMessage = () => {
+  //   // console.log("send");
+  //   // console.log(sender);
+  //   // console.log(clientRef.current);
+  //   // // console.log(clientRef.current.connected);
+  //   // console.log("-------------------------");
+  //   // console.log(roomId);
+  //   if (roomId.current) {
+  //     clientRef.current.sendMessage(
+  //       "/pub/chat/message",
+  //       JSON.stringify({
+  //         // type: "TALK",
+  //         chatRoomSeq: roomId.current,
+  //         // "chatRoom": roomId.current,
+  //         userSeq: sender,
+  //         content: message,
+  //         sendTiem: Date(),
+  //       })
+  //     );
+  //     // console.log(clientRef.current.sendMessage);
+  //     // console.log(message);
+  //     // console.log(Date());
+  //     setMessage("");
+  //   }
+  // };
+
   const sendMessage = () => {
-    // console.log("send");
-    // console.log(sender);
-    // console.log(clientRef.current);
-    // // console.log(clientRef.current.connected);
-    // console.log("-------------------------");
-    // console.log(roomId);
+    // const Access_Token = localStorage.getItem("Access_Token");
+
     if (roomId.current) {
       clientRef.current.sendMessage(
         "/pub/chat/message",
         JSON.stringify({
-          // type: "TALK",
+          // Access_Token: Access_Token,
           chatRoomSeq: roomId.current,
-          // "chatRoom": roomId.current,
           userSeq: sender,
           content: message,
           sendTiem: Date(),
-        })
+        }),
+        { 'Access_Token': `${localStorage.getItem("Access_Token")}` }
       );
-      // console.log(clientRef.current.sendMessage);
-      // console.log(message);
-      // console.log(Date());
+      // console.log(Access_Token)
+      console.log("보냈다")
       setMessage("");
     }
   };
@@ -129,15 +150,10 @@ export default function RoomComponent() {
         url={url}
         topics={["/chat/room/" + roomId.current]}
         onMessage={recvMessage}
-        // onConnect={() => {
-        //   const Access_Token = localStorage.getItem("Access_Token");
-
-        //   // 웹소켓 연결이 성립되면 실행될 함수
-        //   clientRef.current.sendMessage(
-        //     "app/connect",
-        //     JSON.stringify({ Access_Token })
-        //   );
-        // }}
+        headers={{ 'Access_Token': `${localStorage.getItem("Access_Token")}` }}
+        onConnect={() => {
+          console.log("Websocket connected");
+        }}
         onError={(err: any) => {
           // 웹소켓 연결에서 오류가 발생하면 실행될 함수
           console.error("Websocket Error:", err);
