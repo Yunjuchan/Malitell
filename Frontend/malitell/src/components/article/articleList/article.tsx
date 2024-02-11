@@ -15,13 +15,9 @@ interface Board {
 export default function Article({ article }: ArticlesProps) {
   const board: Board = useSelector((state: any) => state.board);
   const navigate = useNavigate();
-  const goToArticleDetail = () => {
-    console.log(article)
-    navigate(`/articles/${board.boardType}/${article.boardSeq}`);
-  };
-
+  
   const handleArticle = (e: React.MouseEvent) => {
-    goToArticleDetail();
+    navigate(`/articles/${board.boardType}/${article.boardSeq}`);
   };
   return (
     <s.Wrapper onClick={handleArticle}>
