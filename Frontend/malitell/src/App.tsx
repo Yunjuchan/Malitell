@@ -26,14 +26,15 @@ import Vendingmachine from "./components/common/vendingmachine";
 import Chat from "./routes/chat";
 import Room from "./components/chat/room";
 import List from "./components/chat/list";
-import MyInfo from "./components/auth/profile/myInfo";
 import MyScrab from "./components/auth/profile/myScrab";
-import MyReservation from "./components/auth/profile/myReview";
+import MyReservation from "./components/auth/profile/myReservation";
 import MyArticle from "./components/auth/profile/myArticle";
 import MyReview from "./components/auth/profile/myReview";
 import MyCounsel from "./components/auth/profile/myCounsel";
 import MyGathering from "./components/auth/profile/myGathering";
 import PasswordChange from "./components/auth/profile/passwordChange";
+import MyInfoClient from "./components/auth/profile/myInfoClient";
+import MyInfoCounselor from "./components/auth/profile/myInfoCounselor";
 
 // 중첩라우팅
 const router = createBrowserRouter([
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
             children: [
               {
                 path: "myInfo",
-                element: <MyInfo />
+                element: <MyInfoClient />
               },
               {
                 path: "myScrab",
