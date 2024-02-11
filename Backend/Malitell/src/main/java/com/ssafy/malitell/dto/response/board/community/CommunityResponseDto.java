@@ -3,6 +3,7 @@ package com.ssafy.malitell.dto.response.board.community;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ssafy.malitell.domain.board.Community;
 import com.ssafy.malitell.domain.board.comment.CommunityComment;
+import com.ssafy.malitell.domain.tag.WorryTag;
 import com.ssafy.malitell.dto.response.board.comment.CommentResponseDto;
 import lombok.Getter;
 
@@ -21,7 +22,7 @@ public class CommunityResponseDto {
     private final Timestamp time;
     private final int userSeq;
     private final List<CommentResponseDto> communityComments = new ArrayList<>();
-    private final String tag;
+    private final WorryTag worryTag;
 
     public CommunityResponseDto(Community community, List<CommunityComment> commentResponseDtos) {
         this.title = community.getTitle();
@@ -30,7 +31,7 @@ public class CommunityResponseDto {
         this.hit = community.getHit();
         this.time = community.getTime();
         this.userSeq = community.getUser().getUserSeq();
-        this.tag = community.getWorryTag().getTag();
+        this.worryTag = community.getWorryTag();
 
         for (CommunityComment commentResponseDto : commentResponseDtos) {
             communityComments.add(new CommentResponseDto(commentResponseDto));

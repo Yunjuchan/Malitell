@@ -14,5 +14,6 @@ public class CommunityRequestDto {
     private String content;
 
     // 태그
-    private int worryTagSeq;
+    private WorryTag worryTag;
+
 }
