@@ -43,7 +43,7 @@ export default function Nav() {
   const handleProfile = (e: React.MouseEvent): void => {
     const token = window.localStorage.getItem("Access_Token");
     if (token) {
-      navigate("/profile");
+      navigate("/profile/myInfo");
     } else {
       handleBack(e);
       handleLogin(e);
