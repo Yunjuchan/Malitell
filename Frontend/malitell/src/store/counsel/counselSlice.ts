@@ -23,8 +23,8 @@ const initialState: filterState = {
 
 export const fetchCounselorList = () => {
     const data = api.get(`/getCounselorList`)
-    .then((response) => {
-        return response.data
+    .then((res) => {
+        return res.data
     })
     .catch((error) => console.log("load fail"))
 
@@ -35,24 +35,24 @@ export const fetchCounselorList = () => {
 
 // counselor 상세 정보 불러오는 api
 // counselor 상세 정보에는 상담가 소개, 상담가 사진, 상담가 이름, 상담가 평점, 상담가에 대한 리뷰
-export const fetchCounselorDetail = (counselSeq: number) => {
-    const data = api.get(`/getCounselor/${counselSeq}`)
-    .then((response) => {
-        return response.data
+export const fetchCounselorDetail = (counselorSeq: number) => {
+    const res = api.get(`/getCounselor/${counselorSeq}`)
+    .then((res) => {
+        return res.data
     })
     .catch((error) => {
         console.log("load fail")
     })
     
-    return data
+    return res
 }
 
 // 상담 후기 작성 
 // counselingSeq: number, content: string, grade: number
 export const createReview = (data: object) => {
     api.post(`/counseling/review/${"data.counselingSeq"}`)   // 일단 $ 안 string으로 바꿔둠
-    .then((response) => {
-        return response.data
+    .then((res) => {
+        return res.data
     })
     .catch((error) => {
         console.error("Failed to create:", error)
@@ -63,8 +63,8 @@ export const createReview = (data: object) => {
 // 이거 api 매핑 이미 연결되어있으니깐 getCounselorList로 한거겠지??
 export const fetchReviewList = (counselorSeq: number) => {
     api.get(`/getCounselorList/${counselorSeq}`)
-    .then((response) => {
-        return response.data
+    .then((res) => {
+        return res.data
     })
     .catch((error) => {
         console.error("Failed to load:", error)

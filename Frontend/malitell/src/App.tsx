@@ -94,21 +94,21 @@ const router = createBrowserRouter([
             element: <CounselorList />,
           },
           {
-            path: "counselors/:name",
+            path: "counselors/:counselorSeq",
             element: <CounselorDetail />,
           },
           {
-            path: "counselors/:name/reservation/first",
+            path: "counselors/:counselorSeq/reservation/first",
             element: <ReservationFirst />,
           },
           // {
-          //   path: "counselors/:name/reservation/second",
+          //   path: "counselors/:counselorSeq/reservation/second",
           //   element: <ReservationSecond />,
           // },
-          // {
-          //   path: "counselors/:name/reservation/confirm",
-          //   element: <ReservationConfirm />,
-          // },
+          {
+            path: "counselors/:counselorSeq/reservation/confirm",
+            element: <ReservationConfirm />,
+          },
           // {
           //   path: "counselors/:name/evaluation",
           //   element: <CounselorEvaluation />,

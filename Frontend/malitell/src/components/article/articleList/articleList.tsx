@@ -6,7 +6,7 @@ import { fetchSHGroup } from '../../../store/article/gatherSlice';
 import { fetchOvercomingList } from '../../../store/article/overcomingSlice';
 import { fetchArticleList } from '../../../store/article/communitySlice';
 import { useSelector } from 'react-redux';
-import { BoardState } from '../../../store/article/boardSlice';
+import { RootState } from '../../../store/store';
 
 export interface ArticleInfo {
   title: string;
@@ -23,7 +23,7 @@ export default function ArticleList() {
     gather: [],
     overcome: [],
   });
-  const board: BoardState = useSelector((state: any) => state.board);
+  const boardType = useSelector((state: RootState) => state.board.boardType);
 
   const fetchArticles = () => {
     fetchOvercomingList()
@@ -53,20 +53,13 @@ export default function ArticleList() {
 
   useEffect(() => {
     fetchArticles();
-    console.log(articles)
   }, []);
   
   return (
     <s.Wrapper>
-
-      {/* <div>{articles.community}</div> */}
-      
-
-      {articles[board.boardType].map((article: ArticleInfo, index) => (
+      {articles[boardType].map((article: ArticleInfo, index) => (
         <Article key={index} article={article} />
       ))}
     </s.Wrapper>
   )
 }
-
-        // <Article key={index} onClick={() => goToArticleDetail(article.boardSeq)}/>
