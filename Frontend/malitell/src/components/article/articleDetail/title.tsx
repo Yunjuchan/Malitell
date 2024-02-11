@@ -1,13 +1,15 @@
 import { Wrapper, TitleBox } from "../../../styles/article/articleDetail/title";
+import * as t from "./types"
 
-export default function Title() {
+
+export default function Title({article}: {article: t.Article}) {
+  console.log(article)
   return (
     <Wrapper>
       <TitleBox>
-        카테고리
         프로필 사진
         닉네임
-        제목
+        {article?.title}
       </TitleBox>
     </Wrapper>
   )

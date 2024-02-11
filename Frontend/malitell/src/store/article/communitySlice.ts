@@ -28,3 +28,11 @@ export const createArticle = (data: ArticleForm) => {
   })
   return res
 }
+
+export const articleDetail = (boardSeq: number) => {
+  const res = api.get(`community/view/${boardSeq}`)
+  .then((res) => {
+      return res.data
+  })
+  return res
+}
