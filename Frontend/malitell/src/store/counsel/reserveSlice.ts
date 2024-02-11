@@ -12,11 +12,11 @@ export const reservation = (data: ReservationInfo) => {
     .post(`/reserve/${data.counselorSeq}`, {
       "counselorSeq": data.counselorSeq,
       "counselingDate": data.counselingDate,
-    }) // 일단 $ 안 string으로 바꿔둠
-    .then((response) => {
+    })
+    .then((res) => {
       // 응답 counselorSeq, 상담일시
-      console.log(response);
-      return response.data;
+      console.log(res);
+      return res.data;
     });
     return res
 };

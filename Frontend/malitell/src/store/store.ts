@@ -3,6 +3,7 @@ import signupFocusReducer from './auth/signupFocusSlice';
 import signupFormDataReducer from './auth/signupFormDataSlice';
 import userReducer from "./auth/userSlice";
 import boardTypeReducer from "./article/boardSlice";
+import profileReducer from "./auth/profileSlice";
 export const store = configureStore({
   reducer: {
     // 사용하고 싶은 이름: import한 실제 slice
@@ -10,6 +11,7 @@ export const store = configureStore({
     signupFormData: signupFormDataReducer,
     user: userReducer,
     board: boardTypeReducer,
+    profile: profileReducer
   },
 });
 

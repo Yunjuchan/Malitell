@@ -1,5 +1,6 @@
 import { createSlice, type Dispatch } from "@reduxjs/toolkit";
 import { api, authApi } from "../axiosInstance";
+import { editClientData } from "../../components/auth/profile/myInfoClient";
 
 // export interface profileState {
 //     role: string;
@@ -38,99 +39,118 @@ import { api, authApi } from "../axiosInstance";
 // }
 
 export interface profileState {
-    menu: string;
+  menu: string;
+  menuKo: string;
 }
 
 const initialState: profileState = {
-    menu: "내 정보"
-}
+  menu: "myInfo",
+  menuKo: "내 정보",
+};
 
 // 내 예약 정보 데이터 불러오기
 export const fetchReservations = () => {
-    return (dispatch: Dispatch) => {
-        const data = authApi.get(`/mypage/reserve`)
-        .then((res) => { 
-            return res.data
-        })
-        .catch((error) => {
-            console.error("Failed to load:", error);
-        });
-        return data
-    }
-}
+  const res = authApi
+    .get(`/mypage/reserve`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.error("Failed to load:", error);
+    });
+  return res;
+};
 
 // 회원 정보 수정을 위한 내 정보 데이터 불러오기
 export const fetchUserInfo = () => {
-    return (dispatch: Dispatch) => {
-        const data = authApi.get(`/mypage/user`)
-        .then((res) => {
-            return res.data
-        })
-        .catch((error) => {
-            console.log("Failed to load:", error)
-        })
-        return data
-    }
-}
+  const data = authApi
+    .get(`/mypage/user`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log("Failed to load:", error);
+    });
+  return data;
+};
+
+// 내가 작성한 글 authApi
+export const fetchMyArticles = () => {
+    const res = authApi
+      .get(`mypage/getAllBoards`)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        console.log("Failed to load:", error);
+      });
+    return res;
+  };
 
 // 내가 스크랩한 글 authApi
 export const fetchScrap = () => {
-    const data = authApi.get(`mypage/scrap`)
+  const data = authApi
+    .get(`mypage/scrap`)
     .then((res) => {
-        return res.data
+      return res.data;
     })
     .catch((error) => {
-        console.log("Failed to load:", error)
-    })
-    return data
-}
+      console.log("Failed to load:", error);
+    });
+  return data;
+};
 
 // 상담자 정보 수정 authapi
 export const editCounselorInfo = (editForm: object) => {
-    authApi.put('/mypage/user/counselor', {editForm})
+  authApi
+    .put("/mypage/user/counselor", { editForm })
     .then((res) => {
-        return res.data
+      return res.data;
     })
-    .catch((error) => console.error("Failed to Edit:", error))
-}
+    .catch((error) => console.error("Failed to Edit:", error));
+};
 
 // 내담자 정보 수정 authapi
-export const editClientInfo = (editForm: object) => {
-    authApi.put('/mypage/user/client', {editForm})
-    .then((res) => {
-        return res.data
+export const editClientInfo = (editForm: editClientData) => {
+  authApi
+    .put("/mypage/user/client", {
+      name: editForm.name,
+      email: editForm.email,
+      phone: editForm.phone,
+      statusTags: editForm.statusTags,
     })
-    .catch((error) => console.error("Failed to Edit:", error))
-}
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => console.error("Failed to Edit:", error));
+};
 
 // 회원 탈퇴 authapi
 export const deleteUser = () => {
-    authApi.delete('/mypage/user')
+  authApi
+    .delete("/mypage/user")
     .then((res) => {
-        // 뭐를 리턴할지 모르겠음
-        // 삭제 잘 되면 200 OK
-        // 로그아웃하고 로컬스토리지 토큰 삭제
-        return res.data
+      // 뭐를 리턴할지 모르겠음
+      // 삭제 잘 되면 200 OK
+      // 로그아웃하고 로컬스토리지 토큰 삭제
+      return res.data;
     })
     .catch((error) => {
-        console.error("Failed to delete:", error)
-    })
-}
+      console.error("Failed to delete:", error);
+    });
+};
 
 export const profileSlice = createSlice({
-    name: "reservation",
-    initialState,
-    reducers: {
-        setProfileMenu: (state, action) => {
-        state.menu = action.payload;
+  name: "profile",
+  initialState,
+  reducers: {
+    setProfileMenu: (state, action) => {
+      state.menu = action.payload.menu;
+      state.menuKo = action.payload.menuKo;
+    },
+  },
+});
 
-        }
-    }
-})
-
-export const { setProfileMenu } = profileSlice.actions
+export const { setProfileMenu } = profileSlice.actions;
 
 export default profileSlice.reducer;
-
-
-
