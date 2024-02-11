@@ -17,7 +17,7 @@ export default function Article({ article }: ArticlesProps) {
   };
 
   const handleArticle = (e: React.MouseEvent) => {
-    goToArticleDetail();
+    navigate(`/articles/${board.boardType}/${article.boardSeq}`);
   };
   return (
     <s.Wrapper onClick={handleArticle}>

@@ -4,6 +4,7 @@ import {Grid} from "../../styles/auth/profile/grid";
 import Menu from "../../components/auth/profile/menu";
 import Current from "../../components/auth/profile/current";
 import CurrentMenu from "../../components/auth/profile/currentMenu";
+import { Outlet } from "react-router-dom";
 
 export default function Profile() {
   return (
@@ -17,7 +18,7 @@ export default function Profile() {
           <Current />
         </g.Box>
         <g.Box $col="4/13" $row="2/11">
-          <CurrentMenu />
+          <Outlet />
         </g.Box>
       </Grid>
     </>

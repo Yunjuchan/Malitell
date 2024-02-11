@@ -10,7 +10,6 @@ import com.ssafy.malitell.dto.response.board.community.CommunityListResponseDto;
 import com.ssafy.malitell.dto.response.board.community.CommunityResponseDto;
 import com.ssafy.malitell.repository.board.community.CommunityCommentRepository;
 import com.ssafy.malitell.repository.board.community.CommunityRepository;
-import com.ssafy.malitell.repository.tag.WorryTagRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -29,14 +28,13 @@ public class CommunityService {
     private final CommunityRepository communityRepository;
     private final CommunityCommentRepository communityCommentRepository;
     private final UserRepository userRepository;
-    private final WorryTagRepository worryTagRepository;
 
     // 게시글 작성
     public int createCommunity(CommunityRequestDto requestDto, Principal principal) {
         String userId = principal.getName();
         User findUser = userRepository.findByUserId(userId);
 
-        WorryTag worryTag = worryTagRepository.findById(requestDto.getWorryTagSeq()).get();
+        WorryTag worryTag = requestDto.getWorryTag();
         Community community = new Community(findUser, requestDto, worryTag);
 
         communityRepository.save(community);
@@ -58,7 +56,7 @@ public class CommunityService {
         Community community = communityRepository.findById(communitySeq).orElseThrow(
                 () -> new IllegalArgumentException("게시물이 존재하지 않습니다.")
         );
-        WorryTag worryTag = worryTagRepository.findById(requestDto.getWorryTagSeq()).get();
+        WorryTag worryTag = requestDto.getWorryTag();
         community.update(requestDto, worryTag);
     }
 

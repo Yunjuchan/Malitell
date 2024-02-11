@@ -1,24 +1,31 @@
 package com.ssafy.malitell.domain.tag;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Getter
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+
 @AllArgsConstructor
 @NoArgsConstructor
-public class WorryTag {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int worryTagSeq;
-    private String tag;
+@Getter
+public enum WorryTag {
+    COURSE("C", "진로"),
+    EMOTION("M", "정서"),
+    RELATIONSHIP("R", "대인관계"),
+    ECONOMY("E", "경제"),
+    HEALTH("H", "건강");
 
-    public WorryTag(String tag) {
-        this.tag = tag;
+    private String code;
+    private String desc;
+
+    public static WorryTag ofCode(String code) {
+        return Arrays.stream(WorryTag.values())
+                .filter(c -> c.getCode().equals(code))
+                .findAny()
+                .orElseThrow(() -> new NoSuchElementException(String.format("enum=[%s], code=[$s]는 존재하지 않는 코드입니다.", WorryTag.class, code)));
     }
+
 }
+

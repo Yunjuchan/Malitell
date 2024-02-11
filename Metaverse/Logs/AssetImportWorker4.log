@@ -1,0 +1,1136 @@
+Using pre-set license
+Built from '2021.3/staging' branch; Version is '2021.3.33f1 (ee5a2aa03ab2) revision 15620650'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Enterprise' Language: 'ko' Physical Memory: 32505 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.3.33f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker4
+-projectPath
+C:/Users/SSAFY/Documents/Unity Projects/MaLiTell
+-logFile
+Logs/AssetImportWorker4.log
+-srvPort
+49981
+Successfully changed project path to: C:/Users/SSAFY/Documents/Unity Projects/MaLiTell
+C:/Users/SSAFY/Documents/Unity Projects/MaLiTell
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [12084] Host "[IP] 192.168.0.12 [Port] 0 [Flags] 2 [Guid] 1228035488 [EditorId] 1228035488 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LL832F4) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [12084] Host "[IP] 192.168.0.12 [Port] 0 [Flags] 2 [Guid] 1228035488 [EditorId] 1228035488 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-LL832F4) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with {0} workers.
+Refreshing native plugins compatible for Editor in 62.23 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.33f1 (ee5a2aa03ab2)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/SSAFY/Documents/Unity Projects/MaLiTell/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3050 Ti Laptop GPU (ID=0x25a0)
+    Vendor:   NVIDIA
+    VRAM:     3977 MB
+    Driver:   31.0.15.4633
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56984
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.005130 seconds.
+Native extension for WindowsStandalone target not found
+[usbmuxd] Start listen thread
+[usbmuxd] Listen thread started
+Native extension for iOS target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 1310 ms
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 49.30 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.830 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1830ms)
+		BeginReloadAssembly (78ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (1682ms)
+			LoadAssemblies (78ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (82ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (20ms)
+			SetupLoadedEditorAssemblies (1549ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (1384ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (49ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (81ms)
+				ProcessInitializeOnLoadMethodAttributes (33ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.006273 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.97 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Completed reload, in  1.220 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1221ms)
+		BeginReloadAssembly (94ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (14ms)
+		EndReloadAssembly (1024ms)
+			LoadAssemblies (81ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (181ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (45ms)
+			SetupLoadedEditorAssemblies (702ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (24ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (57ms)
+				ProcessInitializeOnLoadAttributes (518ms)
+				ProcessInitializeOnLoadMethodAttributes (97ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 0.97 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2906 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 98 unused Assets / (50.0 KB). Loaded Objects now: 3307.
+Memory consumption went from 120.4 MB to 120.4 MB.
+Total: 5.571500 ms (FindLiveObjects: 0.185500 ms CreateObjectMapping: 0.058600 ms MarkObjects: 5.245700 ms  DeleteObjects: 0.079900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:CustomObjectIndexerAttribute: bc11b3a6c3213fcdd17b65e7da85e133 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 5340.877141 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Decoration/cave-sliced_23.png
+  artifactKey: Guid(b46e8587a4d2eff4195a3b4e5ff31e4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Decoration/cave-sliced_23.png using Guid(b46e8587a4d2eff4195a3b4e5ff31e4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8be9a1b258fa468bb6ee6d71ef61c777') in 0.076592 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.312587 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_19.png
+  artifactKey: Guid(e5c92efa6e5bce0409b5fb175d42e872) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_19.png using Guid(e5c92efa6e5bce0409b5fb175d42e872) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be4073a8852a82690a0cc0667d390dac') in 0.029739 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005897 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_17.png
+  artifactKey: Guid(b156b44008c245f4bbe342bb12a23dab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_17.png using Guid(b156b44008c245f4bbe342bb12a23dab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7028581a7d5f2ce6c7d15ce16af8cd5') in 0.014063 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.251559 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_15.png
+  artifactKey: Guid(f0c828e22a0b48847b628a3a3cff4a20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_15.png using Guid(f0c828e22a0b48847b628a3a3cff4a20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf5dc2fc868a75c5aaebc3b23976f20d') in 0.028902 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.303093 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_13.png
+  artifactKey: Guid(fb1144eeb45cec743b42b15cc1d49145) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_13.png using Guid(fb1144eeb45cec743b42b15cc1d49145) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29d536cf6049b7707e7baea6433f3252') in 0.029444 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.172752 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_11.png
+  artifactKey: Guid(066751efb72ed7e498a6849c6b7b0211) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_11.png using Guid(066751efb72ed7e498a6849c6b7b0211) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2489b41da6dde3a7170ce0c7529d884b') in 0.017098 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 2.007802 seconds.
+  path: Assets/FreeButtonSet/Textures/controls/cross_03.png
+  artifactKey: Guid(30d0c1f6e89bd9a4cb44dc43c24aab8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/FreeButtonSet/Textures/controls/cross_03.png using Guid(30d0c1f6e89bd9a4cb44dc43c24aab8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9894c3f0b6bbe6abf5fd527a104dad40') in 0.032654 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.503035 seconds.
+  path: Assets/kenney_ui-pack-space-expansion/PNG/crossair_black.png
+  artifactKey: Guid(8701cb58956e3c24c8f0493f2fc3a1e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/kenney_ui-pack-space-expansion/PNG/crossair_black.png using Guid(8701cb58956e3c24c8f0493f2fc3a1e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9dfa765d57179abd9272252d9bc80ba1') in 0.040869 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/kenney_ui-pack-space-expansion/PNG/crossair_blueOutline.png
+  artifactKey: Guid(9b2c3c0ede247f94e9b9a1a925aa82e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/kenney_ui-pack-space-expansion/PNG/crossair_blueOutline.png using Guid(9b2c3c0ede247f94e9b9a1a925aa82e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ed94f210c2ec2c957e2497701059937') in 0.013647 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.276192 seconds.
+  path: Assets/kenney_ui-pack-space-expansion/PNG/crossair_red.png
+  artifactKey: Guid(db86ae53c07d21547a19f915d82b0382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/kenney_ui-pack-space-expansion/PNG/crossair_red.png using Guid(db86ae53c07d21547a19f915d82b0382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb63210fb0441bdf2ad67a6e73016c4f') in 0.013954 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.598571 seconds.
+  path: Assets/kenney_ui-pack-space-expansion/PNG/crossair_white.png
+  artifactKey: Guid(c603d9a26a80e8a49b9a483772893f02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/kenney_ui-pack-space-expansion/PNG/crossair_white.png using Guid(c603d9a26a80e8a49b9a483772893f02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e5da7e02c2702ffcb03ea24794c4698') in 0.031429 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.171107 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube00.png
+  artifactKey: Guid(c6abcb688c044ce48bde3e87ee7f2a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube00.png using Guid(c6abcb688c044ce48bde3e87ee7f2a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0256f7c36d098df74b473f3c81d98bce') in 0.015986 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.299401 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube04.png
+  artifactKey: Guid(ac8b22a52001fe444ab0cd48516af690) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube04.png using Guid(ac8b22a52001fe444ab0cd48516af690) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1321ffca95150f35cedfcb88199ddb9') in 0.016467 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.893197 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube08.png
+  artifactKey: Guid(00ea94a06913fba41aaa0216f8efc325) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube08.png using Guid(00ea94a06913fba41aaa0216f8efc325) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '586236bc1968d619ec624fd4758919bb') in 0.023603 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.142467 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube10.png
+  artifactKey: Guid(3e69af78a5e595643bef3e0ae83758ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube10.png using Guid(3e69af78a5e595643bef3e0ae83758ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae6c15c657c7ca3fec8446af9c9713b3') in 0.014304 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.268585 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube12.png
+  artifactKey: Guid(cb90bf2d2b60f8144aa132e6c64d342c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube12.png using Guid(cb90bf2d2b60f8144aa132e6c64d342c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f93ae4386b56e7cce4998e4ba417fd25') in 0.015491 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.136821 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube14.png
+  artifactKey: Guid(f880ee4cf889a2647a4e5a3cf2082e27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube14.png using Guid(f880ee4cf889a2647a4e5a3cf2082e27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a79e69eb476cfc0ab84ee459e0b59e6d') in 0.014249 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.326479 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube16.png
+  artifactKey: Guid(2f0f46573aabf774fa8b1869b0653e07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube16.png using Guid(2f0f46573aabf774fa8b1869b0653e07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebb55e96173354340f317fc0dd8a7851') in 0.024533 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.128390 seconds.
+  path: Assets/kenney_ui-pack-space-expansion/PNG/cursor_pointer3D.png
+  artifactKey: Guid(065abf0285c33c84fa51be888c8ac28c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/kenney_ui-pack-space-expansion/PNG/cursor_pointer3D.png using Guid(065abf0285c33c84fa51be888c8ac28c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ec3aeff4681c0115c5dcea310d0e820') in 0.016157 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/kenney_ui-pack-space-expansion/PNG/cursor_pointerFlat_shadow.png
+  artifactKey: Guid(cf0161e062613e744b8093e6b78f8eb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/kenney_ui-pack-space-expansion/PNG/cursor_pointerFlat_shadow.png using Guid(cf0161e062613e744b8093e6b78f8eb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0aa5d67f2da848c752454c08733ba784') in 0.011377 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.218934 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_rock_1.png
+  artifactKey: Guid(5f3ef23c2f15bec45831589f2f6a8e38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_rock_1.png using Guid(5f3ef23c2f15bec45831589f2f6a8e38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37e7fc053db951541c9d40683437c90b') in 0.013689 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.002153 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_rock_2.png
+  artifactKey: Guid(6f98eaaf7a20cf34e8ac91ee48ec8e0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_rock_2.png using Guid(6f98eaaf7a20cf34e8ac91ee48ec8e0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '669a77d083d286bac21c44b5abd421af') in 0.013070 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.252483 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_rock_NW.png
+  artifactKey: Guid(e29fc5ac0affeed418adead9dba8eb65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_rock_NW.png using Guid(e29fc5ac0affeed418adead9dba8eb65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8615278ff52e3852ce989e9e8e185dc') in 0.016998 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_snowcap_rock_1_mask.png
+  artifactKey: Guid(8f43fa47947b163498d8bfeca9567190) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_snowcap_rock_1_mask.png using Guid(8f43fa47947b163498d8bfeca9567190) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcf101126a8af77bbec4b236bd5deb17') in 0.012303 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.691020 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_snowcap_rock_2.png
+  artifactKey: Guid(6d1832e65a13ce1488c9984ce2769f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_snowcap_rock_2.png using Guid(6d1832e65a13ce1488c9984ce2769f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46cb97adb08035fef5c3a5744d3e8959') in 0.018432 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.167703 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_sword_in_the_stone.png
+  artifactKey: Guid(f240885671e134747afbce24ec102755) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_sword_in_the_stone.png using Guid(f240885671e134747afbce24ec102755) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf707e8fbd8fccdfe0cf210b9a63d628') in 0.015623 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.393792 seconds.
+  path: Assets/FlexibleColorPicker/Sprites/DefGrad_B_Hor.png
+  artifactKey: Guid(ce8e79a561b9da84ca97f3611de971c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/FlexibleColorPicker/Sprites/DefGrad_B_Hor.png using Guid(ce8e79a561b9da84ca97f3611de971c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cec9b4a2d32c72e5591ae8aeff6a0078') in 0.022231 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 55.053558 seconds.
+  path: Assets/Photon/PhotonVoice/Demos/DemoVoiceUI/Media/gizmo-microphone.png
+  artifactKey: Guid(464883c791528804496b8c8ef7126e52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Photon/PhotonVoice/Demos/DemoVoiceUI/Media/gizmo-microphone.png using Guid(464883c791528804496b8c8ef7126e52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22c50fb5a3288d44bce9997b6033215e') in 0.016202 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.199152 seconds.
+  path: Assets/Photon/PhotonVoice/Demos/DemoVoiceUI/Media/gizmo-microphone-off.png
+  artifactKey: Guid(89c869f76d8c0474a8da08e71510f0f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Photon/PhotonVoice/Demos/DemoVoiceUI/Media/gizmo-microphone-off.png using Guid(89c869f76d8c0474a8da08e71510f0f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e557687e62cc588c8ed1584f685ef5a6') in 0.015181 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.322362 seconds.
+  path: Assets/kenney_ui-pack-space-expansion/PNG/glassPanel_cornerTR.png
+  artifactKey: Guid(a3d509f4b50a1904d9a3736b9ac6a476) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/kenney_ui-pack-space-expansion/PNG/glassPanel_cornerTR.png using Guid(a3d509f4b50a1904d9a3736b9ac6a476) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '979e52386321f6f9b922a21c36a6af4c') in 0.012067 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.003376 seconds.
+  path: Assets/kenney_ui-pack-space-expansion/PNG/glassPanel_tab.png
+  artifactKey: Guid(6f9b6216a6faf9440a13c30841bf34ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/kenney_ui-pack-space-expansion/PNG/glassPanel_tab.png using Guid(6f9b6216a6faf9440a13c30841bf34ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '311191e2b6540826f66ab95d1b079f46') in 0.013079 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.975370 seconds.
+  path: Assets/Photon/PhotonUnityNetworking/Demos/DemoHub/Sprites/Gradient.png
+  artifactKey: Guid(66efb24ed46044ab8a039599cbc47d7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Photon/PhotonUnityNetworking/Demos/DemoHub/Sprites/Gradient.png using Guid(66efb24ed46044ab8a039599cbc47d7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65ec1880d5d119ea59d2110416ee22a0') in 0.015467 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.200196 seconds.
+  path: Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Textures/UIPanel.png
+  artifactKey: Guid(a5a780e4a881ea44f88afed421a63c3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Photon/PhotonVoice/Demos/DemoVoicePun/Textures/UIPanel.png using Guid(a5a780e4a881ea44f88afed421a63c3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd27f0377d496a93da4e3721af97325ad') in 0.016304 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.502761 seconds.
+  path: Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/0_Hair/Hair_m01.png
+  artifactKey: Guid(a155c0959c94a234ca851c64aa7a18af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/0_Hair/Hair_m01.png using Guid(a155c0959c94a234ca851c64aa7a18af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ae7fb1741046e01bfd867d3ebbb1c83') in 0.021880 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.465644 seconds.
+  path: Assets/FreeButtonSet/Textures/icons/64x64/heart.png
+  artifactKey: Guid(8082c022c1e0e004c983dda20809df59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/FreeButtonSet/Textures/icons/64x64/heart.png using Guid(8082c022c1e0e004c983dda20809df59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f829e7124bfe93e0ba744dc0912bef3') in 0.025506 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 3.260982 seconds.
+  path: Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/4_Helmet/Helmet_m08.png
+  artifactKey: Guid(13392bdc04febc54d974b420b70f3acf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/4_Helmet/Helmet_m08.png using Guid(13392bdc04febc54d974b420b70f3acf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5255e15d9474810e1bd5e14408d8e4bc') in 0.018795 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.050077 seconds.
+  path: Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/4_Helmet/Helmet_m08_blonde.png
+  artifactKey: Guid(8fa9059980ed6484ca01bbd59023428b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/4_Helmet/Helmet_m08_blonde.png using Guid(8fa9059980ed6484ca01bbd59023428b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81a1ae7a3f875d7abea077f3d8532646') in 0.013569 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.135407 seconds.
+  path: Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/4_Helmet/Helmet_m08_color.png
+  artifactKey: Guid(de0d5de60b66aab42aec5ebaea7dc0ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/4_Helmet/Helmet_m08_color.png using Guid(de0d5de60b66aab42aec5ebaea7dc0ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bedb79386ff6b955834b46eeac39f1e') in 0.016036 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.132657 seconds.
+  path: Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/4_Helmet/Helmet_m09_brown.png
+  artifactKey: Guid(630af01e61a3f894782491e6465b36c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/4_Helmet/Helmet_m09_brown.png using Guid(630af01e61a3f894782491e6465b36c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb2878028428805524c12b258408215a') in 0.013384 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.135630 seconds.
+  path: Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/4_Helmet/Helmet_m10.png
+  artifactKey: Guid(0bea9aba31cb8f343b8a77249ed1b96e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/4_Helmet/Helmet_m10.png using Guid(0bea9aba31cb8f343b8a77249ed1b96e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e0c676d2ef7b3c48e323e182301d24b') in 0.015942 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.542702 seconds.
+  path: Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/4_Helmet/Helmet_m10_color.png
+  artifactKey: Guid(a6141a9c1a97a3d418a29664451072bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/4_Helmet/Helmet_m10_color.png using Guid(a6141a9c1a97a3d418a29664451072bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cfc985c9c651259031c9a0d53192e18') in 0.014340 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.001160 seconds.
+  path: Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/4_Helmet/Helmet_m11_black.png
+  artifactKey: Guid(4ab990590935a594e81e4df9e66b3d97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/4_Helmet/Helmet_m11_black.png using Guid(4ab990590935a594e81e4df9e66b3d97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '267f7181ef072289388925af4c41d0cf') in 0.011716 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.629484 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_09.png
+  artifactKey: Guid(986ffbb828c5d5b40bf6992b5f5f2154) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_09.png using Guid(986ffbb828c5d5b40bf6992b5f5f2154) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '891bd39422068abc1f6f62f61f14f617') in 0.013292 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.269068 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_19.png
+  artifactKey: Guid(a033570a92209ae4d9c7c721159bc5b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_19.png using Guid(a033570a92209ae4d9c7c721159bc5b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93eaabd2ac341e06f743fe566933a12e') in 0.028307 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.304677 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_24.png
+  artifactKey: Guid(361f44e398172b948bfb9261cabcfd87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_24.png using Guid(361f44e398172b948bfb9261cabcfd87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '085c7a7da6179fbb9bb2ab72c84e05b8') in 0.024947 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_27.png
+  artifactKey: Guid(42944e4d4dfd0db4383fea3ac007a80a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_27.png using Guid(42944e4d4dfd0db4383fea3ac007a80a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d3a041b720bdcb7128ba7450d885396') in 0.013347 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.487619 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_30.png
+  artifactKey: Guid(4ac635f94f84b4f4fa2f7b10c7c6df8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_30.png using Guid(4ac635f94f84b4f4fa2f7b10c7c6df8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8a922ecbea3b40f9c5c416ecd79c4ee') in 0.014791 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.171651 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_32.png
+  artifactKey: Guid(6116a469054b956468c62d4805e1d26d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_32.png using Guid(6116a469054b956468c62d4805e1d26d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e082459cd2fd83a44efeb2f254bed29') in 0.016637 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.181445 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_36.png
+  artifactKey: Guid(ab6e01dfc06c8fd46a222a421b0ae0d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_36.png using Guid(ab6e01dfc06c8fd46a222a421b0ae0d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1fb8b5a2340f5b668c4c5b3414fdf958') in 0.014509 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.355218 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_38.png
+  artifactKey: Guid(6a1d37c534e8fa3499655c6e1e2e4c50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_38.png using Guid(6a1d37c534e8fa3499655c6e1e2e4c50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b552ba910254dde2dba8c29f0789793') in 0.015312 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.170423 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_40.png
+  artifactKey: Guid(eca51b4c05d4ca2478c82f07f0430cb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_40.png using Guid(eca51b4c05d4ca2478c82f07f0430cb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64f696ad950a57c2b6f7f00e1c988690') in 0.020603 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_45.png
+  artifactKey: Guid(a8795f8997ac5db49a6ce2e6dc3242e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_45.png using Guid(a8795f8997ac5db49a6ce2e6dc3242e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9022e6c29ef8f810109b605f8df01226') in 0.015857 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.311112 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_46.png
+  artifactKey: Guid(22abad6aac53adb4f9458354ef74bc32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_46.png using Guid(22abad6aac53adb4f9458354ef74bc32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b4c031882d1c382a9cc44e56fa6c2fa') in 0.013819 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.035916 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_48.png
+  artifactKey: Guid(6a0b6657c26f475488d67dc2451c3c51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_48.png using Guid(6a0b6657c26f475488d67dc2451c3c51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc118cb9ce59e5f109c0b9a34396ad31') in 0.014835 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.316222 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_50.png
+  artifactKey: Guid(4f9f4fa541bc1b346b9bc4e0e2e0596b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_50.png using Guid(4f9f4fa541bc1b346b9bc4e0e2e0596b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '932a0d28ef7a3b92df1d9a8f2a479e3a') in 0.025968 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_55.png
+  artifactKey: Guid(2737e736644300b499af0f9ae935cb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_55.png using Guid(2737e736644300b499af0f9ae935cb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c9bc853797e3bb69129c0dcd06316b8') in 0.013664 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.307932 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_56.png
+  artifactKey: Guid(686ee9eeb368418408fdf3cc4909abcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_56.png using Guid(686ee9eeb368418408fdf3cc4909abcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eaff4a9e3c137b2dea69b59d7cdd973d') in 0.013919 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.001747 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_58.png
+  artifactKey: Guid(e9b44863d12db21478e256a2bbd98a89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_58.png using Guid(e9b44863d12db21478e256a2bbd98a89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6029ee57b7cdd93c6c2ac2669969874b') in 0.015206 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.183868 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_60.png
+  artifactKey: Guid(24c0305450ff4a64995db5df9d2f7691) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_60.png using Guid(24c0305450ff4a64995db5df9d2f7691) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc4581dd3a880db925a1c1ca89c8c386') in 0.015737 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.249564 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_62.png
+  artifactKey: Guid(5b2311dd7593a364683ad9036568125a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_62.png using Guid(5b2311dd7593a364683ad9036568125a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff32b2925372e65183d55cd124973dd7') in 0.014130 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_67.png
+  artifactKey: Guid(0089e157e7d31024cb88a62282921e90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_67.png using Guid(0089e157e7d31024cb88a62282921e90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d84f9bf0f555ce02046ce84e2eeb4fb') in 0.012259 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.237750 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_68.png
+  artifactKey: Guid(0aa6683a3f361c24982077e89303ce29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_68.png using Guid(0aa6683a3f361c24982077e89303ce29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a05149dee8308b76ad09530d7879434') in 0.015004 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.258797 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_70.png
+  artifactKey: Guid(5e3cbc69ba919b5408466a6ffee40694) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_70.png using Guid(5e3cbc69ba919b5408466a6ffee40694) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29502ec7d1e6ebf3605e36fb55977e53') in 0.018405 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.051015 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_72.png
+  artifactKey: Guid(fecd1baebeab5554bb270d803d43657f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_72.png using Guid(fecd1baebeab5554bb270d803d43657f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee06f05f00fc9e9593edde045db8b15d') in 0.015646 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.133176 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_74.png
+  artifactKey: Guid(753fac88efecbc44fa405846227e3c2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_74.png using Guid(753fac88efecbc44fa405846227e3c2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a58135568194e10dc77c43a97e019b8f') in 0.014596 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.267243 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_76.png
+  artifactKey: Guid(49e28439b9be7154288a0cc1414875cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_76.png using Guid(49e28439b9be7154288a0cc1414875cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd547f756a695367239466c2da079fe62') in 0.031417 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_81.png
+  artifactKey: Guid(c70a9fee15d302c439ed6adc6877a1a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_81.png using Guid(c70a9fee15d302c439ed6adc6877a1a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e83085efb1191356a17a7705b8b2957') in 0.015546 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.272260 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_82.png
+  artifactKey: Guid(6a0d04ed881a5d241a961caefd8e109c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_82.png using Guid(6a0d04ed881a5d241a961caefd8e109c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f2fa791beddcdc3f5717033c2e57f88') in 0.027241 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_89.png
+  artifactKey: Guid(8a1b1de13fadc0245abc251a1e8fa5d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_89.png using Guid(8a1b1de13fadc0245abc251a1e8fa5d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d9f378f2a7d4a804c17aa70fd9d4db1') in 0.019591 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_85.png
+  artifactKey: Guid(5f09d51a6b541d648a6fd166bd3e5fcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_85.png using Guid(5f09d51a6b541d648a6fd166bd3e5fcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8db336994fa3c3d511c9b218dc7fc9d6') in 0.013067 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.253595 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_90.png
+  artifactKey: Guid(55904278798119041ae802a3bd7b49b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_90.png using Guid(55904278798119041ae802a3bd7b49b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78ea87b3af0748af8de04ff02ba2ec7c') in 0.014393 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.067467 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_93.png
+  artifactKey: Guid(e7f5aefc7ae08bf45a901437ed13565f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_93.png using Guid(e7f5aefc7ae08bf45a901437ed13565f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '398fd6bf33f1a3ab9747cf36689e1ba0') in 0.017111 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.247806 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_97.png
+  artifactKey: Guid(99872dae8a07b1845aaae2f1166b6e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_97.png using Guid(99872dae8a07b1845aaae2f1166b6e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b08febd4ba63fe246c7bd79c00854076') in 0.014692 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.913772 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_124.png
+  artifactKey: Guid(fa084020e1784c9469586633e7ebc989) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_124.png using Guid(fa084020e1784c9469586633e7ebc989) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c220a49781c80055c10a97d42c9b49d3') in 0.014869 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.200771 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_126.png
+  artifactKey: Guid(babaaef0d483c36428acf0cd726f9936) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_126.png using Guid(babaaef0d483c36428acf0cd726f9936) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f69ac5293b7b9ba078d7523cfc959e2a') in 0.014070 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.001584 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_128.png
+  artifactKey: Guid(5311a383e70d5b041be0e5b29911c0ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_128.png using Guid(5311a383e70d5b041be0e5b29911c0ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47c09db0459a13544cb910060c9c37b3') in 0.013521 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.186642 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_130.png
+  artifactKey: Guid(7df27c56e1170d040b2b07dabb0fe18c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_130.png using Guid(7df27c56e1170d040b2b07dabb0fe18c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fdc253b20715cac12bc1a5188e3af81c') in 0.019516 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.616366 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_134.png
+  artifactKey: Guid(d5cce0fe1d4e2ca4f8325f25a33942c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_134.png using Guid(d5cce0fe1d4e2ca4f8325f25a33942c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '173ae88498878527d8e3244eb2edac3f') in 0.027331 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.204904 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_138.png
+  artifactKey: Guid(0b83c7cf755c49549952eb7b5d134354) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_138.png using Guid(0b83c7cf755c49549952eb7b5d134354) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be896960d64b67fb3b52e422dee1973b') in 0.013498 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.135279 seconds.
+  path: Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_140.png
+  artifactKey: Guid(0a8c534c60c7ac44093046826784038c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Hexagonal/Sprites/hex-sliced_140.png using Guid(0a8c534c60c7ac44093046826784038c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3ed0a9bf81b2cc026771041c3f5ffdb') in 0.012686 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.549299 seconds.
+  path: Assets/FreeButtonSet/Textures/icons/64x64/info.png
+  artifactKey: Guid(e06eebf644bc5c84cb5d23b9d62ee3cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/FreeButtonSet/Textures/icons/64x64/info.png using Guid(e06eebf644bc5c84cb5d23b9d62ee3cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c289cc4450d8c5a0e16cb0563c0a3acd') in 0.028903 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.697468 seconds.
+  path: Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_10.png
+  artifactKey: Guid(364431ce5f147134481a674debc49bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Fanepeter/Tiles-Indoor Room Sprites/Kitchen Sprits/Kitchen_10.png using Guid(364431ce5f147134481a674debc49bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01d2b345d142e1b61de49a5918215a37') in 0.016078 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 6.106573 seconds.
+  path: Assets/SPUM/SPUM_Sprites/Items/5_Armor/Armor_4.png
+  artifactKey: Guid(0c2778547dc7f40f691a1b5347365280) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/SPUM/SPUM_Sprites/Items/5_Armor/Armor_4.png using Guid(0c2778547dc7f40f691a1b5347365280) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cae43d9847ff99a407420d3c1a3fd996') in 0.028066 seconds 
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 1.014369 seconds.
+  path: Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/3_Pant/Foot_m02.png
+  artifactKey: Guid(3b917618b5ce0f14ea6086f688819b5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/SPUM/SPUM_Sprites/Packages/ModernPackVer1/3_Pant/Foot_m02.png using Guid(3b917618b5ce0f14ea6086f688819b5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49c241ca92c21eac57df9267d7daaa58') in 0.013606 seconds 
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 1.183123 seconds.
+  path: Assets/FreeButtonSet/Textures/icons/128x128/menu.png
+  artifactKey: Guid(ec694ac45cee4c34a93f4caf3ab4f155) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/FreeButtonSet/Textures/icons/128x128/menu.png using Guid(ec694ac45cee4c34a93f4caf3ab4f155) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '563c2d0afa0efe1e8f07ac659ac672f5') in 0.028098 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.171063 seconds.
+  path: Assets/FreeButtonSet/Textures/icons/32x32/menu.png
+  artifactKey: Guid(873fef88362100240875f61cefb4a8ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/FreeButtonSet/Textures/icons/32x32/menu.png using Guid(873fef88362100240875f61cefb4a8ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0263fba56fb44abd1cbebd2e8e132df4') in 0.013699 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.068269 seconds.
+  path: Assets/FreeButtonSet/Textures/icons/32x32/message.png
+  artifactKey: Guid(858e29a9128a19c4182ce8b02b9c6683) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/FreeButtonSet/Textures/icons/32x32/message.png using Guid(858e29a9128a19c4182ce8b02b9c6683) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de9778fda637786a468693d18d770f31') in 0.014467 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/FreeButtonSet/Textures/icons/64x64/message.png
+  artifactKey: Guid(c9c5499f2f571d14381f63343c1fdba7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/FreeButtonSet/Textures/icons/64x64/message.png using Guid(c9c5499f2f571d14381f63343c1fdba7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0138cd2d577a837ac5056e3f317d6a9f') in 0.010826 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.239404 seconds.
+  path: Assets/kenney_ui-pack-space-expansion/PNG/metalPanel.png
+  artifactKey: Guid(cc795a2a6ebd58642b0cfec97de159eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/kenney_ui-pack-space-expansion/PNG/metalPanel.png using Guid(cc795a2a6ebd58642b0cfec97de159eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f11ae11a043cfef03ac274387a12d295') in 0.016015 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/kenney_ui-pack-space-expansion/PNG/metalPanel_plate.png
+  artifactKey: Guid(05f25fda951f1e848a0e4959349ab37d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/kenney_ui-pack-space-expansion/PNG/metalPanel_plate.png using Guid(05f25fda951f1e848a0e4959349ab37d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79dddbc00b81ef4fed1a62acbad6ebfd') in 0.014470 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.340599 seconds.
+  path: Assets/kenney_ui-pack-space-expansion/PNG/metalPanel_red.png
+  artifactKey: Guid(1e292e84106115c4f8487113bd12a384) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/kenney_ui-pack-space-expansion/PNG/metalPanel_red.png using Guid(1e292e84106115c4f8487113bd12a384) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9478ac5f1bb7a91d5e630e1fa0a26f4') in 0.018252 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.051480 seconds.
+  path: Assets/kenney_ui-pack-space-expansion/PNG/metalPanel_yellow.png
+  artifactKey: Guid(add3da7c8c16cbb498f28b7f0af60a93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/kenney_ui-pack-space-expansion/PNG/metalPanel_yellow.png using Guid(add3da7c8c16cbb498f28b7f0af60a93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6e2475e803c59df8e2a21aa4ad7fd61') in 0.015873 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.132520 seconds.
+  path: Assets/FreeButtonSet/Textures/icons/64x64/minus.png
+  artifactKey: Guid(8d3f1901246a92d4e9ba3f2a8b1c1c2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/FreeButtonSet/Textures/icons/64x64/minus.png using Guid(8d3f1901246a92d4e9ba3f2a8b1c1c2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4df925b1779e4c92e64d095fa1dfd97') in 0.015106 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.266486 seconds.
+  path: Assets/FreeButtonSet/Textures/icons/256x256/minus.png
+  artifactKey: Guid(6d3df38cd65ff494387432fd56427bde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/FreeButtonSet/Textures/icons/256x256/minus.png using Guid(6d3df38cd65ff494387432fd56427bde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0157ad6b1b82cabdddb59421c2bf66e9') in 0.018530 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_cornerN_0.png
+  artifactKey: Guid(3bb817e6aa9d2e746ab2031d8871da73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_cornerN_0.png using Guid(3bb817e6aa9d2e746ab2031d8871da73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c83e46d607063e8bba37191595b7203') in 0.014275 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.969304 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_cornerN_3.png
+  artifactKey: Guid(a69bc05fb49ba61458ff2a337a776782) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_cornerN_3.png using Guid(a69bc05fb49ba61458ff2a337a776782) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59e883dbd14ed5c4749241e24ba418d0') in 0.019555 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.166280 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_cornerN_5.png
+  artifactKey: Guid(896e28aaca1c53841a621dffd3211fdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_cornerN_5.png using Guid(896e28aaca1c53841a621dffd3211fdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '517001b466c909810337ffbd0e5ac363') in 0.021203 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_NE_1.png
+  artifactKey: Guid(fd5fa72ede69f4c4fa5a06fa6a1df7ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_NE_1.png using Guid(fd5fa72ede69f4c4fa5a06fa6a1df7ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9e9391100f8c0897133b3205c8123e4') in 0.020351 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.322162 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_NE_4.png
+  artifactKey: Guid(bf033c7edeb94d54dbccace2cd0da43a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_NE_4.png using Guid(bf033c7edeb94d54dbccace2cd0da43a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf524c3c490b21b53875e56d1c3ff648') in 0.044854 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.071148 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_NW_2.png
+  artifactKey: Guid(99204d0a2e25db24c8148f70b6790155) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_NW_2.png using Guid(99204d0a2e25db24c8148f70b6790155) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '198676c39f4c16d264a2cdf2c225c508') in 0.013554 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.251725 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_NW_4.png
+  artifactKey: Guid(d7d90d6e54dee6f4f91bc5ede9f72151) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_NW_4.png using Guid(d7d90d6e54dee6f4f91bc5ede9f72151) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6695bfa355a70ed6551d15d675227882') in 0.028457 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/mountain_1.png
+  artifactKey: Guid(c1d93a0f56a30f448b16bcd2a4f35903) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/mountain_1.png using Guid(c1d93a0f56a30f448b16bcd2a4f35903) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea2c36b34b814be0008801e435d0b7f0') in 0.017445 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.218433 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/mountain_4.png
+  artifactKey: Guid(9fe6871927449ff4790224027f7cb7a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/mountain_4.png using Guid(9fe6871927449ff4790224027f7cb7a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b4c8184ef1760ff1ee953fc8eb5a3c0') in 0.012780 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.169500 seconds.
+  path: Assets/Photon/PhotonChat/Demos/DemoChat/Files/OutlinedSquaredBox.png
+  artifactKey: Guid(ea7134547a5488b41a6bb5243b4ec2f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Photon/PhotonChat/Demos/DemoChat/Files/OutlinedSquaredBox.png using Guid(ea7134547a5488b41a6bb5243b4ec2f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8749996812d985bd53dadb1bc5e0e58') in 0.014079 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 2.123050 seconds.
+  path: Assets/FreeButtonSet/Textures/icons/256x256/pause.png
+  artifactKey: Guid(39af0f365e48844429e5e9144564e40a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/FreeButtonSet/Textures/icons/256x256/pause.png using Guid(39af0f365e48844429e5e9144564e40a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e1392ed2917d11a055e2ba7b4d54ea0') in 0.024769 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.918361 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_17.png
+  artifactKey: Guid(dd285426b28490540b9eaf89ce3f4182) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_17.png using Guid(dd285426b28490540b9eaf89ce3f4182) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f75be72adbf30f11ad9677cd198ce1a') in 0.013385 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.235403 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_19.png
+  artifactKey: Guid(47bc5da5257aeec4c83f3e63e642ea69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_19.png using Guid(47bc5da5257aeec4c83f3e63e642ea69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac42d00231619f01648c57f00b841faf') in 0.027404 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_22.png
+  artifactKey: Guid(782f51e5a340510498a3204669e8dfc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_22.png using Guid(782f51e5a340510498a3204669e8dfc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff5734156f18b02754c3c2e14ca6b417') in 0.013341 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.156871 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_25.png
+  artifactKey: Guid(f061c2cbd62459249849b5bdeb0d0ae4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_25.png using Guid(f061c2cbd62459249849b5bdeb0d0ae4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b97e4ff3b3532705ca4b67bcb910bb1e') in 0.015345 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.534036 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_35.png
+  artifactKey: Guid(8b0f51b8bcce11840a091c66081afb30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_35.png using Guid(8b0f51b8bcce11840a091c66081afb30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab8332e23685941d2ecb6775f7acea02') in 0.032659 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.049335 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_37.png
+  artifactKey: Guid(c136e63f4d472cb4087d99948c211288) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_37.png using Guid(c136e63f4d472cb4087d99948c211288) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d319fcc1d45297786f5ba6d1b61dd0d') in 0.015973 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.249260 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_39.png
+  artifactKey: Guid(455da817aedab144ea7cfa86b08801b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_39.png using Guid(455da817aedab144ea7cfa86b08801b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a951ce165d27637593cde29d4de3c42') in 0.017587 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.314744 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_51.png
+  artifactKey: Guid(46e3b9ddebcc3824da5d755980e56fab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_51.png using Guid(46e3b9ddebcc3824da5d755980e56fab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '627f655e4a9f59768714279dcbf1aa86') in 0.025021 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.255850 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_53.png
+  artifactKey: Guid(ddfdeb7d4a39c4847b48a9885dfb5a60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_53.png using Guid(ddfdeb7d4a39c4847b48a9885dfb5a60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd354b3a996df6d9b8c128ba2d8d9756d') in 0.012222 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.173350 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_55.png
+  artifactKey: Guid(5249d05363536d54ab5e25b8c26019f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_55.png using Guid(5249d05363536d54ab5e25b8c26019f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb3de405d12339c9c140ee88862fcbac') in 0.017735 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.247704 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_59.png
+  artifactKey: Guid(4c5d6c26c79b6d546b6b99b422bdb648) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_59.png using Guid(4c5d6c26c79b6d546b6b99b422bdb648) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79d17700294189f349f8b88cceb68908') in 0.024028 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.006814 seconds.
+  path: Assets/FreeButtonSet/Textures/icons/32x32/play.png
+  artifactKey: Guid(77e80d9dad76e74469ce748b77cdbe1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/FreeButtonSet/Textures/icons/32x32/play.png using Guid(77e80d9dad76e74469ce748b77cdbe1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94dcf83e5b001e8d870d034efbc89cc7') in 0.025226 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.140377 seconds.
+  path: Assets/FreeButtonSet/Textures/icons/32x32/plus.png
+  artifactKey: Guid(f1d2732960a12434a91c2cba94b04cb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/FreeButtonSet/Textures/icons/32x32/plus.png using Guid(f1d2732960a12434a91c2cba94b04cb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0c182ee5a12aa3921f35f1e784e977b') in 0.018609 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.562578 seconds.
+  path: Assets/Photon/PhotonUnityNetworking/Icons/PunIcon-128.png
+  artifactKey: Guid(bd293dc32f4aaf94e8274f2fac2cdf89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Photon/PhotonUnityNetworking/Icons/PunIcon-128.png using Guid(bd293dc32f4aaf94e8274f2fac2cdf89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8648efef8d7aadd25b89a85f4ad099ba') in 0.025242 seconds 
+Number of asset objects unloaded after import = 3
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

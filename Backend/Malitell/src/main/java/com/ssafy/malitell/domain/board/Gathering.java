@@ -3,6 +3,7 @@ package com.ssafy.malitell.domain.board;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroup;
 import com.ssafy.malitell.domain.tag.WorryTag;
+import com.ssafy.malitell.domain.tag.WorryTagConverter;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.board.gathering.GatheringUpdateRequestDto;
 import jakarta.persistence.*;
@@ -47,7 +48,7 @@ public class Gathering {
     private int hit;
 
     // 태그
-    @OneToOne
+    @Convert(converter = WorryTagConverter.class)
     private WorryTag worryTag;
 
     public Gathering(SelfHelpGroup selfHelpGroup, User user, String title, String content, WorryTag worryTag) {

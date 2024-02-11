@@ -1,5 +1,6 @@
 package com.ssafy.malitell.dto.request.board.gathering;
 
+import com.ssafy.malitell.domain.tag.WorryTag;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -13,6 +14,6 @@ public class GatheringUpdateRequestDto {
     private String content;
 
     // 태그
-    private int worryTagSeq;
+    private WorryTag worryTag;
 }
 

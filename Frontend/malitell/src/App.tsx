@@ -26,6 +26,14 @@ import Vendingmachine from "./components/common/vendingmachine";
 import Chat from "./routes/chat";
 import Room from "./components/chat/room";
 import List from "./components/chat/list";
+import MyInfo from "./components/auth/profile/myInfo";
+import MyScrab from "./components/auth/profile/myScrab";
+import MyReservation from "./components/auth/profile/myReview";
+import MyArticle from "./components/auth/profile/myArticle";
+import MyReview from "./components/auth/profile/myReview";
+import MyCounsel from "./components/auth/profile/myCounsel";
+import MyGathering from "./components/auth/profile/myGathering";
+import PasswordChange from "./components/auth/profile/passwordChange";
 
 // 중첩라우팅
 const router = createBrowserRouter([
@@ -43,8 +51,42 @@ const router = createBrowserRouter([
           },
           // auth
           {
-            path: "profile",
+            path: "profile/",
             element: <Profile />,
+            children: [
+              {
+                path: "myInfo",
+                element: <MyInfo />
+              },
+              {
+                path: "myScrab",
+                element: <MyScrab />
+              },
+              {
+                path: "myReservation",
+                element: <MyReservation />
+              },
+              {
+                path: "myArticle",
+                element: <MyArticle />
+              },
+              {
+                path: "myReview",
+                element: <MyReview />
+              },
+              {
+                path: "myCounsel",
+                element: <MyCounsel />
+              },
+              {
+                path: "myGathering",
+                element: <MyGathering />
+              },
+              {
+                path: "passwordChange",
+                element: <PasswordChange />
+              }
+            ]
           },
           // // counsel
           {
