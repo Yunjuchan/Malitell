@@ -1,6 +1,7 @@
 package com.ssafy.malitell.dto.response.board.community;
 
 import com.ssafy.malitell.domain.board.Community;
+import com.ssafy.malitell.domain.tag.WorryTag;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,7 @@ public class CommunityListResponseDto {
     private int boardSeq;
 
     // 태그
-    private String tag;
+    private WorryTag worryTag;
 
     public CommunityListResponseDto(Community community) {
         this.title = community.getTitle();
@@ -30,7 +31,7 @@ public class CommunityListResponseDto {
         this.hit = community.getHit();
         this.time = community.getTime();
         this.boardSeq = community.getCommunitySeq();
-        this.tag = community.getWorryTag().getTag();
+        this.worryTag = community.getWorryTag();
     }
 }
 

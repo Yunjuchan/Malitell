@@ -2,6 +2,7 @@ package com.ssafy.malitell.domain.board;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ssafy.malitell.domain.tag.WorryTag;
+import com.ssafy.malitell.domain.tag.WorryTagConverter;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.board.community.CommunityRequestDto;
 import com.ssafy.malitell.dto.request.board.community.CommunityUpdateRequestDto;
@@ -12,7 +13,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
-import java.sql.Wrapper;
 
 @Entity
 @Setter
@@ -43,7 +43,7 @@ public class Community {
     private int hit;
 
     // 태그
-    @OneToOne
+    @Convert(converter = WorryTagConverter.class)
     private WorryTag worryTag;
 
     public Community(User user, CommunityRequestDto communityRequestDto, WorryTag worryTag) {

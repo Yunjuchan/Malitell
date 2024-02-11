@@ -1,6 +1,7 @@
 package com.ssafy.malitell.dto.response.board.gathering;
 
 import com.ssafy.malitell.domain.board.Gathering;
+import com.ssafy.malitell.domain.tag.WorryTag;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,7 @@ public class GatheringListResponseDto {
     private Timestamp time;
     private int boardSeq;
     // 태그
-    private String tag;
+    private WorryTag worryTag;
 
     public GatheringListResponseDto(Gathering gathering) {
         this.title = gathering.getTitle();
@@ -29,6 +30,6 @@ public class GatheringListResponseDto {
         this.hit = gathering.getHit();
         this.time = gathering.getTime();
         this.boardSeq = gathering.getGatheringSeq();
-        this.tag = gathering.getWorryTag().getTag();
+        this.worryTag = gathering.getWorryTag();
     }
 }

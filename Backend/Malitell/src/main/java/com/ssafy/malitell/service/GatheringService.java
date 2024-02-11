@@ -12,7 +12,6 @@ import com.ssafy.malitell.dto.response.board.gathering.GatheringResponseDto;
 import com.ssafy.malitell.repository.board.gathering.GatheringCommentRepository;
 import com.ssafy.malitell.repository.board.gathering.GatheringRepository;
 import com.ssafy.malitell.repository.selfhelpgroup.SelfHelpGroupRepository;
-import com.ssafy.malitell.repository.tag.WorryTagRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -33,14 +32,13 @@ public class GatheringService {
     private final GatheringCommentRepository gatheringCommentRepository;
     private final SelfHelpGroupRepository selfHelpGroupRepository;
     private final UserRepository userRepository;
-    private final WorryTagRepository worryTagRepository;
 
     // 글 작성
     public int createGathering(GatheringCreateRequestDto requestDto, Principal principal) {
         String name = principal.getName();
         User findUser = userRepository.findByUserId(name);
         SelfHelpGroup selfHelpGroup = new SelfHelpGroup(requestDto);
-        WorryTag worryTag = worryTagRepository.findById(requestDto.getWorryTagSeq()).get();
+        WorryTag worryTag = requestDto.getWorryTag();
 
         Gathering gathering = new Gathering(selfHelpGroup, findUser, requestDto.getTitle(), requestDto.getContent(), worryTag);
 
@@ -66,7 +64,7 @@ public class GatheringService {
         Gathering gathering = gatheringRepository.findById(gatheringSeq).orElseThrow(
                 () -> new IllegalArgumentException("게시물이 존재하지 않습니다.")
         );
-        WorryTag worryTag = worryTagRepository.findById(requestDto.getWorryTagSeq()).get();
+        WorryTag worryTag = requestDto.getWorryTag();
         gathering.update(requestDto, worryTag);
         return gathering.getGatheringSeq();
     }
