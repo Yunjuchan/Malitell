@@ -36,17 +36,22 @@ background-color: white;
 `
 
 export const Nav = styled.div`
-  width: 95%;
-  height: 350px;
+  width: 87%;
+  height: 250px;
+  padding: 10px;
   margin: 0 auto;
   border-radius: 10px;
   box-shadow:  1.5px 1.5px 1.5px 1.5px lightgray;
   background-color: white;
 `
 export const NavItem = styled.div`
+  cursor: pointer;
   width: 100%;
   height: 12.5%;
   margin: 0 auto;
-  border-radius: 10px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
 `

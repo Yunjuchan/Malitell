@@ -129,15 +129,15 @@ export default function RoomComponent() {
         url={url}
         topics={["/chat/room/" + roomId.current]}
         onMessage={recvMessage}
-        onConnect={() => {
-          const Access_Token = localStorage.getItem("Access_Token");
+        // onConnect={() => {
+        //   const Access_Token = localStorage.getItem("Access_Token");
 
-          // 웹소켓 연결이 성립되면 실행될 함수
-          clientRef.current.sendMessage(
-            "app/connect",
-            JSON.stringify({ Access_Token })
-          );
-        }}
+        //   // 웹소켓 연결이 성립되면 실행될 함수
+        //   clientRef.current.sendMessage(
+        //     "app/connect",
+        //     JSON.stringify({ Access_Token })
+        //   );
+        // }}
         onError={(err: any) => {
           // 웹소켓 연결에서 오류가 발생하면 실행될 함수
           console.error("Websocket Error:", err);

@@ -51,7 +51,7 @@ export default function CreateArticleForm() {
         <s.TagBox>
           <s.Label>주제: </s.Label>
           <s.Select onChange={handleTagClick}>
-            <s.Option disabled>선택</s.Option>
+            <s.Option defaultChecked hidden value="">선택</s.Option>
             {tagList.map((tagName, index) => (
               <s.Option
                 key={index}

@@ -2,20 +2,20 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
-  width: 100%;
+  width: 98%;
   height: 50px;
-  margin-top: 15px;
+  margin: 15px auto;
   background-color: white;
-  display: fixed;
-  top: 50px;
-  left: 100px;
+  display: flex;
+  align-items: center;
   border-radius: 10px;
   box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
 `
 
 export const TagProfile = styled.div`
+  width: 20%;
   display: flex;
-  width: 15%;
+  justify-content: space-around;
 `
 
 export const TagBox = styled.div`
@@ -26,6 +26,8 @@ export const Profile = styled.div`
 
 export const Title = styled.div`
   width: 60%;
+  font-size: 18px;
+  text-align: center;
 `;
 export const Time = styled.div`
   width: 20%;
