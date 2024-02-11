@@ -49,7 +49,11 @@ public class CounselingController {
     }
 
     // [내담자/상담자] 상담 예약 상세 조회
-
+    @GetMapping("/mypage/reserve/{counselingSeq}")
+    public ResponseEntity<ReservationInfoResponseDto> getOneReservationInfo(@PathVariable int counselingSeq, Principal principal) {
+        ReservationInfoResponseDto dto = counselingService.getOneReservationInfo(counselingSeq, principal);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
 
     // [내담자] 상담 예약 취소
     @DeleteMapping("/mypage/cancelReservation/{counselingSeq}")
@@ -76,7 +80,7 @@ public class CounselingController {
         return new ResponseEntity<>(myCounselingLogResponseDto, HttpStatus.OK);
     }
 
-    // [내담자/상담자] 상담일지 상세조회
+    // [내담자/상담자] 상담일지 상세 조회
     @GetMapping("/mypage/counselingLog/{counselingLogSeq}")
     public ResponseEntity<CounselingLogResponseDto> getOneCounselingLog(@PathVariable int counselingLogSeq, Principal principal) {
         CounselingLogResponseDto counselingLogResponseDto = counselingService.getOneCounselingLog(counselingLogSeq, principal);

@@ -1,8 +1,9 @@
 import { api, authApi } from "../axiosInstance"
 
-interface ArticleForm {
-  title: string;
-  content: string;
+export interface ArticleForm {
+  "title": string;
+  "content": string;
+  "worryTagSeq": number;
 }
 
 export const fetchArticleList = () => {
@@ -19,8 +20,9 @@ export const fetchArticleList = () => {
   return res
 }
 
-export const createArticle = () => {
-  const res = authApi.post("/community", {})
+export const createArticle = (data: ArticleForm) => {
+  console.log(data)
+  const res = authApi.post("/community", {"title": data.title, "content": data.content, "worryTagSeq": data.worryTagSeq})
   .then((res) => {
     return res.data
   })

@@ -1,10 +1,13 @@
 package com.ssafy.malitell.dto.response.counseling;
 
 import com.ssafy.malitell.domain.counseling.CounselingReview;
+import com.ssafy.malitell.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
@@ -35,6 +38,24 @@ public class CounselorResponseDto {
         this.professionalField = professionalField;
         this.careerPeriod = careerPeriod;
         this.grade = grade;
+    }
+
+    public CounselorResponseDto(User user) {
+        this.counselorSeq = user.getUserSeq();
+        this.name = user.getName();
+        this.email = user.getEmail();
+        this.phone = user.getPhone();
+
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+        this.age = Integer.parseInt(sdf.format(date)) - Integer.parseInt(user.getBirth().substring(0, 4));
+
+        this.gender = user.getGender();
+        this.profileImg = user.getProfileImg();
+        this.professionalField = user.getProfessionalField();
+        this.careerPeriod = user.getCareerPeriod();
+        this.grade = user.getGrade();
+        this.comment = user.getComment();
     }
 
 }

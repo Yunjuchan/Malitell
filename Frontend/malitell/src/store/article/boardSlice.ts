@@ -1,16 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface boardState {
-  boardType: string;
+export interface BoardState {
+  boardType: 'community' | 'gather' | 'overcome';
   q: string | null;
   tag: string | null;
 }
 
-const initialState: boardState = {
+const initialState: BoardState = {
   boardType: "community",
   q: null,
   tag: "all",
+
 };
+
 export const boardSlice = createSlice({
   name: "board",
   initialState,

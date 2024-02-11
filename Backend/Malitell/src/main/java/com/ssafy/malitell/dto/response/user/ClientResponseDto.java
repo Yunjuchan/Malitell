@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-// 아이디, 이름, 닉네임, 이메일, 휴대번호, 나이 표시
+// 아이디, 이름, 닉네임, 이메일, 휴대번호, 나이, 성별 표시
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,6 +19,7 @@ public class ClientResponseDto {
     private String email;
     private String phone;
     private String birth;
+    private String gender;
     private List<StatusTag> statusTags;
 
     public ClientResponseDto(User user) {
@@ -28,6 +29,8 @@ public class ClientResponseDto {
         this.email = user.getEmail();
         this.phone = user.getPhone();
         this.birth = user.getBirth();
+        this.gender = user.getGender();
         this.statusTags = user.getStatusTags();
     }
+
 }

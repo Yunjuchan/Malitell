@@ -4,13 +4,11 @@ package com.ssafy.malitell;
 import com.ssafy.malitell.domain.capsule.Capsule;
 import com.ssafy.malitell.domain.mindletgo.MindLetGoTopic;
 import com.ssafy.malitell.domain.tag.StatusTag;
-import com.ssafy.malitell.domain.tag.WorryTag;
 import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorJoinRequestDto;
 import com.ssafy.malitell.repository.capsule.CapsuleRepository;
 import com.ssafy.malitell.repository.mindletgo.MindLetGoTopicRepositoryImpl;
 import com.ssafy.malitell.repository.tag.StatusTagRepository;
-import com.ssafy.malitell.repository.tag.WorryTagRepository;
 import com.ssafy.malitell.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
@@ -25,7 +23,6 @@ public class Initializer implements ApplicationRunner {
     private final CapsuleRepository capsuleRepository;
     private final MindLetGoTopicRepositoryImpl mindLetGoTopicRepository;
     private final StatusTagRepository statusTagRepository;
-    private final WorryTagRepository worryTagRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -68,11 +65,5 @@ public class Initializer implements ApplicationRunner {
         statusTagRepository.save(new StatusTag("불안"));
         statusTagRepository.save(new StatusTag("공황"));
         statusTagRepository.save(new StatusTag("자존감"));
-
-        worryTagRepository.save(new WorryTag("진로"));
-        worryTagRepository.save(new WorryTag("정서"));
-        worryTagRepository.save(new WorryTag("대인 관계"));
-        worryTagRepository.save(new WorryTag("경제"));
-        worryTagRepository.save(new WorryTag("건강"));
     }
 }
