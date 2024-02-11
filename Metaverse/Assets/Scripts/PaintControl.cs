@@ -7,6 +7,12 @@ public class PaintControl : MonoBehaviour
 {
     public Sprite[] sprites;
     public Image Paint;
+    public GameObject Palette;
+
+    public void Start()
+    {
+        Palette.SetActive(false);
+    }
 
     private void OnMouseEnter()
     {
@@ -16,5 +22,17 @@ public class PaintControl : MonoBehaviour
     private void OnMouseExit()
     {
         Paint.sprite = sprites[1];
+    }
+
+    public void ClickPalette()
+    {
+        if (Palette.activeSelf == false)
+        {
+            Palette.SetActive(true);
+        }
+        else
+        {
+            Palette.SetActive(false);
+        }
     }
 }
