@@ -80,7 +80,7 @@ public class CounselingController {
         return new ResponseEntity<>(myCounselingLogResponseDto, HttpStatus.OK);
     }
 
-    // [내담자/상담자] 상담일지 상세조회
+    // [내담자/상담자] 상담일지 상세 조회
     @GetMapping("/mypage/counselingLog/{counselingLogSeq}")
     public ResponseEntity<CounselingLogResponseDto> getOneCounselingLog(@PathVariable int counselingLogSeq, Principal principal) {
         CounselingLogResponseDto counselingLogResponseDto = counselingService.getOneCounselingLog(counselingLogSeq, principal);
