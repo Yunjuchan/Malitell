@@ -22,8 +22,7 @@ public class OverComingController {
     // 게시물 등록
     @PostMapping
     public ResponseEntity<?> createOverComing(@RequestBody OverComingRequestDto requestDto, Principal principal) {
-        overComingService.createOverComing(requestDto, principal);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(overComingService.createOverComing(requestDto, principal), HttpStatus.OK);
     }
 
     // 게시물 목록 조회
@@ -32,7 +31,7 @@ public class OverComingController {
         return new ResponseEntity<>(overComingService.findAllOverComing(), HttpStatus.OK);
     }
 
-    // 게시물 하나 조회
+    // 게시물 하나 조회0
     @GetMapping("/view/{overComingSeq}")
     public ResponseEntity<OverComingResponseDto> getOneOverComing(@PathVariable int overComingSeq) {
         return new ResponseEntity<>(overComingService.findOneOverComing(overComingSeq), HttpStatus.OK);

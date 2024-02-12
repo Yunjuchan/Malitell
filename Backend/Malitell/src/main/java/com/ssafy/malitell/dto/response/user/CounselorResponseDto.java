@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CounselorResponseDto {
+    private int userSeq;
     private String userId;
     private String name;
     private String email;
@@ -19,8 +20,10 @@ public class CounselorResponseDto {
     private String professionalField;
     private int careerPeriod;
     private String comment;
+    private String role;
 
     public CounselorResponseDto(User user) {
+        this.userSeq = user.getUserSeq();
         this.userId = user.getUserId();
         this.name = user.getName();
         this.email = user.getEmail();
@@ -31,5 +34,6 @@ public class CounselorResponseDto {
         this.professionalField = user.getProfessionalField();
         this.careerPeriod = user.getCareerPeriod();
         this.comment = user.getComment();
+        this.role = user.getRole();
     }
 }

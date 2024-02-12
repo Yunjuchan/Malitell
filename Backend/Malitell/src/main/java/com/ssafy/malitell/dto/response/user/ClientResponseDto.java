@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClientResponseDto {
+    private int userSeq;
     private String userId;
     private String name;
     private String nickname;
@@ -21,8 +22,10 @@ public class ClientResponseDto {
     private String birth;
     private String gender;
     private List<StatusTag> statusTags;
+    private String role;
 
     public ClientResponseDto(User user) {
+        this.userSeq = user.getUserSeq();
         this.userId = user.getUserId();
         this.name = user.getName();
         this.nickname = user.getNickname();
@@ -31,6 +34,7 @@ public class ClientResponseDto {
         this.birth = user.getBirth();
         this.gender = user.getGender();
         this.statusTags = user.getStatusTags();
+        this.role = user.getRole();
     }
 
 }
