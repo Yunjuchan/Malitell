@@ -11,6 +11,7 @@ import { setBoardTypeInfo } from "../../store/article/boardSlice";
 import { useDispatch } from "react-redux";
 import { setProfileMenu } from "../../store/auth/profileSlice";
 import { RootState } from "../../store/store";
+import { logout } from "../../store/auth/userSlice";
 
 export default function Nav() {
   const navigate = useNavigate();
@@ -43,14 +44,13 @@ export default function Nav() {
     navigate("/articles/community");
   };
 
-
   // 토큰 저장여부에 따른 메뉴 선택 동작 바꾸기
-  // dispatch는 비동기라 store의 상태가 변경되기 전에 navigate가 되므로 
+  // dispatch는 비동기라 store의 상태가 변경되기 전에 navigate가 되므로
   // 초기 연결은 myInfo로 강제해야 제대로 url이 작동함
   const handleProfile = (e: React.MouseEvent): void => {
     const token = window.localStorage.getItem("Access_Token");
     if (token) {
-      dispatch(setProfileMenu({menu: "myInfo", menuKo: "내 정보"}))
+      dispatch(setProfileMenu({ menu: "myInfo", menuKo: "내 정보" }));
       navigate(`/profile/myInfo`);
     } else {
       handleBack(e);
@@ -78,20 +78,33 @@ export default function Nav() {
 
           {/* 네브바 상단부분 */}
           <s.NavItems $col="11/13" $row="1/2" $align="end">
-            <s.NavItem $width="70px" $size="15px">
-              <div
-                onClick={(e) => {
-                  handleLogin(e);
-                  handleBack(e);
-                }}
-                style={{ cursor: "pointer" }}
-              >
-                로그인
-              </div>
-            </s.NavItem>
-            <s.NavItem $width="70px" $size="15px">
-              <Link to="/signup">회원가입</Link>
-            </s.NavItem>
+            
+            {/* 토큰이 있으면 인사말, 로그아웃 버튼 */}
+            {localStorage.getItem("Access_Token") ? (
+              <>
+                {/* 리덕스에서 회원정보 받아와야됨 */}
+                <s.NavItem $width="70px" $size="15px">
+                  <Link to="/logout">로그아웃</Link>
+                </s.NavItem>
+              </>
+            ) : (
+              <>
+                <s.NavItem $width="70px" $size="15px">
+                  <div
+                    onClick={(e) => {
+                      handleLogin(e);
+                      handleBack(e);
+                    }}
+                    style={{ cursor: "pointer" }}
+                  >
+                    로그인
+                  </div>
+                </s.NavItem>
+                <s.NavItem $width="70px" $size="15px">
+                  <Link to="/signup">회원가입</Link>
+                </s.NavItem>
+              </>
+            )}
           </s.NavItems>
 
           {/* 네브바 하단부분 */}
@@ -112,20 +125,18 @@ export default function Nav() {
             </s.NavItem>
           </s.NavItems>
           <s.NavItems $col="11/13" $row="2/4" $align="end">
-            <s.NavItem $width="70px">
+            <s.NavItem $width="55px">
               <FontAwesomeIcon
                 onClick={openChat}
                 icon={faComment}
-                style={{ color: "#BF94E4" }}
-                size="2x"
+                style={{ color: "#BF94E4", width: "25px", height: "25px" }}
               />
             </s.NavItem>
-            <s.NavItem $width="70px">
+            <s.NavItem $width="55px">
               <FontAwesomeIcon
                 onClick={handleProfile}
                 icon={faUser}
-                style={{ color: "#BF94E4", cursor: "pointer" }}
-                size="2x"
+                style={{ color: "#BF94E4", cursor: "pointer", width: "25px", height: "25px" }}
                 width="70px"
               />
             </s.NavItem>
