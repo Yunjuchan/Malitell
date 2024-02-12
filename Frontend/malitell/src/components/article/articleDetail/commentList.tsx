@@ -17,12 +17,6 @@ export default function CommentList() {
         <Comment role="" />
         <Comment role="" />
         <Comment role="" />
-        <Comment role="" />
-        <Comment role="" />
-        <Comment role="" />
-        <Comment role="" />
-        <Comment role="" />
-        <Comment role="" />
       </CommentListBox>
     </Wrapper>
   );

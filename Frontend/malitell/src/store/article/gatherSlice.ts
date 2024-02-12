@@ -58,10 +58,12 @@ export const editSHGroup = (gatheringSeq: number) => {
 
 // 자조모임 게시글 상세 조회
 export const sHGroupDetail = (gatheringSeq: number) => {
-  api.get(`/gathering/${gatheringSeq}`).then((response) => {
+  const res = api.get(`/gathering/view/${gatheringSeq}`).then((response) => {
     // 응답 : 자조모임 게시글 번호?? 전체 필요
+    console.log(response.data)
     return response.data;
   });
+  return res
 };
 
 // 자조모임 게시글 삭제

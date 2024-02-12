@@ -10,7 +10,7 @@ import com.ssafy.malitell.dto.response.board.overcoming.OverComingResponseDto;
 import com.ssafy.malitell.repository.board.overcoming.OverComingCommentRepository;
 import com.ssafy.malitell.repository.board.overcoming.OverComingRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

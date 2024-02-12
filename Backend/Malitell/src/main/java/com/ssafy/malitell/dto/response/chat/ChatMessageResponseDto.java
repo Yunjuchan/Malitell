@@ -4,6 +4,7 @@ import com.ssafy.malitell.domain.chat.ChatMessage;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @AllArgsConstructor
@@ -13,7 +14,7 @@ public class ChatMessageResponseDto {
     private String chatRoomSeq;
     private int userSeq;
     private String messageContent;
-    private LocalTime spentTime;
+    private LocalDateTime sendTime;
     private boolean isRead;
 
     public ChatMessageResponseDto(ChatMessage chatMessage) {
@@ -21,7 +22,7 @@ public class ChatMessageResponseDto {
         this.chatRoomSeq = chatMessage.getChatRoom().getChatRoomSeq();
         this.userSeq = chatMessage.getUser().getUserSeq();
         this.messageContent = chatMessage.getContent();
-        this.spentTime = chatMessage.getSendTime();
+        this.sendTime = chatMessage.getSendTime();
         this.isRead = chatMessage.isRead();
     }
 }

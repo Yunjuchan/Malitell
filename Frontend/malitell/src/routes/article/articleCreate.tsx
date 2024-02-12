@@ -19,7 +19,9 @@ const Text = styled.div`
 `;
 
 export default function ArticleCreate() {
-  const boardType = useSelector((state: RootState) => state.board.boardType);
+  const state = localStorage.getItem("state") || "";
+  const parsedData = JSON.parse(state);
+  const boardType = parsedData.boardType;
   const onClick = () => {
     window.history.back();
   };
@@ -38,9 +40,14 @@ export default function ArticleCreate() {
           </Text>
         </g.Box>
         <g.Box $col="1/13" $row="2/3">
-        {boardType === "community" ? <CreateArticleForm /> :
-        boardType === "gather" ? <CreateGatherForm /> : 
-        <CreateOvercomeForm />}
+          <>{boardType}</>
+          {boardType === "community" ? (
+            <CreateArticleForm />
+          ) : boardType === "gather" ? (
+            <CreateGatherForm />
+          ) : (
+            <CreateOvercomeForm />
+          )}
         </g.Box>
       </GridCreate>
     </>

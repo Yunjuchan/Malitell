@@ -9,11 +9,17 @@ import Login from "../auth/login/login";
 import logo from "../../assets/images/nav/logo.png";
 import { setBoardTypeInfo } from "../../store/article/boardSlice";
 import { useDispatch } from "react-redux";
+import { setProfileMenu } from "../../store/auth/profileSlice";
+import { RootState } from "../../store/store";
 
 export default function Nav() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [back, setBack] = useState(false);
   const [login, setLogin] = useState(false);
-  const board = useSelector((state: any) => state.board);
+  const board = useSelector((state: RootState) => state.board);
+  const profile = useSelector((state: RootState) => state.profile);
 
   const handleBack = (e: React.MouseEvent): void => {
     if (document.body.style.overflow === "hidden") {
@@ -31,19 +37,21 @@ export default function Nav() {
     const url = "/chat";
     window.open(url, "_blank", "width=400, height=530");
   };
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const goToCommunity = () => {
     dispatch(setBoardTypeInfo("community"));
     navigate("/articles/community");
   };
 
+
   // 토큰 저장여부에 따른 메뉴 선택 동작 바꾸기
+  // dispatch는 비동기라 store의 상태가 변경되기 전에 navigate가 되므로 
+  // 초기 연결은 myInfo로 강제해야 제대로 url이 작동함
   const handleProfile = (e: React.MouseEvent): void => {
     const token = window.localStorage.getItem("Access_Token");
     if (token) {
-      navigate("/profile");
+      dispatch(setProfileMenu({menu: "myInfo", menuKo: "내 정보"}))
+      navigate(`/profile/myInfo`);
     } else {
       handleBack(e);
       handleLogin(e);

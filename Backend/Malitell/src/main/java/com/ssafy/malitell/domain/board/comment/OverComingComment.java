@@ -23,7 +23,7 @@ public class OverComingComment {
     private String username;
 
     // 댓글 작성자
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private OverComing overComing;
 
     // 댓글 내용

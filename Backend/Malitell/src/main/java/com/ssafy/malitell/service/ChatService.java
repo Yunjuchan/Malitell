@@ -12,6 +12,7 @@ import com.ssafy.malitell.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.security.Principal;
 import java.util.List;
@@ -65,6 +66,7 @@ public class ChatService {
         return chatRoomRepository.findAllRoomByLastSpentTimeDesc();
     }
 
+    @Transactional(readOnly = true)
     public ChatRoom findRoom(String chatRoomSeq) {
         return chatRoomRepository.findRoomByChatRoomSeq(chatRoomSeq);
     }
@@ -73,6 +75,7 @@ public class ChatService {
         return chatRoomRepository.findAllMessageByChatRoomSeq(chatRoomSeq);
     }
 
+    @Transactional
     public void save(ChatMessage chatMessage) {
         chatMessageRepositoryImpl.save(chatMessage);
     }

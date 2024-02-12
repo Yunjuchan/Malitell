@@ -17,11 +17,11 @@ public class SelfHelpGroupUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "selfHelpGroup_id")
     private SelfHelpGroup selfHelpGroup;
 

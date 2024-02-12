@@ -22,7 +22,7 @@ public class CommunityComment {
 
     private String username;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Community community;
 
     // 댓글 내용

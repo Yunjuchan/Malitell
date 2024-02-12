@@ -26,12 +26,12 @@ public class Gathering {
     private int gatheringSeq;
 
     // 어떤 자조모임 모집 게시글인지
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "selfHelpGroup_seq")
     private SelfHelpGroup selfHelpGroup;
 
     // 작성자
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     // 게시물 제목

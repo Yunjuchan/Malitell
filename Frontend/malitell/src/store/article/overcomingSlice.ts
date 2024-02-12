@@ -1,22 +1,30 @@
-import { api, authApi } from "../axiosInstance"
+import { api, authApi } from "../axiosInstance";
 export interface OvercomingForm {
-    title: string;
-    content: string;
+  title: string;
+  content: string;
 }
 export const fetchOvercomingList = () => {
-    const res = api.get('/overComing/getBoardList')
+  const res = api
+    .get("/overComing/getBoardList")
     .then((res) => {
-        return res.data
+      return res.data;
     })
-    .catch((error) => console.log("load fail", error))
-    return res
-}
+    .catch((error) => console.log("load fail", error));
+  return res;
+};
 
 export const createOvercome = (data: OvercomingForm) => {
-    console.log(data)
-    const res = authApi.post('/overComing', data)
-    .then((res) => {
-        return res.data
-    })
-    return res
-}
+  console.log(data);
+  const res = authApi.post("/overComing", data).then((res) => {
+    return res.data;
+  });
+  return res;
+};
+
+export const overcomeDetail = (boardSeq: number) => {
+  const res = api.get(`overComing/view/${boardSeq}`).then((res) => {
+    return res.data;
+  });
+  return res;
+};
+

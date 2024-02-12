@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux"
 import styled from "styled-components"
+import { RootState } from "../../../store/store"
 
 const Wrapper = styled.div`
   width: 100%;
@@ -11,9 +13,10 @@ const Wrapper = styled.div`
   `
 
 export default function Current() {
+  const profile = useSelector((state: RootState) => state.profile)
   return (
     <Wrapper>
-    props받아서 현재 메뉴명 표시 부탁
+    {profile.menuKo}
     </Wrapper>
   )
 }
