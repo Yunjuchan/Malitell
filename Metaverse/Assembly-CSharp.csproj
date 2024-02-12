@@ -93,6 +93,7 @@
     <Compile Include="Assets\Photon\PhotonVoice\Demos\DemoVoiceUI\Scripts\PhotonDemoExtensions.cs" />
     <Compile Include="Assets\Photon\PhotonVoice\Demos\DemoVoiceUI\Scripts\SidebarToggle.cs" />
     <Compile Include="Assets\Scripts\Customizing.cs" />
+    <Compile Include="Assets\FlexibleColorPicker\Scripts\FCP_SpriteMeshEditor.cs" />
     <Compile Include="Assets\Photon\PhotonVoice\Demos\DemoVoiceUI\Scripts\BackgroundMusicController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\_External\2d-techdemos\Rule Tiles\Scripts\RuleTile.cs" />
@@ -122,10 +123,12 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
+    <Compile Include="Assets\FlexibleColorPicker\ExampleScene\FCP_ExampleScript.cs" />
     <Compile Include="Assets\Scripts\GotoLobby.cs" />
     <Compile Include="Assets\Photon\PhotonVoice\Demos\DemoVoiceProximityChat\Scripts\ChangeColor.cs" />
     <Compile Include="Assets\Photon\PhotonVoice\Demos\DemoVoicePun\Scripts\VoiceDemoUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+    <Compile Include="Assets\FlexibleColorPicker\Scripts\FCP_Persistence.cs" />
     <Compile Include="Assets\_External\2d-techdemos\GridInformation\Scripts\GridInformation.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
@@ -146,6 +149,7 @@
     <Compile Include="Assets\Photon\PhotonVoice\Demos\DemoVoiceUI\Scripts\CodecSettingsUI.cs" />
     <Compile Include="Assets\SPUM\Script\SPUM_HorseSpriteList.cs" />
     <Compile Include="Assets\Scripts\IsometricCharacterRenderer.cs" />
+    <Compile Include="Assets\FlexibleColorPicker\Scripts\FlexibleColorPicker.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\HelpBtn.cs" />
     <Compile Include="Assets\_External\2d-techdemos\Rule Tiles\Scripts\IsometricRuleTile.cs" />
@@ -185,10 +189,6 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\Photon\PhotonVoice\Demos\DemoVoicePun\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\FlexibleColorPicker\Scripts\FlexibleColorPicker.cs" />
-    <Compile Include="Assets\FlexibleColorPicker\Scripts\FCP_SpriteMeshEditor.cs" />
-    <Compile Include="Assets\FlexibleColorPicker\ExampleScene\FCP_ExampleScript.cs" />
-    <Compile Include="Assets\FlexibleColorPicker\Scripts\FCP_Persistence.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

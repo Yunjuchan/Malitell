@@ -110,7 +110,7 @@ public class ChatManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void ReceiveMsg(string msg, string senderNickname)
     {
-        Color senderColor = senderNickname.Equals(PhotonNetwork.LocalPlayer.NickName) ? new Color(Random.value, Random.value, Random.value) : new Color(Random.value, Random.value, Random.value);
+        Color senderColor = senderNickname.Equals(PhotonNetwork.LocalPlayer.NickName) ? Color.black : Color.red;
         chatLog.text += $"\n<color=#{ColorUtility.ToHtmlStringRGB(senderColor)}>{msg}</color>";
         StartCoroutine("ScrollToPosition");
     }
