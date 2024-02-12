@@ -34,4 +34,14 @@ public class ChatRoom implements Serializable {
         chatRoom.counselor = counselor;
         return chatRoom;
     }
+
+    @Override
+    public String toString() {
+        return "ChatRoom{" +
+                "chatRoomSeq='" + chatRoomSeq + '\'' +
+                ", counselor=" + counselor +
+                ", client=" + client +
+                ", lastSpentTime=" + lastSpentTime +
+                '}';
+    }
 }

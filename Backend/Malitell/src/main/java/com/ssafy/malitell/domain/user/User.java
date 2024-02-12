@@ -113,4 +113,31 @@ public class User {
     public void updatePassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userSeq=" + userSeq +
+                ", userId='" + userId + '\'' +
+                ", name='" + name + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", birth='" + birth + '\'' +
+                ", gender='" + gender + '\'' +
+                ", role='" + role + '\'' +
+                ", refreshToken='" + refreshToken + '\'' +
+                ", profileImg='" + profileImg + '\'' +
+                ", professionalField='" + professionalField + '\'' +
+                ", careerPeriod=" + careerPeriod +
+                ", grade=" + grade +
+                ", comment='" + comment + '\'' +
+                ", type='" + type + '\'' +
+                ", alramMessage='" + alramMessage + '\'' +
+                ", readCheck=" + readCheck +
+                ", selfHelpGroupUsers=" + selfHelpGroupUsers +
+                ", statusTags=" + statusTags +
+                '}';
+    }
 }
