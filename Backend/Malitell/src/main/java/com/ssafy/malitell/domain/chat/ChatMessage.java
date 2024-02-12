@@ -23,10 +23,15 @@ public class ChatMessage {
     @Override
     public String toString() {
         return "ChatMessage{" +
-                "content='" + content + '\'' +
-                "roomSeq='" + chatRoom + '\'' +
+                "chatMessageSeq=" + chatMessageSeq +
+                ", chatRoom=" + chatRoom +
+                ", user=" + user +
+                ", content='" + content + '\'' +
+                ", sendTime=" + sendTime +
+                ", isRead=" + isRead +
                 '}';
     }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long chatMessageSeq;
