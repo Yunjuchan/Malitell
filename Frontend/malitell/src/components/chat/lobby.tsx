@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { get } from "http";
 
 type ChatRoom = {
   roomId: string;
@@ -37,6 +38,12 @@ const Lobby: React.FC = () => {
   }, []);
 
   const findAllRooms = async () => {
+    // fetch(`http://localhost:8080/chat/rooms`, {
+    //   method: "GET"
+    // }).then((res) => {
+    //   console.log(res);
+
+    // })
     const response = await axios.get("http://localhost:8080/chat/rooms");
     console.log(response.data);
     setChatRooms(response.data);
