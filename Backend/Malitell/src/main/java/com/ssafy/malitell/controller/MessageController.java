@@ -47,6 +47,7 @@ public class MessageController {
         String chatRoomSeq = requestDto.getChatRoomSeq();
         System.out.println("1");
         String userId = principal.getName();
+        log.info("userId = {}", userId);
 //        chatService.falseMessageList(chatRoomSeq, principal);
         System.out.println("2");
 
