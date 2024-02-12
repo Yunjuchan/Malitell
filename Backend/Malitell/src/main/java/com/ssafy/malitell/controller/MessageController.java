@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import org.slf4j.Logger;
@@ -46,15 +47,17 @@ public class MessageController {
         logger.info(requestDto.toString());
         String chatRoomSeq = requestDto.getChatRoomSeq();
         System.out.println("1");
-        String userId = principal.getName();
-        log.info("userId = {}", userId);
+
+        log.info("userId = {}", principal.getName());
+
 //        chatService.falseMessageList(chatRoomSeq, principal);
         System.out.println("2");
 
         ChatRoom chatRoom = chatService.findRoom(requestDto.getChatRoomSeq());
         User user = userService.findByUserSeq(requestDto.getUserSeq());
+        LocalDateTime sendTime = LocalDateTime.now();
 
-        ChatMessage chatMessage = new ChatMessage(requestDto, chatRoom, user);
+        ChatMessage chatMessage = new ChatMessage(requestDto, sendTime, chatRoom, user);
 
 
         chatService.save(chatMessage);

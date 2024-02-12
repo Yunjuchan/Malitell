@@ -8,9 +8,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @Document("chatMessage")
 @Entity
@@ -35,7 +36,7 @@ public class ChatMessage {
     private User user;
     private String content;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-    private LocalTime sendTime;
+    private LocalDateTime sendTime;
     @ColumnDefault("false")
     private boolean isRead;
 
@@ -43,10 +44,10 @@ public class ChatMessage {
         this.isRead = true;
     }
 
-    public ChatMessage(MessageRequestDto messageRequestDto, ChatRoom chatRoom, User user) {
+    public ChatMessage(MessageRequestDto messageRequestDto, LocalDateTime sendTime, ChatRoom chatRoom, User user) {
         this.chatRoom = chatRoom;
         this.user = user;
         this.content = messageRequestDto.getContent();
-        this.sendTime = messageRequestDto.getSendTime();
+        this.sendTime = sendTime;
     }
 }

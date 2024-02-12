@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.cglib.core.Local;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Getter
@@ -17,5 +18,5 @@ public class MessageRequestDto {
     private String chatRoomSeq;
     private int userSeq;
     private String content;
-    private LocalTime sendTime;
+    private LocalDateTime sendTime;
 }
