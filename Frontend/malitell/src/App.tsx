@@ -35,6 +35,7 @@ import MyGathering from "./components/auth/profile/myGathering";
 import PasswordChange from "./components/auth/profile/passwordChange";
 import MyInfoClient from "./components/auth/profile/myInfoClient";
 import MyInfoCounselor from "./components/auth/profile/myInfoCounselor";
+import Counselling from "./routes/counselling/counselling";
 
 // 중첩라우팅
 const router = createBrowserRouter([
@@ -147,6 +148,11 @@ const router = createBrowserRouter([
         ],
       },
     ],
+  },
+  // 일반 라우팅
+  {
+    path: "/counselling",
+    element: <Counselling />,
   },
   {
     path: "/chat12",

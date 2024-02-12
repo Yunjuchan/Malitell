@@ -30,11 +30,12 @@ export const Line = styled.div`
 `;
 
 export const Logo = styled.div`
-  grid-column: 1/4;
+  grid-column: 1/3;
   grid-row: 1/4;
   margin: auto 10px;
+  background-color: white; 
   img {
-    width: 70%;
+    width: 100%;
   }
 `;
 

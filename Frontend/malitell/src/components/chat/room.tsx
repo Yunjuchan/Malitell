@@ -85,18 +85,28 @@ export default function RoomComponent() {
           chatRoomSeq: roomId.current,
           userSeq: sender,
           content: message,
-          sendTiem: Date(),
+          // sendTime: Date(),
         }),
-        { 'Access_Token': `${localStorage.getItem("Access_Token")}` }
+        { Access_Token: `${localStorage.getItem("Access_Token")}` }
       );
       // console.log(Access_Token)
-      console.log("보냈다")
+      console.log("보냈다");
+      // console.log(
+      //   JSON.stringify({
+      //     // Access_Token: Access_Token,
+      //     chatRoomSeq: roomId.current,
+      //     userSeq: sender,
+      //     content: message,
+      //     sendTime: Date(),
+      //   })
+      // );
       setMessage("");
     }
   };
 
   const recvMessage = (recv: Message) => {
     console.log("메시지가 왔어...?!");
+    // `/sub/chat/room/${roomId.current}`
     setMessages((prevMessages) => [
       {
         type: recv.type,
@@ -148,9 +158,9 @@ export default function RoomComponent() {
       </div>
       <SockJsClient
         url={url}
-        topics={["/chat/room/" + roomId.current]}
+        topics={["/sub/chat/room/" + roomId.current]}
         onMessage={recvMessage}
-        headers={{ 'Access_Token': `${localStorage.getItem("Access_Token")}` }}
+        headers={{ Access_Token: `${localStorage.getItem("Access_Token")}` }}
         onConnect={() => {
           console.log("Websocket connected");
         }}
@@ -173,4 +183,3 @@ export default function RoomComponent() {
     </div>
   );
 }
-  

@@ -1,13 +1,17 @@
 import Carousel from "../../components/home/carousel";
-import {Grid} from "../../styles/home/grid";
-import * as g from '../../styles/grid';
+import { Grid } from "../../styles/home/grid";
+import * as g from "../../styles/grid";
 import Nav from "../../components/home/nav";
 import Metaverse from "../../components/home/banners/metaverse";
 import Bamboo from "../../components/home/banners/bamboo";
 import Counsel from "../../components/home/counsel";
 import Articles from "../../components/home/articles";
+import { useEffect } from "react";
 
-export default function home() {
+export default function Home() {
+  useEffect(() => {
+    console.log("123");
+  });
   return (
     <>
       <Carousel />
