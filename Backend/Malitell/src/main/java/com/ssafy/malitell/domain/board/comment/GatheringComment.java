@@ -23,7 +23,7 @@ public class GatheringComment {
     private String username;
 
     // 댓글 작성자
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Gathering gathering;
 
     // 댓글 내용

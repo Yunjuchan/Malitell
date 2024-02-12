@@ -19,9 +19,11 @@ public class ChatRoom implements Serializable {
     private static final long serialVersionUID = 6494678977089006639L;
     @Id
     private String chatRoomSeq;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User counselor;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+
+
     private User client;
     private Timestamp lastSpentTime;
 

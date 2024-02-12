@@ -31,7 +31,7 @@ public class Gathering {
     private SelfHelpGroup selfHelpGroup;
 
     // 작성자
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     // 게시물 제목
