@@ -26,7 +26,7 @@ public class Community {
     private int communitySeq;
 
     // 작성자
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     // 게시물 제목

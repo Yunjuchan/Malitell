@@ -20,7 +20,7 @@ public class Scrap {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "gathering_seq")
     private Gathering gathering;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     public Scrap(Gathering gathering, User user) {
