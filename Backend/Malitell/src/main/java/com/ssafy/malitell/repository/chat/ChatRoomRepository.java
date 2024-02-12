@@ -5,7 +5,7 @@ import com.ssafy.malitell.domain.chat.ChatRoom;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.response.chat.ChatMessageResponseDto;
 import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;

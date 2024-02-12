@@ -9,10 +9,10 @@ import com.ssafy.malitell.dto.response.chat.ChatRoomResponseDto;
 import com.ssafy.malitell.repository.chat.ChatMessageRepositoryImpl;
 import com.ssafy.malitell.repository.chat.ChatRoomRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.security.Principal;
 import java.util.List;
@@ -66,6 +66,7 @@ public class ChatService {
         return chatRoomRepository.findAllRoomByLastSpentTimeDesc();
     }
 
+    @Transactional(readOnly = true)
     public ChatRoom findRoom(String chatRoomSeq) {
         return chatRoomRepository.findRoomByChatRoomSeq(chatRoomSeq);
     }

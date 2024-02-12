@@ -9,7 +9,7 @@ import com.ssafy.malitell.repository.board.gathering.GatheringRepository;
 import com.ssafy.malitell.repository.selfhelpgroup.SelfHelpGroupRepository;
 import com.ssafy.malitell.repository.selfhelpgroup.SelfHelpGroupUserRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +27,7 @@ public class SelfHelpGroupService {
     private final UserRepository userRepository;
     private final SelfHelpGroupUserRepository selfHelpGroupUserRepository;
 
+    @Transactional
     // 자조모임 참가
     public void participate(int GatheringSeq, Principal principal) {
         int selfHelpGroupSeq = 0;
