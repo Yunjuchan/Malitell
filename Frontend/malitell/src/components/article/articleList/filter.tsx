@@ -4,11 +4,13 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setBoardTypeInfo } from "../../../store/article/boardSlice";
 import { useEffect } from "react";
+import { saveState } from "../../../store/localStorage";
+import { RootState } from "../../../store/store";
 
 export default function Filter() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const board = useSelector((state: any) => state.board);
+  const boardType = useSelector((state: RootState) => state.board.boardType);
 
   const goToCreateArticle = () => {
     navigate("/articles/create")
@@ -19,11 +21,10 @@ export default function Filter() {
     navigate(`/articles/${boardType}`);
   };
   
-
   useEffect(() => {
-    console.log(board.boardType)
-  }, []);
-
+    saveState({ boardType }); // 상태가 변경될 때마다 저장
+  }, [boardType]);
+  
   return (
     <s.Wrapper>
       <s.FilterBox>
