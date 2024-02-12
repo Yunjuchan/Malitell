@@ -9,6 +9,7 @@ import com.ssafy.malitell.dto.response.chat.ChatRoomResponseDto;
 import com.ssafy.malitell.repository.chat.ChatMessageRepositoryImpl;
 import com.ssafy.malitell.repository.chat.ChatRoomRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
@@ -73,6 +74,7 @@ public class ChatService {
         return chatRoomRepository.findAllMessageByChatRoomSeq(chatRoomSeq);
     }
 
+    @Transactional
     public void save(ChatMessage chatMessage) {
         chatMessageRepositoryImpl.save(chatMessage);
     }
