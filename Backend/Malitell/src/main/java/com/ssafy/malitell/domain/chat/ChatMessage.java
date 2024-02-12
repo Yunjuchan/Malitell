@@ -1,5 +1,6 @@
 package com.ssafy.malitell.domain.chat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.chat.MessageRequestDto;
 import jakarta.persistence.*;
@@ -8,7 +9,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.redis.core.RedisHash;
 
 import java.time.LocalTime;
 
@@ -34,6 +34,7 @@ public class ChatMessage {
     @ManyToOne
     private User user;
     private String content;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalTime sendTime;
     @ColumnDefault("false")
     private boolean isRead;
@@ -42,10 +43,10 @@ public class ChatMessage {
         this.isRead = true;
     }
 
-    public ChatMessage(MessageRequestDto messageRequestDto, LocalTime sendTime, ChatRoom chatRoom, User user) {
+    public ChatMessage(MessageRequestDto messageRequestDto, ChatRoom chatRoom, User user) {
         this.chatRoom = chatRoom;
         this.user = user;
         this.content = messageRequestDto.getContent();
-        this.sendTime = sendTime;
+        this.sendTime = messageRequestDto.getSendTime();
     }
 }

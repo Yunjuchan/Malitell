@@ -53,14 +53,13 @@ public class MessageController {
 
         ChatRoom chatRoom = chatService.findRoom(requestDto.getChatRoomSeq());
         User user = userService.findByUserSeq(requestDto.getUserSeq());
-        LocalTime sendTime = LocalTime.now();
 
-        ChatMessage chatMessage = new ChatMessage(requestDto, sendTime, chatRoom, user);
+        ChatMessage chatMessage = new ChatMessage(requestDto, chatRoom, user);
 
 
         chatService.save(chatMessage);
         System.out.println("3");
-        template.convertAndSend("/chat/room/" + chatMessage.getChatRoom().getChatRoomSeq(), chatMessage);
+        template.convertAndSend("/sub/chat/room/" + chatMessage.getChatRoom().getChatRoomSeq(), chatMessage);
 
 //        redisTemplate.convertAndSend(channelTopic.getTopic(), chatMessage);
     }
