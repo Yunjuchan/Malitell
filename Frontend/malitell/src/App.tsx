@@ -30,7 +30,7 @@ import MyScrab from "./components/auth/profile/myScrab";
 import MyReservation from "./components/auth/profile/myReservation";
 import MyArticle from "./components/auth/profile/myArticle";
 import MyReview from "./components/auth/profile/myReview";
-import MyCounsel from "./components/auth/profile/myCounsel";
+import MyCounsel from "./components/auth/profile/myCounselCounselor";
 import MyGathering from "./components/auth/profile/myGathering";
 import PasswordChange from "./components/auth/profile/passwordChange";
 import MyInfoClient from "./components/auth/profile/myInfoClient";

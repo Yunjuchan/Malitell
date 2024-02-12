@@ -77,7 +77,7 @@ export const fetchUserInfo = () => {
 // 내가 작성한 글 authApi
 export const fetchMyArticles = () => {
     const res = authApi
-      .get(`mypage/getAllBoards`)
+      .get(`/mypage/getAllBoards`)
       .then((res) => {
         return res.data;
       })
@@ -90,7 +90,7 @@ export const fetchMyArticles = () => {
 // 내가 스크랩한 글 authApi
 export const fetchScrap = () => {
   const data = authApi
-    .get(`mypage/scrap`)
+    .get(`/mypage/scrap`)
     .then((res) => {
       return res.data;
     })
@@ -98,6 +98,27 @@ export const fetchScrap = () => {
       console.log("Failed to load:", error);
     });
   return data;
+};
+
+// 내 상담일지 
+export const fetchCounselLog = () => {
+  const res = authApi
+  .get(`mypage/counselingLog`).then((res) => {
+    return res.data;
+  })
+  return res
+}
+
+// 자조모임 참가 조회
+export const mySHGroup = () => {
+  const res = authApi.get("/mypage/selfHelpGroup/all").then((res) => {
+    // { 자조모임 이름 String title,
+    //   자조모임 설명 String content,
+    //   자조모임 회차 TimeStamp time ,
+    //   자조모임 태그 enum selfHelpType} 와 200 상태 코드 를 담은 ResponseEntity
+    return res.data;
+  });
+  return res;
 };
 
 // 상담자 정보 수정 authapi
