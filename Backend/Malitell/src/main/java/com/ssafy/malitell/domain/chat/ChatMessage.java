@@ -42,10 +42,10 @@ public class ChatMessage {
         this.isRead = true;
     }
 
-    public ChatMessage(MessageRequestDto messageRequestDto, ChatRoom chatRoom, User user) {
+    public ChatMessage(MessageRequestDto messageRequestDto, LocalTime sendTime, ChatRoom chatRoom, User user) {
         this.chatRoom = chatRoom;
         this.user = user;
         this.content = messageRequestDto.getContent();
-        this.sendTime = messageRequestDto.getSendTime();
+        this.sendTime = sendTime;
     }
 }

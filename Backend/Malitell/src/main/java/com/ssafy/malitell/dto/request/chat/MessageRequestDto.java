@@ -16,5 +16,4 @@ public class MessageRequestDto {
     private String chatRoomSeq;
     private int userSeq;
     private String content;
-    private LocalTime sendTime;
 }

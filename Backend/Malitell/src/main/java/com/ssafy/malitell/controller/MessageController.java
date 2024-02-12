@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.time.LocalTime;
 
 import org.slf4j.Logger;
 
@@ -50,8 +51,9 @@ public class MessageController {
 
         ChatRoom chatRoom = chatService.findRoom(requestDto.getChatRoomSeq());
         User user = userService.findByUserSeq(requestDto.getUserSeq());
+        LocalTime sendTime = LocalTime.now();
 
-        ChatMessage chatMessage = new ChatMessage(requestDto, chatRoom, user);
+        ChatMessage chatMessage = new ChatMessage(requestDto, sendTime, chatRoom, user);
 
 
         chatService.save(chatMessage);
