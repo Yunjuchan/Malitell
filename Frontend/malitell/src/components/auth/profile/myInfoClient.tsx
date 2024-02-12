@@ -14,9 +14,9 @@ export interface editClientData {
   birth: string;
   statusTags: any[];
 }
+
 export default function MyInfoClient() {
   const [clientData, setClientData] = useState<editClientData>();
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     if (clientData) {
@@ -31,7 +31,6 @@ export default function MyInfoClient() {
     e.preventDefault();
     if (clientData) {
       editClientInfo(clientData);
-      
     }
   };
 
@@ -40,18 +39,31 @@ export default function MyInfoClient() {
   }, []);
 
   return (
-    <s.Wrapper>
+    <s.Wrapper onSubmit={handleEditProfile}>
       {clientData && (
         <>
-          <form onSubmit={handleEditProfile}>
-            <input type="text" name="userId" value={clientData.userId} disabled />
-            <input type="text" name="name" value={clientData.name} disabled />
-            <input type="text" name="nickname" value={clientData.nickname} disabled/>
-            <input type="text" name="email" value={clientData.email} onChange={handleInputChange}/>
-            <input type="text" name="phone" value={clientData.phone} onChange={handleInputChange}/>
-            <input type="text" name="birth"value={clientData.birth} disabled />
-            <input type="submit" value={"회원정보 수정"} />
-          </form>
+          <s.Box type="text" name="userId" value={clientData.userId} disabled />
+          <s.Box type="text" name="name" value={clientData.name} disabled />
+          <s.Box
+            type="text"
+            name="nickname"
+            value={clientData.nickname}
+            disabled
+          />
+          <s.Box
+            type="text"
+            name="email"
+            value={clientData.email}
+            onChange={handleInputChange}
+          />
+          <s.Box
+            type="text"
+            name="phone"
+            value={clientData.phone}
+            onChange={handleInputChange}
+          />
+          <s.Box type="text" name="birth" value={clientData.birth} disabled />
+          <s.Box type="submit" value={"회원정보 수정"} />
         </>
       )}
     </s.Wrapper>

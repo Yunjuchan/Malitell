@@ -15,6 +15,7 @@ import kakao from "../../../assets/images/auth/login/kakao.png";
 import naver from "../../../assets/images/auth/login/naver.png";
 import LoginEmail from "./loginEmail";
 import Signup from "../signup/signup";
+import { api } from "../../../store/axiosInstance";
 
 interface NavProps {
   handleLogin: (event: React.MouseEvent) => void;
@@ -37,7 +38,9 @@ export default function Login({ handleLogin, handleBack }: NavProps) {
       method: "POST",
     }).then((res) => console.log(res));
   };
-
+  // const loginKakao = (e: React.MouseEvent): void => {
+  //   api.post(`/auth/oauth2/kakao`).then((res) => console.log(res));
+  // };
   return (
     <>
       {email ? (

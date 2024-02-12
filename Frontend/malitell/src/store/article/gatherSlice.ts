@@ -81,16 +81,6 @@ export const joinSHGroup = (gatheringSeq: number) => {
   });
 };
 
-// 자조모임 참가 조회
-export const mySHGroup = () => {
-  api.get("/selfHelpGroup/all").then((response) => {
-    // { 자조모임 이름 String title,
-    //   자조모임 설명 String content,
-    //   자조모임 회차 TimeStamp time ,
-    //   자조모임 태그 enum selfHelpType} 와 200 상태 코드 를 담은 ResponseEntity
-    return response.data;
-  });
-};
 
 // // 자조모임 탈퇴
 // export const leaveSHGroup = (gatheringSeq: number) => {

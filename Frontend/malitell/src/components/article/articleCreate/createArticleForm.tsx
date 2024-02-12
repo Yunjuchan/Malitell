@@ -6,12 +6,13 @@ import { createArticle } from "../../../store/article/communitySlice";
 import { redirect, useNavigate } from "react-router-dom";
 
 const tagList = ["진로", "정서", "대인관계", "경제", "건강"];
+const tagEngList = ["COURSE", "EMOTION", "RELATIONSHIP", "ECONOMY", "HEALTH"]
 
 export default function CreateArticleForm() {
   const boardType = useSelector((state: RootState) => state.board.boardType);
   const navigate = useNavigate();
   const [tag, setTag] = useState("진로");
-  const [tagSeq, setTagSeq] = useState(1);
+  const [tagEng, setTagEng] = useState("COURSE");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -27,12 +28,12 @@ export default function CreateArticleForm() {
     const selectedIndex = e.target.selectedIndex - 1;
     console.log(selectedIndex)
     setTag(tagList[selectedIndex]);
-    setTagSeq(selectedIndex + 1);
+    setTagEng(tagEngList[selectedIndex]);
   };
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await createArticle({ title, content, worryTagSeq: tagSeq });
+    const res = await createArticle({ title, content, tagEng });
     // if (res) {
       // navigate(`/articles/${boardType}/생성한 게시글`)
     // } 

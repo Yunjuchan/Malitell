@@ -3,7 +3,7 @@ import { api, authApi } from "../axiosInstance"
 export interface ArticleForm {
   "title": string;
   "content": string;
-  "worryTagSeq": number;
+  "tagEng": string;
 }
 
 export const fetchArticleList = () => {
@@ -22,7 +22,7 @@ export const fetchArticleList = () => {
 
 export const createArticle = (data: ArticleForm) => {
   console.log(data)
-  const res = authApi.post("/community", {"title": data.title, "content": data.content, "worryTagSeq": data.worryTagSeq})
+  const res = authApi.post("/community", {"title": data.title, "content": data.content, "worryTag": data.tagEng})
   .then((res) => {
     return res.data
   })
