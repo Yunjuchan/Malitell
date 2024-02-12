@@ -45,7 +45,6 @@ public class MessageController {
         System.out.println("0");
         System.out.println(requestDto);
         logger.info(requestDto.toString());
-        String chatRoomSeq = requestDto.getChatRoomSeq();
         System.out.println("1");
 
         log.info("userId = {}", principal.getName());
