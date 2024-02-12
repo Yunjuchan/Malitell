@@ -37,7 +37,7 @@ public class MessageController {
 
 
     @MessageMapping("/chat/message")
-    public void message(@RequestBody MessageRequestDto requestDto, Principal principal){
+    public void message(@RequestBody MessageRequestDto requestDto){
 
         log.info("message(message = {})", requestDto);
         System.out.println("0");
@@ -45,7 +45,7 @@ public class MessageController {
         logger.info(requestDto.toString());
         String chatRoomSeq = requestDto.getChatRoomSeq();
         System.out.println("1");
-        chatService.falseMessageList(chatRoomSeq, principal);
+//        chatService.falseMessageList(chatRoomSeq, principal);
         System.out.println("2");
 
         ChatRoom chatRoom = chatService.findRoom(requestDto.getChatRoomSeq());
