@@ -10,14 +10,11 @@ public class NoticeControl : MonoBehaviourPun
     public TMP_InputField inputField;
     public GameObject noticePrefab;
 
-    // 생성된 노티스 패널의 레퍼런스
-    private GameObject currentNoticePanel;
-
     // 버튼 클릭 이벤트에 연결할 메서드
     public void DisplayInputText()
     {
         // 이미 노티스 패널이 있는지 체크
-        if (currentNoticePanel != null)
+        if (GameObject.FindGameObjectWithTag("NoticePanel") != null)
         {
             return; // 이미 노티스 패널이 있다면 생성하지 않음
         }
@@ -34,7 +31,7 @@ public class NoticeControl : MonoBehaviourPun
     private IEnumerator DisplayAndFadeOut(string text)
     {
         // NoticePrefab을 생성
-        currentNoticePanel = PhotonNetwork.Instantiate(noticePrefab.name, transform.position, Quaternion.identity);
+        GameObject currentNoticePanel = Instantiate(noticePrefab, transform.position, Quaternion.identity);
         currentNoticePanel.transform.SetParent(transform);
         TMP_Text noticeText = currentNoticePanel.GetComponentInChildren<TMP_Text>();
 
@@ -59,7 +56,6 @@ public class NoticeControl : MonoBehaviourPun
         }
 
         // NoticePrefab 제거
-        PhotonNetwork.Destroy(currentNoticePanel);
-        currentNoticePanel = null; // 변수 초기화
+        Destroy(currentNoticePanel);
     }
 }

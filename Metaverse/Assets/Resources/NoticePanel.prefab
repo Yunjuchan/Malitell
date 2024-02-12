@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 5463814556855221217}
   m_Layer: 0
   m_Name: NoticePanel
-  m_TagString: Untagged
+  m_TagString: NoticePanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

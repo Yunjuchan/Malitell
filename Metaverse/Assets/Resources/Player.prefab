@@ -17531,6 +17531,7 @@ GameObject:
   - component: {fileID: 3098339308958148217}
   - component: {fileID: 3699329411393735325}
   - component: {fileID: 6396524109117364427}
+  - component: {fileID: 8015617780639943255}
   m_Layer: 2
   m_Name: MicBtn
   m_TagString: Untagged
@@ -17670,6 +17671,29 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 767910c84de3f4b4d9a3cc32782b9212, type: 3}
   isClicked: 0
   recorder: {fileID: 1873974649560261199}
+--- !u!114 &8015617780639943255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6313420010831374367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 6396524109117364427}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6372454250400284500
 GameObject:
   m_ObjectHideFlags: 0
