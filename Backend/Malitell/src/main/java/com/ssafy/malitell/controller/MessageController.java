@@ -48,7 +48,7 @@ public class MessageController {
         String chatRoomSeq = requestDto.getChatRoomSeq();
         System.out.println("1");
 
-        log.info("userId = {}", principal.getName());
+//        log.info("userId = {}", principal.getName());
 
 //        chatService.falseMessageList(chatRoomSeq, principal);
         System.out.println("2");
@@ -58,7 +58,7 @@ public class MessageController {
         LocalDateTime sendTime = LocalDateTime.now();
 
         ChatMessage chatMessage = new ChatMessage(requestDto, sendTime, chatRoom, user);
-
+        log.info("charMessage = {}", chatMessage);
 
         chatService.save(chatMessage);
         System.out.println("3");
