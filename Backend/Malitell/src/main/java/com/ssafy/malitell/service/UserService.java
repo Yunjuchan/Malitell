@@ -129,6 +129,7 @@ public class UserService {
             statusTags.add(statusTagRepository.findById(seq).get());
         }
         user.updateClient(clientUpdateRequestDto, statusTags);
+        user.updateProfileImg(clientUpdateRequestDto.getProfileImg());
     }
 
     @Transactional

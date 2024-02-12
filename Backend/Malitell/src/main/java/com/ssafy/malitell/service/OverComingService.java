@@ -28,12 +28,13 @@ public class OverComingService {
     private final UserRepository userRepository;
 
     // 게시글 작성
-    public void createOverComing(OverComingRequestDto requestDto, Principal principal) {
+    public int createOverComing(OverComingRequestDto requestDto, Principal principal) {
         String userId = principal.getName();
         User findUser = userRepository.findByUserId(userId);
         OverComing overComing = new OverComing(findUser, requestDto);
 
         overComingRepository.save(overComing);
+        return overComing.getOvercomingSeq();
     }
 
     // 게시글 단건 조회

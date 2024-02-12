@@ -71,6 +71,10 @@ public class User {
         selfHelpGroupUser.setUser(null);
     }
 
+    public void updateProfileImg(String profileImg) {
+        this.profileImg = profileImg;
+    }
+
     public void addTag(List<StatusTag> statusTags) {
         this.statusTags = statusTags;
     }
