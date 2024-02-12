@@ -13,7 +13,7 @@ import com.ssafy.malitell.repository.board.gathering.GatheringCommentRepository;
 import com.ssafy.malitell.repository.board.gathering.GatheringRepository;
 import com.ssafy.malitell.repository.selfhelpgroup.SelfHelpGroupRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

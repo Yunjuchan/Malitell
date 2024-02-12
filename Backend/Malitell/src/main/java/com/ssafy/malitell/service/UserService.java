@@ -20,7 +20,7 @@ import com.ssafy.malitell.repository.board.overcoming.OverComingRepository;
 import com.ssafy.malitell.repository.counseling.CounselingRepository;
 import com.ssafy.malitell.repository.tag.StatusTagRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,6 +51,7 @@ public class UserService {
 
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+    @Transactional
     public void joinClient(ClientJoinRequestDto clientJoinRequestDto) {
         String userId = clientJoinRequestDto.getUserId();
 
@@ -77,10 +78,10 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @Transactional
     public void joinCounselor(CounselorJoinRequestDto counselorJoinRequestDto) {
         
         // 중복 검증
-
         String userId = counselorJoinRequestDto.getUserId();
         Boolean isExist = userRepository.existsByUserId(userId);
 
@@ -116,6 +117,7 @@ public class UserService {
         return userRepository.findByUserId(userId);
     }
 
+    @Transactional(readOnly = true)
     public User findByUserSeq(int userSeq) {
         return userRepository.findByUserSeq(userSeq);
     }
