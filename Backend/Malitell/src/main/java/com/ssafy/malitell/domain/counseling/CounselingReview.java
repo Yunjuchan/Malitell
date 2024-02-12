@@ -16,7 +16,7 @@ public class CounselingReview {
     private String content; // 후기 내용
     private int grade; // 평점
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "counseling_seq")
     private Counseling counseling;
 
