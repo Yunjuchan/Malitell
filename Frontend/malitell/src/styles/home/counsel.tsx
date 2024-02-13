@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   margin-bottom: 10px;
   background-color: white;
-  box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
 `;
 
 export const Container = styled.div`

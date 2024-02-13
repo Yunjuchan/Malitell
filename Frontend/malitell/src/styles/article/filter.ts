@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   display: flex;
   margin: auto;
   align-items: center;
-  `;
+`;
 
 export const FilterBox = styled.div`
   width: 80%;
@@ -33,14 +33,25 @@ export const CreateBox = styled.div`
   align-items: center;
   justify-content: end;
   margin: auto;
-  
 `;
 
 export const CreateButton = styled.div`
-  width: 60%;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 75px;
   height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 10px;
-  box-shadow: 1px 1px 1px 1px lightgray;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  font-size: 17px;
+  font-weight: bold;
+  color: white;
   background-color: #bf94e4;
   border: 0;
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.2s;
+  }
 `;

@@ -16,6 +16,14 @@ export const loginApi: AxiosInstance = axios.create({
       },
 });
 
+// export const authApi: AxiosInstance = axios.create({
+//     baseURL: BASE_URL,
+//     headers: {
+//         "Access_Token": Access_Token,
+//         "Content-type": "application/json",
+//       },
+// });
+
 export const authApi: AxiosInstance = axios.create({
     baseURL: BASE_URL,
     headers: {

@@ -27,7 +27,7 @@ export default function Article({ article }: ArticlesProps) {
         <s.Profile>사진</s.Profile>
       </s.TagProfile>
       <s.Title >{article.title}</s.Title>
-      <s.Time >{article.time}</s.Time>
+      <s.Time >{article.time.slice(5, 7)}월 {article.time.slice(8, 10)}일</s.Time>
     </s.Wrapper>
   );
 }
