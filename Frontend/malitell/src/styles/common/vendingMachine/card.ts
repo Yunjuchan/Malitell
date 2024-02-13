@@ -47,6 +47,7 @@ export const Content = styled.div`
   display: flex;
   justify-content: center;
   border-radius: 10px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
   align-items: center;
   color: #fff;
   &.front {

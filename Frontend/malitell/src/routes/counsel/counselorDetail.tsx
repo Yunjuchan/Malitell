@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as g from "../../styles/grid";
+import { GridDetail } from "../../styles/counsel/grid";
 import CounselorInfo from "../../components/counsel/counselorDetail/counselorInfo";
 import ReviewList from "../../components/counsel/counselorDetail/reviewList";
 import ButtonBox from "../../components/counsel/counselorDetail/buttonBox";
@@ -35,26 +36,27 @@ export default function CounselorDetail() {
     fetchData();
   }, []);
   return (
-    <g.Back>
-      <g.Grid>
+    <>
+      <g.Back />
+      <GridDetail>
         {/* counselor가 값이 저장되어졌을 때만 아래 파일들이 불러와져서 프롭스 전달이 원활하게 됨 */}
         {counselor && (
           <>
-            <g.Box $col="1/9" $row="2/8">
+            <g.Box $col="1/9" $row="2/6">
               <CounselorInfo counselor={counselor} />
             </g.Box>
-            <g.Box $col="1/9" $row="8/13">
+            <g.Box $col="1/9" $row="6/13">
               <ReviewList />
             </g.Box>
-            <g.Box $col="9/13" $row="2/7">
+            <g.Box $col="9/13" $row="2/6">
               <ProfileBox counselor={counselor} />
             </g.Box>
-            <g.Box $col="9/13" $row="7/10">
+            <g.Box $col="9/13" $row="6/7">
               <ButtonBox counselorSeq={Number(counselorSeq)} />
             </g.Box>
           </>
         )}
-      </g.Grid>
-    </g.Back>
+      </GridDetail>
+    </>
   );
 }
