@@ -65,16 +65,23 @@ export default function CreateGatherForm() {
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const dateTimeStr = `${startDate}T${startTime}`;
+    const startTimestamp = new Date(dateTimeStr).getTime();
+
+    const times = Array.from(
+      { length: totalCount },
+      (_, i) => startTimestamp + i * 604800000
+    );
     const res = await createSHGroup({
       selfHelpGroupTitle,
       selfHelpGroupContent: content,
-      // times: ["여기에 데이터를 잘 집어넣어줘야함"],
-      times: [2402101900, 2402171900],
+      times: times,
       selfHelpType,
       selfHelpGroupHeadCount,
       title,
       content,
-      worryTagSeq: tagSeq,
+      worryTag: "HEALTH",
     });
     if (res) {
       // navigate(`/articles/${boardType}/생성한 게시글`)

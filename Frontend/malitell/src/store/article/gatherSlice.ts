@@ -8,12 +8,13 @@ export interface SelfHelpGroupForm {
   selfHelpGroupHeadCount: number;
   title: string;
   content: string;
-  worryTagSeq: number;
+  worryTag: string;
 }
 // 자조모임 모집 게시글 작성
 //SH는 self-helf 귀찮아서 줄였음
 // selfHelpGroupTitle: string, selfHelpGroupContent: string, times: number, selfHelpType:string, selfHelpGroupHeadCount: number, title:string, content:string
 export const createSHGroup = (data: SelfHelpGroupForm) => {
+  console.log(data)
   const res = authApi
     .post("/gathering", {
       "selfHelpGroupTitle": data.selfHelpGroupTitle,
@@ -23,7 +24,7 @@ export const createSHGroup = (data: SelfHelpGroupForm) => {
       "selfHelpGroupHeadCount": data.selfHelpGroupHeadCount,
       "title": data.title,
       "content": data.content,
-      "worryTagSeq": data.worryTagSeq
+      "worryTag": data.worryTag
     })
     .then((res) => {
       // 응답 데이터 : 자조모임 게시글 번호

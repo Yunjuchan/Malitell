@@ -4,7 +4,6 @@ import { api, authApi, loginApi } from "../axiosInstance";
 import { toFormData } from "axios";
 import { fetchUserInfo } from "./profileSlice";
 
-
 export interface UserState {
   userId: string;
   accessToken: string;
@@ -26,23 +25,26 @@ export interface loginData {
 
 // 이메일 로그인
 export const login = (data: loginData) => {
-  console.log("로그인 할때 들어오는 data", data)
+  console.log("로그인 할때 들어오는 data", data);
   return (dispatch: Dispatch) => {
     loginApi
       .post("/login", toFormData(data))
       .then((res) => {
         console.log(res.data);
-        console.log(res.headers.access_token)
-        localStorage.setItem("Access_Token", res.headers.access_token)
+        console.log(res.headers.access_token);
+        localStorage.setItem("Access_Token", res.headers.access_token);
         dispatch(saveUserInfo(res.data));
       })
       .then(() => {
         return fetchUserInfo();
       })
       .then((userInfo) => {
-        localStorage.setItem("mySeq", userInfo.userSeq)
-        localStorage.setItem("myImg", userInfo.profileImg)
-        localStorage.setItem("myRole", userInfo.role)
+        localStorage.setItem("mySeq", userInfo.userSeq);
+        localStorage.setItem("myImg", userInfo.profileImg);
+        localStorage.setItem("myRole", userInfo.role);
+      })
+      .then(() => {
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Failed to login:", error);
@@ -51,28 +53,25 @@ export const login = (data: loginData) => {
 };
 
 // 로그아웃
-export const logout = (accsessToken: string) => {
-  return (dispatch: Dispatch) => {
-    api
-      .post("/logout")
-      .then((response) => {
-        // 로그아웃 요청이 성공하면 Redux store의 user 정보를 삭제
-        dispatch(userLogout());
-        localStorage.clear();
-      })
-      .catch((error) => {
-        console.error("Failed to logout:", error);
-      });
-  };
+export const logout = () => {
+  const res = authApi
+    .post("/logout")
+    .then((res) => {
+      // 로그아웃 요청이 성공하면 Redux store의 user 정보를 삭제
+    })
+    .catch((error) => {
+      console.error("Failed to logout:", error);
+    })
+    .finally(() => {
+      localStorage.clear();
+    });
+  return res;
 };
 
 // 내담자 회원가입
 export const signupClient = (formData: FormData) => {
   const data = api
-    .post(
-      `/user/join/client`,
-      { formData },
-    )
+    .post(`/user/join/client`, { formData })
     .then((response) => {
       return response.data;
     })
@@ -98,8 +97,9 @@ export const signupCounselor = (formData: FormData) => {
 // 아이디 중복 검증 api
 export const idCheck = (userId: string) => {
   api
-    .get(`/user/exists/${userId}`, 
-    // { params: { userId: userId } }
+    .get(
+      `/user/exists/${userId}`
+      // { params: { userId: userId } }
     )
     .then((response) => {
       return response.data; // 결과 값 이미 존재하면 true 아니라면 false
@@ -107,30 +107,32 @@ export const idCheck = (userId: string) => {
 };
 
 // 이메일 인증 전송 api
-// 요청 데이터 userId: string, email: string 
+// 요청 데이터 userId: string, email: string
 export const sendVerifyEmail = (data: object) => {
-  api.get('/auth/email-certification', {data})
-  .then((response) => {
-    // 전송 성공 200 / 전송 실패 500
-    return response.data
-  })
-  .catch((error) => {
-    console.error("Failed to Send:", error)
-  })
-}
+  api
+    .get("/auth/email-certification", { data })
+    .then((response) => {
+      // 전송 성공 200 / 전송 실패 500
+      return response.data;
+    })
+    .catch((error) => {
+      console.error("Failed to Send:", error);
+    });
+};
 
 // 이메일 인증 확인 api
 // 요청 데이터 userId: string, email: string, certificationNumber: number
 export const verifyEmail = (data: object) => {
-  api.get('/auth/email-certification', {data})
-  .then((response) => {
-    // 인증 성공 200 / 인증 실패 401
-    return response.data
-  })
-  .catch((error) => {
-    console.error("Failed to Verify:", error)
-  })
-}
+  api
+    .get("/auth/email-certification", { data })
+    .then((response) => {
+      // 인증 성공 200 / 인증 실패 401
+      return response.data;
+    })
+    .catch((error) => {
+      console.error("Failed to Verify:", error);
+    });
+};
 
 export const userSlice = createSlice({
   name: "user",
