@@ -17,25 +17,16 @@ public class SelfHelpGroupUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "selfHelpGroup_id")
     private SelfHelpGroup selfHelpGroup;
 
     public SelfHelpGroupUser(User user, SelfHelpGroup selfHelpGroup) {
         this.user = user;
         this.selfHelpGroup = selfHelpGroup;
-    }
-
-    @Override
-    public String toString() {
-        return "SelfHelpGroupUser{" +
-                "id=" + id +
-                ", user=" + user +
-                ", selfHelpGroup=" + selfHelpGroup +
-                '}';
     }
 }
