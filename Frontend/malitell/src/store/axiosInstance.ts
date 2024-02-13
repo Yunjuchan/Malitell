@@ -16,12 +16,28 @@ export const loginApi: AxiosInstance = axios.create({
       },
 });
 
+// export const authApi: AxiosInstance = axios.create({
+//     baseURL: BASE_URL,
+//     headers: {
+//         "Access_Token": Access_Token,
+//         "Content-type": "application/json",
+//       },
+// });
+
 export const authApi: AxiosInstance = axios.create({
     baseURL: BASE_URL,
     headers: {
-        "Access_Token": Access_Token,
         "Content-type": "application/json",
-      },
+    },
+});
+
+authApi.interceptors.request.use((config) => {
+    const token = localStorage.getItem("Access_Token");
+    if (token) {
+        config.headers['Access_Token'] = token;
+    }
+    console.log(config)
+    return config;
 });
 
 export const ovApi: AxiosInstance = axios.create({

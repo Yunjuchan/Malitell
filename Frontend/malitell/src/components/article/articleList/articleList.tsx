@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
-import * as s from '../../../styles/article/articleList';
-import Article from './article';
-import { useNavigate, useParams } from 'react-router-dom';
-import { fetchSHGroup } from '../../../store/article/gatherSlice';
-import { fetchOvercomingList } from '../../../store/article/overcomingSlice';
-import { fetchArticleList } from '../../../store/article/communitySlice';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../store/store';
-import { useDispatch } from 'react-redux';
-import { setBoardTypeInfo } from '../../../store/article/boardSlice';
+import { useEffect, useState } from "react";
+import * as s from "../../../styles/article/articleList";
+import Article from "./article";
+import { useNavigate, useParams } from "react-router-dom";
+import { fetchSHGroup } from "../../../store/article/gatherSlice";
+import { fetchOvercomingList } from "../../../store/article/overcomingSlice";
+import { fetchArticleList } from "../../../store/article/communitySlice";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store/store";
+import { useDispatch } from "react-redux";
+import { setBoardTypeInfo } from "../../../store/article/boardSlice";
 
 export interface ArticleInfo {
   title: string;
@@ -30,44 +30,47 @@ export default function ArticleList() {
   const board = useSelector((state: RootState) => state.board);
 
   useEffect(() => {
-    dispatch(setBoardTypeInfo(boardType))
-  }, [])
+    dispatch(setBoardTypeInfo(boardType));
+  }, []);
 
   const fetchArticles = () => {
-    fetchOvercomingList()
-    .then((res) => {
+    fetchOvercomingList().then((res) => {
       if (!res) {
-        res = []
+        res = [];
       }
       setArticles((prev) => ({ ...prev, overcome: res }));
+      console.log(res);
     });
 
-    fetchSHGroup()
-    .then((res) => {
+    fetchSHGroup().then((res) => {
       if (!res) {
-        res = []
+        res = [];
       }
       setArticles((prev) => ({ ...prev, gather: res }));
+      console.log(res);
     });
 
-    fetchArticleList()
-    .then((res) => {
+    fetchArticleList().then((res) => {
       if (!res) {
-        res = []
+        res = [];
       }
       setArticles((prev) => ({ ...prev, community: res }));
+      console.log(res);
     });
-  }
+  };
 
   useEffect(() => {
     fetchArticles();
   }, []);
-  
+
   return (
     <s.Wrapper>
-      {articles[board.boardType].map((article: ArticleInfo, index) => (
-        <Article key={index} article={article} />
+      {articles[board.boardType].map((article: ArticleInfo, index: number) => (
+        <>
+          <Article key={index} article={article} />
+          {articles[board.boardType].length - 1 === index ? null : <s.Line />}
+        </>
       ))}
     </s.Wrapper>
-  )
+  );
 }

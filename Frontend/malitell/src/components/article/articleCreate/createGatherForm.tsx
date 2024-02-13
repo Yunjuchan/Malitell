@@ -1,4 +1,9 @@
-import { useEffect, useState } from "react";
+import React, {
+  HtmlHTMLAttributes,
+  ReactHTML,
+  useEffect,
+  useState,
+} from "react";
 import * as s from "../../../styles/article/createForm";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
@@ -16,12 +21,17 @@ export default function CreateGatherForm() {
   const [tagSeq, setTagSeq] = useState(1);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [selfHelpGroupHeadCount, setSelfHelpGroupHeadCount] = useState(0);
   const [selfHelpGroupTitle, setSelfHelpGroupTitle] = useState("");
   const [selfHelpType, setSelfHelpType] = useState("A");
-  const handleTagClick = (e: React.ChangeEvent<HTMLSelectElement> ) => {
+
+  const [selfHelpGroupHeadCount, setSelfHelpGroupHeadCount] = useState(0);
+  const [startDate, setStartDate] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [totalCount, setTotalCount] = useState(1);
+
+  const handleTagClick = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedIndex = e.target.selectedIndex - 1;
-    console.log(selectedIndex)
+    console.log(selectedIndex);
     setSelfHelpType(tagList[selectedIndex]);
     setTagSeq(selectedIndex + 1);
   };
@@ -42,6 +52,17 @@ export default function CreateGatherForm() {
     setSelfHelpGroupTitle(e.target.value);
   };
 
+  const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setStartDate(e.target.value);
+  };
+
+  const handleStartTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setStartTime(e.target.value);
+  };
+
+  const handleTotalCount = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTotalCount(Number(e.target.value));
+  };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const res = await createSHGroup({
@@ -72,32 +93,71 @@ export default function CreateGatherForm() {
         <s.TagBox>
           <s.Label>주제: </s.Label>
           <s.Select onChange={handleTagClick}>
-            <s.Option disabled>선택</s.Option>
+            <s.Option defaultChecked hidden>
+              선택
+            </s.Option>
             {tagList.map((tagName, index) => (
-              <s.Option
-                key={index}
-                value={tagName}
-              >
+              <s.Option key={index} value={tagName}>
                 {tagName}
               </s.Option>
             ))}
           </s.Select>
         </s.TagBox>
-        <s.Title value={title} onChange={handleTitleChange}></s.Title>
+        <s.Title
+          value={title}
+          onChange={handleTitleChange}
+          placeholder="게시글 제목"
+        />
         <s.GroupTitle
           value={selfHelpGroupTitle}
           onChange={handleGroupTitleChange}
-        ></s.GroupTitle>
+          placeholder="자조모임 제목"
+        />
+        <s.DateContainer>
+          <s.DateBox>
+            <s.DateLabel>인원: </s.DateLabel>
+            <input
+              type="number"
+              value={selfHelpGroupHeadCount}
+              onChange={handleHeadCountChange}
+              min="5"
+              max="10"
+            />
+          </s.DateBox>
+          <s.DateBox>
+            <s.DateLabel>시작 날짜: </s.DateLabel>
+            <input
+              type="date"
+              onChange={handleStartDateChange}
+              value={startDate}
+            />
+          </s.DateBox>
+          <s.DateBox>
+            <s.DateLabel>시작 시간: </s.DateLabel>
+            <input
+              type="time"
+              onChange={handleStartTimeChange}
+              value={startTime}
+            />
+          </s.DateBox>
+          <s.DateBox>
+            <s.DateLabel>총 회차: </s.DateLabel>
+            <input
+              type="number"
+              onChange={handleTotalCount}
+              value={totalCount}
+              min="1"
+              max="5"
+            />
+          </s.DateBox>
+        </s.DateContainer>
       </s.TopBox>
-      <s.Input value={content} onChange={handleContentChange}></s.Input>
-      <input
-        type="number"
-        value={selfHelpGroupHeadCount}
-        onChange={handleHeadCountChange}
+      <s.Input
+        value={content}
+        onChange={handleContentChange}
+        placeholder="내용"
       />
-      <input type="date" value={"처음 자조모임 날짜"} />
-      <input type="time" value={"처음 자조모임 시간"} />
-      <input type="number" value={"자조모임 회차"} />
+
       {/* 이걸로  세개 조합해서 times라는 데이터를 만들어서 handleSubmit에 넣어주어야함*/}
       <s.Submit type="submit" />
     </s.Wrapper>

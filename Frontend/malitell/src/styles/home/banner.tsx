@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   margin-left: 1%;
   margin-bottom: 10px;
   border-radius: 10px;
-  box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
   background-color: ${({ color }) => (color ? color : null)};
   cursor: pointer;
 `;
