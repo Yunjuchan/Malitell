@@ -62,6 +62,7 @@ public class ChatService {
         return chatRoomResponseDto;
     }
 
+    @Transactional
     public List<ChatRoom> chatRoomList() {
         return chatRoomRepository.findAllRoomByLastSpentTimeDesc();
     }

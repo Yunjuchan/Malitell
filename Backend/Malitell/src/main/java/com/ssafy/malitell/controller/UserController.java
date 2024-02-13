@@ -88,10 +88,8 @@ public class UserController {
         String userId = principal.getName();
         User user = userService.findUser(userId);
 
-        if (user.getRole().equals("ROLE_CLIENT")) {
-            return new ResponseEntity<>(userService.findClientInfo(principal), HttpStatus.OK);
-        } else if (user.getRole().equals("ROLE_COUNSELOR")) {
-            return new ResponseEntity<>(userService.findCounselorInfo(principal), HttpStatus.OK);
+        if (user.getRole().equals("ROLE_CLIENT") || user.getRole().equals("ROLE_COUNSELOR")) {
+            return new ResponseEntity<>(userService.findUserInfo(userId), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); // 관리자나 비회원일 경우
         }
@@ -149,5 +147,12 @@ public class UserController {
         String userId = principal.getName();
         ResponseEntity<?> allBoards = userService.getAllBoards(userId);
         return new ResponseEntity<>(allBoards, HttpStatus.OK);
+    }
+
+    @GetMapping("/user/profileImg")
+    public ResponseEntity<?> getProfileImg(Principal principal) {
+        String userId = principal.getName();
+        String profileImg = userService.getProfileImg(userId);
+        return new ResponseEntity<>(profileImg, HttpStatus.OK);
     }
 }
