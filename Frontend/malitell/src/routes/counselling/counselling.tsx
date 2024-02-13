@@ -161,6 +161,20 @@ export default function Counselling() {
       .catch(() => {});
   }, [session, OV, sessionId, OPENVIDU_SERVER_URL]);
 
+  // 상담 종료버튼 액션
+  const handleEixt =() => {
+    console.log("닫기");
+    window.close();
+  }
+
+  // 화면 전환용 코드
+  const [isVideoActive, setIsVideoActive] = useState(false);
+  const toggleVideo = () => {
+    setIsVideoActive(!isVideoActive);
+    // publisher.publishVideo(isVideoActive);
+  };
+
+  // 세션 진행시간 표시용 코드
   const [sessionTime, setSessionTime] = useState<number>(0);
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
@@ -196,18 +210,19 @@ export default function Counselling() {
               <s.Logo src={logo} alt="logo" />
               <s.InnerBox>
                 상담 시간: {formatTime(sessionTime)}
-                <s.Button>상담 종료</s.Button>
+                <s.Button onClick={handleEixt}>상담 종료</s.Button>
               </s.InnerBox>
             </s.TopBox>
             <s.BottomBox>
               <Session
+                isVideoActive={isVideoActive}
                 publisher={publisher as Publisher}
                 subscriber={subscriber as Subscriber}
               />
               <s.Chat>
                 <Chat session={session as OVSession} />
               </s.Chat>
-              {publisher && <Controls publisher={publisher} />}
+              {publisher && <Controls publisher={publisher} toggleVideo={toggleVideo} isVideoActive={isVideoActive} />}
             </s.BottomBox>
           </>
         )}

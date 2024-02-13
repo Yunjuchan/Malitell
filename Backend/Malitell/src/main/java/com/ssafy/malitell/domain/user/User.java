@@ -9,6 +9,7 @@ import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Null;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,6 +44,8 @@ public class User {
     @NotNull
     private String role; // 권한 (counselor, client, admin)
     private String refreshToken; // refresh token
+
+    @Column(columnDefinition = "TEXT")
     private String profileImg; // 프로필 사진
     private String professionalField; // 전문분야
     private int careerPeriod; // 경력
@@ -107,16 +110,21 @@ public class User {
         this.name = clientUpdateRequestDto.getName();
         this.email = clientUpdateRequestDto.getEmail();
         this.phone = clientUpdateRequestDto.getPhone();
+        this.profileImg = clientUpdateRequestDto.getProfileImg();
         this.statusTags = statusTags;
     }
 
-    public void updateCounselor(CounselorUpdateRequestDto counselorUpdateRequestDto) {
+    public void updateCounselor(CounselorUpdateRequestDto counselorUpdateRequestDto, List<StatusTag> statusTags) {
         this.name = counselorUpdateRequestDto.getName();
         this.email = counselorUpdateRequestDto.getEmail();
         this.phone = counselorUpdateRequestDto.getPhone();
         this.careerPeriod = counselorUpdateRequestDto.getCareerPeriod();
+        this.profileImg = counselorUpdateRequestDto.getProfileImg();
+        this.professionalField = counselorUpdateRequestDto.getProfessionalField();
         this.comment = counselorUpdateRequestDto.getComment();
+        this.statusTags = statusTags;
     }
+
     public void updatePassword(String password) {
         this.password = password;
     }

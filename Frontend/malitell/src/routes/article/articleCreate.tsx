@@ -6,6 +6,7 @@ import { faBackward } from "@fortawesome/free-solid-svg-icons";
 import CreateArticleForm from "../../components/article/articleCreate/createArticleForm";
 import CreateGatherForm from "../../components/article/articleCreate/createGatherForm";
 import CreateOvercomeForm from "../../components/article/articleCreate/createOvercomeForm";
+import { useEffect, useState } from "react";
 
 const Text = styled.div`
   display: flex;
@@ -20,9 +21,20 @@ export default function ArticleCreate() {
   const state = localStorage.getItem("state") || "";
   const parsedData = JSON.parse(state);
   const boardType = parsedData.boardType;
+  const [board, setBoard] = useState("");
   const onClick = () => {
     window.history.back();
   };
+
+  useEffect(() => {
+    if (boardType === "community") {
+      setBoard("자유게시판");
+    } else if (boardType === "gather") {
+      setBoard("자조모임");
+    } else if (boardType === "overcome") {
+      setBoard("극복사례");
+    }
+  });
   return (
     <>
       <g.Back />
@@ -34,11 +46,11 @@ export default function ArticleCreate() {
               icon={faBackward}
               style={{ color: "#bf94e4", cursor: "pointer" }}
             />
-            &nbsp;&nbsp;게시글 작성
+            &nbsp;&nbsp;{board}
           </Text>
         </g.Box>
         <g.Box $col="1/13" $row="2/3">
-          <>{boardType}</>
+          <></>
           {boardType === "community" ? (
             <CreateArticleForm />
           ) : boardType === "gather" ? (

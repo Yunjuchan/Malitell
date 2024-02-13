@@ -75,6 +75,7 @@ public class UserService {
         user.setBirth(clientJoinRequestDto.getBirth());
         user.setGender(clientJoinRequestDto.getGender());
         user.setRole(clientJoinRequestDto.getRole());
+        user.setReadCheck(1);
 
         userRepository.save(user);
     }
@@ -102,6 +103,7 @@ public class UserService {
         user.setGender(counselorJoinRequestDto.getGender());
         user.setCareerPeriod(counselorJoinRequestDto.getCareerPeriod());
         user.setRole(counselorJoinRequestDto.getRole());
+        user.setReadCheck(1);
 
         userRepository.save(user);
     }
@@ -130,13 +132,17 @@ public class UserService {
             statusTags.add(statusTagRepository.findById(seq).get());
         }
         user.updateClient(clientUpdateRequestDto, statusTags);
-        user.updateProfileImg(clientUpdateRequestDto.getProfileImg());
     }
 
     @Transactional
     public void updateCounselorInfo(String userId, CounselorUpdateRequestDto counselorRequestDto) {
         User user = userRepository.findByUserId(userId);
-        user.updateCounselor(counselorRequestDto);
+        List<StatusTag> statusTags = new ArrayList<>();
+        List<Integer> statusTagSeqs = counselorRequestDto.getStatusTags();
+        for (int seq : statusTagSeqs) {
+            statusTags.add(statusTagRepository.findById(seq).get());
+        }
+        user.updateCounselor(counselorRequestDto,statusTags);
     }
 
     @Transactional

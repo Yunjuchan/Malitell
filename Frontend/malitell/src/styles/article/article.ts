@@ -3,13 +3,11 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   width: 98%;
-  height: 50px;
-  margin: 15px auto;
+  height: 35px;
+  margin: auto;
   background-color: white;
   display: flex;
   align-items: center;
-  border-radius: 10px;
-  box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
 `
 
 export const TagProfile = styled.div`
@@ -26,11 +24,13 @@ export const Profile = styled.div`
 
 export const Title = styled.div`
   width: 60%;
-  font-size: 18px;
+  font-size: 13px;
   text-align: center;
 `;
+
 export const Time = styled.div`
-  width: 20%;
+  width: 18%;
+  text-align: end;
   font-size: 12px;
 `;
 

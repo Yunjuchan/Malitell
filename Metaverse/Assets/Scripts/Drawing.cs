@@ -23,7 +23,7 @@ public class Drawing : MonoBehaviour
         }
     }
 
-    private void CreateNewLine(Vector2 position)
+    private void CreateNewLine(Vector2 position, float lineWidth)
     {
         GameObject go = Instantiate(linePrefab, drawingCanvas.transform);
         lineRenderer = go.GetComponent<LineRenderer>();
@@ -35,6 +35,9 @@ public class Drawing : MonoBehaviour
         lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, position);
         ApplyLineColor(pendingColor); // pendingColor에 저장된 색상을 새로운 라인에 적용
+
+        lineRenderer.startWidth = lineWidth;
+        lineRenderer.endWidth = lineWidth;
     }
 
     private void ApplyLineColor(Color color)
@@ -55,7 +58,13 @@ public class Drawing : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                CreateNewLine(localCursor);
+                float lineWidth = 0.1f; // 기본 라인 굵기
+                int buttonIndex = buttonImages.FindIndex(image => image.color == pendingColor);
+                if (buttonIndex == 8) // 인덱스 8번일 때
+                {
+                    lineWidth = 0.4f;
+                }
+                CreateNewLine(localCursor, lineWidth);
             }
             else if (Input.GetMouseButton(0))
             {

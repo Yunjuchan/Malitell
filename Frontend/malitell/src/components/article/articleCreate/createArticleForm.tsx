@@ -64,9 +64,9 @@ export default function CreateArticleForm() {
             ))}
           </s.Select>
         </s.TagBox>
-        <s.Title  value={title} onChange={handleTitleChange}></s.Title>
+        <s.Title  value={title} onChange={handleTitleChange} placeholder="게시글 제목"></s.Title>
       </s.TopBox>
-      <s.Input value={content} onChange={handleContentChange}></s.Input>
+      <s.Input value={content} onChange={handleContentChange} placeholder="내용"></s.Input>
       <s.Submit type="submit" />
     </s.Wrapper>
   );

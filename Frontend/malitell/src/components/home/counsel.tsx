@@ -5,12 +5,14 @@ export default function Counsel() {
   const navigate = useNavigate();
 
   const handleCounselling = () => {
-    if (localStorage.getItem("Access_Token")) {
-      const url = "/counselling";
-      window.open(url, "_blank", "width=1100, height=850");
-    } else {
-      window.alert("로그인 후 이용해 주세요.");
-    }
+    // if (localStorage.getItem("Access_Token")) {
+    //   const url = "/counselling";
+    //   window.open(url, "_blank", "width=1100, height=850");
+    // } else {
+    //   window.alert("로그인 후 이용해 주세요.");
+    // }
+    const url = "/counselling";
+    window.open(url, "_blank", "width=1100, height=850");
   };
 
   const handleReservation = () => {

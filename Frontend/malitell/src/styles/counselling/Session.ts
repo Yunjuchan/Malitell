@@ -16,6 +16,12 @@ export const Pub = styled.div`
   height: 190px;
 `;
 
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+`
+
 export const Sub = styled.div`
   width: 630px;
   height: 475px;

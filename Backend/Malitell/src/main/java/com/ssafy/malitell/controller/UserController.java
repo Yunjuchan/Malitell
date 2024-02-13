@@ -111,6 +111,7 @@ public class UserController {
     @PutMapping("/mypage/user/counselor")
     public ResponseEntity<?> updateCounselorInfo(Principal principal, @RequestBody CounselorUpdateRequestDto counselorRequestDto) {
         String userId = principal.getName();
+        System.out.println(counselorRequestDto);
         if (userService.findUser(userId).getRole().equals("ROLE_COUNSELOR")) {
             userService.updateCounselorInfo(userId, counselorRequestDto);
             return new ResponseEntity<>(HttpStatus.OK);

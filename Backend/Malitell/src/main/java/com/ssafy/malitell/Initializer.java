@@ -65,5 +65,9 @@ public class Initializer implements ApplicationRunner {
         statusTagRepository.save(new StatusTag("불안"));
         statusTagRepository.save(new StatusTag("공황"));
         statusTagRepository.save(new StatusTag("자존감"));
+        statusTagRepository.save(new StatusTag("다정한"));
+        statusTagRepository.save(new StatusTag("진실성 있는"));
+        statusTagRepository.save(new StatusTag("경청하는"));
+        statusTagRepository.save(new StatusTag("적극적인 코칭"));
     }
 }
