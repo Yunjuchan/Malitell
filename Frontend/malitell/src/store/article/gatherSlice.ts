@@ -1,3 +1,4 @@
+import { resolveSrv } from "dns/promises";
 import { api, authApi } from "../axiosInstance";
 
 export interface SelfHelpGroupForm {
@@ -14,17 +15,17 @@ export interface SelfHelpGroupForm {
 //SH는 self-helf 귀찮아서 줄였음
 // selfHelpGroupTitle: string, selfHelpGroupContent: string, times: number, selfHelpType:string, selfHelpGroupHeadCount: number, title:string, content:string
 export const createSHGroup = (data: SelfHelpGroupForm) => {
-  console.log(data)
+  console.log(data);
   const res = authApi
     .post("/gathering", {
-      "selfHelpGroupTitle": data.selfHelpGroupTitle,
-      "selfHelpGroupContent": data.content,
-      "times": data.times,
-      "selfHelpType": data.selfHelpType,
-      "selfHelpGroupHeadCount": data.selfHelpGroupHeadCount,
-      "title": data.title,
-      "content": data.content,
-      "worryTag": data.worryTag
+      selfHelpGroupTitle: data.selfHelpGroupTitle,
+      selfHelpGroupContent: data.content,
+      times: data.times,
+      selfHelpType: data.selfHelpType,
+      selfHelpGroupHeadCount: data.selfHelpGroupHeadCount,
+      title: data.title,
+      content: data.content,
+      worryTag: data.worryTag,
     })
     .then((res) => {
       // 응답 데이터 : 자조모임 게시글 번호
@@ -61,10 +62,10 @@ export const editSHGroup = (gatheringSeq: number) => {
 export const sHGroupDetail = (gatheringSeq: number) => {
   const res = api.get(`/gathering/view/${gatheringSeq}`).then((response) => {
     // 응답 : 자조모임 게시글 번호?? 전체 필요
-    console.log(response.data)
+    console.log(response.data);
     return response.data;
   });
-  return res
+  return res;
 };
 
 // 자조모임 게시글 삭제
@@ -81,7 +82,6 @@ export const joinSHGroup = (gatheringSeq: number) => {
     return response.data;
   });
 };
-
 
 // // 자조모임 탈퇴
 // export const leaveSHGroup = (gatheringSeq: number) => {
@@ -108,8 +108,9 @@ export const unscrapSHGroup = (gatheringSeq: number) => {
 
 // 내 스크랩 자조모임 이건 auth로 가야할 것 같음
 export const myscrapSHGroup = () => {
-  api.get("/mypage/scrap").then((response) => {
+  const res = authApi.get("/mypage/scrap").then((res) => {
     // 응답 데이터 gatheringSeq, title
-    return response.data;
+    return res.data;
   });
+  return res;
 };
