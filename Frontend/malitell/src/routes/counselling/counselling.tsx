@@ -167,6 +167,12 @@ export default function Counselling() {
     window.close();
   }
 
+  // 화면 전환용 코드
+  const [isVideoActive, setIsVideoActive] = useState(false);
+  const toggleVideo = () => {
+    setIsVideoActive(!isVideoActive);
+    // publisher.publishVideo(isVideoActive);
+  };
 
   // 세션 진행시간 표시용 코드
   const [sessionTime, setSessionTime] = useState<number>(0);
@@ -209,13 +215,14 @@ export default function Counselling() {
             </s.TopBox>
             <s.BottomBox>
               <Session
+                isVideoActive={isVideoActive}
                 publisher={publisher as Publisher}
                 subscriber={subscriber as Subscriber}
               />
               <s.Chat>
                 <Chat session={session as OVSession} />
               </s.Chat>
-              {publisher && <Controls publisher={publisher} />}
+              {publisher && <Controls publisher={publisher} toggleVideo={toggleVideo} isVideoActive={isVideoActive} />}
             </s.BottomBox>
           </>
         )}
