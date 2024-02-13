@@ -109,16 +109,21 @@ public class User {
         this.name = clientUpdateRequestDto.getName();
         this.email = clientUpdateRequestDto.getEmail();
         this.phone = clientUpdateRequestDto.getPhone();
+        this.profileImg = clientUpdateRequestDto.getProfileImg();
         this.statusTags = statusTags;
     }
 
-    public void updateCounselor(CounselorUpdateRequestDto counselorUpdateRequestDto) {
+    public void updateCounselor(CounselorUpdateRequestDto counselorUpdateRequestDto, List<StatusTag> statusTags) {
         this.name = counselorUpdateRequestDto.getName();
         this.email = counselorUpdateRequestDto.getEmail();
         this.phone = counselorUpdateRequestDto.getPhone();
         this.careerPeriod = counselorUpdateRequestDto.getCareerPeriod();
+        this.profileImg = counselorUpdateRequestDto.getProfileImg();
+        this.professionalField = counselorUpdateRequestDto.getProfessionalField();
         this.comment = counselorUpdateRequestDto.getComment();
+        this.statusTags = statusTags;
     }
+
     public void updatePassword(String password) {
         this.password = password;
     }
