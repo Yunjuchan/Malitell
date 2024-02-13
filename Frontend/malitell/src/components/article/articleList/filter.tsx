@@ -6,6 +6,7 @@ import { setBoardTypeInfo } from "../../../store/article/boardSlice";
 import { useEffect, useState } from "react";
 import { saveState } from "../../../store/localStorage";
 import { RootState } from "../../../store/store";
+import { flipLoginModal } from "../../../store/common/loginModalSlice";
 
 export default function Filter() {
   // CSS용 스크립트
@@ -20,8 +21,21 @@ export default function Filter() {
   const navigate = useNavigate();
   const boardType = useSelector((state: RootState) => state.board.boardType);
 
+  // const goToCreateArticle = () => {
+  //   const token = window.localStorage.getItem("Access_Token");
+  //   if (token) {
+  //     navigate("/articles/create");
+  //   } else {
+  //     handleLogin();  // 로그인 모달을 띄우는 함수
+  //   }
+  // };
   const goToCreateArticle = () => {
-    navigate("/articles/create");
+    const token = window.localStorage.getItem("Access_Token");
+    if (token) {
+      navigate("/articles/create");
+    } else {
+      dispatch(flipLoginModal());
+    }
   };
 
   const setBoardTypeAndNavigate = (boardType: string) => {
