@@ -11,21 +11,17 @@ import * as s from "../../styles/counselling/Controls";
 
 interface Props {
   publisher: Publisher;
+  toggleVideo: (event: React.MouseEvent) => void;
+  isVideoActive: Boolean;
 }
 
-export default function Controls({ publisher }: Props) {
+export default function Controls({ publisher, isVideoActive, toggleVideo }: Props) {
   const [isAudioActive, setIsAudioActive] = useState(false);
-  const [isVideoActive, setIsVideoActive] = useState(false);
-
   const toggleAudio = () => {
     setIsAudioActive(!isAudioActive);
     publisher.publishAudio(isAudioActive);
   };
 
-  const toggleVideo = () => {
-    setIsVideoActive(!isVideoActive);
-    publisher.publishVideo(isVideoActive);
-  };
 
   return (
     <s.Wrapper>
