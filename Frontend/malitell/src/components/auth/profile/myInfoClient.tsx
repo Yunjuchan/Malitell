@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import * as s from "../../../styles/auth/profile/myInfo";
 import {
   editClientInfo,
+  editCounselorInfo,
   fetchUserInfo,
 } from "../../../store/auth/profileSlice";
 export interface editUserData {
@@ -16,7 +17,7 @@ export interface editUserData {
   profileImg: string | null;
   statusTags: any[];
   comment: null;
-  careerPeriod: number | null;
+  careerPeriod: string | null;
   professionalField: string | null;
 }
 
@@ -24,6 +25,7 @@ export default function MyInfoClient() {
   const [profileImage, setProfileImage] = useState(null);
   const [userData, setUserData] = useState<editUserData>();
   const fileInputRef = useRef<HTMLInputElement>(null); // 파일 입력 필드 참조 생성
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     if (userData) {
@@ -67,7 +69,12 @@ export default function MyInfoClient() {
           profileImg: profileImage
         })
       } 
-      editClientInfo(userData);
+
+      if (userData.role === "ROLE_CLIENT") {
+        editClientInfo(userData);
+      } else {
+        editCounselorInfo(userData);
+      }
     }
   };
 
@@ -119,18 +126,25 @@ export default function MyInfoClient() {
           ) : (
             <>
               <div>상담가 전용</div>
+              <div>상담가 소개</div>
+              <s.Box
+                type="string"
+                name="comment"
+                value={userData.comment || undefined}
+                onChange={handleInputChange}
+              />
               <div>상담 경력</div>
               <s.Box
                 type="number"
                 name="careerPeriod"
-                value={userData.careerPeriod || undefined}
+                value={userData.careerPeriod || 0}
                 onChange={handleInputChange}
               />
               <div>상담 분야</div>
               <s.Box
                 type="text"
                 name="professionalField"
-                value={userData.professionalField || undefined}
+                value={userData.professionalField || ""}
                 onChange={handleInputChange}
               />
               <div>여기는 태그기능</div>

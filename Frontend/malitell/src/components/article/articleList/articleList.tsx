@@ -39,7 +39,6 @@ export default function ArticleList() {
         res = [];
       }
       setArticles((prev) => ({ ...prev, overcome: res }));
-      console.log(res);
     });
 
     fetchSHGroup().then((res) => {
@@ -47,7 +46,6 @@ export default function ArticleList() {
         res = [];
       }
       setArticles((prev) => ({ ...prev, gather: res }));
-      console.log(res);
     });
 
     fetchArticleList().then((res) => {
@@ -55,7 +53,6 @@ export default function ArticleList() {
         res = [];
       }
       setArticles((prev) => ({ ...prev, community: res }));
-      console.log(res);
     });
   };
 
