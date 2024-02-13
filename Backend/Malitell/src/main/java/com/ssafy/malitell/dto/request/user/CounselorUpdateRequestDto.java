@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Getter
 public class CounselorUpdateRequestDto {
@@ -21,4 +23,20 @@ public class CounselorUpdateRequestDto {
     private int careerPeriod;
     @NotNull
     private String comment;
+
+    private List<Integer> statusTags;
+
+    @Override
+    public String toString() {
+        return "CounselorUpdateRequestDto{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", profileImg='" + profileImg + '\'' +
+                ", professionalField='" + professionalField + '\'' +
+                ", careerPeriod=" + careerPeriod +
+                ", comment='" + comment + '\'' +
+                ", statusTags=" + statusTags +
+                '}';
+    }
 }
