@@ -3,9 +3,10 @@ import RecommendedArticle from "../../components/article/recommendedArticle";
 import Filter from "../../components/article/articleList/filter";
 import ArticleList from "../../components/article/articleList/articleList";
 import * as g from "../../styles/grid";
-import { GridList } from '../../styles/article/grid';
+import { GridList } from "../../styles/article/grid";
 import Bamboo from "../../components/common/banners/bamboo";
 import Metaverse from "../../components/common/banners/metaverse";
+import ArticleMenu from "../../components/article/articleList/articleMenu";
 
 export default function Articles() {
   return (
@@ -16,7 +17,7 @@ export default function Articles() {
           <SearchBox />
         </g.Box>
         <g.Box $col="1/4" $row="2/5" $position="sticky" $top="150px">
-          <RecommendedArticle />
+          <ArticleMenu />
           <Bamboo />
           <Metaverse />
         </g.Box>
@@ -25,9 +26,6 @@ export default function Articles() {
         </g.Box>
         <g.Box $col="4/13" $row="3/12">
           <ArticleList />
-        </g.Box>
-        <g.Box $col="4/13" $row="12/13">
-          pagenation
         </g.Box>
       </GridList>
     </>
