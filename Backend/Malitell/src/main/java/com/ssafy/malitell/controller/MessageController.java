@@ -7,15 +7,19 @@ import com.ssafy.malitell.dto.request.chat.MessageRequestDto;
 import com.ssafy.malitell.repository.chat.ChatRoomRepository;
 import com.ssafy.malitell.service.ChatService;
 import com.ssafy.malitell.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.http.HttpRequest;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -40,27 +44,16 @@ public class MessageController {
 
     @MessageMapping("/chat/message")
     public void message(@RequestBody MessageRequestDto requestDto, java.security.Principal principal) {
-
-        log.info("message(message = {})", requestDto);
-        System.out.println("0");
-        System.out.println(requestDto);
-        logger.info(requestDto.toString());
-        System.out.println("1");
-
-//        log.info("userId = {}", principal.getName());
-
-//        chatService.falseMessageList(chatRoomSeq, principal);
-        System.out.println("2");
-
         ChatRoom chatRoom = chatService.findRoom(requestDto.getChatRoomSeq());
         User user = userService.findByUserSeq(requestDto.getUserSeq());
         LocalDateTime sendTime = LocalDateTime.now();
+
+//        log.info("principal = {}", principal);
 
         ChatMessage chatMessage = new ChatMessage(requestDto, sendTime, chatRoom, user);
         log.info("charMessage = {}", chatMessage);
 
         chatService.save(chatMessage);
-        System.out.println("3");
         template.convertAndSend("/sub/chat/room/" + chatMessage.getChatRoom().getChatRoomSeq(), chatMessage);
 
 //        redisTemplate.convertAndSend(channelTopic.getTopic(), chatMessage);

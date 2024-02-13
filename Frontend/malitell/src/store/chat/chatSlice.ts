@@ -5,7 +5,7 @@ import { api, authApi } from "../axiosInstance";
 // 요청 데이터 counselorSeq: number, clientSeq: number
 // 아무것도 없어도 채팅창이 생성됨
 export const createChat = (data: object) => {
-  api.post('/chat/room', {data})
+  authApi.post('/chat/room', {data})
   .then((response) => {
     return response.data
   })
@@ -28,7 +28,7 @@ export const fetchchatList = () => {
 // 특정 채팅방 조회 api
 // chatSeq 필요
 export const fetchchatDetail = (chatSeq: string) => {
-  api.get(`/chat/room/${chatSeq}`)
+  authApi.get(`/chat/room/${chatSeq}`)
   .then((response) => {
     return response.data
   })

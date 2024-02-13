@@ -20,18 +20,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChatMessage {
-    @Override
-    public String toString() {
-        return "ChatMessage{" +
-                "chatMessageSeq=" + chatMessageSeq +
-                ", chatRoom=" + chatRoom +
-                ", user=" + user +
-                ", content='" + content + '\'' +
-                ", sendTime=" + sendTime +
-                ", isRead=" + isRead +
-                '}';
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long chatMessageSeq;
