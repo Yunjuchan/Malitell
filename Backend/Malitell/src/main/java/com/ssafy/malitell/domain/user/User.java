@@ -1,5 +1,6 @@
 package com.ssafy.malitell.domain.user;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
 import com.ssafy.malitell.domain.tag.StatusTag;
 import com.ssafy.malitell.dto.request.auth.SignUpRequestDto;
@@ -55,10 +56,12 @@ public class User {
     private int readCheck; // 안 읽었으면 1 , 읽었으면 0
 
     // 참가하고 있는 자조모임
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference
     private List<SelfHelpGroupUser> selfHelpGroupUsers = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany
+    @JsonBackReference
     private List<StatusTag> statusTags = new ArrayList<>();
 
     public void addSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {
@@ -116,32 +119,5 @@ public class User {
     }
     public void updatePassword(String password) {
         this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userSeq=" + userSeq +
-                ", userId='" + userId + '\'' +
-                ", name='" + name + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", birth='" + birth + '\'' +
-                ", gender='" + gender + '\'' +
-                ", role='" + role + '\'' +
-                ", refreshToken='" + refreshToken + '\'' +
-                ", profileImg='" + profileImg + '\'' +
-                ", professionalField='" + professionalField + '\'' +
-                ", careerPeriod=" + careerPeriod +
-                ", grade=" + grade +
-                ", comment='" + comment + '\'' +
-                ", type='" + type + '\'' +
-                ", alramMessage='" + alramMessage + '\'' +
-                ", readCheck=" + readCheck +
-                ", selfHelpGroupUsers=" + selfHelpGroupUsers +
-                ", statusTags=" + statusTags +
-                '}';
     }
 }

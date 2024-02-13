@@ -27,6 +27,8 @@ public class ChatController {
     // 채팅방 목록 - 최근순
     @GetMapping("/rooms")
     public List<ChatRoom> rooms() {
+        System.out.println("채팅방 확인");
+        
         return chatService.chatRoomList();
     }
 

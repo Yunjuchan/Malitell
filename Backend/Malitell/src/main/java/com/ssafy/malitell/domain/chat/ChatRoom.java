@@ -1,5 +1,8 @@
 package com.ssafy.malitell.domain.chat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ssafy.malitell.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,11 +22,10 @@ public class ChatRoom implements Serializable {
     private static final long serialVersionUID = 6494678977089006639L;
     @Id
     private String chatRoomSeq;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JsonManagedReference
     private User counselor;
-    @ManyToOne(fetch = FetchType.LAZY)
-
-
+    @ManyToOne
     private User client;
     private Timestamp lastSpentTime;
 
@@ -33,15 +35,5 @@ public class ChatRoom implements Serializable {
         chatRoom.client = client;
         chatRoom.counselor = counselor;
         return chatRoom;
-    }
-
-    @Override
-    public String toString() {
-        return "ChatRoom{" +
-                "chatRoomSeq='" + chatRoomSeq + '\'' +
-                ", counselor=" + counselor +
-                ", client=" + client +
-                ", lastSpentTime=" + lastSpentTime +
-                '}';
     }
 }
