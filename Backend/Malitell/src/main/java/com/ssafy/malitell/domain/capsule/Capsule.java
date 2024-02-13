@@ -20,10 +20,13 @@ public class Capsule {
 
     private String phrases;
 
+    private String name;
+
     private String videoUrl;
 
-    public Capsule(String phrases, String videoUrl) {
+    public Capsule(String phrases, String name, String videoUrl) {
         this.phrases = phrases;
+        this.name = name;
         this.videoUrl = videoUrl;
     }
 }

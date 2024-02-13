@@ -7,6 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public class CapsuleResponseDto {
 
+    private String name;
     private String phrases;
     private String videoUrl;
 }
