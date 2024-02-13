@@ -43,6 +43,8 @@ public class User {
     @NotNull
     private String role; // 권한 (counselor, client, admin)
     private String refreshToken; // refresh token
+
+    @Column(columnDefinition = "TEXT")
     private String profileImg; // 프로필 사진
     private String professionalField; // 전문분야
     private int careerPeriod; // 경력
