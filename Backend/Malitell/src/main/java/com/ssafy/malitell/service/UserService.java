@@ -75,6 +75,7 @@ public class UserService {
         user.setBirth(clientJoinRequestDto.getBirth());
         user.setGender(clientJoinRequestDto.getGender());
         user.setRole(clientJoinRequestDto.getRole());
+        user.setReadCheck(1);
 
         userRepository.save(user);
     }
@@ -102,6 +103,7 @@ public class UserService {
         user.setGender(counselorJoinRequestDto.getGender());
         user.setCareerPeriod(counselorJoinRequestDto.getCareerPeriod());
         user.setRole(counselorJoinRequestDto.getRole());
+        user.setReadCheck(1);
 
         userRepository.save(user);
     }
