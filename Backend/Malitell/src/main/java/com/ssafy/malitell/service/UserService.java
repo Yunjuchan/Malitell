@@ -14,6 +14,7 @@ import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import com.ssafy.malitell.dto.response.board.MyBoardListResponseDto;
 import com.ssafy.malitell.dto.response.user.ClientResponseDto;
 import com.ssafy.malitell.dto.response.user.CounselorResponseDto;
+import com.ssafy.malitell.dto.response.user.UserResponseDto;
 import com.ssafy.malitell.repository.board.community.CommunityRepository;
 import com.ssafy.malitell.repository.board.gathering.GatheringRepository;
 import com.ssafy.malitell.repository.board.overcoming.OverComingRepository;
@@ -105,12 +106,10 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public ClientResponseDto findClientInfo(Principal principal) {
-        return userRepository.findClientByUserId(principal.getName());
-    }
+    public UserResponseDto findUserInfo(String userId) {
+        User findUser = userRepository.findByUserId(userId);
+        return new UserResponseDto(findUser);
 
-    public CounselorResponseDto findCounselorInfo(Principal principal) {
-        return userRepository.findCounselorByUserId(principal.getName());
     }
 
     public User findUser(String userId) {
@@ -204,5 +203,11 @@ public class UserService {
         List<Community> communityByUser = communityRepository.findCommunityByUser(findUser);
 
         return new ResponseEntity<>(new MyBoardListResponseDto(gatheringByUser, overComingByUser, communityByUser), HttpStatus.OK);
+    }
+
+    public String getProfileImg(String userId) {
+        User findUser = userRepository.findByUserId(userId);
+        System.out.println(findUser);
+        return findUser.getProfileImg();
     }
 }
