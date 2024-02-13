@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { Dispatch, PayloadAction } from "@reduxjs/toolkit";
 import { api, authApi, loginApi } from "../axiosInstance";
 import { toFormData } from "axios";
+import { fetchUserInfo } from "./profileSlice";
 
 
 export interface UserState {
@@ -30,14 +31,18 @@ export const login = (data: loginData) => {
     loginApi
       .post("/login", toFormData(data))
       .then((res) => {
-        // 서버에서 받은 user 정보를 Redux store에 저장
-        // 서버에서 받은 데이터가 수정해야한다면 더 작성해야함.
-        console.log(res);
+        console.log(res.data);
         console.log(res.headers.access_token)
         localStorage.setItem("Access_Token", res.headers.access_token)
         dispatch(saveUserInfo(res.data));
-      }).then(() => {
-        window.location.reload();
+      })
+      .then(() => {
+        return fetchUserInfo();
+      })
+      .then((userInfo) => {
+        localStorage.setItem("mySeq", userInfo.userSeq)
+        localStorage.setItem("myImg", userInfo.profileImg)
+        localStorage.setItem("myRole", userInfo.role)
       })
       .catch((error) => {
         console.error("Failed to login:", error);

@@ -122,9 +122,18 @@ export const mySHGroup = () => {
 };
 
 // 상담자 정보 수정 authapi
-export const editCounselorInfo = (editForm: object) => {
+export const editCounselorInfo = (editForm: editUserData) => {
   authApi
-    .put("/mypage/user/counselor", { editForm })
+    .put("/mypage/user/counselor", { 
+      "name": editForm.name,
+      "email": editForm.email,
+      "phone": editForm.phone,
+      "profileImg": editForm.profileImg,
+      "professionalField": editForm.professionalField,
+      "careerPeriod": editForm.careerPeriod,
+      // "stateTags": [1,2]
+      "comment": editForm.comment,
+     })
     .then((res) => {
       return res.data;
     })
@@ -135,10 +144,10 @@ export const editCounselorInfo = (editForm: object) => {
 export const editClientInfo = (editForm: editUserData) => {
   authApi
     .put("/mypage/user/client", {
-      name: editForm.name,
-      email: editForm.email,
-      phone: editForm.phone,
-      statusTags: editForm.statusTags,
+      "name": editForm.name,
+      "email": editForm.email,
+      "phone": editForm.phone,
+      "statusTags": [1,2]
     })
     .then((res) => {
       return res.data;
