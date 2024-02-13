@@ -1,6 +1,6 @@
 import { createSlice, type Dispatch } from "@reduxjs/toolkit";
 import { api, authApi } from "../axiosInstance";
-import { editClientData } from "../../components/auth/profile/myInfoClient";
+import { editUserData } from "../../components/auth/profile/myInfoClient";
 
 // export interface profileState {
 //     role: string;
@@ -132,7 +132,7 @@ export const editCounselorInfo = (editForm: object) => {
 };
 
 // 내담자 정보 수정 authapi
-export const editClientInfo = (editForm: editClientData) => {
+export const editClientInfo = (editForm: editUserData) => {
   authApi
     .put("/mypage/user/client", {
       name: editForm.name,

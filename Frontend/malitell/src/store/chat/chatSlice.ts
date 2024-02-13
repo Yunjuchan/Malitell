@@ -16,7 +16,7 @@ export const createChat = (data: object) => {
 
 // 채팅창 목록 조회 (최근순)
 export const fetchchatList = () => {
-  api.get('/chat/rooms')
+  authApi.get('/chat/rooms')
   .then((response) => {
     return response.data
   })
