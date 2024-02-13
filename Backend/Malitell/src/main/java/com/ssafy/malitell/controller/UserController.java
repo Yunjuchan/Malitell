@@ -152,9 +152,7 @@ public class UserController {
     @GetMapping("/user/profileImg")
     public ResponseEntity<?> getProfileImg(Principal principal) {
         String userId = principal.getName();
-        System.out.println(userId);
         String profileImg = userService.getProfileImg(userId);
-        System.out.println(profileImg);
         return new ResponseEntity<>(profileImg, HttpStatus.OK);
     }
 }
