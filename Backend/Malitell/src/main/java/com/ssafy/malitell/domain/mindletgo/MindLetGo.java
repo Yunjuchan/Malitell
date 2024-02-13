@@ -1,5 +1,6 @@
 package com.ssafy.malitell.domain.mindletgo;
 
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.mindletgo.MindLetGoRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,8 +21,12 @@ public class MindLetGo {
     private int mindLetGoTopicSeq;
     private String content;
 
-    public MindLetGo(MindLetGoRequestDto mindLetGoRequestDto) {
+    @ManyToOne
+    private User user;
+
+    public MindLetGo(MindLetGoRequestDto mindLetGoRequestDto, User user) {
         this.mindLetGoTopicSeq = mindLetGoRequestDto.getMindLetGoTopicSeq();
         this.content = mindLetGoRequestDto.getContent();
+        this.user = user;
     }
 }
