@@ -69,7 +69,7 @@ public class SecurityConfig {
 
         // 경로별 인가 작업
         http.authorizeHttpRequests((auth) -> auth
-                .requestMatchers("/", "/user/join/**", "/login", "/oauth2/**", "/user/reissue", "/chat/room/**", "/chat/rooms", "/user/exists/**", "/auth/**", "/ws-stomp/**", "/getCounselorList", "/getCounselor/**", "/community/getBoardList/**", "/gathering/getBoardList/**", "/overComing/getBoardList/**", "/gathering/view/**", "/community/view/**", "/overComing/view/**", "/capsule/get").permitAll()
+                .requestMatchers("/", "/user/join/**", "/login", "/oauth2/**", "/user/reissue", "/chat/room/**", "/chat/rooms", "/user/exists/**", "/auth/**", "/ws-stomp/**", "/api/getCounselorList", "/getCounselor/**", "/community/getBoardList/**", "/gathering/getBoardList/**", "/overComing/getBoardList/**", "/gathering/view/**", "/community/view/**", "/overComing/view/**", "/capsule/get").permitAll()
                 .requestMatchers("/reserve", "/board", "/counseling/review/**", "/mypage/counselingLog", "/mypage/counselingReviewList/**", "/mypage/counselingReviewList/**", "/mypage/cancelReservation/**").hasRole("CLIENT")
                 .requestMatchers("/counseling/saveCounselingLog/**").hasRole("COUNSELOR") // 상담자, 관리자 권한 처리하기
                 .anyRequest().authenticated());
