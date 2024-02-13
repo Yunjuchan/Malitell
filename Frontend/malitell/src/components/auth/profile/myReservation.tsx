@@ -10,7 +10,7 @@ export interface ReservationData {
 export default function MyReservation() {
   const [reservations, setReservations] = useState<ReservationData[]>();
   const convertToLocalDateTime = (dateString: string): string => {
-    const date = new Date(dateString);
+    const date = new Date(dateString); 
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate();
