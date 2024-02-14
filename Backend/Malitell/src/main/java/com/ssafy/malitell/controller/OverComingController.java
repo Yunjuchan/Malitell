@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/overComing")
+@RequestMapping("/api/overComing")
 public class OverComingController {
     private final OverComingService overComingService;
 

@@ -12,7 +12,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/mindLetGo")
+@RequestMapping("/api/mindLetGo")
 @RequiredArgsConstructor
 public class MindLetGoController {
     private final MindLetGoService mindLetGoService;
