@@ -37,7 +37,7 @@ public class ScrapController {
         List<GatheringScrapResponseDto> gatheringScrapResponseDtoList = new ArrayList<>();
 
         for (Gathering gathering : gatheringList) {
-            gatheringScrapResponseDtoList.add(new GatheringScrapResponseDto(gathering.getGatheringSeq(), gathering.getTitle()));
+            gatheringScrapResponseDtoList.add(new GatheringScrapResponseDto(gathering.getGatheringSeq(), gathering.getTitle(), gathering.getSelfHelpGroup().getSelfHelpType()));
         }
 
         return new ResponseEntity<>(gatheringScrapResponseDtoList, HttpStatus.OK);

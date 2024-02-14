@@ -13,7 +13,5 @@ public class GatheringUpdateRequestDto {
     // 내용
     private String content;
 
-    // 태그
-    private WorryTag worryTag;
 }
 
