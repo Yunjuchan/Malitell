@@ -1,4 +1,4 @@
-package com.ssafy.malitell.service;
+package com.ssafy.malitell.service.chat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.malitell.domain.chat.ChatMessage;

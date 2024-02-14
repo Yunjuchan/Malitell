@@ -1,20 +1,16 @@
 package com.ssafy.malitell.domain.chat;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ssafy.malitell.domain.user.User;
-import jakarta.persistence.*;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.UUID;
 
-@Entity
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +19,6 @@ public class ChatRoom implements Serializable {
     @Id
     private String chatRoomSeq;
     @ManyToOne
-    @JsonManagedReference
     private User counselor;
     @ManyToOne
     private User client;
