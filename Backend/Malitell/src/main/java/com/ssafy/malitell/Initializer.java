@@ -47,18 +47,70 @@ public class Initializer implements ApplicationRunner {
 //        capsuleRepository.save(new Capsule("이 사악한 세상에서 영원한 것은 없다. 우리에게 닥친 문제들을 포함해서 말이다.", "Charlie Chplin", "https://www.youtube.com/watch?v=ka2-P1OeDd8"));
 
         // 상담가 더미데이터 추가
-        CounselorJoinRequestDto joinDto4 = new CounselorJoinRequestDto("tjsdnr123", "김선욱", "우기김", "1234", "tjsdnr960@naver.com", "010-6304-7262", "19960317", "M", 20, "ROLE_COUNSELOR", "서울대", "자격증");
-        CounselorUpdateRequestDto requestDto4 = new CounselorUpdateRequestDto("김선욱", "tjsdnr960@naver.com", "01063047262",
-                "data:image/jpeg;base64,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",
-                "원펀치 예절주입기\n공황\n불안\n마약 상담\n무대 공포\n학교폭력",
-                "주찬대학교 심리치료학 박사 전공 수료",
-                "물리치료사 1급",
-                20,
-                "상처를 치료해줄 사람 어디 없나 가만히 놔두다간 끊임없이 덧나 사랑도 사람도 너무나도 겁나 혼자인게 무서워 난 잊혀질까 두려워",
+        CounselorJoinRequestDto joinDto4 = new CounselorJoinRequestDto("namyoullim", "임남열", "임남열", "1234", "test@naver.com", "010-8211-0108", "19810212", "M", 17, "ROLE_COUNSELOR", "전남대학교 임상심리 전공 박사 수료", "임상심리전문가 정신보건 임상심리사 1급 중독심리전문가");
+        CounselorUpdateRequestDto requestDto4 = new CounselorUpdateRequestDto("임남열", "test@naver.com", "010-8211-0108",
+                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/25217589-1e0e-4df2-9da1-c43eaeeb5f93/Untitled.png?id=68007ec4-f95f-481d-bf52-60a2e58364f3&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1707984000000&signature=xr4bAA7yysRomUpxMq8AUaGg59PbKCV7Kh3s8Ip3eJI&downloadName=Untitled.png",
+                "임상 심리\n도박 중독 심리\n가정 폭력\n양성 평등\n유가족 상담",
+                "전남대학교 임상심리 전공 박사 수료",
+                "임상심리전문가\n정신보건 임상심리사 1급\n중독심리전문가",
+                17,
+                "치료 과정은 여행입니다. 상담 치료의 여행 가이드는 상담치료사 입니다.",
                 new ArrayList<>()
         );
         userService.joinCounselor(joinDto4);
-        userService.updateCounselorInfo("tjsdnr123", requestDto4);
+        userService.updateCounselorInfo("namyoullim", requestDto4);
+
+                CounselorJoinRequestDto joinDto5 = new CounselorJoinRequestDto("hwajinlee", "이화진", "이화진", "1234", "test@naver.com", "010-7262-6304", "19800315", "W", 15, "ROLE_COUNSELOR", "서울대학교 심리학 박사 전공 수료", "정신분석 전문가");
+        CounselorUpdateRequestDto requestDto5 = new CounselorUpdateRequestDto("이화진", "test@naver.com", "01072626304",
+                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/0b5269a9-22f2-4a4a-9909-9cc1b6635c87/image_(3).png?id=15855ed0-3584-4a59-a105-4ee4272d9db8&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1707998400000&signature=Of0N09YpDzNO3hxWHbTY08n1mwccOJhal8GDJQKH4M4&downloadName=image+%283%29.png",
+                "정신분석학",
+                "서울대학교 심리학 박사 전공 수료",
+                "정신분석 전문가",
+                15,
+                "당신의 마음을 함께 읽어나가는 여정에 동행하겠습니다.",
+                new ArrayList<>()
+        );
+        userService.joinCounselor(joinDto5);
+        userService.updateCounselorInfo("hwajinlee", requestDto5);
+
+        CounselorJoinRequestDto joinDto6 = new CounselorJoinRequestDto("minseokjang", "장민석", "장민석", "1234", "test@naver.com", "010-5678-9012", "19920909", "M", 10, "ROLE_COUNSELOR", "서강대학교 심리학 석사 전공 수료", "스트레스 분석 전문가");
+        CounselorUpdateRequestDto requestDto6 = new CounselorUpdateRequestDto("장민석", "test@naver.com", "01056789012",
+                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/8dbfe62c-786f-437c-a101-26d82675cced/Untitled.png?id=bf39d2b5-7284-43e2-9331-90187f73b707&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1708005600000&signature=0nu-x-eiVcpvldAJiPgIXyrWPFkwsUGfDO67J13Rho4&downloadName=Untitled.png",
+                "직장인의 스트레스 관리",
+                "서강대학교 심리학 석사 전공 수료",
+                "스트레스 분석 전문가",
+                10,
+                "직장 생활에서의 스트레스, 함께 나누고 해결해봅시다.",
+                new ArrayList<>()
+        );
+        userService.joinCounselor(joinDto6);
+        userService.updateCounselorInfo("minseokjang", requestDto6);
+
+        CounselorJoinRequestDto joinDto7 = new CounselorJoinRequestDto("seongminlee", "이승민", "이승민", "1234", "test@naver.com", "010-7890-1234", "19881010", "M", 9, "ROLE_COUNSELOR", "한국외국어대학교 심리학 전공", "무의식 분석 전문가");
+        CounselorUpdateRequestDto requestDto7 = new CounselorUpdateRequestDto("이승민", "test@naver.com", "01056789012",
+                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/12651ef3-81d4-498d-b08d-9b7078bdc150/image_(2).png?id=a2c4c291-7fa0-4fec-90a8-f1971ebc4482&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1708005600000&signature=M0gUH66z4aQZAlm3XODEqGLRZrMeH1YAmz3tgVI3_ro&downloadName=image+%282%29.png",
+                "무의식과 꿈 해석",
+                "한국외국어대학교 심리학 전공",
+                "무의식 분석 전문가",
+                9,
+                "무의식의 세계를 함께 탐색하며, 꿈을 통해 자아를 이해해봅시다.",
+                new ArrayList<>()
+        );
+        userService.joinCounselor(joinDto7);
+        userService.updateCounselorInfo("seongminlee", requestDto7);
+
+        CounselorJoinRequestDto joinDto8 = new CounselorJoinRequestDto("jiayoon", "윤지아", "윤지아", "1234", "test@naver.com", "010-6789-0123", "19920909", "W", 7, "ROLE_COUNSELOR", "한양대학교 심리학 석사 전공", "청소년상담 전문가");
+        CounselorUpdateRequestDto requestDto8 = new CounselorUpdateRequestDto("윤지아", "test@naver.com", "01056789012",
+                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/6857f37a-38ce-4b36-9db3-cade188daaf1/Untitled.png?id=ce505265-3e97-467d-802f-d31ea0dc791b&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1708005600000&signature=VYzMgPxUeD-OHUtS440ej9nCcAREIJcNloPPJGzegWE&downloadName=Untitled.png",
+                "청소년 상담",
+                "한양대학교 심리학 석사 전공",
+                "청소년상담 전문가"
+                7,
+                "소년기, 그 어려움을 함께 나누고 이해하는 공간을 제공하겠습니다.",
+                new ArrayList<>()
+        );
+        userService.joinCounselor(joinDto8);
+        userService.updateCounselorInfo("jiayoon", requestDto8);
 
         // MindLetGo 주제 더미데이터 추가
         mindLetGoTopicRepository.save(new MindLetGoTopic("본인을 힘들게 하는 일이 있다면 이곳에 털어보세요.", true));
