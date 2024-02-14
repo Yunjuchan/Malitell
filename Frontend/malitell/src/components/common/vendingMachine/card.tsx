@@ -58,29 +58,31 @@ export default function Card({ cardDisplay, index, flip }: contentProps) {
   }, []);
 
   return (
-    <s.Wrapper
-      onClick={handleFlip}
-      $display={display}
-      $fadeOut={flip}
-      $position={position}
-    >
-      <s.Card $flipped={flipped}>
-        <s.Content className="front"></s.Content>
-        <s.Content className="back">
-          <s.Result>
-            <s.Name>{result ? result.name : "Loading..."}</s.Name>
-            <s.Phrases>{result ? result.phrases : "Loading..."}</s.Phrases>
-            <s.VideoBox>
-              <div>추천 영상</div>
-              <s.Video
-                onClick={() => result?.videoUrl && toVideo(result?.videoUrl)}
-                src={thumbnail}
-                alt="video"
-              />
-            </s.VideoBox>
-          </s.Result>
-        </s.Content>
-      </s.Card>
-    </s.Wrapper>
+    <>
+      <s.Wrapper
+        onClick={handleFlip}
+        $display={display}
+        $fadeOut={flip}
+        $position={position}
+      >
+        <s.Card $flipped={flipped}>
+          <s.Content className="front"></s.Content>
+          <s.Content className="back">
+            <s.Result>
+              <s.Name>{result ? result.name : "Loading..."}</s.Name>
+              <s.Phrases>{result ? result.phrases : "Loading..."}</s.Phrases>
+              <s.VideoBox>
+                <div>추천 영상</div>
+                <s.Video
+                  onClick={() => result?.videoUrl && toVideo(result?.videoUrl)}
+                  src={thumbnail}
+                  alt="video"
+                />
+              </s.VideoBox>
+            </s.Result>
+          </s.Content>
+        </s.Card>
+      </s.Wrapper>
+    </>
   );
 }
