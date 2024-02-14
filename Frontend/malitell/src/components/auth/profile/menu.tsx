@@ -37,7 +37,7 @@ export default function Menu() {
   return (
     <s.Wrapper>
       <s.Title>프로필</s.Title>
-      <s.Image src={malitell} alt='malitell' />
+      <s.Image src={localStorage.getItem("myImg") === null || "" ? malitell : localStorage.getItem("myImg")} alt='malitell' />
       <s.Tag>여기에 프로필 태그 들어가요~~</s.Tag>
       <s.Nav>
       {menuItems.map((item) => (

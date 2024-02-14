@@ -122,7 +122,7 @@ export const mySHGroup = () => {
 
 // 상담자 정보 수정 authapi
 export const editCounselorInfo = (editForm: editUserData) => {
-  authApi
+  const res = authApi
     .put("/mypage/user/counselor", {
       name: editForm.name,
       email: editForm.email,
@@ -136,10 +136,12 @@ export const editCounselorInfo = (editForm: editUserData) => {
     .then((res) => {
       return res.data;
     })
-    // .then((res) => {
-    //   localStorage.setItem("myImg", res.profileImg);
-    // })
+    .then((res) => {
+      localStorage.setItem("myImg", res.profileImg);
+    })
+    .then((res) => window.location.reload())
     .catch((error) => console.error("Failed to Edit:", error));
+  return res;
 };
 
 // 내담자 정보 수정 authapi
@@ -155,9 +157,13 @@ export const editClientInfo = (editForm: editUserData) => {
     .then((res) => {
       return res.data;
     })
-    // .then((res) => {
-    //   localStorage.setItem("myImg", res.profileImg);
-    // })
+    .then((res) => {
+      console.log(res);
+      if (editForm.profileImg) {
+        localStorage.setItem("myImg", editForm.profileImg || "");
+      }
+    })
+    .then((res) => window.location.reload())
     .catch((error) => console.error("Failed to Edit:", error));
 };
 
