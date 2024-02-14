@@ -357,14 +357,14 @@ public class CounselingService {
 
         List<CounselingReview> myCounselingReviewList = counselingReviewRepository.getMyReviewList(loginUserSeq);
         for (CounselingReview review : myCounselingReviewList) {
-            int clientSeq = review.getClientSeq();
-            Optional<User> client = userRepository.findById(clientSeq);
-            String clientName = client.get().getName();
+            int counselorSeq = review.getCounselorSeq();
+            Optional<User> client = userRepository.findById(counselorSeq);
+            String counselorName = client.get().getName();
 
             String content = review.getContent();
             double grade = review.getGrade();
 
-            CounselorReviewResponseDto dto = new CounselorReviewResponseDto(clientName, content, grade);
+            CounselorReviewResponseDto dto = new CounselorReviewResponseDto(counselorName, content, grade);
             counselingReviewList.add(dto);
         }
         return counselingReviewList;
