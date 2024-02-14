@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   height: 500px;
   padding: 20px;
   position: absolute;
-  background-color: white;
+  background-color: rgba(255, 240, 250, 0.95);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -33,15 +33,15 @@ export const Form = styled.form`
   text-align: center;
 `
 
-export const Input = styled.textarea`
+export const Input = styled.input`
   width: 88%;
   height: 88%;
   padding: 1%;
   font-size: 25px;
+  text-align: center;
   border: 0;
   border-radius: 10px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
-  resize: none;
   background-color: #FBF3FD;
   &:focus {
     outline: none;
