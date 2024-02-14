@@ -38,9 +38,8 @@ public class GatheringService {
         String name = principal.getName();
         User findUser = userRepository.findByUserId(name);
         SelfHelpGroup selfHelpGroup = new SelfHelpGroup(requestDto);
-        WorryTag worryTag = requestDto.getWorryTag();
 
-        Gathering gathering = new Gathering(selfHelpGroup, findUser, requestDto.getTitle(), requestDto.getContent(), worryTag);
+        Gathering gathering = new Gathering(selfHelpGroup, findUser, requestDto.getTitle(), requestDto.getContent());
 
         selfHelpGroupRepository.save(selfHelpGroup);
         gatheringRepository.save(gathering);
@@ -64,8 +63,7 @@ public class GatheringService {
         Gathering gathering = gatheringRepository.findById(gatheringSeq).orElseThrow(
                 () -> new IllegalArgumentException("게시물이 존재하지 않습니다.")
         );
-        WorryTag worryTag = requestDto.getWorryTag();
-        gathering.update(requestDto, worryTag);
+        gathering.update(requestDto);
         return gathering.getGatheringSeq();
     }
 

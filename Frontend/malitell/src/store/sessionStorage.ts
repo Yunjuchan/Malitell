@@ -2,7 +2,7 @@
 export const saveState = (state: any) => {
   try {
     const serializedState = JSON.stringify(state);
-    localStorage.setItem('state', serializedState);
+    sessionStorage.setItem('state', serializedState);
   } catch (err) {
     console.log(err);
   }
@@ -10,7 +10,7 @@ export const saveState = (state: any) => {
 
 export const loadState = () => {
   try {
-    const serializedState = localStorage.getItem('state');
+    const serializedState = sessionStorage.getItem('state');
     if (serializedState === null) {
       return undefined;
     }

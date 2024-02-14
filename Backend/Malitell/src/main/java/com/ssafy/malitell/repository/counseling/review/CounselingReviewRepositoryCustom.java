@@ -10,7 +10,7 @@ public interface CounselingReviewRepositoryCustom {
 
     public CounselingReview findByCounselingSeq(int counselingSeq);
 
-    public List<CounselingReview> getCounselingReviewList(int counselorSeq);
+    public List<CounselingReview> getCounselorReviewList(int counselorSeq);
 
     public List<CounselingReview> getMyCounselingReviewList(int loginUserSeq);
 

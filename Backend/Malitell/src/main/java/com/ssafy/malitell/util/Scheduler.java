@@ -1,5 +1,6 @@
 package com.ssafy.malitell.util;
 
+import com.ssafy.malitell.service.MindLetGoService;
 import com.ssafy.malitell.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class Scheduler {
     private final UserService userService;
 
+    private final MindLetGoService mindLetGoService;
+
     @Scheduled(cron = "0 0 0 * * *")    // 매일 00시 정각
     public void sendMessage() {
         userService.sendAlarm();
@@ -23,5 +26,12 @@ public class Scheduler {
     public void test() {
         userService.sendAlarm();
         System.out.println("delay 30000");
+    }
+
+    // MinLetGo 주제 랜덤 변경
+    @Scheduled(fixedRate = 1209600000)
+    public void updateTopic() {
+        mindLetGoService.deleteAll();
+        mindLetGoService.updateTopic();
     }
 }

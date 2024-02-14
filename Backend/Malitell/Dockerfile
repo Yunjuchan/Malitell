@@ -1,4 +1,5 @@
-FROM ubuntu:latest
-LABEL authors="SSAFY"
+#FROM ubuntu:latest
+#LABEL authors="SSAFY"
+#
+#ENTRYPOINT ["top", "-b"]
 
-ENTRYPOINT ["top", "-b"]

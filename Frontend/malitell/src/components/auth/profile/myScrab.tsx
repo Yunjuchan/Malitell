@@ -14,7 +14,7 @@ export default function MyScrab() {
     myscrapSHGroup().then((res) => {
       console.log(res);
       setMyScraps(res);
-    });
+    }); 
   }, []);
   return (
     <s.Wrapper>

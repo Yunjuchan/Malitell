@@ -16,4 +16,7 @@ public class CounselorJoinRequestDto {
     private String gender; // 성별
     private int careerPeriod; // 경력
     private String role; // 권한 (counselor, client, admin)
+
+    private String educationField; // 학력사항
+    private String certificateField; // 자격증
 }

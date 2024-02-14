@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setBoardTypeInfo } from "../../../store/article/boardSlice";
 import { useEffect, useState } from "react";
-import { saveState } from "../../../store/localStorage";
+import { saveState } from "../../../store/sessionStorage";
 import { RootState } from "../../../store/store";
 import { flipLoginModal } from "../../../store/common/loginModalSlice";
 
@@ -22,7 +22,7 @@ export default function Filter() {
   const boardType = useSelector((state: RootState) => state.board.boardType);
 
   // const goToCreateArticle = () => {
-  //   const token = window.localStorage.getItem("Access_Token");
+  //   const token = window.sessionStorage.getItem("Access_Token");
   //   if (token) {
   //     navigate("/articles/create");
   //   } else {
@@ -30,7 +30,7 @@ export default function Filter() {
   //   }
   // };
   const goToCreateArticle = () => {
-    const token = window.localStorage.getItem("Access_Token");
+    const token = window.sessionStorage.getItem("Access_Token");
     if (token) {
       navigate("/articles/create");
     } else {

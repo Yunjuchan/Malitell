@@ -6,9 +6,10 @@ import * as s from "../../styles/counselling/Chat";
 
 interface Props {
   session: Session;
+  setInfo: React.Dispatch<React.SetStateAction<{ seq: string; role: string } | undefined>>;
 }
 
-export default function Chat({ session }: Props) {
+export default function Chat({ session, setInfo }: Props) {
   const [memo, setMemo] = useState(true);
   const [chat, setChat] = useState(false);
 
@@ -57,6 +58,71 @@ export default function Chat({ session }: Props) {
       session.off("signal:chat", chatHandler);
     };
   }, [session]);
+
+  // 입장시 내 정보 시그널로 넘겨줌
+  useEffect(() => {
+    setTimeout(() => {
+      session
+        .signal({
+          data: JSON.stringify({
+            seq: sessionStorage.getItem("mySeq"),
+            role: sessionStorage.getItem("myRole"),
+          }),
+          type: "info",
+          to: [],
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    }, 2000);
+  }, []);
+
+  // 새로운 참가자 입장시 내 정보를 보내줌
+  useEffect(() => {
+    // 'streamCreated' 이벤트 리스너 추가
+    session.on('streamCreated', (event) => {
+      setTimeout(() => {
+        session
+          .signal({
+            data: JSON.stringify({
+              seq: sessionStorage.getItem("mySeq"),
+              role: sessionStorage.getItem("myRole"),
+            }),
+            type: "info",
+            to: [],
+          })
+          .then((res) => {
+            console.log(res);
+          });
+      }, 2000);
+    });
+  
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+    return () => {
+      session.off('streamCreated');
+    };
+  }, []);
+
+  // 상대방 정보 입력
+  useEffect(() => {
+    // 'signal' 이벤트 리스너 추가
+    session.on('signal', (event: SignalEvent) => {
+      // 시그널의 타입이 'info'인 경우만 처리
+      if (event.type === 'signal:info' && event.data) {
+        const data = JSON.parse(event.data);
+
+        if (data.seq !== sessionStorage.getItem("mySeq")) {
+          const info = {"seq": data.seq, "role": data.role}
+          setInfo(info);
+        }
+      }
+    });
+  
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+    return () => {
+      session.off('signal');
+    };
+  }, []);
 
   return (
     <s.Wrapper>

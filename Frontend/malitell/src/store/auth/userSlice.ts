@@ -3,6 +3,7 @@ import type { Dispatch, PayloadAction } from "@reduxjs/toolkit";
 import { api, authApi, loginApi } from "../axiosInstance";
 import { toFormData } from "axios";
 import { fetchUserInfo } from "./profileSlice";
+import { useDispatch } from "react-redux";
 
 export interface UserState {
   userId: string;
@@ -32,16 +33,17 @@ export const login = (data: loginData) => {
       .then((res) => {
         console.log(res.data);
         console.log(res.headers.access_token);
-        localStorage.setItem("Access_Token", res.headers.access_token);
+        sessionStorage.setItem("Access_Token", res.headers.access_token);
+        // sessionStorage.setItem("Refresh")
         dispatch(saveUserInfo(res.data));
       })
       .then(() => {
         return fetchUserInfo();
       })
       .then((userInfo) => {
-        localStorage.setItem("mySeq", userInfo.userSeq);
-        localStorage.setItem("myImg", userInfo.profileImg);
-        localStorage.setItem("myRole", userInfo.role);
+        sessionStorage.setItem("mySeq", userInfo.userSeq);
+        sessionStorage.setItem("myImg", userInfo.profileImg);
+        sessionStorage.setItem("myRole", userInfo.role);
       })
       .then(() => {
         window.location.reload();
@@ -54,16 +56,18 @@ export const login = (data: loginData) => {
 
 // 로그아웃
 export const logout = () => {
-  const res = authApi
-    .post("/logout")
+  const res = api
+    .get("/logout")
     .then((res) => {
+      const dispatch = useDispatch();
       // 로그아웃 요청이 성공하면 Redux store의 user 정보를 삭제
+      dispatch(userLogout());
     })
     .catch((error) => {
       console.error("Failed to logout:", error);
     })
     .finally(() => {
-      localStorage.clear();
+      sessionStorage.clear();
     });
   return res;
 };

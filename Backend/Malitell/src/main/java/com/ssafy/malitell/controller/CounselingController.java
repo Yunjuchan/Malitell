@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api")
 public class CounselingController {
 
     private final CounselingService counselingService;
@@ -110,6 +111,13 @@ public class CounselingController {
     public ResponseEntity<Void> deleteCounselingReview(@PathVariable int counselingReviewSeq) {
         counselingService.deleteCounselingReview(counselingReviewSeq);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    // 상담자 내 리뷰 조회
+    @GetMapping("/myReview")
+    public ResponseEntity<List<CounselorReviewResponseDto>> getMyReview(Principal principal) {
+        List<CounselorReviewResponseDto> counselingReviewList = counselingService.getCounselingReviewList(principal);
+        return new ResponseEntity<>(counselingReviewList, HttpStatus.OK);
     }
 
 }

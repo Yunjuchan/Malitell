@@ -12,14 +12,11 @@ import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import com.ssafy.malitell.dto.response.board.MyBoardListResponseDto;
-import com.ssafy.malitell.dto.response.user.ClientResponseDto;
-import com.ssafy.malitell.dto.response.user.CounselorResponseDto;
 import com.ssafy.malitell.dto.response.user.UserResponseDto;
 import com.ssafy.malitell.repository.board.community.CommunityRepository;
 import com.ssafy.malitell.repository.board.gathering.GatheringRepository;
 import com.ssafy.malitell.repository.board.overcoming.OverComingRepository;
 import com.ssafy.malitell.repository.counseling.CounselingRepository;
-import com.ssafy.malitell.repository.tag.StatusTagRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -47,7 +44,6 @@ public class UserService {
     private final GatheringRepository gatheringRepository;
     private final CommunityRepository communityRepository;
     private final OverComingRepository overComingRepository;
-    private final StatusTagRepository statusTagRepository;
 
 
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -103,6 +99,8 @@ public class UserService {
         user.setGender(counselorJoinRequestDto.getGender());
         user.setCareerPeriod(counselorJoinRequestDto.getCareerPeriod());
         user.setRole(counselorJoinRequestDto.getRole());
+        user.setEducationField(counselorJoinRequestDto.getEducationField());
+        user.setCertificateField(counselorJoinRequestDto.getCertificateField());
         user.setReadCheck(1);
 
         userRepository.save(user);
@@ -128,23 +126,13 @@ public class UserService {
     @Transactional
     public void updateClientInfo(String userId, ClientUpdateRequestDto clientUpdateRequestDto) {
         User user = userRepository.findByUserId(userId);
-        List<StatusTag> statusTags = new ArrayList<>();
-        List<Integer> statusTagSeqs = clientUpdateRequestDto.getStatusTags();
-        for (int seq : statusTagSeqs) {
-            statusTags.add(statusTagRepository.findById(seq).get());
-        }
-        user.updateClient(clientUpdateRequestDto, statusTags);
+        user.updateClient(clientUpdateRequestDto);
     }
 
     @Transactional
     public void updateCounselorInfo(String userId, CounselorUpdateRequestDto counselorRequestDto) {
         User user = userRepository.findByUserId(userId);
-        List<StatusTag> statusTags = new ArrayList<>();
-        List<Integer> statusTagSeqs = counselorRequestDto.getStatusTags();
-        for (int seq : statusTagSeqs) {
-            statusTags.add(statusTagRepository.findById(seq).get());
-        }
-        user.updateCounselor(counselorRequestDto,statusTags);
+        user.updateCounselor(counselorRequestDto);
     }
 
     @Transactional

@@ -36,22 +36,8 @@ public class CounselingService {
         List<User> list = userRepository.findByRole("ROLE_COUNSELOR");
 
         List<CounselorResponseDto> counselorList = new ArrayList<>();
-        for(User counselor : list) {
-            int seq = counselor.getUserSeq();
-            String name = counselor.getName();
-            String email = counselor.getEmail();
-
-            Date date = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-            int age = Integer.parseInt(sdf.format(date)) - Integer.parseInt(counselor.getBirth().substring(0, 4));
-
-            String gender = counselor.getGender();
-            String profileImg = counselor.getProfileImg();
-            String professionalField = counselor.getProfessionalField();
-            int careerPeriod = counselor.getCareerPeriod();
-            double grade = counselor.getGrade();
-
-            CounselorResponseDto counselorDto = new CounselorResponseDto(seq, name, email, age, gender, profileImg, professionalField, careerPeriod, grade);
+        for (User counselor : list) {
+            CounselorResponseDto counselorDto = new CounselorResponseDto(counselor);
             counselorList.add(counselorDto);
         }
 
@@ -61,29 +47,13 @@ public class CounselingService {
     public CounselorResponseDto getCounselorInfo(int counselorSeq) {
         Optional<User> counselor = userRepository.findById(counselorSeq);
 
-        if(counselor.isPresent()) {
-            // 1. 상담자 정보 가져오기
-            String name = counselor.get().getName();
-            String email = counselor.get().getEmail();
-            String phone = counselor.get().getPhone();
-
-            Date date = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-            int age = Integer.parseInt(sdf.format(date)) - Integer.parseInt(counselor.get().getBirth().substring(0, 4));
-
-            String gender = counselor.get().getGender();
-            String profileImg = counselor.get().getProfileImg();
-            String professionalField = counselor.get().getProfessionalField();
-            int careerPeriod = counselor.get().getCareerPeriod();
-            double grade = counselor.get().getGrade();
-            String comment = counselor.get().getComment();
+        if (counselor.isPresent()) {
 
             // 2. 상담자의 상담후기 목록 가져오기
-            List<CounselingReview> counselingReviewList = counselingReviewRepository.getCounselingReviewList(counselorSeq);
+            List<CounselingReview> counselingReviewList = counselingReviewRepository.getCounselorReviewList(counselorSeq);
 
             // CounselorResponseDto에 상담자 정보 및 상담후기 목록 세팅
-            CounselorResponseDto dto = new CounselorResponseDto(counselorSeq, name, email, phone, age, gender, profileImg, professionalField, careerPeriod, grade, comment, counselingReviewList);
-            return dto;
+            return new CounselorResponseDto(counselor.get(), counselingReviewList);
 
         } else {
             throw new NoSuchElementException();
@@ -98,7 +68,7 @@ public class CounselingService {
         // 상담자 식별키와 내담자 식별키로 상담 회차 조회
         int round;
         List<Counseling> counselingList = counselingRepository.findByCounselorSeqAndClientSeq(counselorSeq, user.getUserSeq());
-        if(counselingList == null) {
+        if (counselingList == null) {
             round = 1; // 첫 상담일 때 회차 설정
         } else {
             round = counselingList.size() + 1; // 첫 상담 이후 회차설정
@@ -114,25 +84,21 @@ public class CounselingService {
         String userId = principal.getName();
         User loginUser = userRepository.findByUserId(userId);
         int userSeq = loginUser.getUserSeq();
-        String role = loginUser.getRole();
 
         // 상담자, 내담자 상관없이 내가 참여하는 상담 목록 모두 불러오기
         List<Counseling> list = counselingRepository.findAllBySeq(userSeq);
 
         List<ReservationListResponseDto> reservationList = new ArrayList<>();
 
-        for(Counseling counseling : list) {
-            Timestamp counselingDate = counseling.getCounselingDate();
-            String name = "";
+        for (Counseling counseling : list) {
 
-            if(role.equals("ROLE_CLIENT")) {
-                User counselor = userRepository.findByUserSeq(counseling.getCounselorSeq());
-                name = counselor.getName();
-            } else if(role.equals("ROLE_COUNSELOR")) {
-                User client = userRepository.findByUserSeq(counseling.getClientSeq());
-                name = client.getName();
-            }
-            reservationList.add(new ReservationListResponseDto(counselingDate, name));
+            int clientSeq = counseling.getClientSeq();
+            int counselorSeq = counseling.getCounselorSeq();
+
+            User cleint = userRepository.findByUserSeq(clientSeq);
+            User counselor = userRepository.findByUserSeq(counselorSeq);
+
+            reservationList.add(new ReservationListResponseDto(counseling, cleint.getName(), counselor.getName()));
         }
         return reservationList;
     }
@@ -157,7 +123,7 @@ public class CounselingService {
         ClientResponseDto clientResponseDto = new ClientResponseDto();
         CounselorResponseDto counselorResponseDto = new CounselorResponseDto();
         List<Counseling> previousCounselingList = new ArrayList<>();
-        if(role.equals("ROLE_CLIENT")) {
+        if (role.equals("ROLE_CLIENT")) {
             // 상담자 정보 불러오기
             user = userRepository.findById(counseling.get().getCounselorSeq()).get();
             counselorResponseDto = new CounselorResponseDto(user);
@@ -169,7 +135,7 @@ public class CounselingService {
             dto = new ReservationInfoResponseDto(counselingDate1, counselingSubject, counselorResponseDto, previousCounselingList, questionList);
             return dto;
 
-        } else if(role.equals("ROLE_COUNSELOR")) {
+        } else if (role.equals("ROLE_COUNSELOR")) {
             // 내담자 정보 불러오기
             user = userRepository.findById(counseling.get().getClientSeq()).get();
             clientResponseDto = new ClientResponseDto(user);
@@ -195,7 +161,7 @@ public class CounselingService {
     public void saveCounselingLog(int counselingSeq, CounselingLogRequestDto counselingLogRequestDto) {
         String content = counselingLogRequestDto.getContent();
         Optional<Counseling> counseling = counselingRepository.findById(counselingSeq);
-        if(counseling.isPresent()) {
+        if (counseling.isPresent()) {
             CounselingLog counselingLog = new CounselingLog(content, counseling.get());
             counselingLogRepository.save(counselingLog);
         } else {
@@ -211,9 +177,9 @@ public class CounselingService {
 
         // 나의 상담일지 목록 가져오기
         List<CounselingLog> counselingLoglist = new ArrayList<>();
-        if(role.equals("ROLE_CLIENT")) { // 내담자가 나의 상담일지 조회한 경우
+        if (role.equals("ROLE_CLIENT")) { // 내담자가 나의 상담일지 조회한 경우
             return getCounselingLogListByClient(loginUserSeq);
-        } else if(role.equals("ROLE_COUNSELOR")) { // 상담자가 나의 상담일지 조회한 경우
+        } else if (role.equals("ROLE_COUNSELOR")) { // 상담자가 나의 상담일지 조회한 경우
             return getCounselingLogListByCounselor(loginUserSeq);
         } else {
             return null;
@@ -225,7 +191,7 @@ public class CounselingService {
         List<CounselingLogOrderByDateResponseDto1> counselingLogOrderByDateList = new ArrayList<>();
 
         List<CounselingLog> counselingLogListByClient = counselingRepository.getCounselingLogListOrderByDate1(loginUserSeq);
-        for(CounselingLog log : counselingLogListByClient) {
+        for (CounselingLog log : counselingLogListByClient) {
             int counselingLogSeq = log.getCounselingLogSeq();
             int counselorSeq = log.getCounseling().getCounselorSeq();
             Optional<User> counselor = userRepository.findById(counselorSeq);
@@ -247,7 +213,7 @@ public class CounselingService {
         List<CounselingLogOrderByDateResponseDto2> counselingLogOrderByDateList = new ArrayList<>();
 
         List<CounselingLog> counselingLogListByCounselor = counselingRepository.getCounselingLogListOrderByDate2(loginUserSeq);
-        for(CounselingLog log : counselingLogListByCounselor) {
+        for (CounselingLog log : counselingLogListByCounselor) {
             int counselingLogSeq = log.getCounselingLogSeq();
             int clientSeq = log.getCounseling().getClientSeq();
             Optional<User> client = userRepository.findById(clientSeq);
@@ -271,20 +237,20 @@ public class CounselingService {
         String role = user.getRole();
 
         // 나의 상담일지 작성해준 상담자명 가져오기
-        if(role.equals("ROLE_CLIENT")) {
+        if (role.equals("ROLE_CLIENT")) {
             // 내담자의 상담일지 목록 가져오기
             List<CounselingLog> counselingLoglist = counselingRepository.getCounselingLogList1(loginUserSeq);
 
             // 상담자 식별키 중복 제거
             Set<Integer> counselorSeqSet = new HashSet<>();
-            for(CounselingLog log : counselingLoglist) {
+            for (CounselingLog log : counselingLoglist) {
                 int counselorSeq = log.getCounseling().getCounselorSeq();
                 counselorSeqSet.add(counselorSeq);
             }
 
             // 내 상담일지를 작성해준 상담자 목록 (이름순)
             List<String> counselorList = new ArrayList<>();
-            for(int counselorSeq : counselorSeqSet) {
+            for (int counselorSeq : counselorSeqSet) {
                 Optional<User> counselor = userRepository.findById(counselorSeq);
                 String counselorName = counselor.get().getName();
                 counselorList.add(counselorName);
@@ -293,20 +259,20 @@ public class CounselingService {
             return counselorList;
         }
         // 내가 상담일지 작성해준 내담자명 가져오기
-        else if(role.equals("ROLE_COUNSELOR")) {
+        else if (role.equals("ROLE_COUNSELOR")) {
             // 상담자의 상담일지 목록 가져오기
             List<CounselingLog> counselingLoglist = counselingRepository.getCounselingLogList2(loginUserSeq);
 
             // 내담자 식별키 중복 제거
             Set<Integer> clientSeqSet = new HashSet<>();
-            for(CounselingLog log : counselingLoglist) {
+            for (CounselingLog log : counselingLoglist) {
                 int clinetSeq = log.getCounseling().getClientSeq();
                 clientSeqSet.add(clinetSeq);
             }
 
             // 내가 상담일지를 작성해준 내담자 목록 (이름순)
             List<String> clientList = new ArrayList<>();
-            for(int clientSeq : clientSeqSet) {
+            for (int clientSeq : clientSeqSet) {
                 Optional<User> client = userRepository.findById(clientSeq);
                 String clientName = client.get().getName();
                 clientList.add(clientName);
@@ -320,18 +286,18 @@ public class CounselingService {
 
     public CounselingLogResponseDto getOneCounselingLog(int counselingLogSeq, Principal principal) {
         Optional<CounselingLog> counselingLog = counselingLogRepository.findById(counselingLogSeq);
-        if(counselingLog.isPresent()) {
+        if (counselingLog.isPresent()) {
             int counselingSeq = counselingLog.get().getCounseling().getCounselingSeq();
 
             String loginUserId = principal.getName();
             User user = userRepository.findByUserId(loginUserId);
             String role = user.getRole();
             String name = "";
-            if(role.equals("ROLE_CLIENT")) { // 로그인한 유저가 내담자일 때 -> 상담자명 가져오기
+            if (role.equals("ROLE_CLIENT")) { // 로그인한 유저가 내담자일 때 -> 상담자명 가져오기
                 int counselorSeq = counselingLog.get().getCounseling().getCounselorSeq();
                 Optional<User> counselor = userRepository.findById(counselorSeq);
                 name = counselor.get().getName(); // 상담자명
-            } else if(role.equals("ROLE_COUNSELOR")) {
+            } else if (role.equals("ROLE_COUNSELOR")) {
                 int clientSeq = counselingLog.get().getCounseling().getClientSeq();
                 Optional<User> client = userRepository.findById(clientSeq);
                 name = client.get().getName(); // 내담자명
@@ -367,13 +333,13 @@ public class CounselingService {
         List<CounselingReview> counselorReviewList = counselingRepository.counselorReviewList(counselorSeq);
 
         int sum = 0;
-        for(CounselingReview review : counselorReviewList) {
+        for (CounselingReview review : counselorReviewList) {
             sum += review.getGrade();
         }
-        double avg = Double.parseDouble(String.format("%.1f", (double)sum / counselorReviewList.size()));
+        double avg = Double.parseDouble(String.format("%.1f", (double) sum / counselorReviewList.size()));
 
         Optional<User> counselor = userRepository.findById(counselorSeq);
-        if(counselor.isPresent()) {
+        if (counselor.isPresent()) {
             counselor.get().setGrade(avg);
         } else {
             throw new NoSuchElementException();
@@ -387,16 +353,16 @@ public class CounselingService {
         User user = userRepository.findByUserId(loginUserId);
         int loginUserSeq = user.getUserSeq();
 
-        List<CounselingReview> myCounselingReviewList = counselingReviewRepository.getMyCounselingReviewList(loginUserSeq);
-        for(CounselingReview review : myCounselingReviewList) {
-            int counselorSeq = review.getCounseling().getCounselorSeq();
-            Optional<User> counselor = userRepository.findById(counselorSeq);
-            String counselorName = counselor.get().getName();
+        List<CounselingReview> myCounselingReviewList = counselingReviewRepository.getCounselorReviewList(loginUserSeq);
+        for (CounselingReview review : myCounselingReviewList) {
+            int clientSeq = review.getCounseling().getClientSeq();
+            Optional<User> client = userRepository.findById(clientSeq);
+            String clientName = client.get().getName();
 
             String content = review.getContent();
             double grade = review.getGrade();
 
-            CounselorReviewResponseDto dto = new CounselorReviewResponseDto(counselorName, content, grade);
+            CounselorReviewResponseDto dto = new CounselorReviewResponseDto(clientName, content, grade);
             counselingReviewList.add(dto);
         }
         return counselingReviewList;
@@ -411,7 +377,7 @@ public class CounselingService {
         // 상담자 이름 중복 제거
         Set<String> counselorNameSet = new HashSet<>();
         List<CounselingReview> myCounselingReviewList = counselingReviewRepository.getMyCounselingReviewList(loginUserSeq);
-        for(CounselingReview review : myCounselingReviewList) {
+        for (CounselingReview review : myCounselingReviewList) {
             int counselorSeq = review.getCounseling().getCounselorSeq();
             Optional<User> counselor = userRepository.findById(counselorSeq);
             String counselorName = counselor.get().getName();
@@ -420,7 +386,7 @@ public class CounselingService {
 
         // 내가 상담후기를 작성한 상담자명 목록 (이름순)
         List<String> counselorNameList = new ArrayList<>();
-        for(String counselorName : counselorNameSet) {
+        for (String counselorName : counselorNameSet) {
             counselorNameList.add(counselorName);
         }
         Collections.sort(counselorNameList);

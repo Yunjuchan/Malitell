@@ -33,6 +33,4 @@ public class GatheringCreateRequestDto {
     // 게시물 내용
     private String content;
 
-    // 태그
-    private WorryTag worryTag;
 }

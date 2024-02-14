@@ -33,7 +33,7 @@ export default function Counselor({ counselor }: CounselorProps) {
       </s.Container>
       {counselor.profileImg ? (
         <s.ImgBox>
-          <s.Profile />
+          <s.Profile src={counselor.profileImg} alt="image" />
         </s.ImgBox>
       ) : (
         <s.ImgBox>

@@ -63,7 +63,7 @@ export default function ArticleList() {
 
   return (
     <s.Wrapper>
-      {articles[board.boardType].map((article: ArticleInfo, index: number) => (
+      {articles && articles[board.boardType].map((article: ArticleInfo, index: number) => (
         <>
           <Article key={index} article={article} />
           {articles[board.boardType].length - 1 === index ? null : <s.Line />}
