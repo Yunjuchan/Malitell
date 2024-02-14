@@ -1,8 +1,10 @@
 package com.ssafy.malitell.controller;
 
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.chat.ChatMessageRequestDto;
 import com.ssafy.malitell.dto.request.chat.ChatRoomDto;
 import com.ssafy.malitell.dto.response.chat.ChatRoomResponseDto;
+import com.ssafy.malitell.service.UserService;
 import com.ssafy.malitell.service.chat.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ChatController {
     private final ChatService chatService;
+    private final UserService userService;
 
     // 채팅방 생성
     @PostMapping("/room")
@@ -31,7 +34,9 @@ public class ChatController {
         List<ChatRoomDto> chatRoomList = chatService.findAllRooms();
         List<ChatRoomResponseDto> chatRoomDtos = new ArrayList<>();
         for (ChatRoomDto chatRoomDto : chatRoomList) {
-            chatRoomDtos.add(new ChatRoomResponseDto(chatRoomDto));
+            User counselor = userService.findByUserSeq(chatRoomDto.getCounselorSeq());
+            User client = userService.findByUserSeq(chatRoomDto.getClientSeq());
+            chatRoomDtos.add(new ChatRoomResponseDto(chatRoomDto, counselor, client));
         }
         return chatRoomDtos;
     }

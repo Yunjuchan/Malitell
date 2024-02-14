@@ -83,7 +83,7 @@ public class ChatService {
 
             chatRoom = new ChatRoom(chatRoomDto.getChatRoomSeq(), counselor, client, null);
             chatRoomRepository.save(chatRoom);
-            return new ChatRoomResponseDto(chatRoom);
+            return new ChatRoomResponseDto(chatRoom, counselor, client);
             // 6. 이미 생성된 쪽지방인 경우
         } else {
             return new ChatRoomResponseDto(chatRoom.getChatRoomSeq());
