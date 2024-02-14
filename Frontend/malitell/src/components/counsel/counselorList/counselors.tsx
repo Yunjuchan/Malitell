@@ -29,7 +29,7 @@ export default function Counselors() {
 
   return (
     <s.Wrapper>
-      {counselors.map((counselor: CounselorInfo, index) => (
+      {counselors && counselors.map((counselor: CounselorInfo, index) => (
           <Counselor key={index} counselor={counselor} />
       ))}
     </s.Wrapper>

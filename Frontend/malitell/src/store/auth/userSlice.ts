@@ -34,6 +34,7 @@ export const login = (data: loginData) => {
         console.log(res.data);
         console.log(res.headers.access_token);
         sessionStorage.setItem("Access_Token", res.headers.access_token);
+        // sessionStorage.setItem("Refresh")
         dispatch(saveUserInfo(res.data));
       })
       .then(() => {
