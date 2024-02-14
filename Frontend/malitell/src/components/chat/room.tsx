@@ -4,8 +4,8 @@ import SockJsClient from "react-stomp";
 
 interface Message {
   type: string;
-  sender: string;
-  message: string;
+  userSeq: string;
+  content: string;
 }
 
 interface Room {
@@ -32,102 +32,34 @@ export default function RoomComponent() {
     }
   };
 
-  // const sendMessage = () => {
-  //   if (roomId.current) {
-  //     clientRef.current.sendMessage(
-  //       "/chat/message",
-  //       JSON.stringify({
-  //         chatRoom: {
-  //           chatRoomSeq: roomId.current,
-  //         },
-  //         sender,
-  //         message,
-  //       })
-  //     );
-  //     setMessage("");
-  //   }
-  // };
-
-  // const sendMessage = () => {
-  //   // console.log("send");
-  //   // console.log(sender);
-  //   // console.log(clientRef.current);
-  //   // // console.log(clientRef.current.connected);
-  //   // console.log("-------------------------");
-  //   // console.log(roomId);
-  //   if (roomId.current) {
-  //     clientRef.current.sendMessage(
-  //       "/pub/chat/message",
-  //       JSON.stringify({
-  //         // type: "TALK",
-  //         chatRoomSeq: roomId.current,
-  //         // "chatRoom": roomId.current,
-  //         userSeq: sender,
-  //         content: message,
-  //         sendTiem: Date(),
-  //       })
-  //     );
-  //     // console.log(clientRef.current.sendMessage);
-  //     // console.log(message);
-  //     // console.log(Date());
-  //     setMessage("");
-  //   }
-  // };
-
   const sendMessage = () => {
-    // const Access_Token = sessionStorage.getItem("Access_Token");
-
     if (roomId.current) {
       clientRef.current.sendMessage(
         "/pub/chat/message",
         JSON.stringify({
-          // Access_Token: Access_Token,
           chatRoomSeq: roomId.current,
           userSeq: sender,
           content: message,
-          // sendTime: Date(),
         }),
         { Access_Token: `${sessionStorage.getItem("Access_Token")}` }
       );
-      // console.log(Access_Token)
       console.log("보냈다");
-      // console.log(
-      //   JSON.stringify({
-      //     // Access_Token: Access_Token,
-      //     chatRoomSeq: roomId.current,
-      //     userSeq: sender,
-      //     content: message,
-      //     sendTime: Date(),
-      //   })
-      // );
       setMessage("");
     }
   };
 
   const recvMessage = (recv: Message) => {
     console.log("메시지가 왔어...?!");
-    // `/sub/chat/room/${roomId.current}`
+    console.log(recv.content);
     setMessages((prevMessages) => [
       {
         type: recv.type,
-        sender: recv.type === "ENTER" ? "[알림]" : recv.sender,
-        message: recv.message,
+        userSeq: recv.userSeq,
+        content: recv.content,
       },
       ...prevMessages,
     ]);
   };
-
-  // const recvMessage = (recv: Message) => {
-  //   setMessages((prevMessages) => [
-  //     // {
-  //     //   sender: recv.sender,
-  //     //   message: recv.message,
-  //     // },
-  //     recv,
-  //     ...prevMessages,
-  //   ]);
-  //   console.log(recv);
-  // };
 
   useEffect(() => {
     setSender(sessionStorage.getItem("wschat.sender"));
@@ -175,7 +107,7 @@ export default function RoomComponent() {
       <ul className="list-group">
         {messages.map((message, index) => (
           <li key={index} className="list-group-item">
-            {message.sender} - {message.message}
+            {message.userSeq} - {message.content}
           </li>
         ))}
       </ul>

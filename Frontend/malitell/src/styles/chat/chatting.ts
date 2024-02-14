@@ -19,19 +19,18 @@ export const RoomInfo = styled.div`
 
 export const ChattingBox = styled.div`
   width: 100%;
-  min-height: 300px;
+  height: 300px;
+  overflow-y: scroll;
   background-color: #bf94e4;
+  display: flex;
+  flex-direction: column-reverse;
 `;
 
 export const MessageBox = styled.div<{ $align?: string }>`
   width: 100%;
-  height: fit-content;
+  height: 40px;
   display: flex;
   justify-content: ${({ $align }) => $align};
-  /* padding: 20px; */
-  /* background-color: white; */
-  /* border-radius: 10px; */
-  /* box-shadow: 1px 1px 1px 1px lightgray; */
 `;
 
 export const Message = styled.div`
@@ -41,7 +40,7 @@ export const Message = styled.div`
   padding: 5px;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 1px 1px 1px 1px lightgray;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
 `;
 
 export const InputBox = styled.div`
@@ -53,10 +52,13 @@ export const InputBox = styled.div`
 `;
 
 export const Input = styled.textarea`
-  width: 98.3%;
+  width: 100%;
   height: 100%;
   border: none;
   resize: none;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const Send = styled.button`
@@ -64,4 +66,8 @@ export const Send = styled.button`
   height: 30%;
   font-size: 10px;
   margin-left: 89.5%;
+  border: none;
+  border-radius: 5px;
+  background-color: #bf94e4;
+  color: white;
 `;
