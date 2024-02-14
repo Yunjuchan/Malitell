@@ -5,9 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableCaching
+@EnableScheduling
 @EnableRedisRepositories
 @EnableMongoRepositories(basePackages = "com.ssafy.malitell.repository.chat")
 public class MalitellApplication {
