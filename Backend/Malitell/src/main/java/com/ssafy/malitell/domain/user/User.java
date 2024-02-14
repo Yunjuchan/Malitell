@@ -2,14 +2,13 @@ package com.ssafy.malitell.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
+import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpType;
 import com.ssafy.malitell.domain.tag.StatusTag;
 import com.ssafy.malitell.dto.request.auth.SignUpRequestDto;
-import com.ssafy.malitell.dto.request.chat.MessageRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Null;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -52,19 +51,19 @@ public class User {
     private double grade; // 평점
     private String comment; // 소개 멘트
     private String type; // 타입 (kakao, naver)
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-//    List<Board> boards = new ArrayList<>();
 
     private String alramMessage;
     private int readCheck; // 안 읽었으면 1 , 읽었으면 0
 
+    private String educationField; // 학력사항
+    private String certificateField; // 자격증
+
     // 참가하고 있는 자조모임
     @OneToMany(mappedBy = "user")
-    @JsonBackReference
+    @JsonBackReference(value = "user-selfHelpGroupUser")
     private List<SelfHelpGroupUser> selfHelpGroupUsers = new ArrayList<>();
 
-    @OneToMany
-    @JsonBackReference
+    @ElementCollection
     private List<StatusTag> statusTags = new ArrayList<>();
 
     public void addSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {
@@ -106,15 +105,19 @@ public class User {
         this.gender = gender;
     }
 
-    public void updateClient(ClientUpdateRequestDto clientUpdateRequestDto, List<StatusTag> statusTags) {
+    public void updateClient(ClientUpdateRequestDto clientUpdateRequestDto) {
         this.name = clientUpdateRequestDto.getName();
         this.email = clientUpdateRequestDto.getEmail();
         this.phone = clientUpdateRequestDto.getPhone();
         this.profileImg = clientUpdateRequestDto.getProfileImg();
-        this.statusTags = statusTags;
+        List<String> statusTags = clientUpdateRequestDto.getStatusTags();
+        this.statusTags.clear();
+        for (String statusTag : statusTags) {
+            this.statusTags.add(StatusTag.valueOf(statusTag));
+        }
     }
 
-    public void updateCounselor(CounselorUpdateRequestDto counselorUpdateRequestDto, List<StatusTag> statusTags) {
+    public void updateCounselor(CounselorUpdateRequestDto counselorUpdateRequestDto) {
         this.name = counselorUpdateRequestDto.getName();
         this.email = counselorUpdateRequestDto.getEmail();
         this.phone = counselorUpdateRequestDto.getPhone();
@@ -122,7 +125,11 @@ public class User {
         this.profileImg = counselorUpdateRequestDto.getProfileImg();
         this.professionalField = counselorUpdateRequestDto.getProfessionalField();
         this.comment = counselorUpdateRequestDto.getComment();
-        this.statusTags = statusTags;
+        this.statusTags.clear();
+        List<String> statusTagList = counselorUpdateRequestDto.getStatusTags();
+        for (String statusTag : statusTagList) {
+            this.statusTags.add(StatusTag.valueOf(statusTag));
+        }
     }
 
     public void updatePassword(String password) {

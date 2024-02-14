@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setBoardTypeInfo } from "../../../store/article/boardSlice";
 import { useEffect, useState } from "react";
-import { saveState } from "../../../store/localStorage";
+import { saveState } from "../../../store/sessionStorage";
 import { RootState } from "../../../store/store";
 import * as s from "../../../styles/article/articleMenu";
 

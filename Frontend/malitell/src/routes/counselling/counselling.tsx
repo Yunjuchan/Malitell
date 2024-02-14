@@ -1,9 +1,11 @@
 import React from "react";
 import { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   OpenVidu,
   Session as OVSession,
   Publisher,
+  SessionDisconnectedEvent,
   Subscriber,
 } from "openvidu-browser";
 import axios, { AxiosError } from "axios";
@@ -161,12 +163,6 @@ export default function Counselling() {
       .catch(() => {});
   }, [session, OV, sessionId, OPENVIDU_SERVER_URL]);
 
-  // 상담 종료버튼 액션
-  const handleEixt =() => {
-    console.log("닫기");
-    window.close();
-  }
-
   // 화면 전환용 코드
   const [isVideoActive, setIsVideoActive] = useState(false);
   const toggleVideo = () => {
@@ -194,6 +190,25 @@ export default function Counselling() {
     };
   }, [sessionId]);
 
+  // 상대방 정보를 받기 위한 state
+  const [info, setInfo] = useState<{ seq: string; role: string }>();
+
+  useEffect(() => {
+    console.log(info);
+  }, [info]);
+
+    // 상담 종료버튼 액션
+    const navigate = useNavigate();
+
+    const handleEixt = () => {
+      if (localStorage.getItem("myRole") === "ROLE_CLIENT" && info) {
+        
+        navigate(`/review/${info.seq}`)
+      } else {
+        window.close();
+      }
+    };
+
   return (
     <>
       <s.Wrapper>
@@ -220,9 +235,15 @@ export default function Counselling() {
                 subscriber={subscriber as Subscriber}
               />
               <s.Chat>
-                <Chat session={session as OVSession} />
+                <Chat session={session as OVSession} setInfo={setInfo} />
               </s.Chat>
-              {publisher && <Controls publisher={publisher} toggleVideo={toggleVideo} isVideoActive={isVideoActive} />}
+              {publisher && (
+                <Controls
+                  publisher={publisher}
+                  toggleVideo={toggleVideo}
+                  isVideoActive={isVideoActive}
+                />
+              )}
             </s.BottomBox>
           </>
         )}

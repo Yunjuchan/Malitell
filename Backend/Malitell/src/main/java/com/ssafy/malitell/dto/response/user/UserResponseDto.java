@@ -23,7 +23,7 @@ public class UserResponseDto {
     private final int careerPeriod; // 경력
     private final double grade; // 평점
     private final String comment; // 소개 멘트
-    private final List<Integer> statusTags = new ArrayList<>();
+    private final List<StatusTag> statusTags;
 
     public UserResponseDto(User user) {
         this.userSeq = user.getUserSeq();
@@ -40,8 +40,6 @@ public class UserResponseDto {
         this.careerPeriod = user.getCareerPeriod();
         this.grade = user.getGrade();
         this.comment = user.getComment();
-        for (StatusTag statusTag : user.getStatusTags()) {
-            this.statusTags.add(statusTag.getStatusTagSeq());
-        }
+        this.statusTags = user.getStatusTags();
     }
 }

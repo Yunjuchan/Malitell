@@ -17,8 +17,8 @@ export default function ButtonBox({counselorSeq}: buttonBoxProps) {
   }
   return (
     <Wrapper>
-      <Button onClick={onReservation}>예약하기</Button>
-      <Button onClick={onGoBack}>뒤로가기</Button>
+      <Button onClick={onReservation} $color='#FBF3FD'>상담 예약하기</Button>
+      <Button onClick={onGoBack} $color='#bf94e4'>뒤로가기</Button>
     </Wrapper>
   )
 }

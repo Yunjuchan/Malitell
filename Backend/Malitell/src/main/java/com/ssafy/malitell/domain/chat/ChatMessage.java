@@ -1,41 +1,52 @@
 package com.ssafy.malitell.domain.chat;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.chat.MessageRequestDto;
-import jakarta.persistence.*;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
-import org.springframework.cglib.core.Local;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Document("chatMessage")
-@Entity
 @Getter
-//@RedisHash(value = "chat_message")
+@RedisHash(value = "chat_message")
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChatMessage {
+public class ChatMessage implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long chatMessageSeq;
+
     @ManyToOne(fetch = FetchType.LAZY)
+    @Indexed
     private ChatRoom chatRoom;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
     private String content;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
+
+    @JsonSerialize(using= LocalDateTimeSerializer.class)
+    @JsonDeserialize(using= LocalDateTimeDeserializer.class)
     private LocalDateTime sendTime;
+
     @ColumnDefault("false")
     private boolean isRead;
-
-    public void updateIsReadTrue() {
-        this.isRead = true;
-    }
 
     public ChatMessage(MessageRequestDto messageRequestDto, LocalDateTime sendTime, ChatRoom chatRoom, User user) {
         this.chatRoom = chatRoom;

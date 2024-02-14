@@ -7,7 +7,7 @@ import { GridList } from "../../styles/article/grid";
 import Bamboo from "../../components/common/banners/bamboo";
 import Metaverse from "../../components/common/banners/metaverse";
 import ArticleMenu from "../../components/article/articleList/articleMenu";
-
+import { useState } from "react";
 export default function Articles() {
   return (
     <>

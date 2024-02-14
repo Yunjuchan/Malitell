@@ -1,5 +1,5 @@
 package com.ssafy.malitell.domain.selfhelpgroup;
 
 public enum SelfHelpType {
-    A,B,C
+    진로,정서,대인관계,경제,건강
 }

@@ -19,12 +19,15 @@ public class CounselorUpdateRequestDto {
     private String profileImg;
     @NotNull
     private String professionalField;
+
+    private String educationField; // 학력사항
+    private String certificateField; // 자격증
     @NotNull
     private int careerPeriod;
     @NotNull
     private String comment;
 
-    private List<Integer> statusTags;
+    private List<String> statusTags;
 
     @Override
     public String toString() {

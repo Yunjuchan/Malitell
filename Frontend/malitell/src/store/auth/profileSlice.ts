@@ -76,16 +76,16 @@ export const fetchUserInfo = () => {
 
 // 내가 작성한 글 authApi
 export const fetchMyArticles = () => {
-    const res = authApi
-      .get(`/mypage/getAllBoards`)
-      .then((res) => {
-        return res.data;
-      })
-      .catch((error) => {
-        console.log("Failed to load:", error);
-      });
-    return res;
-  };
+  const res = authApi
+    .get(`/mypage/getAllBoards`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log("Failed to load:", error);
+    });
+  return res;
+};
 
 // 내가 스크랩한 글 authApi
 export const fetchScrap = () => {
@@ -100,14 +100,13 @@ export const fetchScrap = () => {
   return data;
 };
 
-// 내 상담일지 
+// 내 상담일지
 export const fetchCounselLog = () => {
-  const res = authApi
-  .get(`mypage/counselingLog`).then((res) => {
+  const res = authApi.get(`mypage/counselingLog`).then((res) => {
     return res.data;
-  })
-  return res
-}
+  });
+  return res;
+};
 
 // 자조모임 참가 조회
 export const mySHGroup = () => {
@@ -123,35 +122,50 @@ export const mySHGroup = () => {
 
 // 상담자 정보 수정 authapi
 export const editCounselorInfo = (editForm: editUserData) => {
-  authApi
-    .put("/mypage/user/counselor", { 
-      "name": editForm.name,
-      "email": editForm.email,
-      "phone": editForm.phone,
-      "profileImg": editForm.profileImg,
-      "professionalField": editForm.professionalField,
-      "careerPeriod": editForm.careerPeriod,
-      // "stateTags": [1,2]
-      "comment": editForm.comment,
-     })
+  const res = authApi
+    .put("/mypage/user/counselor", {
+      name: editForm.name,
+      email: editForm.email,
+      phone: editForm.phone,
+      profileImg: editForm.profileImg,
+      professionalField: editForm.professionalField,
+      careerPeriod: editForm.careerPeriod,
+      statusTags: editForm.statusTags,
+      comment: editForm.comment,
+    })
     .then((res) => {
       return res.data;
     })
+    .then((res) => {
+      if (editForm.profileImg) {
+        sessionStorage.setItem("myImg", editForm.profileImg || "");
+      }
+    })
+    .then((res) => window.location.reload())
     .catch((error) => console.error("Failed to Edit:", error));
+  return res;
 };
 
 // 내담자 정보 수정 authapi
 export const editClientInfo = (editForm: editUserData) => {
   authApi
     .put("/mypage/user/client", {
-      "name": editForm.name,
-      "email": editForm.email,
-      "phone": editForm.phone,
-      "statusTags": [1,2]
+      name: editForm.name,
+      email: editForm.email,
+      phone: editForm.phone,
+      profileImg: editForm.profileImg,
+      statusTags: editForm.statusTags,
     })
     .then((res) => {
       return res.data;
     })
+    .then((res) => {
+      console.log(res);
+      if (editForm.profileImg) {
+        sessionStorage.setItem("myImg", editForm.profileImg || "");
+      }
+    })
+    .then((res) => window.location.reload())
     .catch((error) => console.error("Failed to Edit:", error));
 };
 

@@ -34,8 +34,8 @@ import MyCounsel from "./components/auth/profile/myCounselCounselor";
 import MyGathering from "./components/auth/profile/myGathering";
 import PasswordChange from "./components/auth/profile/passwordChange";
 import MyInfoClient from "./components/auth/profile/myInfoClient";
-import MyInfoCounselor from "./components/auth/profile/myInfoCounselor";
 import Counselling from "./routes/counselling/counselling";
+import Review from "./routes/counselling/review";
 
 // 중첩라우팅
 const router = createBrowserRouter([
@@ -58,37 +58,37 @@ const router = createBrowserRouter([
             children: [
               {
                 path: "myInfo",
-                element: <MyInfoClient />
+                element: <MyInfoClient />,
               },
               {
                 path: "myScrab",
-                element: <MyScrab />
+                element: <MyScrab />,
               },
               {
                 path: "myReservation",
-                element: <MyReservation />
+                element: <MyReservation />,
               },
               {
                 path: "myArticle",
-                element: <MyArticle />
+                element: <MyArticle />,
               },
               {
                 path: "myReview",
-                element: <MyReview />
+                element: <MyReview />,
               },
               {
                 path: "myCounsel",
-                element: <MyCounsel />
+                element: <MyCounsel />,
               },
               {
                 path: "myGathering",
-                element: <MyGathering />
+                element: <MyGathering />,
               },
               {
                 path: "passwordChange",
-                element: <PasswordChange />
-              }
-            ]
+                element: <PasswordChange />,
+              },
+            ],
           },
           // // counsel
           {
@@ -155,6 +155,10 @@ const router = createBrowserRouter([
     element: <Counselling />,
   },
   {
+    path: "/review/:seq",
+    element: <Review />,
+  },
+  {
     path: "/chat12",
     element: <Chat />,
   },
@@ -164,8 +168,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/chat/room/:roomId",
-    element: <Room />
-  }
+    element: <Room />,
+  },
   // {
   //   path: "/test",
   //   element: <ModalTest />,
@@ -201,11 +205,7 @@ function App() {
     init();
   }, []);
 
-  return (
-    <>
-        {loading ? <Loading /> : <RouterProvider router={router} />}
-    </>
-  );
+  return <>{loading ? <Loading /> : <RouterProvider router={router} />}</>;
 }
 
 export default App;
