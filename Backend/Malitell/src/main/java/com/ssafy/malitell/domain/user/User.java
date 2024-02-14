@@ -2,6 +2,7 @@ package com.ssafy.malitell.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
+import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpType;
 import com.ssafy.malitell.domain.tag.StatusTag;
 import com.ssafy.malitell.dto.request.auth.SignUpRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
@@ -62,8 +63,7 @@ public class User {
     @JsonBackReference(value = "user-selfHelpGroupUser")
     private List<SelfHelpGroupUser> selfHelpGroupUsers = new ArrayList<>();
 
-    @OneToMany
-    @JsonBackReference(value = "user-statusTag")
+    @ElementCollection
     private List<StatusTag> statusTags = new ArrayList<>();
 
     public void addSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {
@@ -105,15 +105,19 @@ public class User {
         this.gender = gender;
     }
 
-    public void updateClient(ClientUpdateRequestDto clientUpdateRequestDto, List<StatusTag> statusTags) {
+    public void updateClient(ClientUpdateRequestDto clientUpdateRequestDto) {
         this.name = clientUpdateRequestDto.getName();
         this.email = clientUpdateRequestDto.getEmail();
         this.phone = clientUpdateRequestDto.getPhone();
         this.profileImg = clientUpdateRequestDto.getProfileImg();
-        this.statusTags = statusTags;
+        List<String> statusTags = clientUpdateRequestDto.getStatusTags();
+        this.statusTags.clear();
+        for (String statusTag : statusTags) {
+            this.statusTags.add(StatusTag.valueOf(statusTag));
+        }
     }
 
-    public void updateCounselor(CounselorUpdateRequestDto counselorUpdateRequestDto, List<StatusTag> statusTags) {
+    public void updateCounselor(CounselorUpdateRequestDto counselorUpdateRequestDto) {
         this.name = counselorUpdateRequestDto.getName();
         this.email = counselorUpdateRequestDto.getEmail();
         this.phone = counselorUpdateRequestDto.getPhone();
@@ -121,7 +125,11 @@ public class User {
         this.profileImg = counselorUpdateRequestDto.getProfileImg();
         this.professionalField = counselorUpdateRequestDto.getProfessionalField();
         this.comment = counselorUpdateRequestDto.getComment();
-        this.statusTags = statusTags;
+        this.statusTags.clear();
+        List<String> statusTagList = counselorUpdateRequestDto.getStatusTags();
+        for (String statusTag : statusTagList) {
+            this.statusTags.add(StatusTag.valueOf(statusTag));
+        }
     }
 
     public void updatePassword(String password) {

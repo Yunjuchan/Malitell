@@ -8,17 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-public class StatusTag {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int statusTagSeq;
-    private String tag;
-
-    public StatusTag(String tag) {
-        this.tag = tag;
-    }
+public enum StatusTag {
+    우울,불안,공황,자존감,다정한,진실성있는, 경청하는, 적극적인코칭
 }
