@@ -60,7 +60,7 @@ export default function Nav() {
   // dispatch는 비동기라 store의 상태가 변경되기 전에 navigate가 되므로
   // 초기 연결은 myInfo로 강제해야 제대로 url이 작동함
   const handleProfile = (e: React.MouseEvent): void => {
-    const token = window.localStorage.getItem("Access_Token");
+    const token = window.sessionStorage.getItem("Access_Token");
     if (token) {
       dispatch(setProfileMenu({ menu: "myInfo", menuKo: "내 정보" }));
       navigate(`/profile/myInfo`);
@@ -91,7 +91,7 @@ export default function Nav() {
           {/* 네브바 상단부분 */}
           <s.NavItems $col="11/13" $row="1/2" $align="end">
             {/* 토큰이 있으면 인사말, 로그아웃 버튼 */}
-            {localStorage.getItem("Access_Token") ? (
+            {sessionStorage.getItem("Access_Token") ? (
               <>
                 {/* 리덕스에서 회원정보 받아와야됨 */}
                 <s.NavItem $width="70px" $size="15px">

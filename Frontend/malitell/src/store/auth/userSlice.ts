@@ -33,16 +33,16 @@ export const login = (data: loginData) => {
       .then((res) => {
         console.log(res.data);
         console.log(res.headers.access_token);
-        localStorage.setItem("Access_Token", res.headers.access_token);
+        sessionStorage.setItem("Access_Token", res.headers.access_token);
         dispatch(saveUserInfo(res.data));
       })
       .then(() => {
         return fetchUserInfo();
       })
       .then((userInfo) => {
-        localStorage.setItem("mySeq", userInfo.userSeq);
-        localStorage.setItem("myImg", userInfo.profileImg);
-        localStorage.setItem("myRole", userInfo.role);
+        sessionStorage.setItem("mySeq", userInfo.userSeq);
+        sessionStorage.setItem("myImg", userInfo.profileImg);
+        sessionStorage.setItem("myRole", userInfo.role);
       })
       .then(() => {
         window.location.reload();
@@ -66,7 +66,7 @@ export const logout = () => {
       console.error("Failed to logout:", error);
     })
     .finally(() => {
-      localStorage.clear();
+      sessionStorage.clear();
     });
   return res;
 };

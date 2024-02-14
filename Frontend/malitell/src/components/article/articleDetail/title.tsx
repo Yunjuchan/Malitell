@@ -4,7 +4,7 @@ import * as t from "./types"
 
 
 export default function Title({article}: {article: t.Article}) {
-  const mySeq = Number(localStorage.getItem("mySeq")) || 0;
+  const mySeq = Number(sessionStorage.getItem("mySeq")) || 0;
   console.log(article)
   console.log(mySeq, article?.userSeq)
   return (

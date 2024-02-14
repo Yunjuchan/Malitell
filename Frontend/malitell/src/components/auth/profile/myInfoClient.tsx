@@ -5,7 +5,7 @@ import {
   editCounselorInfo,
   fetchUserInfo,
 } from "../../../store/auth/profileSlice";
-import { malitell } from "../../../assets/images/malitell.png"
+import { malitell } from "../../../assets/images/malitell.png";
 export interface editUserData {
   userId: string;
   name: string;
@@ -16,36 +16,26 @@ export interface editUserData {
   gender: string | null;
   role: string | null;
   profileImg: string | null;
-  statusTags: number[];
+  statusTags: string[];
   comment: null;
   careerPeriod: string | null;
   professionalField: string | null;
 }
-const clientTags = [
-  { idx: 1, tag: "우울" },
-  { idx: 2, tag: "불안" },
-  { idx: 3, tag: "공황" },
-  { idx: 4, tag: "자존감" },
-];
-const counselorTags = [
-  { idx: 5, tag: "다정한" },
-  { idx: 6, tag: "진실성 있는" },
-  { idx: 7, tag: "경청하는" },
-  { idx: 8, tag: "적극적인 코칭" },
-];
+const clientTags = ["우울", "불안", "공황", "자존감"];
+const counselorTags = ["다정한", "진실성있는", "경청하는", "적극적인코칭"];
 export default function MyInfoClient() {
   const [profileImage, setProfileImage] = useState(null);
   const [userData, setUserData] = useState<editUserData>();
-  const [selectedTags, setSelectedTags] = useState<number[]>([]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null); // 파일 입력 필드 참조 생성
 
-  const handleTagClick = (tagIndex: number) => {
-    if (selectedTags.includes(tagIndex)) {
+  const handleTagClick = (tag: string) => {
+    if (selectedTags.includes(tag)) {
       // 이미 선택된 태그를 클릭한 경우, 태그를 해제
-      setSelectedTags(selectedTags.filter((t) => t !== tagIndex));
+      setSelectedTags(selectedTags.filter((t) => t !== tag));
     } else {
       // 선택되지 않은 태그를 클릭한 경우, 태그를 선택
-      setSelectedTags([...selectedTags, tagIndex]);
+      setSelectedTags([...selectedTags, tag]);
     }
   };
 
@@ -102,7 +92,6 @@ export default function MyInfoClient() {
         editCounselorInfo(updatedUserData);
       }
     }
-    
   };
 
   useEffect(() => {
@@ -156,18 +145,18 @@ export default function MyInfoClient() {
                 지금 4개의 상태가 있는데 각 버튼들이 있고 선택된 버튼은 선택되지 않은 버튼과 볼 때 차이가 있도록 한다.
                 클릭을 하면 선택 상태가 토글이 되고 UserData.statusTags를 변화시킨다.
               */}
-                {clientTags.map((tagObj) => (
+                {clientTags.map((tag, index) => (
                   <button
-                    key={tagObj.idx}
+                    key={index}
                     type="button"
-                    onClick={() => handleTagClick(tagObj.idx)}
+                    onClick={() => handleTagClick(tag)}
                     style={{
-                      fontWeight: selectedTags.includes(tagObj.idx)
+                      fontWeight: selectedTags.includes(tag)
                         ? "bold"
                         : "normal",
                     }}
                   >
-                    {tagObj.tag}
+                    {tag}
                   </button>
                 ))}
               </div>
@@ -180,18 +169,18 @@ export default function MyInfoClient() {
                 지금 4개의 상태가 있는데 각 버튼들이 있고 선택된 버튼은 선택되지 않은 버튼과 볼 때 차이가 있도록 한다.
                 클릭을 하면 선택 상태가 토글이 되고 UserData.statusTags를 변화시킨다.
               */}
-                {counselorTags.map((tagObj) => (
+                {counselorTags.map((tag, index) => (
                   <button
-                    key={tagObj.idx}
+                    key={index}
                     type="button"
-                    onClick={() => handleTagClick(tagObj.idx)}
+                    onClick={() => handleTagClick(tag)}
                     style={{
-                      fontWeight: selectedTags.includes(tagObj.idx)
+                      fontWeight: selectedTags.includes(tag)
                         ? "bold"
                         : "normal",
                     }}
                   >
-                    {tagObj.tag}
+                    {tag}
                   </button>
                 ))}
               </div>

@@ -75,8 +75,8 @@ const Lobby: React.FC = () => {
     console.log(chatRoomSeq);
     const sender = prompt("대화명을 입력해 주세요.");
     if (sender !== null && sender !== "") {
-    localStorage.setItem("wschat.sender", sender);
-    localStorage.setItem("wschat.roomId", chatRoomSeq);
+    sessionStorage.setItem("wschat.sender", sender);
+    sessionStorage.setItem("wschat.roomId", chatRoomSeq);
     window.location.href = `/chat/room/${chatRoomSeq}`;
     }
   };

@@ -32,7 +32,7 @@ export const authApi: AxiosInstance = axios.create({
 });
 
 authApi.interceptors.request.use((config) => {
-  const token = localStorage.getItem("Access_Token");
+  const token = sessionStorage.getItem("Access_Token");
   if (token) {
     config.headers["Access_Token"] = token;
   }
@@ -44,7 +44,7 @@ const refreshAccessToken = () => {
   const res = authApi
     .get("/user/reissue")
     .then((res) => {
-      localStorage.setItem("Access_Token", res.headers.access_token)
+      sessionStorage.setItem("Access_Token", res.headers.access_token)
       return res.headers.access_token
     }
   );

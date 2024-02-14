@@ -7,7 +7,7 @@ export default function Counsel() {
   const navigate = useNavigate();
 
   const handleCounselling = () => {
-    // if (localStorage.getItem("Access_Token")) {
+    // if (sessionStorage.getItem("Access_Token")) {
     //   const url = "/counselling";
     //   window.open(url, "_blank", "width=1100, height=850");
     // } else {

@@ -65,8 +65,8 @@ export default function Chat({ session, setInfo }: Props) {
       session
         .signal({
           data: JSON.stringify({
-            seq: localStorage.getItem("mySeq"),
-            role: localStorage.getItem("myRole"),
+            seq: sessionStorage.getItem("mySeq"),
+            role: sessionStorage.getItem("myRole"),
           }),
           type: "info",
           to: [],
@@ -85,8 +85,8 @@ export default function Chat({ session, setInfo }: Props) {
         session
           .signal({
             data: JSON.stringify({
-              seq: localStorage.getItem("mySeq"),
-              role: localStorage.getItem("myRole"),
+              seq: sessionStorage.getItem("mySeq"),
+              role: sessionStorage.getItem("myRole"),
             }),
             type: "info",
             to: [],
@@ -111,7 +111,7 @@ export default function Chat({ session, setInfo }: Props) {
       if (event.type === 'signal:info' && event.data) {
         const data = JSON.parse(event.data);
 
-        if (data.seq !== localStorage.getItem("mySeq")) {
+        if (data.seq !== sessionStorage.getItem("mySeq")) {
           const info = {"seq": data.seq, "role": data.role}
           setInfo(info);
         }

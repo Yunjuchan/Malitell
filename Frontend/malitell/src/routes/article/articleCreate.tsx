@@ -18,7 +18,7 @@ const Text = styled.div`
 `;
 
 export default function ArticleCreate() {
-  const state = localStorage.getItem("state") || "";
+  const state = sessionStorage.getItem("state") || "";
   const parsedData = JSON.parse(state);
   const boardType = parsedData.boardType;
   const [board, setBoard] = useState("");

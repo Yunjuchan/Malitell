@@ -137,7 +137,9 @@ export const editCounselorInfo = (editForm: editUserData) => {
       return res.data;
     })
     .then((res) => {
-      localStorage.setItem("myImg", res.profileImg);
+      if (editForm.profileImg) {
+        sessionStorage.setItem("myImg", editForm.profileImg || "");
+      }
     })
     .then((res) => window.location.reload())
     .catch((error) => console.error("Failed to Edit:", error));
@@ -160,7 +162,7 @@ export const editClientInfo = (editForm: editUserData) => {
     .then((res) => {
       console.log(res);
       if (editForm.profileImg) {
-        localStorage.setItem("myImg", editForm.profileImg || "");
+        sessionStorage.setItem("myImg", editForm.profileImg || "");
       }
     })
     .then((res) => window.location.reload())
