@@ -26,10 +26,21 @@ export const Image = styled.img`
   background-color: white;
 `
 
-export const Tag = styled.div`
+export const TagBox = styled.div`
+display: flex;
+flex-wrap: wrap;
 width: 95%;
 height: 100px;
 margin: 20px auto;
+border-radius: 10px;
+box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
+background-color: white;
+`
+
+export const Tag = styled.div`
+width: 40%;
+height: 30px;
+margin: 10px auto;
 border-radius: 10px;
 box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
 background-color: white;

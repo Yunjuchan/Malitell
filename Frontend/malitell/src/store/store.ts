@@ -5,7 +5,7 @@ import userReducer from "./auth/userSlice";
 import boardTypeReducer from "./article/boardSlice";
 import profileReducer from "./auth/profileSlice";
 import loginModalReducer from "./common/loginModalSlice"
-import { loadState } from "./localStorage";
+import { loadState } from "./sessionStorage";
 const persistedState = loadState();
 
 

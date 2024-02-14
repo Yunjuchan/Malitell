@@ -13,13 +13,13 @@ interface Room {
 }
 
 export default function RoomComponent() {
-  const token = localStorage.getItem("Access_Token");
+  const token = sessionStorage.getItem("Access_Token");
   const url = `http:localhost:8080/ws-stomp`;
   const [room, setRoom] = useState<Room | null>(null);
   const [sender, setSender] = useState<string | null>(null);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
-  const roomId = useRef(localStorage.getItem("wschat.roomId"));
+  const roomId = useRef(sessionStorage.getItem("wschat.roomId"));
   const clientRef = useRef<any>();
 
   const findRoom = async () => {
@@ -75,7 +75,7 @@ export default function RoomComponent() {
   // };
 
   const sendMessage = () => {
-    // const Access_Token = localStorage.getItem("Access_Token");
+    // const Access_Token = sessionStorage.getItem("Access_Token");
 
     if (roomId.current) {
       clientRef.current.sendMessage(
@@ -87,7 +87,7 @@ export default function RoomComponent() {
           content: message,
           // sendTime: Date(),
         }),
-        { Access_Token: `${localStorage.getItem("Access_Token")}` }
+        { Access_Token: `${sessionStorage.getItem("Access_Token")}` }
       );
       // console.log(Access_Token)
       console.log("보냈다");
@@ -130,7 +130,7 @@ export default function RoomComponent() {
   // };
 
   useEffect(() => {
-    setSender(localStorage.getItem("wschat.sender"));
+    setSender(sessionStorage.getItem("wschat.sender"));
     findRoom();
     console.log(JSON.stringify({ token }));
   }, []);
@@ -160,7 +160,7 @@ export default function RoomComponent() {
         url={url}
         topics={["/sub/chat/room/" + roomId.current]}
         onMessage={recvMessage}
-        headers={{ Access_Token: `${localStorage.getItem("Access_Token")}` }}
+        headers={{ Access_Token: `${sessionStorage.getItem("Access_Token")}` }}
         onConnect={() => {
           console.log("Websocket connected");
         }}
