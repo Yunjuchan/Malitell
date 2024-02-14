@@ -17,6 +17,8 @@ export interface CounselorData {
   gender: string;
   profileImg: any;
   professionalField: any;
+  educationField: any;
+  certificateField: any;
   careerPeriod: number;
   grade: number;
   comment: any; // 아직 뭔지 모름
