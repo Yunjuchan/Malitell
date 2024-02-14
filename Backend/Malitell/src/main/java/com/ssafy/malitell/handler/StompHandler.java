@@ -2,11 +2,8 @@ package com.ssafy.malitell.handler;
 
 // import ... 생략
 
-import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.jwt.JWTUtil;
-import com.ssafy.malitell.repository.chat.ChatRoomRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
-import com.ssafy.malitell.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.Message;
@@ -16,8 +13,6 @@ import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.messaging.support.ChannelInterceptor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
-
-import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
