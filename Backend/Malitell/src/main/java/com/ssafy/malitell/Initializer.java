@@ -60,7 +60,7 @@ public class Initializer implements ApplicationRunner {
         userService.joinCounselor(joinDto4);
         userService.updateCounselorInfo("namyoullim", requestDto4);
 
-                CounselorJoinRequestDto joinDto5 = new CounselorJoinRequestDto("hwajinlee", "이화진", "이화진", "1234", "test@naver.com", "010-7262-6304", "19800315", "W", 15, "ROLE_COUNSELOR", "서울대학교 심리학 박사 전공 수료", "정신분석 전문가");
+        CounselorJoinRequestDto joinDto5 = new CounselorJoinRequestDto("hwajinlee", "이화진", "이화진", "1234", "test@naver.com", "010-7262-6304", "19800315", "W", 15, "ROLE_COUNSELOR", "서울대학교 심리학 박사 전공 수료", "정신분석 전문가");
         CounselorUpdateRequestDto requestDto5 = new CounselorUpdateRequestDto("이화진", "test@naver.com", "01072626304",
                 "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/0b5269a9-22f2-4a4a-9909-9cc1b6635c87/image_(3).png?id=15855ed0-3584-4a59-a105-4ee4272d9db8&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1707998400000&signature=Of0N09YpDzNO3hxWHbTY08n1mwccOJhal8GDJQKH4M4&downloadName=image+%283%29.png",
                 "정신분석학",
