@@ -54,6 +54,9 @@ public class User {
     private String alramMessage;
     private int readCheck; // 안 읽었으면 1 , 읽었으면 0
 
+    private String educationField; // 학력사항
+    private String certificateField; // 자격증
+
     // 참가하고 있는 자조모임
     @OneToMany(mappedBy = "user")
     @JsonBackReference(value = "user-selfHelpGroupUser")
