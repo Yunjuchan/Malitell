@@ -37,21 +37,7 @@ public class CounselingService {
 
         List<CounselorResponseDto> counselorList = new ArrayList<>();
         for(User counselor : list) {
-            int seq = counselor.getUserSeq();
-            String name = counselor.getName();
-            String email = counselor.getEmail();
-
-            Date date = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-            int age = Integer.parseInt(sdf.format(date)) - Integer.parseInt(counselor.getBirth().substring(0, 4));
-
-            String gender = counselor.getGender();
-            String profileImg = counselor.getProfileImg();
-            String professionalField = counselor.getProfessionalField();
-            int careerPeriod = counselor.getCareerPeriod();
-            double grade = counselor.getGrade();
-
-            CounselorResponseDto counselorDto = new CounselorResponseDto(seq, name, email, age, gender, profileImg, professionalField, careerPeriod, grade);
+            CounselorResponseDto counselorDto = new CounselorResponseDto(counselor);
             counselorList.add(counselorDto);
         }
 
@@ -62,28 +48,12 @@ public class CounselingService {
         Optional<User> counselor = userRepository.findById(counselorSeq);
 
         if(counselor.isPresent()) {
-            // 1. 상담자 정보 가져오기
-            String name = counselor.get().getName();
-            String email = counselor.get().getEmail();
-            String phone = counselor.get().getPhone();
-
-            Date date = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-            int age = Integer.parseInt(sdf.format(date)) - Integer.parseInt(counselor.get().getBirth().substring(0, 4));
-
-            String gender = counselor.get().getGender();
-            String profileImg = counselor.get().getProfileImg();
-            String professionalField = counselor.get().getProfessionalField();
-            int careerPeriod = counselor.get().getCareerPeriod();
-            double grade = counselor.get().getGrade();
-            String comment = counselor.get().getComment();
 
             // 2. 상담자의 상담후기 목록 가져오기
             List<CounselingReview> counselingReviewList = counselingReviewRepository.getCounselingReviewList(counselorSeq);
 
             // CounselorResponseDto에 상담자 정보 및 상담후기 목록 세팅
-            CounselorResponseDto dto = new CounselorResponseDto(counselorSeq, name, email, phone, age, gender, profileImg, professionalField, careerPeriod, grade, comment, counselingReviewList);
-            return dto;
+            return new CounselorResponseDto(counselor.get(), counselingReviewList);
 
         } else {
             throw new NoSuchElementException();
