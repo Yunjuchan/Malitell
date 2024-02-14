@@ -106,18 +106,18 @@ public class CounselingController {
         return new ResponseEntity<>(myCounselingReviewResponseDto, HttpStatus.OK);
     }
 
+    // [상담자] 내 상담 리뷰 조회
+    @GetMapping("/myReview")
+    public ResponseEntity<List<CounselorReviewResponseDto>> getMyReview(Principal principal) {
+        List<CounselorReviewResponseDto> counselingReviewList = counselingService.getCounselingReviewList(principal);
+        return new ResponseEntity<>(counselingReviewList, HttpStatus.OK);
+    }
+
     // 상담후기 삭제
     @DeleteMapping("/mypage/counselingReviewList/{counselingReviewSeq}")
     public ResponseEntity<Void> deleteCounselingReview(@PathVariable int counselingReviewSeq) {
         counselingService.deleteCounselingReview(counselingReviewSeq);
         return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    // 상담자 내 리뷰 조회
-    @GetMapping("/myReview")
-    public ResponseEntity<List<CounselorReviewResponseDto>> getMyReview(Principal principal) {
-        List<CounselorReviewResponseDto> counselingReviewList = counselingService.getCounselingReviewList(principal);
-        return new ResponseEntity<>(counselingReviewList, HttpStatus.OK);
     }
 
 }
