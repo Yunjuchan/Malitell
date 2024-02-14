@@ -319,17 +319,18 @@ public class CounselingService {
     }
 
     @Transactional
-    public void writeCounselingReview(int counselingSeq, CounselingReviewRequestDto counselingReviewRequestDto) {
+    public void writeCounselingReview(CounselingReviewRequestDto counselingReviewRequestDto, Principal principal) {
+        String clientId = principal.getName();
+        User client = counselingRepository.findByUserId(clientId);
+        int clientSeq = client.getUserSeq();
+        int counselorSeq = counselingReviewRequestDto.getCounselorSeq();
         String content = counselingReviewRequestDto.getContent();
         int grade = counselingReviewRequestDto.getGrade();
 
-        Optional<Counseling> counseling = counselingRepository.findById(counselingSeq);
-
-        CounselingReview counselingReview = new CounselingReview(counseling.get(), content, grade);
+        CounselingReview counselingReview = new CounselingReview(clientSeq, counselorSeq, content, grade);
         counselingReviewRepository.save(counselingReview);
 
         // 상담자 평점 업데이트
-        int counselorSeq = counseling.get().getCounselorSeq();
         List<CounselingReview> counselorReviewList = counselingRepository.counselorReviewList(counselorSeq);
 
         int sum = 0;
@@ -346,6 +347,7 @@ public class CounselingService {
         }
     }
 
+    // [내담자] 내가 작성한 상담후기 목록 가져오기
     public List<CounselorReviewResponseDto> getCounselingReviewList(Principal principal) {
         List<CounselorReviewResponseDto> counselingReviewList = new ArrayList<>();
 
@@ -353,9 +355,9 @@ public class CounselingService {
         User user = userRepository.findByUserId(loginUserId);
         int loginUserSeq = user.getUserSeq();
 
-        List<CounselingReview> myCounselingReviewList = counselingReviewRepository.getCounselorReviewList(loginUserSeq);
+        List<CounselingReview> myCounselingReviewList = counselingReviewRepository.getMyReviewList(loginUserSeq);
         for (CounselingReview review : myCounselingReviewList) {
-            int clientSeq = review.getCounseling().getClientSeq();
+            int clientSeq = review.getClientSeq();
             Optional<User> client = userRepository.findById(clientSeq);
             String clientName = client.get().getName();
 
@@ -378,7 +380,7 @@ public class CounselingService {
         Set<String> counselorNameSet = new HashSet<>();
         List<CounselingReview> myCounselingReviewList = counselingReviewRepository.getMyCounselingReviewList(loginUserSeq);
         for (CounselingReview review : myCounselingReviewList) {
-            int counselorSeq = review.getCounseling().getCounselorSeq();
+            int counselorSeq = review.getCounselorSeq();
             Optional<User> counselor = userRepository.findById(counselorSeq);
             String counselorName = counselor.get().getName();
             counselorNameSet.add(counselorName);
