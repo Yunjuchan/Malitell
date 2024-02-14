@@ -1,11 +1,12 @@
 package com.ssafy.malitell.domain.chat;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.ssafy.malitell.domain.user.User;
-import com.ssafy.malitell.dto.request.chat.MessageRequestDto;
+import com.ssafy.malitell.dto.request.chat.ChatMessageDto;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +20,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
 
-import java.io.Serializable;
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 @Document("chatMessage")
@@ -27,10 +28,11 @@ import java.time.LocalDateTime;
 @RedisHash(value = "chat_message")
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChatMessage implements Serializable {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ChatMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long chatMessageSeq;
+    private BigInteger chatMessageSeq;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @Indexed
@@ -48,10 +50,10 @@ public class ChatMessage implements Serializable {
     @ColumnDefault("false")
     private boolean isRead;
 
-    public ChatMessage(MessageRequestDto messageRequestDto, LocalDateTime sendTime, ChatRoom chatRoom, User user) {
+    public ChatMessage(ChatMessageDto chatMessageDto, LocalDateTime sendTime, ChatRoom chatRoom, User user) {
         this.chatRoom = chatRoom;
         this.user = user;
-        this.content = messageRequestDto.getContent();
+        this.content = chatMessageDto.getContent();
         this.sendTime = sendTime;
     }
 }

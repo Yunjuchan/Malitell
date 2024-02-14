@@ -1,5 +1,7 @@
 package com.ssafy.malitell.domain.selfhelpgroup;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ssafy.malitell.domain.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -18,7 +20,8 @@ public class SelfHelpGroupUser {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JsonBackReference
+    @JoinColumn(name = "user_seq")
     private User user;
 
     @ManyToOne
