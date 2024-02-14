@@ -11,8 +11,13 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  &:hover {
+  &.modal {
+    background-color: #bf94e4;
+    color: white;
+    font-weight: bold;
+  }
+  &.modal:hover {
     transition: all 0.2s;
-    transform: scale(1.2);
+    transform: scale(1.05);
   }
 `;
