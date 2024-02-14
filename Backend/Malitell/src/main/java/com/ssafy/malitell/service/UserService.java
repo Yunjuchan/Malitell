@@ -108,12 +108,14 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @Transactional
     public UserResponseDto findUserInfo(String userId) {
         User findUser = userRepository.findByUserId(userId);
         return new UserResponseDto(findUser);
 
     }
 
+    @Transactional
     public User findUser(String userId) {
         return userRepository.findByUserId(userId);
     }

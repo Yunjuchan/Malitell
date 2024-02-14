@@ -1,41 +1,39 @@
 package com.ssafy.malitell.controller;
 
-import com.ssafy.malitell.domain.chat.ChatMessage;
-import com.ssafy.malitell.domain.chat.ChatRoom;
-import com.ssafy.malitell.domain.user.User;
-import com.ssafy.malitell.dto.request.chat.MessageRequestDto;
-import com.ssafy.malitell.service.UserService;
+import com.ssafy.malitell.dto.request.chat.ChatMessageDto;
 import com.ssafy.malitell.service.chat.ChatService;
+import com.ssafy.malitell.service.chat.RedisPublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
-@RestController
+@Controller
 @Slf4j
 @RequiredArgsConstructor
 public class MessageController {
 
     private final ChatService chatService;
 
-    private final RedisTemplate redisTemplate;
-
-    private final UserService userService;
+    private final RedisPublisher redisPublisher;
 
     private final ChannelTopic channelTopic;
 
     @MessageMapping("/chat/message")
-    public void message(@RequestBody MessageRequestDto requestDto) {
-        ChatRoom chatRoom = chatService.findRoom(requestDto.getChatRoomSeq());
-        User user = userService.findByUserSeq(requestDto.getUserSeq());
-        LocalDateTime sendTime = LocalDateTime.now();
+    public void message(@RequestBody ChatMessageDto chatMessageDto) {
+        chatService.saveMessage(chatMessageDto);
+        redisPublisher.publish(chatService.getTopic(chatMessageDto.getChatRoomSeq()), chatMessageDto);
+    }
 
-        ChatMessage chatMessage = new ChatMessage(requestDto, sendTime, chatRoom, user);
-        redisTemplate.convertAndSend(channelTopic.getTopic(), chatMessage);
+    @GetMapping("/api/room/{chatRoomSeq}/message")
+    public ResponseEntity<List<ChatMessageDto>> loadMessage(@PathVariable String chatRoomSeq) {
+        return ResponseEntity.ok(chatService.loadMessage(chatRoomSeq));
     }
 }

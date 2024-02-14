@@ -1,5 +1,6 @@
 package com.ssafy.malitell.domain.selfhelpgroup;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ssafy.malitell.dto.request.board.gathering.GatheringCreateRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -36,7 +37,7 @@ public class SelfHelpGroup {
     private SelfHelpType selfHelpType;
 
     // 자조모임에 참가하는 사람
-    @OneToMany(mappedBy = "selfHelpGroup", fetch=FetchType.LAZY, cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+    @OneToMany(mappedBy = "selfHelpGroup", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     private List<SelfHelpGroupUser> selfHelpGroupUsers;
 
     public void addSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {

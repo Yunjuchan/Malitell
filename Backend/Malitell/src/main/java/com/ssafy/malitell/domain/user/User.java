@@ -1,6 +1,7 @@
 package com.ssafy.malitell.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
 import com.ssafy.malitell.domain.tag.StatusTag;
 import com.ssafy.malitell.dto.request.auth.SignUpRequestDto;
@@ -13,6 +14,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,12 +58,11 @@ public class User {
     private int readCheck; // 안 읽었으면 1 , 읽었으면 0
 
     // 참가하고 있는 자조모임
+    @JsonManagedReference
     @OneToMany(mappedBy = "user")
-    @JsonBackReference(value = "user-selfHelpGroupUser")
     private List<SelfHelpGroupUser> selfHelpGroupUsers = new ArrayList<>();
 
     @OneToMany
-    @JsonBackReference(value = "user-statusTag")
     private List<StatusTag> statusTags = new ArrayList<>();
 
     public void addSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {

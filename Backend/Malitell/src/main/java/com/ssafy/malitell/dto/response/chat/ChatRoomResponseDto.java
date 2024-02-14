@@ -5,9 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @AllArgsConstructor
-public class ChatRoomResponseDto {
+public class ChatRoomResponseDto implements Serializable {
     private String chatRoomSeq;
     private int counselorSeq;
     private int clientSeq;
@@ -16,5 +18,9 @@ public class ChatRoomResponseDto {
         this.chatRoomSeq = chatRoom.getChatRoomSeq();
         this.counselorSeq = chatRoom.getCounselor().getUserSeq();
         this.clientSeq = chatRoom.getClient().getUserSeq();
+    }
+
+    public ChatRoomResponseDto(String chatRoomSeq) {
+        this.chatRoomSeq = chatRoomSeq;
     }
 }

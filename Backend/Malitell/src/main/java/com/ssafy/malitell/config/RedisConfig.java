@@ -1,7 +1,9 @@
 package com.ssafy.malitell.config;
 
+import com.ssafy.malitell.dto.request.chat.ChatMessageDto;
 import com.ssafy.malitell.service.chat.RedisSubscriber;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -16,6 +18,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @RequiredArgsConstructor
 @Configuration
+@EnableCaching
 public class RedisConfig {
     @Bean
     public ChannelTopic channelTopic() {
@@ -45,6 +48,15 @@ public class RedisConfig {
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(connectionFactory);
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(String.class));
+        return redisTemplate;
+    }
+
+    @Bean
+    public RedisTemplate<String, ChatMessageDto> redisTemplateMessage(RedisConnectionFactory connectionFactory) {
+        RedisTemplate<String, ChatMessageDto> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(connectionFactory);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(String.class));
