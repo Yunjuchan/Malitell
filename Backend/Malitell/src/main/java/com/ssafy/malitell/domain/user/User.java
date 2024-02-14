@@ -1,6 +1,7 @@
 package com.ssafy.malitell.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpType;
 import com.ssafy.malitell.domain.tag.StatusTag;
@@ -14,6 +15,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,8 +62,8 @@ public class User {
     private String certificateField; // 자격증
 
     // 참가하고 있는 자조모임
+    @JsonManagedReference
     @OneToMany(mappedBy = "user")
-    @JsonBackReference(value = "user-selfHelpGroupUser")
     private List<SelfHelpGroupUser> selfHelpGroupUsers = new ArrayList<>();
 
     @ElementCollection

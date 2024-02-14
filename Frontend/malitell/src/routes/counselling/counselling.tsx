@@ -201,7 +201,7 @@ export default function Counselling() {
     const navigate = useNavigate();
 
     const handleEixt = () => {
-      if (localStorage.getItem("myRole") === "ROLE_CLIENT" && info) {
+      if (sessionStorage.getItem("myRole") === "ROLE_CLIENT" && info) {
         
         navigate(`/review/${info.seq}`)
       } else {

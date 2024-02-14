@@ -51,6 +51,7 @@ public class SelfHelpGroupService {
         findSelfHelpGroup.get().addSelfHelpGroupUsers(selfHelpGroupUser);
     }
 
+    @Transactional
     // 자조모임 조회
     public List<SelfHelpGroupResponseDto> getAllSelfHelpGroups(Principal principal) {
         String userId = principal.getName();
