@@ -104,7 +104,7 @@ public class Initializer implements ApplicationRunner {
                 "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/6857f37a-38ce-4b36-9db3-cade188daaf1/Untitled.png?id=ce505265-3e97-467d-802f-d31ea0dc791b&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1708005600000&signature=VYzMgPxUeD-OHUtS440ej9nCcAREIJcNloPPJGzegWE&downloadName=Untitled.png",
                 "청소년 상담",
                 "한양대학교 심리학 석사 전공",
-                "청소년상담 전문가"
+                "청소년상담 전문가",
                 7,
                 "소년기, 그 어려움을 함께 나누고 이해하는 공간을 제공하겠습니다.",
                 new ArrayList<>()
