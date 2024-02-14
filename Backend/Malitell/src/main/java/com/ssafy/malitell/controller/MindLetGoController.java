@@ -17,21 +17,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/mindLetGo")
 @RequiredArgsConstructor
-@EnableScheduling
 public class MindLetGoController {
     private final MindLetGoService mindLetGoService;
-
-    // MinLetGo 주제 랜덤 변경
-    @Scheduled(fixedRate = 1209600000)
-    public void updateTopic() {
-        mindLetGoService.deleteAll();
-        mindLetGoService.updateTopic();
-    }
 
     // MindLetGo 작성
     @PostMapping
     public ResponseEntity<?> createMindLetGo(@RequestBody MindLetGoRequestDto mindLetGoRequestDto, Principal principal) {
-        mindLetGoRequestDto.setMindLetGoTopicSeq(mindLetGoService.findTopic());
         String userId = principal.getName();
         mindLetGoService.createMindLetGo(mindLetGoRequestDto, userId);
         return new ResponseEntity<>(HttpStatus.OK);

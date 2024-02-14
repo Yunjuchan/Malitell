@@ -22,7 +22,7 @@ import java.util.List;
 public class MindLetGoService {
     private final MindLetGoRepository mindLetGoRepository;
     private final MindLetGoTopicRepositoryImpl mindLetGoTopicRepository;
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public int createMindLetGo(MindLetGoRequestDto mindLetGoRequestDto, String userId) {
         User findUser = userRepository.findByUserId(userId);
