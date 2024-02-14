@@ -215,4 +215,15 @@ public class ChatService {
 
         return messageList;
     }
+
+    // 쪽지방 입장
+    public void enterMessageRoom(String roomId) {
+        ChannelTopic topic = topics.get(roomId);
+
+        if (topic == null) {
+            topic = new ChannelTopic(roomId);
+            redisMessageListenerContainer.addMessageListener(redisSubscriber, topic);        // pub/sub 통신을 위해 리스너를 설정. 대화가 가능해진다
+            topics.put(roomId, topic);
+        }
+    }
 }

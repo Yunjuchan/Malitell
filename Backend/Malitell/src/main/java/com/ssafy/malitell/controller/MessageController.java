@@ -28,6 +28,7 @@ public class MessageController {
 
     @MessageMapping("/chat/message")
     public void message(@RequestBody ChatMessageDto chatMessageDto) {
+        chatService.enterMessageRoom(chatMessageDto.getChatRoomSeq());
         chatService.saveMessage(chatMessageDto);
         redisPublisher.publish(chatService.getTopic(chatMessageDto.getChatRoomSeq()), chatMessageDto);
     }
