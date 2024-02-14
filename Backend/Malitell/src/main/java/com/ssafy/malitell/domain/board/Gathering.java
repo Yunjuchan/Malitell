@@ -47,24 +47,18 @@ public class Gathering {
     // 게시물 조회수
     private int hit;
 
-    // 태그
-    @Convert(converter = WorryTagConverter.class)
-    private WorryTag worryTag;
-
-    public Gathering(SelfHelpGroup selfHelpGroup, User user, String title, String content, WorryTag worryTag) {
+    public Gathering(SelfHelpGroup selfHelpGroup, User user, String title, String content) {
         this.selfHelpGroup = selfHelpGroup;
         this.user = user;
         this.title = title;
         this.content = content;
         this.hit = 0;
         this.time = new Timestamp(System.currentTimeMillis());
-        this.worryTag = worryTag;
     }
 
-    public void update(GatheringUpdateRequestDto requestDto, WorryTag worryTag) {
+    public void update(GatheringUpdateRequestDto requestDto) {
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
-        this.worryTag = worryTag;
     }
 
     public void hitCountUp() {
