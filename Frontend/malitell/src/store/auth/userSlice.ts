@@ -3,6 +3,7 @@ import type { Dispatch, PayloadAction } from "@reduxjs/toolkit";
 import { api, authApi, loginApi } from "../axiosInstance";
 import { toFormData } from "axios";
 import { fetchUserInfo } from "./profileSlice";
+import { useDispatch } from "react-redux";
 
 export interface UserState {
   userId: string;
@@ -55,9 +56,11 @@ export const login = (data: loginData) => {
 // 로그아웃
 export const logout = () => {
   const res = api
-    .post("/logout")
+    .get("/logout")
     .then((res) => {
+      const dispatch = useDispatch();
       // 로그아웃 요청이 성공하면 Redux store의 user 정보를 삭제
+      dispatch(userLogout());
     })
     .catch((error) => {
       console.error("Failed to logout:", error);
