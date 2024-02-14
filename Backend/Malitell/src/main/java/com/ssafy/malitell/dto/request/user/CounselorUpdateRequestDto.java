@@ -24,7 +24,7 @@ public class CounselorUpdateRequestDto {
     @NotNull
     private String comment;
 
-    private List<Integer> statusTags;
+    private List<String> statusTags;
 
     @Override
     public String toString() {
