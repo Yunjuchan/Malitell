@@ -34,15 +34,17 @@ export default function Content({ contents }: modalProps) {
   };
 
   return (
-    <s.Wrapper $display={contents}>
-      {results.map((index) => (
-        <Card
-          key={index}
-          cardDisplay={cardDisplay}
-          index={index}
-          flip={flip[index].display}
-        />
-      ))}
-    </s.Wrapper>
+    <>
+      <s.Wrapper $display={contents}>
+        {results.map((index) => (
+          <Card
+            key={index}
+            cardDisplay={cardDisplay}
+            index={index}
+            flip={flip[index].display}
+          />
+        ))}
+      </s.Wrapper>
+    </>
   );
 }

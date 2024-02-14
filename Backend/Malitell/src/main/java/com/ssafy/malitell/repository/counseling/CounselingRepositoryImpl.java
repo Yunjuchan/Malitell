@@ -16,8 +16,9 @@ public class CounselingRepositoryImpl implements CounselingRepositoryCustom {
 
     @Override
     public List<Counseling> findAllBySeq(int userSeq) {
-        return entityManager.createQuery("SELECT c FROM Counseling c WHERE c.clientSeq = :clientSeq", Counseling.class)
+        return entityManager.createQuery("SELECT c FROM Counseling c WHERE c.clientSeq = :clientSeq or c.counselorSeq = :counselorSeq", Counseling.class)
                 .setParameter("clientSeq", userSeq)
+                .setParameter("counselorSeq", userSeq)
                 .getResultList();
     }
 

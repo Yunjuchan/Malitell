@@ -1,5 +1,6 @@
 package com.ssafy.malitell.dto.response.counseling;
 
+import com.ssafy.malitell.domain.counseling.Counseling;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -9,7 +10,15 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class ReservationListResponseDto {
 
+    private String clientName;
+    private String counselorName;
+    private String counselingSubject;
     private Timestamp counselingDate;
-    private String name;
 
+    public ReservationListResponseDto(Counseling counseling, String clientName, String counselorName) {
+        this.clientName = clientName;
+        this.counselorName = counselorName;
+        this.counselingSubject = counseling.getCounselingSubject();
+        this.counselingDate = counseling.getCounselingDate();
+    }
 }

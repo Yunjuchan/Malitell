@@ -11,6 +11,12 @@ const fadeOut = keyframes`
   }
 `;
 
+export const Select = styled.div`
+  position: absoulute;
+  top: 5%;
+  left: 50%;
+`
+
 export const Wrapper = styled.div<{
   $display?: string;
   $fadeOut?: string;
