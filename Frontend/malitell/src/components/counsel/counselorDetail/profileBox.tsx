@@ -18,7 +18,7 @@ export default function ProfileBox({counselor}: CounselorProps) {
       <ProfileImage src={counselor.profileImg? counselor.profileImg : malitell} alt="img" />
       <ProfileWrapper>
         <Name>{counselor.name}</Name>
-        <Reputation>{counselor.grade}</Reputation>
+        <Reputation>{counselor.grade.toFixed(2)}</Reputation>
       </ProfileWrapper>
     </Wrapper>
   );
