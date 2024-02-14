@@ -5,9 +5,7 @@ import com.ssafy.malitell.domain.chat.ChatRoom;
 import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.chat.ChatMessageDto;
 import com.ssafy.malitell.dto.request.chat.ChatMessageRequestDto;
-import com.ssafy.malitell.dto.request.chat.ChatRequestDto;
 import com.ssafy.malitell.dto.request.chat.ChatRoomDto;
-import com.ssafy.malitell.dto.response.chat.ChatMessageResponseDto;
 import com.ssafy.malitell.dto.response.chat.ChatRoomResponseDto;
 import com.ssafy.malitell.repository.chat.ChatMessageRepository;
 import com.ssafy.malitell.repository.chat.ChatRoomRepository;
@@ -55,21 +53,17 @@ public class ChatService {
     }
 
     @Transactional
-    public List<ChatRoomDto> findAllRoom() {
+    public List<ChatRoomDto> findAllRooms() {
         return opsHashChatRoom.values(CHAT_ROOMS);
     }
 
-    public ChatRoomDto findRoomById(String chatRoomSeq) {
-        return opsHashChatRoom.get(CHAT_ROOMS, chatRoomSeq);
-    }
-
-    public ChatRoomResponseDto createChatRoom(User counselor, User client) {
-        ChatRoom chatRoom = ChatRoom.create(counselor, client);
-        ChatRoomDto chatRoomDto = new ChatRoomDto(chatRoom);
-
-        opsHashChatRoom.put(CHAT_ROOMS, chatRoom.getChatRoomSeq(), chatRoomDto);
-        return new ChatRoomResponseDto(chatRoom);
-    }
+//    public ChatRoomResponseDto createChatRoom(User counselor, User client) {
+//        ChatRoom chatRoom = ChatRoom.create(counselor, client);
+//        ChatRoomDto chatRoomDto = new ChatRoomDto(chatRoom);
+//
+//        opsHashChatRoom.put(CHAT_ROOMS, chatRoom.getChatRoomSeq(), chatRoomDto);
+//        return new ChatRoomResponseDto(chatRoom);
+//    }
 
     @Transactional
     public ChatRoomResponseDto createChatRoom(ChatMessageRequestDto messageRequestDto) throws Exception {
@@ -96,66 +90,9 @@ public class ChatService {
         }
     }
 
-//    @Transactional
-//    public List<ChatMessageResponseDto> findAllRoomByUser(User counselor, User client) {
-//        List<ChatRoom> chatRoomList = chatRoomRepository.findAllChatRoomByCounselorAndClient(counselor, client);
-//
-//        List<ChatMessageResponseDto> chatMessageResponseDtos = new ArrayList<>();
-//
-//        for (ChatRoom messageRoom : chatRoomList) {
-//            if (chatRoomList != null) {
-//
-//                ChatMessageResponseDto chatMessageResponseDto = new ChatMessageResponseDto();
-//                chatMessageResponseDtos.add(messageRoom);
-//            }
-//
-//
-//
-//            //  user 가 sender 인 경우
-//            if (user.getNickname().equals(messageRoom.getSender())) {
-//                MessageResponseDto messageRoomDto = new MessageResponseDto(
-//                        messageRoom.getId(),
-//                        messageRoom.getReceiver(),        // roomName
-//                        messageRoom.getRoomId(),
-//                        messageRoom.getSender(),
-//                        messageRoom.getReceiver());
-//
-//                // 8. 가장 최신 메시지 & 생성 시간 조회
-//                Message latestMessage = messageRepository.findTopByRoomIdOrderByCreatedAtDesc(messageRoom.getRoomId());
-//                if (latestMessage != null) {
-//                    messageRoomDto.setLatestMessageCreatedAt(latestMessage.getCreatedAt());
-//                    messageRoomDto.setLatestMessageContent(latestMessage.getMessage());
-//                }
-//
-//                messageRoomDtos.add(messageRoomDto);
-//                // user 가 receiver 인 경우
-//            } else {
-//                MessageResponseDto messageRoomDto = new MessageResponseDto(
-//                        messageRoom.getId(),
-//                        messageRoom.getSender(),        // roomName
-//                        messageRoom.getRoomId(),
-//                        messageRoom.getSender(),
-//                        messageRoom.getReceiver());
-//
-//                // 가장 최신 메시지 & 생성 시간 조회
-//                Message latestMessage = messageRepository.findTopByRoomIdOrderByCreatedAtDesc(messageRoom.getRoomId());
-//                if (latestMessage != null) {
-//                    messageRoomDto.setLatestMessageCreatedAt(latestMessage.getCreatedAt());
-//                    messageRoomDto.setLatestMessageContent(latestMessage.getMessage());
-//                }
-//
-//                messageRoomDtos.add(messageRoomDto);
-//            }
-//        }
-//
-//        return messageRoomDtos;
-//
-//        return chatRoomRepository.findAllRoom();
+//    public List<ChatRoom> findAllRooms() {
+//        return chatRoomRepository.findAll();
 //    }
-
-    public List<ChatRoom> findAllRooms() {
-        return chatRoomRepository.findAll();
-    }
 
     public ChatRoomDto findRoom(String chatRoomSeq) {
         return new ChatRoomDto(chatRoomRepository.findRoomByChatRoomSeq(chatRoomSeq));

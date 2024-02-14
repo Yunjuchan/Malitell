@@ -1,6 +1,5 @@
 package com.ssafy.malitell.service.chat;
 
-import com.ssafy.malitell.domain.chat.ChatMessage;
 import com.ssafy.malitell.dto.request.chat.ChatMessageDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;

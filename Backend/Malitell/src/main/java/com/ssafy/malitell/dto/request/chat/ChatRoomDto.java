@@ -21,8 +21,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ChatRoomDto implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 6494678977089006639L;
     private String chatRoomSeq;
     private int counselorSeq;
     private int clientSeq;
