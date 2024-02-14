@@ -21,8 +21,6 @@ public class GatheringListResponseDto {
     private int hit;
     private Timestamp time;
     private int boardSeq;
-    // 태그
-    private WorryTag worryTag;
 
     public GatheringListResponseDto(Gathering gathering) {
         this.title = gathering.getTitle();
@@ -30,6 +28,5 @@ public class GatheringListResponseDto {
         this.hit = gathering.getHit();
         this.time = gathering.getTime();
         this.boardSeq = gathering.getGatheringSeq();
-        this.worryTag = gathering.getWorryTag();
     }
 }

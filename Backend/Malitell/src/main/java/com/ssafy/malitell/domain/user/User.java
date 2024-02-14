@@ -4,12 +4,10 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ssafy.malitell.domain.selfhelpgroup.SelfHelpGroupUser;
 import com.ssafy.malitell.domain.tag.StatusTag;
 import com.ssafy.malitell.dto.request.auth.SignUpRequestDto;
-import com.ssafy.malitell.dto.request.chat.MessageRequestDto;
 import com.ssafy.malitell.dto.request.user.ClientUpdateRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Null;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -52,19 +50,17 @@ public class User {
     private double grade; // 평점
     private String comment; // 소개 멘트
     private String type; // 타입 (kakao, naver)
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-//    List<Board> boards = new ArrayList<>();
 
     private String alramMessage;
     private int readCheck; // 안 읽었으면 1 , 읽었으면 0
 
     // 참가하고 있는 자조모임
     @OneToMany(mappedBy = "user")
-    @JsonBackReference
+    @JsonBackReference(value = "user-selfHelpGroupUser")
     private List<SelfHelpGroupUser> selfHelpGroupUsers = new ArrayList<>();
 
     @OneToMany
-    @JsonBackReference
+    @JsonBackReference(value = "user-statusTag")
     private List<StatusTag> statusTags = new ArrayList<>();
 
     public void addSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {

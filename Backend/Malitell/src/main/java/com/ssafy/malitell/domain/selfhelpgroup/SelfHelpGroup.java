@@ -53,7 +53,7 @@ public class SelfHelpGroup {
         this.title = gatheringCreateRequestDto.getSelfHelpGroupTitle();
         this.content = gatheringCreateRequestDto.getSelfHelpGroupContent();
         this.times = gatheringCreateRequestDto.getTimes();
-        this.selfHelpType = SelfHelpType.valueOf(gatheringCreateRequestDto.getSelfHelpType().toUpperCase());
+        this.selfHelpType = SelfHelpType.valueOf(gatheringCreateRequestDto.getSelfHelpType());
         this.selfHelpGroupUsers = new ArrayList<>(gatheringCreateRequestDto.getSelfHelpGroupHeadCount());
     }
 

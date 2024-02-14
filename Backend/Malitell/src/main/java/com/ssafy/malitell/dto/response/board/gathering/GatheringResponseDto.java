@@ -24,7 +24,6 @@ public class GatheringResponseDto {
     private final Timestamp time;
     private final int userSeq;
     private final List<CommentResponseDto> gatheringComments = new ArrayList<>();
-    private final WorryTag worryTag;
 
     public GatheringResponseDto(Gathering gathering, List<GatheringComment> commentResponseDtos) {
         this.title = gathering.getTitle();
@@ -34,7 +33,6 @@ public class GatheringResponseDto {
         this.hit = gathering.getHit();
         this.time = gathering.getTime();
         this.userSeq = gathering.getUser().getUserSeq();
-        this.worryTag = gathering.getWorryTag();
         for (GatheringComment commentResponseDto : commentResponseDtos) {
             gatheringComments.add(new CommentResponseDto(commentResponseDto));
         }
