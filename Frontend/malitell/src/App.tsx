@@ -155,7 +155,7 @@ const router = createBrowserRouter([
     element: <Counselling />,
   },
   {
-    path: "/review",
+    path: "/review/:seq",
     element: <Review />,
   },
   {

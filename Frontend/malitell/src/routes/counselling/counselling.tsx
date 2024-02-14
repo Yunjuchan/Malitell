@@ -1,9 +1,11 @@
 import React from "react";
 import { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   OpenVidu,
   Session as OVSession,
   Publisher,
+  SessionDisconnectedEvent,
   Subscriber,
 } from "openvidu-browser";
 import axios, { AxiosError } from "axios";
@@ -161,12 +163,6 @@ export default function Counselling() {
       .catch(() => {});
   }, [session, OV, sessionId, OPENVIDU_SERVER_URL]);
 
-  // 상담 종료버튼 액션
-  const handleEixt = () => {
-    console.log("닫기");
-    window.close();
-  };
-
   // 화면 전환용 코드
   const [isVideoActive, setIsVideoActive] = useState(false);
   const toggleVideo = () => {
@@ -200,6 +196,18 @@ export default function Counselling() {
   useEffect(() => {
     console.log(info);
   }, [info]);
+
+    // 상담 종료버튼 액션
+    const navigate = useNavigate();
+
+    const handleEixt = () => {
+      if (localStorage.getItem("myRole") === "ROLE_CLIENT" && info) {
+        
+        navigate(`/review/${info.seq}`)
+      } else {
+        window.close();
+      }
+    };
 
   return (
     <>
