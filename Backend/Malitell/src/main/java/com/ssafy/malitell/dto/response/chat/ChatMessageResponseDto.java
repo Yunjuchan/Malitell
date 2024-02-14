@@ -1,9 +1,7 @@
 package com.ssafy.malitell.dto.response.chat;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.ssafy.malitell.domain.chat.ChatMessage;
 import com.ssafy.malitell.domain.chat.ChatRoom;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
