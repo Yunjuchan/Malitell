@@ -73,8 +73,7 @@ public class CounselingRepositoryImpl implements CounselingRepositoryCustom {
 
     @Override
     public List<CounselingReview> counselorReviewList(int counselorSeq) {
-        return entityManager.createQuery("SELECT cr FROM CounselingReview cr JOIN FETCH cr.counseling " +
-                        "WHERE cr.counseling.counselorSeq = :counselorSeq", CounselingReview.class)
+        return entityManager.createQuery("SELECT cr FROM CounselingReview cr WHERE cr.counselorSeq = :counselorSeq", CounselingReview.class)
                 .setParameter("counselorSeq", counselorSeq)
                 .getResultList();
     }

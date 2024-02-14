@@ -89,9 +89,9 @@ public class CounselingController {
     }
 
     // 상담후기 작성
-    @PostMapping("/counseling/review/{counselingSeq}")
-    public ResponseEntity<Void> writeCounselingReview(@PathVariable int counselingSeq, @RequestBody CounselingReviewRequestDto counselingReviewRequestDto) {
-        counselingService.writeCounselingReview(counselingSeq, counselingReviewRequestDto);
+    @PostMapping("/counseling/review")
+    public ResponseEntity<Void> writeCounselingReview(@RequestBody CounselingReviewRequestDto counselingReviewRequestDto, Principal principal) {
+        counselingService.writeCounselingReview(counselingReviewRequestDto, principal);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

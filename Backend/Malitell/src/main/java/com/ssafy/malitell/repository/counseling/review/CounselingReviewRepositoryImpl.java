@@ -20,14 +20,21 @@ public class CounselingReviewRepositoryImpl implements CounselingReviewRepositor
 
     @Override
     public List<CounselingReview> getCounselorReviewList(int counselorSeq) {
-        return entityManager.createQuery("SELECT cr FROM CounselingReview cr JOIN FETCH cr.counseling WHERE cr.counseling.counselorSeq = :counselorSeq", CounselingReview.class)
+        return entityManager.createQuery("SELECT cr FROM CounselingReview cr WHERE cr.counselorSeq = :counselorSeq", CounselingReview.class)
                 .setParameter("counselorSeq", counselorSeq)
                 .getResultList();
     }
 
     @Override
+    public List<CounselingReview> getMyReviewList(int loginUserSeq) {
+        return entityManager.createQuery("SELECT cr FROM CounselingReview cr WHERE cr.clientSeq = :loginUserSeq", CounselingReview.class)
+                .setParameter("loginUserSeq", loginUserSeq)
+                .getResultList();
+    }
+
+    @Override
     public List<CounselingReview> getMyCounselingReviewList(int loginUserSeq) {
-        return entityManager.createQuery("SELECT cr FROM CounselingReview cr JOIN FETCH cr.counseling WHERE cr.counseling.clientSeq = :loginUserSeq", CounselingReview.class)
+        return entityManager.createQuery("SELECT cr FROM CounselingReview cr WHERE cr.clientSeq = :loginUserSeq", CounselingReview.class)
                 .setParameter("loginUserSeq", loginUserSeq)
                 .getResultList();
     }
