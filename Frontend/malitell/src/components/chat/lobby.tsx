@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { get } from "http";
 
 type ChatRoom = {
   roomId: string;
