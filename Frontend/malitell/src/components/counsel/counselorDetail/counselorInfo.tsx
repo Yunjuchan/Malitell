@@ -8,7 +8,8 @@ export interface CounselorProps {
 
 export default function CounselorInfo({counselor}: CounselorProps) {
   return (
-    <InfoWrapper>aa</InfoWrapper>
+    <InfoWrapper>
 
+    </InfoWrapper>
     )
 }

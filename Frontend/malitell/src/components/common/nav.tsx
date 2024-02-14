@@ -12,10 +12,19 @@ import { useDispatch } from "react-redux";
 import { setProfileMenu } from "../../store/auth/profileSlice";
 import { RootState } from "../../store/store";
 import { logout } from "../../store/auth/userSlice";
+import { flipLoginModal } from "../../store/common/loginModalSlice";
 
 export default function Nav() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const loginModalOpen = useSelector(
+    (state: RootState) => state.loginModal.loginModalOpen
+  );
+
+  const handleLogin = (): void => {
+    dispatch(flipLoginModal());
+  };
+
 
   const [back, setBack] = useState(false);
   const [login, setLogin] = useState(false);
@@ -30,9 +39,6 @@ export default function Nav() {
     }
     setBack(!back);
   };
-  const handleLogin = (e: React.MouseEvent): void => {
-    setLogin(!login);
-  };
 
   const openChat = () => {
     const url = "/chat";
@@ -42,6 +48,12 @@ export default function Nav() {
   const goToCommunity = () => {
     dispatch(setBoardTypeInfo("community"));
     navigate("/articles/community");
+  };
+
+  const handleLogout = (e: React.MouseEvent): void => {
+    logout().then(() => {
+      navigate("/");
+    });
   };
 
   // 토큰 저장여부에 따른 메뉴 선택 동작 바꾸기
@@ -54,15 +66,15 @@ export default function Nav() {
       navigate(`/profile/myInfo`);
     } else {
       handleBack(e);
-      handleLogin(e);
+      handleLogin();
     }
   };
   useEffect(() => {});
 
   return (
     <>
-      {back ? <g.Background></g.Background> : null}
-      {login ? (
+      {loginModalOpen ? <g.Background></g.Background> : null}
+      {loginModalOpen ? (
         <Login handleLogin={handleLogin} handleBack={handleBack} />
       ) : null}
       <s.Nav>
@@ -78,13 +90,14 @@ export default function Nav() {
 
           {/* 네브바 상단부분 */}
           <s.NavItems $col="11/13" $row="1/2" $align="end">
-            
             {/* 토큰이 있으면 인사말, 로그아웃 버튼 */}
             {localStorage.getItem("Access_Token") ? (
               <>
                 {/* 리덕스에서 회원정보 받아와야됨 */}
                 <s.NavItem $width="70px" $size="15px">
-                  <Link to="/logout">로그아웃</Link>
+                  <div onClick={handleLogout} style={{ cursor: "pointer" }}>
+                    로그아웃
+                  </div>
                 </s.NavItem>
               </>
             ) : (
@@ -92,7 +105,7 @@ export default function Nav() {
                 <s.NavItem $width="70px" $size="15px">
                   <div
                     onClick={(e) => {
-                      handleLogin(e);
+                      handleLogin();
                       handleBack(e);
                     }}
                     style={{ cursor: "pointer" }}
@@ -136,7 +149,12 @@ export default function Nav() {
               <FontAwesomeIcon
                 onClick={handleProfile}
                 icon={faUser}
-                style={{ color: "#BF94E4", cursor: "pointer", width: "25px", height: "25px" }}
+                style={{
+                  color: "#BF94E4",
+                  cursor: "pointer",
+                  width: "25px",
+                  height: "25px",
+                }}
                 width="70px"
               />
             </s.NavItem>

@@ -24,6 +24,19 @@ export const Container = styled.div`
   margin: auto;
 `;
 
+export const FlexBox = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+export const Content = styled.div`
+  width: 400px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`
+
 export const Title = styled.div`
   font-size: 25px;
   font-weight: bold;
@@ -39,9 +52,15 @@ export const Button = styled.button`
   border-radius: 20px;
 `;
 
+export const Img = styled.img`
+  width: 150px;
+  height: 150px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+`;
+
 export const Line = styled.div`
   width: 96%;
   height: 1px;
   margin: auto;
   background-color: #bf94e4;
-`
+`;

@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as s from "../../../styles/common/vendingMachine/content";
 import Card from "./card";
+import { capsule } from "../../../store/etc/capsuleSlice";
 
 interface modalProps {
   contents: string;
+}
+
+interface Capsule {
+  name: string;
+  phrases: string;
+  videoUrl: string;
 }
 
 export default function Content({ contents }: modalProps) {
@@ -29,7 +36,12 @@ export default function Content({ contents }: modalProps) {
   return (
     <s.Wrapper $display={contents}>
       {results.map((index) => (
-        <Card key={index} cardDisplay={cardDisplay} index={index} flip={flip[index].display} />
+        <Card
+          key={index}
+          cardDisplay={cardDisplay}
+          index={index}
+          flip={flip[index].display}
+        />
       ))}
     </s.Wrapper>
   );
