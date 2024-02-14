@@ -103,6 +103,8 @@ public class UserService {
         user.setGender(counselorJoinRequestDto.getGender());
         user.setCareerPeriod(counselorJoinRequestDto.getCareerPeriod());
         user.setRole(counselorJoinRequestDto.getRole());
+        user.setEducationField(counselorJoinRequestDto.getEducationField());
+        user.setCertificateField(counselorJoinRequestDto.getCertificateField());
         user.setReadCheck(1);
 
         userRepository.save(user);
