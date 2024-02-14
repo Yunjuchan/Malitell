@@ -54,8 +54,8 @@ export const login = (data: loginData) => {
 
 // 로그아웃
 export const logout = () => {
-  const res = authApi
-    .get("/logout")
+  const res = api
+    .post("/logout")
     .then((res) => {
       // 로그아웃 요청이 성공하면 Redux store의 user 정보를 삭제
     })

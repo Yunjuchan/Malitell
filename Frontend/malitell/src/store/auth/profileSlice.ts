@@ -136,6 +136,9 @@ export const editCounselorInfo = (editForm: editUserData) => {
     .then((res) => {
       return res.data;
     })
+    // .then((res) => {
+    //   localStorage.setItem("myImg", res.profileImg);
+    // })
     .catch((error) => console.error("Failed to Edit:", error));
 };
 
@@ -146,11 +149,15 @@ export const editClientInfo = (editForm: editUserData) => {
       name: editForm.name,
       email: editForm.email,
       phone: editForm.phone,
+      profileImg: editForm.profileImg,
       statusTags: editForm.statusTags,
     })
     .then((res) => {
       return res.data;
     })
+    // .then((res) => {
+    //   localStorage.setItem("myImg", res.profileImg);
+    // })
     .catch((error) => console.error("Failed to Edit:", error));
 };
 

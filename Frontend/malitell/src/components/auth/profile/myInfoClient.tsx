@@ -5,6 +5,7 @@ import {
   editCounselorInfo,
   fetchUserInfo,
 } from "../../../store/auth/profileSlice";
+import { malitell } from "../../../assets/images/malitell.png"
 export interface editUserData {
   userId: string;
   name: string;
@@ -101,6 +102,7 @@ export default function MyInfoClient() {
         editCounselorInfo(updatedUserData);
       }
     }
+    
   };
 
   useEffect(() => {
