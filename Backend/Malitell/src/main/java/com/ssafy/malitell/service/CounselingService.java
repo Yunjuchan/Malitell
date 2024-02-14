@@ -50,7 +50,7 @@ public class CounselingService {
         if (counselor.isPresent()) {
 
             // 2. 상담자의 상담후기 목록 가져오기
-            List<CounselingReview> counselingReviewList = counselingReviewRepository.getCounselingReviewList(counselorSeq);
+            List<CounselingReview> counselingReviewList = counselingReviewRepository.getCounselorReviewList(counselorSeq);
 
             // CounselorResponseDto에 상담자 정보 및 상담후기 목록 세팅
             return new CounselorResponseDto(counselor.get(), counselingReviewList);
@@ -353,16 +353,16 @@ public class CounselingService {
         User user = userRepository.findByUserId(loginUserId);
         int loginUserSeq = user.getUserSeq();
 
-        List<CounselingReview> myCounselingReviewList = counselingReviewRepository.getMyCounselingReviewList(loginUserSeq);
+        List<CounselingReview> myCounselingReviewList = counselingReviewRepository.getCounselorReviewList(loginUserSeq);
         for (CounselingReview review : myCounselingReviewList) {
-            int counselorSeq = review.getCounseling().getCounselorSeq();
-            Optional<User> counselor = userRepository.findById(counselorSeq);
-            String counselorName = counselor.get().getName();
+            int clientSeq = review.getCounseling().getClientSeq();
+            Optional<User> client = userRepository.findById(clientSeq);
+            String clientName = client.get().getName();
 
             String content = review.getContent();
             double grade = review.getGrade();
 
-            CounselorReviewResponseDto dto = new CounselorReviewResponseDto(counselorName, content, grade);
+            CounselorReviewResponseDto dto = new CounselorReviewResponseDto(clientName, content, grade);
             counselingReviewList.add(dto);
         }
         return counselingReviewList;
