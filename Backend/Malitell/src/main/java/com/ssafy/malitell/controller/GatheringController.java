@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/gathering")
+@RequestMapping("/api/gathering")
 public class GatheringController {
     private final GatheringService gatheringService;
 
