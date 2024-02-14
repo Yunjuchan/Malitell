@@ -162,10 +162,10 @@ export default function Counselling() {
   }, [session, OV, sessionId, OPENVIDU_SERVER_URL]);
 
   // 상담 종료버튼 액션
-  const handleEixt =() => {
+  const handleEixt = () => {
     console.log("닫기");
     window.close();
-  }
+  };
 
   // 화면 전환용 코드
   const [isVideoActive, setIsVideoActive] = useState(false);
@@ -194,6 +194,13 @@ export default function Counselling() {
     };
   }, [sessionId]);
 
+  // 상대방 정보를 받기 위한 state
+  const [info, setInfo] = useState<{ seq: string; role: string }>();
+
+  useEffect(() => {
+    console.log(info);
+  }, [info]);
+
   return (
     <>
       <s.Wrapper>
@@ -220,9 +227,15 @@ export default function Counselling() {
                 subscriber={subscriber as Subscriber}
               />
               <s.Chat>
-                <Chat session={session as OVSession} />
+                <Chat session={session as OVSession} setInfo={setInfo} />
               </s.Chat>
-              {publisher && <Controls publisher={publisher} toggleVideo={toggleVideo} isVideoActive={isVideoActive} />}
+              {publisher && (
+                <Controls
+                  publisher={publisher}
+                  toggleVideo={toggleVideo}
+                  isVideoActive={isVideoActive}
+                />
+              )}
             </s.BottomBox>
           </>
         )}

@@ -35,6 +35,7 @@ import MyGathering from "./components/auth/profile/myGathering";
 import PasswordChange from "./components/auth/profile/passwordChange";
 import MyInfoClient from "./components/auth/profile/myInfoClient";
 import Counselling from "./routes/counselling/counselling";
+import Review from "./routes/counselling/review";
 
 // 중첩라우팅
 const router = createBrowserRouter([
@@ -152,6 +153,10 @@ const router = createBrowserRouter([
   {
     path: "/counselling",
     element: <Counselling />,
+  },
+  {
+    path: "/review",
+    element: <Review />,
   },
   {
     path: "/chat12",
