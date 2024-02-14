@@ -32,7 +32,9 @@ export default function Filter() {
       <s.FilterBox>
       </s.FilterBox>
       <s.CreateBox>
+        {boardType === "gather" && sessionStorage.getItem("myRole") !== "ROLE_COUNSELOR" ? null :
         <s.CreateButton onClick={goToCreateArticle}>글쓰기</s.CreateButton>
+        }
       </s.CreateBox>
     </s.Wrapper>
   );
