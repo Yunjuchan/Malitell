@@ -32,7 +32,7 @@ import java.time.LocalDateTime;
 public class ChatMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger chatMessageSeq;
+    private Long chatMessageSeq;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @Indexed
