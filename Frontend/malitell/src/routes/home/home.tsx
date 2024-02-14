@@ -23,19 +23,14 @@ export default function Home() {
         </g.Box>
 
         {/* 배너 */}
-        <g.Box $col="1/6" $row="3/4" $color="#fbf3fd">
+        <g.Box $col="1/6" $row="4/5" $color="#fbf3fd">
           <Metaverse />
           <Bamboo />
         </g.Box>
 
         {/* 상담하기 디자인 구상 중 */}
-        <g.Box $col="6/13" $row="3/4" $color="#fbf3fd">
+        <g.Box $col="6/13" $row="4/5" $color="#fbf3fd">
           <Counsel />
-        </g.Box>
-
-        {/* 게시글 */}
-        <g.Box $col="1/13" $row="4/5" $color="#fbf3fd">
-          <Articles />
         </g.Box>
       </Grid>
     </>

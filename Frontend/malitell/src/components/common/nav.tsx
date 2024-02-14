@@ -25,7 +25,6 @@ export default function Nav() {
     dispatch(flipLoginModal());
   };
 
-
   const [back, setBack] = useState(false);
   const [login, setLogin] = useState(false);
   const board = useSelector((state: RootState) => state.board);
@@ -114,7 +113,15 @@ export default function Nav() {
                   </div>
                 </s.NavItem>
                 <s.NavItem $width="70px" $size="15px">
-                  <Link to="/signup">회원가입</Link>
+                  <div
+                    onClick={(e) => {
+                      handleLogin();
+                      handleBack(e);
+                    }}
+                    style={{ cursor: "pointer" }}
+                  >
+                    회원가입
+                  </div>
                 </s.NavItem>
               </>
             )}

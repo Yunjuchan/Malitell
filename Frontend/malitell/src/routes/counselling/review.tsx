@@ -9,7 +9,7 @@ export default function Review() {
     content: string;
   }
 
-  const {seq} = useParams();
+  const { seq } = useParams();
 
   const {
     register,
@@ -23,6 +23,15 @@ export default function Review() {
 
   const onSubmit = (data: FormData) => {
     console.log("데이터: ", JSON.stringify(data));
+    fetch(`http://localhost:8080/api/counseling/review/${seq}`, {
+      method: "POST",
+      headers: {
+        Access_Token: `${sessionStorage.getItem("Access_Token")}`,
+      },
+      body: JSON.stringify(data),
+    }).then((res) => {
+      console.log(res);
+    });
   };
 
   return (

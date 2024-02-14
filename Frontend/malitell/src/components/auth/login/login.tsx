@@ -15,7 +15,6 @@ import kakao from "../../../assets/images/auth/login/kakao.png";
 import naver from "../../../assets/images/auth/login/naver.png";
 import LoginEmail from "./loginEmail";
 import Signup from "../signup/signup";
-import { api } from "../../../store/axiosInstance";
 
 interface NavProps {
   handleLogin: (event: React.MouseEvent) => void;
@@ -38,9 +37,7 @@ export default function Login({ handleLogin, handleBack }: NavProps) {
       method: "POST",
     }).then((res) => console.log(res));
   };
-  // const loginKakao = (e: React.MouseEvent): void => {
-  //   api.post(`/auth/oauth2/kakao`).then((res) => console.log(res));
-  // };
+
   return (
     <>
       {email ? (
@@ -80,7 +77,6 @@ export default function Login({ handleLogin, handleBack }: NavProps) {
             <LoginBtn
               color="white"
               onClick={(e) => {
-                // handleLogin(e);
                 handleEmail(e);
               }}
             >
@@ -89,7 +85,7 @@ export default function Login({ handleLogin, handleBack }: NavProps) {
                 style={{ color: "#b098ff" }}
                 size="2x"
               />
-              <MethodText>이메일로 계속하기</MethodText>
+              <MethodText>회원 로그인하기</MethodText>
             </LoginBtn>
             <LoginBtn onClick={handleSignup} color="#FBF3FD">
               <FontAwesomeIcon
