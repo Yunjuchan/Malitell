@@ -4,7 +4,7 @@ const BASE_URL = "http://localhost:8080";
 const OPENVIDU_URL = "http://i10c208.p.ssafy.io:8443/openvidu/api";
 
 export const api: AxiosInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: BASE_URL + "/api",
   headers: {
     "Content-type": "application/json",
   },

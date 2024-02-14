@@ -36,6 +36,7 @@ import PasswordChange from "./components/auth/profile/passwordChange";
 import MyInfoClient from "./components/auth/profile/myInfoClient";
 import Counselling from "./routes/counselling/counselling";
 import Review from "./routes/counselling/review";
+import Chatting from "./components/chat/chatting";
 
 // 중첩라우팅
 const router = createBrowserRouter([
@@ -165,6 +166,10 @@ const router = createBrowserRouter([
   {
     path: "/chat",
     element: <List />,
+  },
+  {
+    path: "/chat/room",
+    element: <Chatting />,
   },
   {
     path: "/chat/room/:roomId",
