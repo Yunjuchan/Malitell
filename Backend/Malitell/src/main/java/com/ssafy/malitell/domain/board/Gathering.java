@@ -38,6 +38,7 @@ public class Gathering {
     private String title;
 
     // 게시물 내용
+    @Column(columnDefinition = "TEXT")
     private String content;
 
     // 게시물 작성 시간
