@@ -5,7 +5,6 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import * as s from "../../styles/common/vendingmachine";
 import * as g from "../../styles/grid";
 import normal from "../../assets/images/vendingMachine/normal.gif";
-import fast from "../../assets/images/vendingMachine/fast.gif";
 import Modal from "./vendingMachine/modal";
 
 export default function Vendingmachine() {

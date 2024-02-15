@@ -19,14 +19,12 @@ export default function CreateOvercomeForm() {
     setContent(e.target.value);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await createOvercome({ title, content });
-    console.log(res);
-    // if (res) {
-    // navigate(`/articles/${boardType}/생성한 게시글`) // 실제로는 이거로 만들거임
-    // }
-    navigate(`/articles/${boardType}`);
+    createOvercome({ title, content })
+    .then((res) => {
+      navigate(`/articles/${boardType}/${res}`)
+    });
 
     // 잘못 요청되었다는 메시지
   };

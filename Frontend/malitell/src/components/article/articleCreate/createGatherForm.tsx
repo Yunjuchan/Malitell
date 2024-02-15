@@ -13,27 +13,34 @@ import {
 } from "../../../store/article/gatherSlice";
 import { useNavigate } from "react-router-dom";
 
-const tagList = ["A", "B", "C"];
+const tagList = ["진로","정서","대인관계","경제","건강"];
+const tagEngList = ["COURSE", "EMOTION", "RELATIONSHIP", "ECONOMY", "HEALTH"]
+const today = new Date();
+const year = today.getFullYear();
+const month = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 1을 더해줍니다.
+const day = String(today.getDate()).padStart(2, '0');
+
+const todayStr = `${year}-${month}-${day}`;
 
 export default function CreateGatherForm() {
+  
   const boardType = useSelector((state: RootState) => state.board.boardType);
   const navigate = useNavigate();
-  const [tagSeq, setTagSeq] = useState(1);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [selfHelpGroupTitle, setSelfHelpGroupTitle] = useState("");
-  const [selfHelpType, setSelfHelpType] = useState("A");
-
-  const [selfHelpGroupHeadCount, setSelfHelpGroupHeadCount] = useState(0);
-  const [startDate, setStartDate] = useState("");
-  const [startTime, setStartTime] = useState("");
+  const [selfHelpType, setSelfHelpType] = useState("진로");
+  const [worryTag, setWorryTag] = useState("")
+  const [selfHelpGroupHeadCount, setSelfHelpGroupHeadCount] = useState(5);
+  const [startDate, setStartDate] = useState(todayStr);
+  const [startTime, setStartTime] = useState("00:00");
   const [totalCount, setTotalCount] = useState(1);
 
   const handleTagClick = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedIndex = e.target.selectedIndex - 1;
     console.log(selectedIndex);
     setSelfHelpType(tagList[selectedIndex]);
-    setTagSeq(selectedIndex + 1);
+    setWorryTag(tagEngList[selectedIndex]);
   };
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,7 +78,7 @@ export default function CreateGatherForm() {
 
     const times = Array.from(
       { length: totalCount },
-      (_, i) => startTimestamp + i * 604800000
+      (value, i) => startTimestamp + i * 604800000
     );
     const res = await createSHGroup({
       selfHelpGroupTitle,
@@ -81,7 +88,7 @@ export default function CreateGatherForm() {
       selfHelpGroupHeadCount,
       title,
       content,
-      worryTag: "HEALTH",
+      worryTag
     });
     if (res) {
       // navigate(`/articles/${boardType}/생성한 게시글`)
@@ -164,8 +171,6 @@ export default function CreateGatherForm() {
         onChange={handleContentChange}
         placeholder="내용"
       />
-
-      {/* 이걸로  세개 조합해서 times라는 데이터를 만들어서 handleSubmit에 넣어주어야함*/}
       <s.Submit type="submit" />
     </s.Wrapper>
   );
