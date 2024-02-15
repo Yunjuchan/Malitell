@@ -27,6 +27,7 @@ export interface GatherArticle extends CommonFields {
   selfHelpGroup: SelfHelpGroup;
   gatheringComments: CommentType[]; 
   participants: number[];
+  headcount: number;
 }
 
 export interface CommunityArticle extends CommonFields {

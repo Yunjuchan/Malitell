@@ -62,6 +62,7 @@ export default function ArticleDetail() {
               userSeq={gatherArticle.userSeq}
               participants={gatherArticle.participants}
               selfHelpGroup={gatherArticle.selfHelpGroup}
+              headcount={gatherArticle.headcount}
             />
           )}
           {communityArticle && (
