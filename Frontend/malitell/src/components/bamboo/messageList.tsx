@@ -12,7 +12,7 @@ export default function MessageList() {
   const [results, setResults] = useState<[]>();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/mindLetGo/list`, {
+    fetch(`https://i10c208.p.ssafy.io/api/mindLetGo/list`, {
       method: "GET",
     })
       .then((res) => {
