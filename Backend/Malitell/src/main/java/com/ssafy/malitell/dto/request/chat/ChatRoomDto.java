@@ -3,16 +3,12 @@ package com.ssafy.malitell.dto.request.chat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.ssafy.malitell.domain.chat.ChatRoom;
 import com.ssafy.malitell.domain.user.User;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
-import java.io.Serial;
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.UUID;
 
 @Getter
@@ -29,7 +25,6 @@ public class ChatRoomDto implements Serializable {
     private String clientName;
     private String counselorProfileImg;
     private String clientProfileImg;
-    private Timestamp lastSpentTime;
 
     public static ChatRoomDto create(User counselor, User client) {
         ChatRoomDto chatRoomDto = new ChatRoomDto();
