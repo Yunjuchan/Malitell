@@ -12,7 +12,6 @@ export default function MyScrab() {
   const [myScraps, setMyScraps] = useState<mySHScrapData[]>();
   useEffect(() => {
     myscrapSHGroup().then((res) => {
-      console.log(res);
       setMyScraps(res);
     }); 
   }, []);

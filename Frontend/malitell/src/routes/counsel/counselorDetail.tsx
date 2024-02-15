@@ -31,7 +31,6 @@ export default function CounselorDetail() {
 
   const fetchData = () => {
     fetchCounselorDetail(Number(counselorSeq)).then((res) => {
-      console.log(res);
       setCounselor(res);
     });
   };

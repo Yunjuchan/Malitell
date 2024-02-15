@@ -36,7 +36,6 @@ export default function TitleGather({
   const showCancelButton = isParticipating;
   const showFullButton = !isParticipating && isFull;
   const handleJoin = () => {
-    console.log(selfHelpGroup.selfHelpGroupSeq);
     joinSHGroup(selfHelpGroup.selfHelpGroupSeq).then((res) => {
       window.location.reload();
     });

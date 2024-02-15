@@ -54,9 +54,6 @@ export default function Chatting() {
             },
           }
         )
-        .then((res) => {
-          console.log(res.data);
-        });
     }
   };
 

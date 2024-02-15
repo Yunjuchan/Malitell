@@ -194,7 +194,6 @@ export default function Counselling() {
   const [info, setInfo] = useState<{ seq: string; role: string }>();
 
   useEffect(() => {
-    console.log(info);
   }, [info]);
 
     // 상담 종료버튼 액션

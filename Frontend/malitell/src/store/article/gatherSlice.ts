@@ -12,7 +12,6 @@ export interface SelfHelpGroupForm {
   content: string;
 }
 // 자조모임 모집 게시글 작성
-//SH는 self-helf 귀찮아서 줄였음
 // selfHelpGroupTitle: string, selfHelpGroupContent: string, times: number, selfHelpType:string, selfHelpGroupHeadCount: number, title:string, content:string
 export const createSHGroup = (data: SelfHelpGroupForm) => {
   const res = authApi
@@ -33,7 +32,6 @@ export const createSHGroup = (data: SelfHelpGroupForm) => {
 };
 
 // 자조모임 모집 게시글 조회
-//SH는 self-helf 귀찮아서 줄였음
 export const fetchSHGroup = () => {
   const res = api.get("/gathering/getBoardList").then((response) => {
     // 응답 데이터 : 자조모임 게시글 번호
@@ -59,7 +57,6 @@ export const editSHGroup = (gatheringSeq: number) => {
 // 자조모임 게시글 상세 조회
 export const sHGroupDetail = (gatheringSeq: number) => {
   const res = api.get(`/gathering/view/${gatheringSeq}`).then((response) => {
-    // 응답 : 자조모임 게시글 번호?? 전체 필요
     return response.data;
   });
   return res;
@@ -67,10 +64,7 @@ export const sHGroupDetail = (gatheringSeq: number) => {
 
 // 자조모임 게시글 삭제
 export const deleteSHGroup = (gatheringSeq: number) => {
-  console.log(gatheringSeq)
-  console.log(sessionStorage.getItem("Access_Token"))
   const res = authApi.delete(`/gathering/delete/${gatheringSeq}`).then((response) => {
-    // 응답 : 응답 상태만
     return response.data;
   });
   return res
@@ -91,7 +85,7 @@ export const joinSHGroup = (gatheringSeq: number) => {
   .then((response) => {
     return response.data;
   })
-  .catch((error) => console.log(error));
+  .catch((error) => console.error(error));
 
   return res;
 };
