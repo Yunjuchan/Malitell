@@ -13,13 +13,33 @@ export const Back = styled.div``;
 
 export const RoomInfo = styled.div`
   width: 100%;
-  height: 80px;
-  background-color: gray;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #bf94e4;
+  &.profile {
+    width: 80%;
+  }
 `;
+
+export const Profile = styled.img`
+  margin: 0 10px;
+  width: 20%;
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 20px;
+`
+
+export const Name = styled.div`
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+`
+
 
 export const ChattingBox = styled.div`
   width: 100%;
-  height: 300px;
+  height: 320px;
   overflow-y: scroll;
   background-color: #bf94e4;
   display: flex;

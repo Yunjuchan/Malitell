@@ -26,10 +26,13 @@ export default function Review() {
       method: "POST",
       headers: {
         Access_Token: `${sessionStorage.getItem("Access_Token")}`,
+        "Content-type": "application/json",
       },
       body: JSON.stringify(data),
     }).then((res) => {
-      console.log(res);
+      if (res.status === 200) {
+        window.close();
+      }
     });
   };
 
