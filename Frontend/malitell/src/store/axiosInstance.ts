@@ -25,7 +25,7 @@ export const loginApi: AxiosInstance = axios.create({
 // });
 
 export const authApi: AxiosInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: BASE_URL+"/api",
   headers: {
     "Content-type": "application/json",
   },
