@@ -31,6 +31,7 @@ export default function CounselorDetail() {
 
   const fetchData = () => {
     fetchCounselorDetail(Number(counselorSeq)).then((res) => {
+      console.log(res);
       setCounselor(res);
     });
   };
@@ -44,11 +45,9 @@ export default function CounselorDetail() {
         {/* counselor가 값이 저장되어졌을 때만 아래 파일들이 불러와져서 프롭스 전달이 원활하게 됨 */}
         {counselor && (
           <>
-            <g.Box $col="1/9" $row="2/6">
+            <g.Box $col="1/9" $row="2/13">
               <CounselorInfo counselor={counselor} />
-            </g.Box>
-            <g.Box $col="1/9" $row="6/13">
-              <ReviewList />
+              {counselor.counselingReviewList.length > 0 ? <ReviewList reviews={counselor.counselingReviewList} /> : null }
             </g.Box>
             <g.Box $col="9/13" $row="2/6">
               <ProfileBox counselor={counselor} />

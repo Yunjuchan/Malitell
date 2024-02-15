@@ -33,8 +33,9 @@ export default function CreateChat({ counselorSeq }: Props) {
           "counselorSeq": counselorSeq,
           "clientSeq": window.sessionStorage.getItem("mySeq"),
         }),
-      }).then((res) => {
-        console.log(res);
+      }).then(() => {
+        const url = "/chat";
+        window.open(url, "_blank", "width=400, height=530");
       });
     } else {
       window.alert("로그인 후 이용해주세요.");

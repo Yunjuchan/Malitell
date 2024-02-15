@@ -4,24 +4,36 @@ import MessageCreate from "./messageCreate";
 import { useState, useEffect } from "react";
 
 export default function MessageList() {
-  const [results, setResults] = useState([]);
+  interface message {
+    mindLetGoSeq: number;
+    content: string;
+  }
+
+  const [results, setResults] = useState<[]>();
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/mindLetGo/list`, {
       method: "GET",
-    }).then((res) => console.log(res.json()));
+    })
+      .then((res) => {
+        const data = res.json()
+        return data;
+      })
+      .then((res) => {
+        console.log(res);
+        setResults(res);
+      });
   }, []);
 
   return (
     <Wrapper>
       <MessageCreate />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
+      <>
+        {results &&
+          results.map((result: message, index) => {
+            return <Message key={index} result={result.content} />;
+          })}
+      </>
     </Wrapper>
   );
 }
