@@ -28,6 +28,9 @@ public class GatheringResponseDto {
 
     private final List<Integer> participants = new ArrayList<>(); // 참가하고 있는 사람
 
+    // 자조모임 신청 인원
+    private final int headcount;
+
     public GatheringResponseDto(Gathering gathering, List<GatheringComment> commentResponseDtos) {
         this.title = gathering.getTitle();
         this.content = gathering.getContent();
@@ -43,6 +46,7 @@ public class GatheringResponseDto {
         for (SelfHelpGroupUser selfHelpGroupUser : selfHelpGroupUsers) {
             participants.add(selfHelpGroupUser.getUser().getUserSeq());
         }
+        this.headcount = gathering.getHeadcount();
     }
 
 }
