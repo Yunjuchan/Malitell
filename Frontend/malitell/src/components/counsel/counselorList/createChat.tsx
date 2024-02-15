@@ -22,9 +22,7 @@ export default function CreateChat({ counselorSeq }: Props) {
           "counselorSeq": counselorSeq,
           "clientSeq": window.sessionStorage.getItem("mySeq"),
         }),
-      }).then((res) => {
-        console.log(res);
-      });
+      })
     } else {
       window.alert("로그인 후 이용해주세요.");
     }

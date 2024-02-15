@@ -20,7 +20,6 @@ export default function MessageList() {
         return data;
       })
       .then((res) => {
-        console.log(res);
         setResults(res);
       });
   }, []);

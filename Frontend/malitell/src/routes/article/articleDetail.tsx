@@ -37,17 +37,14 @@ export default function ArticleDetail() {
         const data = await sHGroupDetail(Number(boardSeq));
         setGatherArticle(data);
         setIsLoading(false);
-        console.log(data);
       } else if (boardType === "overcome") {
         const data = await overcomeDetail(Number(boardSeq));
         setOvercomeArticle(data);
         setIsLoading(false);
-        console.log(data);
       } else {
         const data = await articleDetail(Number(boardSeq));
         setCommunityArticle(data);
         setIsLoading(false);
-        console.log(data);
       }
     };
     fetchData();
