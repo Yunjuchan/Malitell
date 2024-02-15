@@ -19,12 +19,7 @@ public class MindLetGo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int mindLetGoSeq;
     private String content;
-
-    @ManyToOne
-    private User user;
-
-    public MindLetGo(MindLetGoRequestDto mindLetGoRequestDto, User user) {
+    public MindLetGo(MindLetGoRequestDto mindLetGoRequestDto) {
         this.content = mindLetGoRequestDto.getContent();
-        this.user = user;
     }
 }
