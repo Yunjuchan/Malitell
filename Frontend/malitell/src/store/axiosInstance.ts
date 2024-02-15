@@ -38,7 +38,6 @@ authApi.interceptors.request.use((config) => {
   if (token) {
     config.headers["Access_Token"] = token;
   }
-  // console.log(config);
   return config;
 });
 
@@ -51,7 +50,6 @@ export const refreshApi: AxiosInstance = axios.create({
 });
 
 const refreshAccessToken = () => {
-  console.log(sessionStorage.getItem("Refresh_Token"))
   const res = refreshApi
     .post("/user/reissue", null, { headers: {
       "Refresh_Token": sessionStorage.getItem("Refresh_Token"),
@@ -60,7 +58,7 @@ const refreshAccessToken = () => {
       sessionStorage.setItem("Access_Token", res.headers.access_token);
       return res.headers.access_token;
     })
-    .catch((error) => console.log("토큰 리프레시 중 에러" + error));
+    .catch((error) => console.error("토큰 리프레시 중 에러" + error));
   return res;
 };
 

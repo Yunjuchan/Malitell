@@ -30,8 +30,6 @@ export default function Review() {
       },
       body: JSON.stringify(data),
     }).then((res) => {
-      console.log(data);
-      console.log(res);
       if (res.status === 200) {
         window.close();
       }
