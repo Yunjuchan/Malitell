@@ -25,6 +25,9 @@ public class UserResponseDto {
     private final String comment; // 소개 멘트
     private final List<StatusTag> statusTags;
 
+    private final String educationField; // 학력사항
+    private final String certificateField; // 자격증
+
     public UserResponseDto(User user) {
         this.userSeq = user.getUserSeq();
         this.userId = user.getUserId();
@@ -41,5 +44,7 @@ public class UserResponseDto {
         this.grade = user.getGrade();
         this.comment = user.getComment();
         this.statusTags = user.getStatusTags();
+        this.educationField = user.getEducationField();
+        this.certificateField = user.getCertificateField();
     }
 }
