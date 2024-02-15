@@ -21,7 +21,6 @@ export const fetchArticleList = () => {
 }
 
 export const createArticle = (data: ArticleForm) => {
-  console.log(data)
   const res = authApi.post("/community", {"title": data.title, "content": data.content, "worryTag": data.tagEng})
   .then((res) => {
     return res.data

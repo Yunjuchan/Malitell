@@ -54,7 +54,6 @@ export default function ClientForm({ setSuccess, success }: SignupProps) {
 
   // 폼 제출 체크
   const onSubmit = (data: FormData) => {
-    console.log("데이터: ", JSON.stringify(data));
 
     fetch(`http://localhost:8080/auth/email-certification`, {
       method: "POST",
@@ -64,7 +63,6 @@ export default function ClientForm({ setSuccess, success }: SignupProps) {
       body: JSON.stringify(data),
     })
       .then((res) => {
-        console.log(res.status);
         return res;
       })
       .then((res) => {
@@ -77,7 +75,6 @@ export default function ClientForm({ setSuccess, success }: SignupProps) {
             body: JSON.stringify(data),
           }).then((res) => {
             if (res.status === 200) {
-              console.log("이메일 전송 완료");
               setSuccess(true);
               setCertification(true);
             }

@@ -38,7 +38,6 @@ export default function CreateGatherForm() {
 
   const handleTagClick = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedIndex = e.target.selectedIndex - 1;
-    console.log(selectedIndex);
     setSelfHelpType(tagList[selectedIndex]);
     setWorryTag(tagEngList[selectedIndex]);
   };
@@ -88,7 +87,6 @@ export default function CreateGatherForm() {
       selfHelpGroupHeadCount,
       title,
       content,
-      worryTag
     });
     if (res) {
       // navigate(`/articles/${boardType}/생성한 게시글`)
@@ -98,7 +96,6 @@ export default function CreateGatherForm() {
   };
 
   useEffect(() => {
-    console.log(boardType);
   }, [boardType]);
 
   return (

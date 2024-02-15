@@ -24,9 +24,8 @@ public class MindLetGoService {
     private final MindLetGoTopicRepositoryImpl mindLetGoTopicRepository;
     private final UserRepository userRepository;
 
-    public int createMindLetGo(MindLetGoRequestDto mindLetGoRequestDto, String userId) {
-        User findUser = userRepository.findByUserId(userId);
-        MindLetGo mindLetGo = new MindLetGo(mindLetGoRequestDto, findUser);
+    public int createMindLetGo(MindLetGoRequestDto mindLetGoRequestDto) {
+        MindLetGo mindLetGo = new MindLetGo(mindLetGoRequestDto);
         mindLetGoRepository.save(mindLetGo);
         return mindLetGo.getMindLetGoSeq();
     }

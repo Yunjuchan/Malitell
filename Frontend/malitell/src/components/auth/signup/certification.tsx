@@ -25,7 +25,6 @@ export default function Certification({ userId, email }: FormProps) {
   const [success, setSuccess] = useState(false);
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
 
     fetch(`http://localhost:8080/auth/check-certification`, {
       method: "POST",
@@ -35,12 +34,10 @@ export default function Certification({ userId, email }: FormProps) {
       body: JSON.stringify(data),
     })
       .then((res) => {
-        console.log(res);
         return res;
       })
       .then((res) => {
         if (res.status === 200) {
-          console.log("성공");
           setSuccess(true);
         }
       });

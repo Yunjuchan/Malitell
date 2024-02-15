@@ -63,7 +63,6 @@ export default function MyInfoClient() {
       };
       reader.readAsDataURL(file);
     }
-    console.log(userData?.profileImg);
   };
 
   const clearFileInput = () => {
@@ -95,9 +94,7 @@ export default function MyInfoClient() {
   };
 
   useEffect(() => {
-    console.log(selectedTags);
     fetchUserInfo().then((res) => {
-      console.log(res);
       setUserData(res);
       setProfileImage(res.profileImg);
       setSelectedTags(res.statusTags);

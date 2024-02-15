@@ -9,14 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class MindLetGoListDto {
-
-    private int userSeq;
     private int mindLetGoSeq;
     private String content;
 
     public MindLetGoListDto(MindLetGo mindLetGo) {
-        // 수정
-        this.userSeq = mindLetGo.getUser().getUserSeq();
         this.mindLetGoSeq = mindLetGo.getMindLetGoSeq();
         this.content = mindLetGo.getContent();
     }
