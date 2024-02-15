@@ -21,6 +21,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ChatRoomDto implements Serializable {
+    private static final String serialVersionUID = UUID.randomUUID().toString();
     private String chatRoomSeq;
     private int counselorSeq;
     private int clientSeq;
@@ -28,7 +29,7 @@ public class ChatRoomDto implements Serializable {
 
     public static ChatRoomDto create(User counselor, User client) {
         ChatRoomDto chatRoomDto = new ChatRoomDto();
-        chatRoomDto.chatRoomSeq = UUID.randomUUID().toString();
+        chatRoomDto.chatRoomSeq = serialVersionUID;
         chatRoomDto.counselorSeq = counselor.getUserSeq();
         chatRoomDto.clientSeq = client.getUserSeq();
         return chatRoomDto;
