@@ -69,9 +69,9 @@ public class SecurityConfig {
 
         // 경로별 인가 작업
         http.authorizeHttpRequests((auth) -> auth
-                .requestMatchers("/api", "/api/user/join/**", "/login", "/api/oauth2/**", "/api/user/reissue", "/api/chat/room/**", "/api/chat/rooms", "/api/user/exists/**", "/api/auth/**", "/api/ws-stomp/**", "/api/getCounselorList", "/api/getCounselor/**", "/api/community/getBoardList/**", "/api/gathering/getBoardList/**", "/api/overComing/getBoardList/**", "/api/gathering/view/**", "/api/community/view/**", "/api/overComing/view/**", "/api/capsule/get", "/api/mindLetGo/list", "/api/mindLetGo/topic").permitAll()
-                .requestMatchers("/api/reserve/**", "/api/board", "/api/counseling/review/**", "/api/mypage/counselingReviewList/**", "/api/mypage/counselingReviewList/**", "/api/mypage/cancelReservation/**").hasRole("CLIENT")
-                .requestMatchers("/api/counseling/saveCounselingLog/**", "/api/mypage/counselingLog").hasRole("COUNSELOR") // 상담자, 관리자 권한 처리하기
+                .requestMatchers("/api", "/api/user/join/**", "/login", "/api/auth/**", "/api/oauth2/**", "/api/user/reissue", "/api/user/exists/**", "/api/ws-stomp/**", "/api/getCounselorList", "/api/getCounselor/**", "/api/community/getBoardList/**", "/api/community/view/**", "/api/gathering/getBoardList/**", "/api/gathering/view/**", "/api/overComing/getBoardList/**", "/api/overComing/view/**", "/api/capsule/get", "/api/mindLetGo/list", "/api/mindLetGo/topic").permitAll()
+                .requestMatchers("/api/reserve/**", "api/mypage/reserve/**", "/api/mypage/cancelReservation/**", "api/mypage/counselingLog/**", "/api/counseling/review/**", "/api/mypage/counselingReviewList/**", "/api/board", "/api/mypage/counselingReviewList/**").hasRole("CLIENT")
+                .requestMatchers("api/mypage/reserve/**", "/api/counseling/saveCounselingLog/**", "/api/mypage/counselingLog/**", "api/myReview").hasRole("COUNSELOR")
                 .anyRequest().authenticated());
 
         // OAuth2
