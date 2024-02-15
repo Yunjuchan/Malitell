@@ -3,10 +3,9 @@ import styled from "styled-components";
 // 세로 플렉스 정렬방식: ( 가로 : 가운데 정렬  세로 : space-between)
 export const Wrapper = styled.div`
   width: 100%;
-  height: 510px;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
 `;
 

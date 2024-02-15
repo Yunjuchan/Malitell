@@ -52,8 +52,6 @@ export default function CounselorDetail() {
             </g.Box>
             <g.Box $col="9/13" $row="2/6">
               <ProfileBox counselor={counselor} />
-            </g.Box>
-            <g.Box $col="9/13" $row="6/7">
               <ButtonBox counselorSeq={Number(counselorSeq)} />
             </g.Box>
           </>

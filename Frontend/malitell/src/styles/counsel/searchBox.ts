@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 80px;
   display: flex;
   .focus {
     box-shadow: 1px 1px 1px 1px lightgray inset;

@@ -26,15 +26,16 @@ export default function Title({ article }: { article: t.Article }) {
       <s.TitleBox>
         {article && (
           <>
-            <div>
-              {article.title} {article.name}
-            </div>
+            <s.Username>작성자: {article.name}</s.Username>
+            <s.ArticleTitle>{article.title}</s.ArticleTitle>
             {mySeq === article.userSeq ? (
               <>
-                {/* <button onClick={}>수정</button> */}
-                <button onClick={handleDelete}>삭제</button>
+                <s.ButtonBox>
+                  <s.Button color="skyblue">수정</s.Button>
+                  <s.Button color="tomato">삭제</s.Button>
+                </s.ButtonBox>
               </>
-            ) : null}
+            ) : <s.ButtonBox />}
           </>
         )}
       </s.TitleBox>

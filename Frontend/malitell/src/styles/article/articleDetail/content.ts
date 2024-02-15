@@ -2,17 +2,15 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
 width: 100%;
-height: 100%;
-display: flex;
+height: 98%;
+padding-bottom: 2%;
 `
 
 export const ContentBox = styled.div`
-width: 89%;
-min-height: 90%;
+width: 100%;
+min-height: 100%;
 height: auto;
-padding: 3%;
 margin-top: 10px;
-margin-left: 4%;
 background-color: white;
 border-radius: 10px;
 box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
