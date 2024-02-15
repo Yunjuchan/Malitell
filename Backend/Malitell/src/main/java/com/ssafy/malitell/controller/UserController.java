@@ -9,6 +9,9 @@ import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import com.ssafy.malitell.jwt.JWTUtil;
 import com.ssafy.malitell.repository.user.UserRepository;
 import com.ssafy.malitell.service.UserService;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,7 +54,8 @@ public class UserController {
 
     // token 검증
     @PostMapping("/user/reissue")
-    public String token(String refreshToken) throws Exception {
+    public String token(HttpServletRequest request) throws Exception {
+        String refreshToken = request.getParameter("Refresh_Token");
 
         refreshToken = refreshToken.split(" ")[1];
 
