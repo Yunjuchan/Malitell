@@ -19,9 +19,8 @@ public class MindLetGoController {
 
     // MindLetGo 작성
     @PostMapping
-    public ResponseEntity<?> createMindLetGo(@RequestBody MindLetGoRequestDto mindLetGoRequestDto, Principal principal) {
-        String userId = principal.getName();
-        mindLetGoService.createMindLetGo(mindLetGoRequestDto, userId);
+    public ResponseEntity<?> createMindLetGo(@RequestBody MindLetGoRequestDto mindLetGoRequestDto) {
+        mindLetGoService.createMindLetGo(mindLetGoRequestDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
