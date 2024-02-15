@@ -10,4 +10,4 @@ margin-bottom: 5%;
 &.client {
   width: 48%;
 }
-`
+`;

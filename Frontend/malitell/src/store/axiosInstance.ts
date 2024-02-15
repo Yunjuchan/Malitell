@@ -32,9 +32,9 @@ export const authApi: AxiosInstance = axios.create({
 });
 
 authApi.interceptors.request.use((config) => {
-  const token = sessionStorage.getItem("Access_Token");
+  const token = sessionStorage.getItem("Refresh_Token");
   if (token) {
-    config.headers["Access_Token"] = token;
+    config.headers["Refresh_Token"] = token;
   }
   console.log(config);
   return config;

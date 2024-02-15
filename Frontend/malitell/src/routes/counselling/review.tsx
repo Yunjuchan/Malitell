@@ -22,7 +22,6 @@ export default function Review() {
   });
 
   const onSubmit = (data: FormData) => {
-    data.grade = Number(data.grade);
     fetch(`http://localhost:8080/api/counseling/review`, {
       method: "POST",
       headers: {
