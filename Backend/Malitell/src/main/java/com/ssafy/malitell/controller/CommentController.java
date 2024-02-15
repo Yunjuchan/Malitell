@@ -24,14 +24,12 @@ public class CommentController {
 
     @PostMapping("/gathering")
     public ResponseEntity<?> createGatheringComment(@RequestBody CommentRequestDto commentRequestDto) {
-        System.out.println(commentRequestDto);
         gatheringCommentService.register(commentRequestDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/overComing")
     public ResponseEntity<?> createOverComingComment(@RequestBody CommentRequestDto commentRequestDto) {
-        System.out.println(commentRequestDto);
         overComingCommentService.register(commentRequestDto);
         return new ResponseEntity<>(HttpStatus.OK);
 
@@ -40,7 +38,6 @@ public class CommentController {
 
     @PostMapping("/community")
     public ResponseEntity<?> createCommunityComment(@RequestBody CommentRequestDto commentRequestDto) {
-        System.out.println(commentRequestDto);
         communityCommentService.register(commentRequestDto);
         return new ResponseEntity<>(HttpStatus.OK);
 

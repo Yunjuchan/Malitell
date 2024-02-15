@@ -125,14 +125,8 @@ public class ChatService {
     @Transactional
     public List<ChatMessageDto> loadMessage(String chatRoomSeq) {
 
-        System.out.println("===========================");
-        System.out.println(chatRoomSeq);
-        System.out.println("===========================");
-
         // Redis 에서 해당 채팅방의 메시지 100개 가져오기
         List<ChatMessageDto> redisMessageList = redisTemplateMessage.opsForList().range(chatRoomSeq, 0, 99);
-
-        System.out.println("???????????????????????????????????");
 
         List<ChatMessageDto> messageList = new ArrayList<>(redisMessageList);
 
@@ -153,11 +147,6 @@ public class ChatService {
         }
 
 
-        System.out.println("=====================================");
-        for (ChatMessageDto chatMessageDto : messageList) {
-            System.out.println(chatMessageDto);
-        }
-        System.out.println("=====================================");
         return messageList;
     }
 
