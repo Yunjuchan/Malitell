@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface ChatMessageRepository extends MongoRepository<ChatMessage, Long> {
     List<ChatMessage> findTop100ByChatRoomChatRoomSeqOrderBySendTimeAsc(String roomId);
 
