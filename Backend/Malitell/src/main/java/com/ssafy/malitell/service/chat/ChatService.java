@@ -124,20 +124,18 @@ public class ChatService {
 
     @Transactional
     public List<ChatMessageDto> loadMessage(String chatRoomSeq) {
-
-        System.out.println("===========================");
-        System.out.println(chatRoomSeq);
-        System.out.println("===========================");
-
         // Redis 에서 해당 채팅방의 메시지 100개 가져오기
         List<ChatMessageDto> redisMessageList = redisTemplateMessage.opsForList().range(chatRoomSeq, 0, 99);
 
-        System.out.println("???????????????????????????????????");
+        List<ChatMessageDto> messageList = new ArrayList<>();
 
-        List<ChatMessageDto> messageList = new ArrayList<>(redisMessageList);
+
+        if (redisMessageList != null) {
+            messageList.addAll(redisMessageList);
+        }
 
         // 4. Redis 에서 가져온 메시지가 없다면, DB 에서 메시지 100개 가져오기
-        if (redisMessageList.isEmpty()) {
+        else {
             // 5.
             List<ChatMessage> dbMessageList = chatMessageRepository.findTop100ByChatRoomChatRoomSeqOrderBySendTimeAsc(chatRoomSeq);
 
@@ -147,9 +145,6 @@ public class ChatService {
                 redisTemplateMessage.setValueSerializer(new Jackson2JsonRedisSerializer<>(ChatMessage.class));      // 직렬화
                 redisTemplateMessage.opsForList().rightPush(chatRoomSeq, messageDto);                                // redis 저장
             }
-        } else {
-            // 7.
-            messageList.addAll(redisMessageList);
         }
 
 
