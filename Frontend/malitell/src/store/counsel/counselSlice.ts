@@ -26,7 +26,7 @@ export const fetchCounselorList = () => {
     .then((res) => {
         return res.data
     })
-    .catch((error) => console.log("load fail"))
+    .catch((error) => console.error("load fail"))
 
     return data
 }
@@ -41,7 +41,7 @@ export const fetchCounselorDetail = (counselorSeq: number) => {
         return res.data
     })
     .catch((error) => {
-        console.log("load fail")
+        console.error("load fail")
     })
     
     return res

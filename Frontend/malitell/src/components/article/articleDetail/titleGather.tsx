@@ -3,7 +3,6 @@ import * as t from "./types"
 
 // 여기는 태그 스크랩, 신청하기 버튼이 있음
 export default function Title({article}: {article: t.Article}) {
-  console.log(article)
   return (
     <Wrapper>
       <TitleBox>

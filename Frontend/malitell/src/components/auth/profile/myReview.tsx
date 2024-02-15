@@ -9,7 +9,6 @@ export default function MyReview() {
   // const [myReviews, setMyReviews] = useState<mySHGroupData[]>();
   // useEffect(() => {
   //   mySHGroup().then((res) => {
-  //     console.log(res);
   //     setMyGroups(res);
   //   });
   // }, []);
