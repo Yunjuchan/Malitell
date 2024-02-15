@@ -60,7 +60,7 @@ public class SelfHelpGroupService {
 
         List<SelfHelpGroupResponseDto> selfHelpGroupList = new ArrayList<>();
         for (SelfHelpGroupUser selfHelpGroupUser : findUser.getSelfHelpGroupUsers()) {
-            selfHelpGroupList.add(new SelfHelpGroupResponseDto(selfHelpGroupUser.getSelfHelpGroup().getTitle(), selfHelpGroupUser.getSelfHelpGroup().getContent(), selfHelpGroupUser.getSelfHelpGroup().getTimes(), selfHelpGroupUser.getSelfHelpGroup().getSelfHelpType(), selfHelpGroupUser.getSelfHelpGroup().getSelfHelpGroupSeq()));
+            selfHelpGroupList.add(new SelfHelpGroupResponseDto(selfHelpGroupUser.getSelfHelpGroup().getTitle(), selfHelpGroupUser.getSelfHelpGroup().getContent(), selfHelpGroupUser.getSelfHelpGroup().getTimes(), selfHelpGroupUser.getSelfHelpGroup().getSelfHelpType(), selfHelpGroupUser.getSelfHelpGroup().getSelfHelpGroupSeq(), selfHelpGroupUser.getSelfHelpGroup().getSelfHelpGroupHeadLimit()));
         }
         return selfHelpGroupList;
     }
