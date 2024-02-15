@@ -22,8 +22,8 @@ export default function Review() {
   });
 
   const onSubmit = (data: FormData) => {
-    console.log("데이터: ", JSON.stringify(data));
-    fetch(`http://localhost:8080/api/counseling/review/${seq}`, {
+    data.grade = Number(data.grade);
+    fetch(`http://localhost:8080/api/counseling/review`, {
       method: "POST",
       headers: {
         Access_Token: `${sessionStorage.getItem("Access_Token")}`,

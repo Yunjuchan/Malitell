@@ -16,7 +16,6 @@ export default function ArticleDetail() {
   const { boardType, boardSeq } = useParams();
 
   useEffect(() => {
-    console.log(boardType, boardSeq);
     const fetchData = async () => {
       if (boardType === "gather") {
         const data = await sHGroupDetail(Number(boardSeq));
@@ -28,7 +27,6 @@ export default function ArticleDetail() {
         const data = await articleDetail(Number(boardSeq));
         setArticle(data);
       }
-      console.log(article)
     };
     fetchData();
   }, []);

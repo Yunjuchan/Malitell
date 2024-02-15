@@ -43,7 +43,6 @@ export default function LoginEmail({
   } = useForm<FormData>();
   const dispatch = useDispatch<AppDispatch>();
   const onSubmit = (data: FormData) => {
-    console.log("데이터: ", data);
     dispatch(login(data))
   };
 

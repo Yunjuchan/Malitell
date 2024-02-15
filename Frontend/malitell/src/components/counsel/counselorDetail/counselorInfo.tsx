@@ -8,7 +8,6 @@ export interface CounselorProps {
 }
 
 export default function CounselorInfo({ counselor }: CounselorProps) {
-  console.log(counselor);
 
   function splitProfessionalField(counselor: CounselorData) {
     return counselor.professionalField.split('\n');
