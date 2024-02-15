@@ -13,6 +13,7 @@ import com.ssafy.malitell.repository.counseling.log.CounselingLogRepository;
 import com.ssafy.malitell.repository.counseling.review.CounselingReviewRepository;
 import com.ssafy.malitell.repository.counseling.CounselingRepository;
 import com.ssafy.malitell.repository.user.UserRepository;
+import com.ssafy.malitell.util.AESUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +27,8 @@ import java.util.*;
 @Service
 @RequiredArgsConstructor
 public class CounselingService {
+
+    private final AESUtil aesUtil;
 
     private final CounselingRepository counselingRepository;
     private final UserRepository userRepository;
@@ -73,9 +76,10 @@ public class CounselingService {
         } else {
             round = counselingList.size() + 1; // 첫 상담 이후 회차설정
         }
+        reserveRequestDto.setCounselingSubject(aesUtil.encrypt(reserveRequestDto.getCounselingSubject()));
+        reserveRequestDto.setQuestionList(aesUtil.encrypt(reserveRequestDto.getQuestionList()));
 
         Counseling counseling = new Counseling(counselorSeq, reserveRequestDto, user, round);
-        System.out.println(counseling);
         counselingRepository.save(counseling);
         return counseling.getCounselingSeq();
     }
@@ -95,6 +99,8 @@ public class CounselingService {
             int clientSeq = counseling.getClientSeq();
             int counselorSeq = counseling.getCounselorSeq();
 
+            counseling.setCounselingSubject(aesUtil.decrypt(counseling.getCounselingSubject()));
+
             User cleint = userRepository.findByUserSeq(clientSeq);
             User counselor = userRepository.findByUserSeq(counselorSeq);
 
@@ -112,8 +118,8 @@ public class CounselingService {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String counselingDate1 = sdf.format(counselingDate);
 
-        String counselingSubject = counseling.get().getCounselingSubject();
-        String questionList = counseling.get().getQuestionList();
+        String counselingSubject = aesUtil.decrypt(counseling.get().getCounselingSubject());
+        String questionList = aesUtil.decrypt(counseling.get().getQuestionList());
 
         String loginUserId = principal.getName();
         User loginUser = userRepository.findByUserId(loginUserId);
@@ -159,7 +165,7 @@ public class CounselingService {
     }
 
     public void saveCounselingLog(int counselingSeq, CounselingLogRequestDto counselingLogRequestDto) {
-        String content = counselingLogRequestDto.getContent();
+        String content = aesUtil.encrypt(counselingLogRequestDto.getContent());
         Optional<Counseling> counseling = counselingRepository.findById(counselingSeq);
         if (counseling.isPresent()) {
             CounselingLog counselingLog = new CounselingLog(content, counseling.get());
@@ -309,7 +315,7 @@ public class CounselingService {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String counselingDate1 = sdf.format(counselingDate);
             int round = counselingLog.get().getCounseling().getRound();
-            String content = counselingLog.get().getContent();
+            String content = aesUtil.decrypt(counselingLog.get().getContent());
 
             CounselingLogResponseDto counselingLogResponseDto = new CounselingLogResponseDto(counselingLogSeq, counselingSeq, name, counselingDate1, round, content);
             return counselingLogResponseDto;

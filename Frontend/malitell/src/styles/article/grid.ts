@@ -23,5 +23,5 @@ display: grid;
 width: 1024px;
 margin: auto;
 grid-template-columns: repeat(12, 1fr);
-grid-template-rows: 20px 75px 400px 20px auto; 
+grid-template-rows: 20px 100px 400px 20px auto; 
 `

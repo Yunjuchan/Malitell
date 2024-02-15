@@ -22,15 +22,17 @@ export default function Review() {
   });
 
   const onSubmit = (data: FormData) => {
-    console.log("데이터: ", JSON.stringify(data));
-    fetch(`http://localhost:8080/api/counseling/review/${seq}`, {
+    fetch(`http://localhost:8080/api/counseling/review`, {
       method: "POST",
       headers: {
         Access_Token: `${sessionStorage.getItem("Access_Token")}`,
+        "Content-type": "application/json",
       },
       body: JSON.stringify(data),
     }).then((res) => {
-      console.log(res);
+      if (res.status === 200) {
+        window.close();
+      }
     });
   };
 

@@ -12,7 +12,7 @@ export const Grid = styled.div`
   display: grid;
   margin: auto;
   width: 1024px;
-  height: 9vh;
+  height: 80px;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(3, 1fr);
   /* 1700px부터 무너지기 시작(반응형 또는 햄버거 준비) */

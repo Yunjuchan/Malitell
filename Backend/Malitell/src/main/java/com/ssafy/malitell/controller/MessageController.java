@@ -18,13 +18,13 @@ import java.util.List;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
+
+
 public class MessageController {
 
     private final ChatService chatService;
 
     private final RedisPublisher redisPublisher;
-
-    private final ChannelTopic channelTopic;
 
     @MessageMapping("/chat/message")
     public void message(@RequestBody ChatMessageDto chatMessageDto) {

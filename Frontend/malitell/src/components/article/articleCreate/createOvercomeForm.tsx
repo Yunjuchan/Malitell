@@ -30,7 +30,6 @@ export default function CreateOvercomeForm() {
   };
 
   useEffect(() => {
-    console.log(boardType);
   }, [boardType]);
 
   return (

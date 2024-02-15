@@ -4,6 +4,8 @@ import styled from "styled-components";
 import SearchBox from "../../components/counsel/counselorList/searchBox";
 import Filter from "../../components/counsel/counselorList/filter";
 import Counselors from "../../components/counsel/counselorList/counselors";
+import Bamboo from "../../components/common/banners/bamboo";
+import Metaverse from "../../components/common/banners/metaverse";
 
 const Text = styled.div`
   width: 100%;
@@ -32,17 +34,12 @@ export default function CounselorList() {
           </Text>
           <Line />
         </Box>
-        <Box $col="1/4" $row="2/3" $position="sticky" $top="160px">
-          <SearchBox />
+        <Box $col="1/4" $row="2/5" $position="sticky" $top="170px">
+          <Bamboo />
+          <Metaverse />
         </Box>
-        <Box $col="1/4" $row="3/6" $position="sticky" $top="230px">
-          <Filter />
-        </Box>
-        <Box $col="4/13" $row="2/12">
+        <Box $col="4/13" $row="2/6">
           <Counselors />
-        </Box>
-        <Box $col="4/14" $row="12/13">
-          pagenation
         </Box>
       </Grid>
     </>

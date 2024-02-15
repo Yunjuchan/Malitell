@@ -11,7 +11,6 @@ export default function TitleOvercome({ article }: { article: t.OvercomeArticle 
   const { boardSeq } = useParams();
   const mySeq = Number(sessionStorage.getItem("mySeq")) || 0;
   const boardType = useSelector((state: RootState) => state.board.boardType);
-  console.log(article);
   const handleDelete: MouseEventHandler<HTMLButtonElement> = (e) => {
     if (boardType === "community") {
     } else if (boardType === "gather") {

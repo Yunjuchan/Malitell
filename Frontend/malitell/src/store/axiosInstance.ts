@@ -25,16 +25,16 @@ export const loginApi: AxiosInstance = axios.create({
 // });
 
 export const authApi: AxiosInstance = axios.create({
-  baseURL: BASE_URL+"/api",
+  baseURL: BASE_URL + "/api",
   headers: {
     "Content-type": "application/json",
   },
 });
 
 authApi.interceptors.request.use((config) => {
-  const token = sessionStorage.getItem("Access_Token");
+  const token = sessionStorage.getItem("Refresh_Token");
   if (token) {
-    config.headers["Access_Token"] = token;
+    config.headers["Refresh_Token"] = token;
   }
   console.log(config);
   return config;

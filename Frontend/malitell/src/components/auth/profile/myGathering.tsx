@@ -12,7 +12,6 @@ export default function MyGathering() {
   const [myGroups, setMyGroups] = useState<mySHGroupData[]>();
   useEffect(() => {
     mySHGroup().then((res) => {
-      console.log(res);
       setMyGroups(res);
     });
   }, []);

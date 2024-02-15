@@ -26,7 +26,6 @@ export default function CreateArticleForm() {
 
   const handleTagClick = (e: React.ChangeEvent<HTMLSelectElement> ) => {
     const selectedIndex = e.target.selectedIndex - 1;
-    console.log(selectedIndex)
     setTag(tagList[selectedIndex]);
     setTagEng(tagEngList[selectedIndex]);
   };
@@ -43,7 +42,6 @@ export default function CreateArticleForm() {
   };
 
   useEffect(() => {
-    console.log(boardType);
   }, [boardType]);
 
   return (

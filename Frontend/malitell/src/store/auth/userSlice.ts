@@ -26,15 +26,12 @@ export interface loginData {
 
 // 이메일 로그인
 export const login = (data: loginData) => {
-  console.log("로그인 할때 들어오는 data", data);
   return (dispatch: Dispatch) => {
     loginApi
       .post("/login", toFormData(data))
       .then((res) => {
-        console.log(res.data);
-        console.log(res.headers.access_token);
         sessionStorage.setItem("Access_Token", res.headers.access_token);
-        // sessionStorage.setItem("Refresh")
+        sessionStorage.setItem("Refresh_Token", res.headers.refresh_token);
         dispatch(saveUserInfo(res.data));
       })
       .then(() => {

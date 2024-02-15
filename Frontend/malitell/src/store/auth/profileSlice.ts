@@ -69,7 +69,7 @@ export const fetchUserInfo = () => {
       return res.data;
     })
     .catch((error) => {
-      console.log("Failed to load:", error);
+      console.error("Failed to load:", error);
     });
   return data;
 };
@@ -82,7 +82,7 @@ export const fetchMyArticles = () => {
       return res.data;
     })
     .catch((error) => {
-      console.log("Failed to load:", error);
+      console.error("Failed to load:", error);
     });
   return res;
 };
@@ -95,7 +95,7 @@ export const fetchScrap = () => {
       return res.data;
     })
     .catch((error) => {
-      console.log("Failed to load:", error);
+      console.error("Failed to load:", error);
     });
   return data;
 };
@@ -160,7 +160,6 @@ export const editClientInfo = (editForm: editUserData) => {
       return res.data;
     })
     .then((res) => {
-      console.log(res);
       if (editForm.profileImg) {
         sessionStorage.setItem("myImg", editForm.profileImg || "");
       }
