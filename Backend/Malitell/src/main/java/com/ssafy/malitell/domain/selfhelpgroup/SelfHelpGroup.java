@@ -27,6 +27,7 @@ public class SelfHelpGroup {
     private String title;
 
     // 자조모임 설명
+    @Column(columnDefinition = "TEXT")
     private String content;
 
     // 자조모임 회차
