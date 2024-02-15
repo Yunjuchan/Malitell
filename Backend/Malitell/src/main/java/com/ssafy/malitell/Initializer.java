@@ -3,7 +3,6 @@ package com.ssafy.malitell;
 
 import com.ssafy.malitell.domain.capsule.Capsule;
 import com.ssafy.malitell.domain.mindletgo.MindLetGoTopic;
-import com.ssafy.malitell.domain.tag.StatusTag;
 import com.ssafy.malitell.dto.request.user.ClientJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
@@ -17,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-@Component
+//@Component
 @RequiredArgsConstructor
 public class Initializer implements ApplicationRunner {
 
@@ -29,22 +28,18 @@ public class Initializer implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         // 유저 더미데이터 추가
         ClientJoinRequestDto joinDto1 = new ClientJoinRequestDto("hanjaehyeon", "한재현", "짱재현", "1234", "hjaehyeon98@gmail.com", "010-5705-6540", "19980228", "M", "ROLE_CLIENT");
-        ClientJoinRequestDto joinDto2 = new ClientJoinRequestDto("tpwls101", "유세진", "짱세진", "1234", "tpwls101@naver.com", "010-6604-1442", "19980210", "F", "ROLE_CLIENT");
-        CounselorJoinRequestDto joinDto3 = new CounselorJoinRequestDto("wncks123", "윤주찬", "짱주찬", "1234", "wncks2546@naver.com", "010-5566-7679", "19990604", "M", 10, "ROLE_COUNSELOR", "서울대", "자격증");
 
-        userService.joinCounselor(joinDto3);
         userService.joinClient(joinDto1);
-        userService.joinClient(joinDto2);
 
-        // 마음 자판기 내용물 추가
-//        capsuleRepository.save(new Capsule("어둠은 영원하지 않다. 그리고, 그런 어둠속에도 별은 존재한다.", "Ursula K. Le Guin", "https://www.youtube.com/watch?v=0NkfL3foelE"));
-//        capsuleRepository.save(new Capsule("어두운 밤이 되어야 별을 볼 수 있게 된다는 것을 기억해라", "Martin Luther King Jr.", "https://www.youtube.com/watch?v=JLT8qOdpDPM"));
-//        capsuleRepository.save(new Capsule("많은 사람들은 우울 속에서 생활한다. 높은 곳에 오른 사람은 밝음과 어둠 속에서 산다. 우울이란 밝음과 어둠 사이에 있는 흐릿한 발전 없는 혼돈이다.", "Georg Simmel", "https://www.youtube.com/watch?v=r19P3I075pE"));
-//        capsuleRepository.save(new Capsule("오늘이 바로 당신이라는 책의 첫 페이지이다. 그리고, 나머지 페이지는 아직 쓰여지지 않았다.", "Natasha Begingfield", "https://www.youtube.com/watch?v=vN0iy88IMLg\n"));
-//        capsuleRepository.save(new Capsule("한번의 실패와 영원한 실패를 혼동하지 마라.", "F.Scott Fitzgerald", "https://www.youtube.com/watch?v=5YTpRPRk3jQ"));
-//        capsuleRepository.save(new Capsule("시작하는 데 있어서 나쁜 시기란 없다.", "Franz Kafka", "https://www.youtube.com/watch?v=dh5Skqpuvsk"));
-//        capsuleRepository.save(new Capsule("우울함이란 병이 아니다. 우울함은 삶에서 비정상적인 경험을 겪게 될 때 나타나는 일반적인 반응이다.", "Johann Hari", "https://www.youtube.com/watch?v=3Dn05-HrEaE"));
-//        capsuleRepository.save(new Capsule("이 사악한 세상에서 영원한 것은 없다. 우리에게 닥친 문제들을 포함해서 말이다.", "Charlie Chplin", "https://www.youtube.com/watch?v=ka2-P1OeDd8"));
+//         마음 자판기 내용물 추가
+        capsuleRepository.save(new Capsule("어둠은 영원하지 않다. 그리고, 그런 어둠속에도 별은 존재한다.", "Ursula K. Le Guin", "https://www.youtube.com/watch?v=0NkfL3foelE"));
+        capsuleRepository.save(new Capsule("어두운 밤이 되어야 별을 볼 수 있게 된다는 것을 기억해라", "Martin Luther King Jr.", "https://www.youtube.com/watch?v=JLT8qOdpDPM"));
+        capsuleRepository.save(new Capsule("많은 사람들은 우울 속에서 생활한다. 높은 곳에 오른 사람은 밝음과 어둠 속에서 산다. 우울이란 밝음과 어둠 사이에 있는 흐릿한 발전 없는 혼돈이다.", "Georg Simmel", "https://www.youtube.com/watch?v=r19P3I075pE"));
+        capsuleRepository.save(new Capsule("오늘이 바로 당신이라는 책의 첫 페이지이다. 그리고, 나머지 페이지는 아직 쓰여지지 않았다.", "Natasha Begingfield", "https://www.youtube.com/watch?v=vN0iy88IMLg\n"));
+        capsuleRepository.save(new Capsule("한번의 실패와 영원한 실패를 혼동하지 마라.", "F.Scott Fitzgerald", "https://www.youtube.com/watch?v=5YTpRPRk3jQ"));
+        capsuleRepository.save(new Capsule("시작하는 데 있어서 나쁜 시기란 없다.", "Franz Kafka", "https://www.youtube.com/watch?v=dh5Skqpuvsk"));
+        capsuleRepository.save(new Capsule("우울함이란 병이 아니다. 우울함은 삶에서 비정상적인 경험을 겪게 될 때 나타나는 일반적인 반응이다.", "Johann Hari", "https://www.youtube.com/watch?v=3Dn05-HrEaE"));
+        capsuleRepository.save(new Capsule("이 사악한 세상에서 영원한 것은 없다. 우리에게 닥친 문제들을 포함해서 말이다.", "Charlie Chplin", "https://www.youtube.com/watch?v=ka2-P1OeDd8"));
 
         // 상담가 더미데이터 추가
         CounselorJoinRequestDto joinDto4 = new CounselorJoinRequestDto("namyoullim", "임남열", "임남열", "1234", "test@naver.com", "010-8211-0108", "19810212", "M", 17, "ROLE_COUNSELOR", "전남대학교 임상심리 전공 박사 수료", "임상심리전문가 정신보건 임상심리사 1급 중독심리전문가");
