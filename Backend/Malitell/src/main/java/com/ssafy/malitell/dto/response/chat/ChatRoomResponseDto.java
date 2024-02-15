@@ -42,4 +42,6 @@ public class ChatRoomResponseDto {
     public ChatRoomResponseDto(String chatRoomSeq) {
         this.chatRoomSeq = chatRoomSeq;
     }
+
+
 }
