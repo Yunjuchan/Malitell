@@ -7,20 +7,21 @@ export interface SelfHelpGroupForm {
   selfHelpGroupContent: string;
   times: Array<number>;
   selfHelpType: string;
-  selfHelpGroupHeadCount: number;
+  headcount: number;
   title: string;
   content: string;
 }
 // 자조모임 모집 게시글 작성
 // selfHelpGroupTitle: string, selfHelpGroupContent: string, times: number, selfHelpType:string, selfHelpGroupHeadCount: number, title:string, content:string
 export const createSHGroup = (data: SelfHelpGroupForm) => {
+  console.log(data)
   const res = authApi
     .post("/gathering", {
       selfHelpGroupTitle: data.selfHelpGroupTitle,
       selfHelpGroupContent: data.content,
       times: data.times,
       selfHelpType: data.selfHelpType,
-      selfHelpGroupHeadCount: data.selfHelpGroupHeadCount,
+      selfHelpGroupHeadCount: data.headcount,
       title: data.title,
       content: data.content,
     })
@@ -76,7 +77,7 @@ export const joinSHGroup = (gatheringSeq: number) => {
   const formData = new FormData();
   formData.append('gatheringSeq', gatheringSeq.toString());
 
-  const res = axios.post("http://localhost:8080/api/selfHelpGroup/participate", formData, {
+  const res = axios.post("https://i10c208.p.ssafy.io:8080/api/selfHelpGroup/participate", formData, {
     headers: {
       'Access_Token': sessionStorage.getItem('Access_Token'),
       'Content-Type': 'multipart/form-data'

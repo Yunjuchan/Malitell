@@ -14,6 +14,7 @@ interface props {
   name: string;
   title: string;
   userSeq: number;
+  headcount: number;
   participants: number[];
   selfHelpGroup: SelfHelpGroup;
 }
@@ -22,6 +23,7 @@ export default function TitleGather({
   name,
   title,
   userSeq,
+  headcount,
   participants,
   selfHelpGroup,
 }: props) {
@@ -29,9 +31,8 @@ export default function TitleGather({
   const { boardSeq } = useParams();
   const mySeq = Number(sessionStorage.getItem("mySeq")) || 0;
   const boardType = useSelector((state: RootState) => state.board.boardType);
-  const selfHelpGroupHeadCount = 10; // 아직 데이터 안넘어와서 인원제한 설정
   const isParticipating = participants.includes(mySeq);
-  const isFull = participants.length >= selfHelpGroupHeadCount;
+  const isFull = participants.length >= headcount;
   const showJoinButton = !isParticipating && !isFull;
   const showCancelButton = isParticipating;
   const showFullButton = !isParticipating && isFull;
