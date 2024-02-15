@@ -9,12 +9,11 @@ export const fetchOvercomingList = () => {
     .then((res) => {
       return res.data;
     })
-    .catch((error) => console.log("load fail", error));
+    .catch((error) => console.error("load fail", error));
   return res;
 };
 
 export const createOvercome = (data: OvercomingForm) => {
-  console.log(data);
   const res = authApi.post("/overComing", data).then((res) => {
     return res.data;
   });

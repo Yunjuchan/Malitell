@@ -19,7 +19,6 @@ export default function MyCounselClient() {
   
   useEffect(() => {
     fetchCounselLog().then((res) => {
-      console.log(res);
       setMyCounselingLogList(res);
     });
   }, []);

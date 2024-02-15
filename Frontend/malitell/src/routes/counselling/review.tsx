@@ -4,8 +4,8 @@ import * as s from "../../styles/counselling/review";
 
 export default function Review() {
   interface FormData {
-    grade: number;
-    counselorSeq: number;
+    grade: string;
+    counselorSeq: string;
     content: string;
   }
 
@@ -17,23 +17,22 @@ export default function Review() {
     formState: { errors },
   } = useForm<FormData>({
     defaultValues: {
-      counselorSeq: Number(seq),
+      counselorSeq: seq,
     },
   });
 
   const onSubmit = (data: FormData) => {
-    data.grade = Number(data.grade);
-    console.log("데이터: ", JSON.stringify(data));
-    console.log(sessionStorage.getItem("Access_Token"))
     fetch(`http://localhost:8080/api/counseling/review`, {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
         Access_Token: `${sessionStorage.getItem("Access_Token")}`,
+        "Content-type": "application/json",
       },
       body: JSON.stringify(data),
     }).then((res) => {
-      console.log(res);
+      if (res.status === 200) {
+        window.close();
+      }
     });
   };
 
@@ -45,9 +44,7 @@ export default function Review() {
           <s.Subtitle>상담은 어떠셨나요?</s.Subtitle>
           <fieldset>
             <input
-              {...register("grade", { 
-                required: "평점을 입력해 주세요.", 
-              })}
+              {...register("grade", { required: "평점을 입력해 주세요." })}
               type="radio"
               name="grade"
               value="5"
@@ -55,9 +52,7 @@ export default function Review() {
             />
             <label htmlFor="rate1">⭐</label>
             <input
-              {...register("grade", { 
-                required: "평점을 입력해 주세요.", 
-              })}
+              {...register("grade")}
               type="radio"
               name="grade"
               value="4"
@@ -65,9 +60,7 @@ export default function Review() {
             />
             <label htmlFor="rate2">⭐</label>
             <input
-              {...register("grade", { 
-                required: "평점을 입력해 주세요.", 
-              })}
+              {...register("grade")}
               type="radio"
               name="grade"
               value="3"
@@ -75,9 +68,7 @@ export default function Review() {
             />
             <label htmlFor="rate3">⭐</label>
             <input
-              {...register("grade", { 
-                required: "평점을 입력해 주세요.", 
-              })}
+              {...register("grade")}
               type="radio"
               name="grade"
               value="2"
@@ -85,12 +76,10 @@ export default function Review() {
             />
             <label htmlFor="rate4">⭐</label>
             <input
-              {...register("grade", { 
-                required: "평점을 입력해 주세요.", 
-              })}
+              {...register("grade")}
               type="radio"
               name="grade"
-              value={1}
+              value="1"
               id="rate5"
             />
             <label htmlFor="rate5">⭐</label>

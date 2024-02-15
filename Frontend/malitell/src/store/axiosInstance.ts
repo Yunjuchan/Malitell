@@ -57,7 +57,6 @@ authApi.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
-    console.log(error.response.status)
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       const access_token = await refreshAccessToken(); // access token을 새로 발급받는 함수

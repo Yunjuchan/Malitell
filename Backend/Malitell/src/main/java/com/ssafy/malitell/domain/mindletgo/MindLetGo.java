@@ -19,6 +19,7 @@ public class MindLetGo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int mindLetGoSeq;
     private String content;
+
     public MindLetGo(MindLetGoRequestDto mindLetGoRequestDto) {
         this.content = mindLetGoRequestDto.getContent();
     }

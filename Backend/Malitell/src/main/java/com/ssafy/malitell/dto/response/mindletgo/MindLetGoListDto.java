@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class MindLetGoListDto {
-
-    private int userSeq;
     private int mindLetGoSeq;
     private String content;
 

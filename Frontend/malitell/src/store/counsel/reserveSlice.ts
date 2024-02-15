@@ -15,7 +15,6 @@ export const reservation = (data: ReservationInfo) => {
     })
     .then((res) => {
       // 응답 counselorSeq, 상담일시
-      console.log(res);
       return res.data;
     });
     return res
