@@ -26,8 +26,6 @@ public class MessageController {
 
     private final RedisPublisher redisPublisher;
 
-    private final ChannelTopic channelTopic;
-
     @MessageMapping("/chat/message")
     public void message(@RequestBody ChatMessageDto chatMessageDto) {
         chatService.enterMessageRoom(chatMessageDto.getChatRoomSeq());
