@@ -25,11 +25,13 @@ export default function Review() {
     fetch(`http://localhost:8080/api/counseling/review`, {
       method: "POST",
       headers: {
-        Access_Token: `${sessionStorage.getItem("Access_Token")}`,
+        "Access_Token": `${sessionStorage.getItem("Access_Token")}`,
         "Content-type": "application/json",
       },
       body: JSON.stringify(data),
     }).then((res) => {
+      console.log(data);
+      console.log(res);
       if (res.status === 200) {
         window.close();
       }

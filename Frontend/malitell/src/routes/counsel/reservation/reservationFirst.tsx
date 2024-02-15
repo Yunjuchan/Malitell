@@ -6,6 +6,68 @@ import ProfileBox from "../../../components/counsel/counselorDetail/profileBox";
 import { fetchCounselorDetail } from "../../../store/counsel/counselSlice";
 import ButtonBox from "../../../components/reservation/reservationFirst/buttonBox";
 import MyCalendar from "../../etc/calendar";
+import styled from "styled-components";
+
+const TimeBox = styled.div`
+  width: 300px;
+  height: 290px;
+  border-radius: 8px;
+  padding: 5px;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: white;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+`;
+
+const Button = styled.button`
+  width: 55px;
+  height: 35px;
+  background-color: #fbf3fd;
+  border: none;
+  border-radius: 10px;
+  &.focus {
+    background-color: #bf94e4;
+    color: white;
+    font-weight: bold;
+  }
+`;
+
+const ResultText = styled.div`
+  width: 650px;
+  margin-top: 40px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #bf94e4;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+`
+
+const ResultBox = styled.div`
+  width: 650px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+`
+
+const Question = styled.textarea`
+  width: 630px;
+  height: 180px;
+  padding: 10px;
+  margin: auto;
+  border: none;
+  resize: none;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+`;
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
@@ -63,35 +125,37 @@ export default function ReservationFirst() {
   }, []);
 
   return (
-    <g.Back>
+    <>
+      <g.Back />
       <g.Grid>
         <g.Box $col="1/5" $row="2/6">
           <MyCalendar value={selectedDate} onValueChange={setSelectedDate} />
+          <ResultText>선택 시간</ResultText>
         </g.Box>
         <g.Box $col="5/9" $row="2/6">
-          {hours.map((hour) => (
-            <button
-              key={hour}
-              onClick={() => {
-                setSelectedHour(hour);
-              }}
-            >
-              {hour.toString().padStart(2, "0")}:00
-            </button>
-          ))}
+          <TimeBox>
+            {hours.map((hour) => (
+              <Button
+                key={hour}
+                onClick={() => {
+                  setSelectedHour(hour);
+                }}
+                className={hour === selectedHour ? "focus" : ""}
+              >
+                {hour.toString().padStart(2, "0")}:00
+              </Button>
+            ))}
+          </TimeBox>
         </g.Box>
         <g.Box $col="1/9" $row="6/7">
-          {/* 시간 정보 확인하기 위해 일단 불러와봄 */}
-          <div>
+          <ResultBox>
             {year}년 {month}월 {date}일 {dayOfWeek}{" "}
             {selectedHour.toString().padStart(2, "0")}:00
-          </div>
-          {/* 일단 api 명세서에 요청 데이터에 없길래 보류해둠 */}
-          counsel tag
+          </ResultBox>
         </g.Box>
         <g.Box $col="1/9" $row="7/12">
+          <Question placeholder="상담진행 또는 기타 질문들을 입력해주세요." />
           {/* 질문내용 크기 조절 필요 */}
-          <textarea />
         </g.Box>
         {counselor && (
           <>
@@ -115,6 +179,6 @@ export default function ReservationFirst() {
           </>
         )}
       </g.Grid>
-    </g.Back>
+    </>
   );
 }

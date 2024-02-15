@@ -96,7 +96,7 @@ export default function MyInfoClient() {
   useEffect(() => {
     fetchUserInfo().then((res) => {
       setUserData(res);
-      setProfileImage(res.profileImg);
+      setProfileImage(res.profileImg || null);
       setSelectedTags(res.statusTags);
     });
   }, []);
@@ -105,59 +105,75 @@ export default function MyInfoClient() {
     <s.Wrapper onSubmit={handleEditProfile}>
       {userData && (
         <>
-          <s.Box
-            type="file"
-            name="profileImg"
-            onChange={handleFileChange}
-            ref={fileInputRef}
-          />
-          <button type="button" onClick={clearFileInput}>
-            파일 선택 취소
-          </button>
-          <s.Box type="text" name="userId" value={userData.userId} disabled />
-          <s.Box type="text" name="name" value={userData.name} disabled />
-          <s.Box
-            type="text"
-            name="nickname"
-            value={userData.nickname}
-            disabled
-          />
-          <s.Box
-            type="text"
-            name="email"
-            value={userData.email}
-            onChange={handleInputChange}
-          />
-          <s.Box
-            type="text"
-            name="phone"
-            value={userData.phone}
-            onChange={handleInputChange}
-          />
-          <s.Box type="text" name="birth" value={userData.birth} disabled />
+          <s.DisableContents>
+            <s.FlexBox>
+              <div style={{ display: "flex" }}>
+                <s.Subtitle $width="55px">이름: </s.Subtitle>
+                <s.Info>{userData.name}</s.Info>
+              </div>
+              <div style={{ display: "flex" }}>
+                <s.Subtitle $width="40px">ID: </s.Subtitle>
+                <s.Info>{userData.userId}</s.Info>
+              </div>
+              <div style={{ display: "flex" }}>
+                <s.Subtitle $width="80px">닉네임: </s.Subtitle>
+                <s.Info>{userData.nickname}</s.Info>
+              </div>
+            </s.FlexBox>
+          </s.DisableContents>
+
+          <s.FileBox>
+            <s.Subtitle>프로필 사진: </s.Subtitle>
+            <s.Box
+              type="file"
+              name="profileImg"
+              onChange={handleFileChange}
+              ref={fileInputRef}
+            />
+            <s.Cancle type="button" onClick={clearFileInput}>
+              취소
+            </s.Cancle>
+          </s.FileBox>
+          <s.FixBox>
+            <s.Subtitle>이메일</s.Subtitle>
+            <s.Box
+              type="text"
+              name="email"
+              value={userData.email}
+              onChange={handleInputChange}
+            />
+            <s.Subtitle>핸드폰</s.Subtitle>
+            <s.Box
+              type="text"
+              name="phone"
+              value={userData.phone}
+              onChange={handleInputChange}
+            />
+            <s.Subtitle>생년월일</s.Subtitle>
+            <s.Box type="text" name="birth" value={userData.birth} disabled />
+          </s.FixBox>
           {userData.role === "ROLE_CLIENT" ? (
             <>
-              <div>
+              <s.TagBox>
+                <s.Subtitle>나의 태그</s.Subtitle>
                 {/* clientTags를 이용해서 태그들을 만들고 클릭 시 UserData.statusTags의 상태를 변화시켜줌 
                 지금 4개의 상태가 있는데 각 버튼들이 있고 선택된 버튼은 선택되지 않은 버튼과 볼 때 차이가 있도록 한다.
                 클릭을 하면 선택 상태가 토글이 되고 UserData.statusTags를 변화시킨다.
               */}
-                {clientTags.map((tag, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    onClick={() => handleTagClick(tag)}
-                    style={{
-                      fontWeight: selectedTags.includes(tag)
-                        ? "bold"
-                        : "normal",
-                    }}
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-              <s.Box type="submit" value={"회원정보 수정"} />
+                <s.ButtonBox>
+                  {clientTags.map((tag, index) => (
+                    <s.TagButton
+                      key={index}
+                      type="button"
+                      onClick={() => handleTagClick(tag)}
+                      className={selectedTags.includes(tag) ? "select" : ""}
+                    >
+                      {tag}
+                    </s.TagButton>
+                  ))}
+                </s.ButtonBox>
+              </s.TagBox>
+              <s.Submit type="submit">회원정보 수정</s.Submit>
             </>
           ) : (
             <>

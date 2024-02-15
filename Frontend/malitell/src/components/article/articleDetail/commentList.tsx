@@ -1,23 +1,16 @@
-import {
-  Wrapper,
-  CommentListBox,
-} from "../../../styles/article/articleDetail/commentList";
+import { CommentData } from "../../../store/article/communitySlice";
+import { Wrapper } from "../../../styles/article/articleDetail/commentList";
 import Comment from "./comment";
+import { CommentType } from "./types";
 
-export default function CommentList() {
+export default function CommentList({ comments }: { comments: CommentType[] }) {
   return (
     <Wrapper>
-      <CommentListBox>
-        <Comment role="client" />
-        <Comment role="" />
-        <Comment role="" />
-        <Comment role="" />
-        <Comment role="" />
-        <Comment role="" />
-        <Comment role="" />
-        <Comment role="" />
-        <Comment role="" />
-      </CommentListBox>
+      {comments &&
+        comments.length > 0 &&
+        comments.reverse().map((comment: CommentType, index: number) => (
+          <Comment key={index} comment={comment} />
+        ))}
     </Wrapper>
   );
 }

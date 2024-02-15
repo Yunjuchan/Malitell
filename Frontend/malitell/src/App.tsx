@@ -23,8 +23,6 @@ import CounselingNotice from "./routes/counsel/counselingNotice";
 import CounselingCounselor from "./routes/counsel/counselingCounselor";
 import CounselingClient from "./routes/counsel/counselingClient";
 import Vendingmachine from "./components/common/vendingmachine";
-import Chat from "./routes/chat";
-import Room from "./components/chat/room";
 import List from "./components/chat/list";
 import MyScrab from "./components/auth/profile/myScrab";
 import MyReservation from "./components/auth/profile/myReservation";
@@ -160,20 +158,12 @@ const router = createBrowserRouter([
     element: <Review />,
   },
   {
-    path: "/chat12",
-    element: <Chat />,
-  },
-  {
     path: "/chat",
     element: <List />,
   },
   {
     path: "/chat/room",
     element: <Chatting />,
-  },
-  {
-    path: "/chat/room/:roomId",
-    element: <Room />,
   },
   // {
   //   path: "/test",
