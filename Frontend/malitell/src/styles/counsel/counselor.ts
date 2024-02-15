@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 70%;
+  width: 50%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -51,10 +51,22 @@ export const ImgBox = styled.div`
   width: 28%;
   height: 98%;
   margin: auto;
+  text-align: end;
   border-radius: 10px;
 `
 
 export const Profile = styled.img`
-  width: 100%;
+  width: 90%;
   height: 100%;
+  border-radius: 10px;
+`
+
+export const GoDetail = styled.div`
+  width: 18%;
+  height: 95%;
+  padding-right: 4%;
+  display: flex;
+  align-items: end;
+  color: #bf94e4;
+  font-weight: 500;
 `

@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const Grid = styled.div`
 width: 1024px;
-height: 100vh;
+min-height: 800px;
 margin: auto;
 display: grid;
 grid-template-columns: repeat(12, 1fr);
-grid-template-rows: 80px 70px 100px;
+grid-template-rows: 80px 70px 100px auto;
 `
 
 export const GridDetail = styled.div`
