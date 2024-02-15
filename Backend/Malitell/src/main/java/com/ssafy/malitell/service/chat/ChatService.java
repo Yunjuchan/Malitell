@@ -54,16 +54,15 @@ public class ChatService {
 
     @Transactional
     public List<ChatRoomDto> findAllRooms() {
-        return opsHashChatRoom.values(CHAT_ROOMS);
-    }
+        List<ChatRoom> chatRoomList = chatRoomRepository.findAll();
+        List<ChatRoomDto> chatRoomDtos = new ArrayList<>();
 
-//    public ChatRoomResponseDto createChatRoom(User counselor, User client) {
-//        ChatRoom chatRoom = ChatRoom.create(counselor, client);
-//        ChatRoomDto chatRoomDto = new ChatRoomDto(chatRoom);
-//
-//        opsHashChatRoom.put(CHAT_ROOMS, chatRoom.getChatRoomSeq(), chatRoomDto);
-//        return new ChatRoomResponseDto(chatRoom);
-//    }
+        for (ChatRoom chatRoom : chatRoomList) {
+            ChatRoomDto chatRoomDto = new ChatRoomDto(chatRoom);
+            chatRoomDtos.add(chatRoomDto);
+        }
+        return chatRoomDtos;
+    }
 
     @Transactional
     public ChatRoomResponseDto createChatRoom(ChatMessageRequestDto messageRequestDto) throws Exception {
@@ -89,10 +88,6 @@ public class ChatService {
             return new ChatRoomResponseDto(chatRoom.getChatRoomSeq());
         }
     }
-
-//    public List<ChatRoom> findAllRooms() {
-//        return chatRoomRepository.findAll();
-//    }
 
     public ChatRoomDto findRoom(String chatRoomSeq) {
         return new ChatRoomDto(chatRoomRepository.findRoomByChatRoomSeq(chatRoomSeq));
