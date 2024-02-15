@@ -26,7 +26,7 @@ export default function Certification({ userId, email }: FormProps) {
 
   const onSubmit = (data: FormData) => {
 
-    fetch(`http://localhost:8080/auth/check-certification`, {
+    fetch(`https://i10c208.p.ssafy.io/api/auth/check-certification`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

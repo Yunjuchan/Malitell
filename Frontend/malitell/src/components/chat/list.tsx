@@ -30,7 +30,7 @@ export default function List() {
 
   // 채팅방 목록 불러와서 본인이 참여중인 채팅방 필터링
   useEffect(() => {
-    fetch(`http://localhost:8080/api/chat/rooms`, {
+    fetch(`https://i10c208.p.ssafy.io/api/chat/rooms`, {
       method: "GET",
       headers: {
         "Access_Token": `${sessionStorage.getItem("Access_Token")}`,

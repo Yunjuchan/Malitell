@@ -22,7 +22,7 @@ export default function Review() {
   });
 
   const onSubmit = (data: FormData) => {
-    fetch(`http://localhost:8080/api/counseling/review`, {
+    fetch(`https://i10c208.p.ssafy.io/api/counseling/review`, {
       method: "POST",
       headers: {
         "Access_Token": `${sessionStorage.getItem("Access_Token")}`,

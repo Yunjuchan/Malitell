@@ -23,7 +23,7 @@ interface Props {
 export default function CreateChat({ counselorSeq }: Props) {
   const CreateChat = () => {
     if (window.sessionStorage.getItem("Access_Token")) {
-      fetch(`http://localhost:8080/api/chat/room`, {
+      fetch(`https://i10c208.p.ssafy.io/api/chat/room`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
