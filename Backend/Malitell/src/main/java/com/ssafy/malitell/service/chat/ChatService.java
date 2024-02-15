@@ -112,6 +112,8 @@ public class ChatService {
 
         chatMessageRepository.save(chatMessage);
 
+        System.out.println(chatMessageRepository.findAll());
+
         // 1. 직렬화
         redisTemplateMessage.setValueSerializer(new Jackson2JsonRedisSerializer<>(ChatMessage.class));
 

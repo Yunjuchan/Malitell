@@ -38,7 +38,7 @@ public class SelfHelpGroup {
 
     // 자조모임에 참가하는 사람
     @OneToMany(mappedBy = "selfHelpGroup", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
-    @JsonManagedReference
+    @JsonManagedReference(value = "selfhelpgroupuserlist")
     private List<SelfHelpGroupUser> selfHelpGroupUsers;
 
     public void addSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {

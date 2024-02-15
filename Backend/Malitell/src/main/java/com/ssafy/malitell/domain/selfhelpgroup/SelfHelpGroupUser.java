@@ -20,12 +20,12 @@ public class SelfHelpGroupUser {
     private int id;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "userrrrrrrr")
     @JoinColumn(name = "user_seq")
     private User user;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "selfhelpgrouppppppp")
     @JoinColumn(name = "selfHelpGroup_id")
     private SelfHelpGroup selfHelpGroup;
 
