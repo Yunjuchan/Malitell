@@ -20,7 +20,6 @@ export default function List() {
   const [you, setYou] = useState("");
 
   const enterRoom = (chatRoomSeq: string) => {
-    console.log(chatRoomSeq);
     sessionStorage.setItem(
       "wschat.sender",
       `${sessionStorage.getItem("mySeq")}`
@@ -33,20 +32,21 @@ export default function List() {
   useEffect(() => {
     fetch(`http://localhost:8080/api/chat/rooms`, {
       method: "GET",
+      headers: {
+        "Access_Token": `${sessionStorage.getItem("Access_Token")}`,
+      },
     })
       .then((res) => {
         const data = res.json();
-        console.log(data);
         return data;
       })
       .then((data) => {
         let tempRooms: Room[] = [];
-        data.forEach((room: Room) => {
+        data && data.forEach((room: Room) => {
           const clientSeq = room.clientSeq.toString();
           const counselorSeq = room.counselorSeq.toString();
           if (
-            (clientSeq || counselorSeq) ===
-            window.sessionStorage.getItem("mySeq")
+            clientSeq === window.sessionStorage.getItem("mySeq") || counselorSeq === window.sessionStorage.getItem("mySeq")
           ) {
             tempRooms.push(room);
           }
@@ -58,9 +58,6 @@ export default function List() {
         });
         setRooms(tempRooms);
         return tempRooms;
-      })
-      .then((data) => {
-        console.log(data);
       });
   }, []);
 
@@ -76,15 +73,15 @@ export default function List() {
           >
             {you === "client" ? (
               <>
-                {room.counselorProfileImg ? (
-                  <s.Profile src={room.counselorProfileImg} alt="profile" />
+                {room.clientProfileImg ? (
+                  <s.Profile src={room.clientProfileImg} alt="profile" />
                 ) : (
                   <s.Profile src={profile} alt="profile" />
                 )}
               </>
             ) : (
               <>
-                {room.clientProfileImg ? (
+                {room.counselorProfileImg ? (
                   <s.Profile src={room.counselorProfileImg} alt="profile" />
                 ) : (
                   <s.Profile src={profile} alt="profile" />
@@ -93,8 +90,9 @@ export default function List() {
             )}
 
             <s.RoomInfo>
-              <s.Name>{you === "client" ? room.counselorName : room.clientName}</s.Name>
-              {/* <s.Message>글자 사이즈 15px입니다.</s.Message> */}
+              <s.Name>
+                {you === "client" ? room.clientName : room.counselorName}
+              </s.Name>
             </s.RoomInfo>
           </s.Room>
         ))}

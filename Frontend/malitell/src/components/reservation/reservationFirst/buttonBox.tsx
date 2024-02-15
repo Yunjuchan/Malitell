@@ -25,8 +25,9 @@ export default function ButtonBox({
       counselingDate: reservationData.counselingDate, // timestamp가 datetime에 해당하는 값이라고 가정했습니다.
     })
       .then(() => {
-        navigate(`/counselors/${counselorSeq}/reservation/confirm`);
+        window.alert("예약이 완료되었습니다.");
       })
+      .then(() => navigate(`/counselors/${counselorSeq}`))
       .catch((error) => {
         if (error.response && error.response.status === 403) {
           console.log("403 에러가 발생했습니다."); // 403 에러 발생 시 처리
@@ -37,7 +38,7 @@ export default function ButtonBox({
   };
   return (
     <Wrapper>
-      <Button onClick={onConfirm}>예약확인</Button>
+      <Button onClick={onConfirm}>예약하기</Button>
       <Button onClick={onGoBack}>뒤로가기</Button>
     </Wrapper>
   );

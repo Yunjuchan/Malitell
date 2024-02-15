@@ -77,8 +77,6 @@ export default function Nav() {
         <Login handleLogin={handleLogin} handleBack={handleBack} />
       ) : null}
       <s.Nav>
-        <s.Line />
-
         <s.Grid>
           {/* 네브바 로고 */}
           <s.Logo>

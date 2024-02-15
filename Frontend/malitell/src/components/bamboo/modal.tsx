@@ -25,7 +25,9 @@ export default function Modal({ onClick }: props) {
       },
       body: JSON.stringify(data),
     }).then((res) => {
-      console.log(res);
+      if (res.status === 200) {
+        window.location.reload();
+      }
     });
   };
 

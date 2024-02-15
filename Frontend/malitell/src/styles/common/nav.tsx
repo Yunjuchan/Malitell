@@ -21,14 +21,6 @@ export const Grid = styled.div`
   }
 `;
 
-export const Line = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 3vh;
-  border-bottom: 1px solid lightgray;
-  z-index: -1;
-`;
-
 export const Logo = styled.div`
   grid-column: 1/3;
   grid-row: 1/4;

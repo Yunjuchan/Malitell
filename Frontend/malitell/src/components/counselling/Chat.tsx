@@ -31,7 +31,6 @@ export default function Chat({ session, setInfo }: Props) {
         to: [],
       })
       .then(() => {
-        console.log("전송완료");
         setInputMessage("");
       })
       .catch((err) => {
@@ -44,7 +43,6 @@ export default function Chat({ session, setInfo }: Props) {
       const message = event.data;
       const senderId = event.from?.connectionId;
       if (message && senderId) {
-        console.log(event.from?.connectionId);
         setMessages((prevMessages) => [
           ...prevMessages,
           { id: senderId, message },
@@ -71,9 +69,6 @@ export default function Chat({ session, setInfo }: Props) {
           type: "info",
           to: [],
         })
-        .then((res) => {
-          console.log(res);
-        });
     }, 2000);
   }, []);
 
@@ -91,9 +86,6 @@ export default function Chat({ session, setInfo }: Props) {
             type: "info",
             to: [],
           })
-          .then((res) => {
-            console.log(res);
-          });
       }, 2000);
     });
   
