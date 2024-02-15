@@ -9,13 +9,10 @@ interface Message {
   content: string;
 }
 
-interface Room {
-  name: string;
-}
 
 export default function Chatting() {
   const token = sessionStorage.getItem("Access_Token");
-  const url = `http:localhost:8080/ws-stomp`;
+  const url = `http:localhost:8080/api/ws-stomp`;
   const [sender, setSender] = useState<string | null>(null);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
@@ -26,7 +23,7 @@ export default function Chatting() {
   const findRoom = async () => {
     if (roomId.current) {
       const response = await axios
-        .get("http://localhost:8080/chat/room/" + roomId.current)
+        .get("http://localhost:8080/api/chat/room/" + roomId.current)
         .then((res) => console.log(res));
     }
   };
