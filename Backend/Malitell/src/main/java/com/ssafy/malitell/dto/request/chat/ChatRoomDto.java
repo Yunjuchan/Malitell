@@ -25,6 +25,10 @@ public class ChatRoomDto implements Serializable {
     private String chatRoomSeq;
     private int counselorSeq;
     private int clientSeq;
+    private String counselorName;
+    private String clientName;
+    private String counselorProfileImg;
+    private String clientProfileImg;
     private Timestamp lastSpentTime;
 
     public static ChatRoomDto create(User counselor, User client) {
@@ -32,6 +36,10 @@ public class ChatRoomDto implements Serializable {
         chatRoomDto.chatRoomSeq = serialVersionUID;
         chatRoomDto.counselorSeq = counselor.getUserSeq();
         chatRoomDto.clientSeq = client.getUserSeq();
+        chatRoomDto.counselorName = counselor.getName();
+        chatRoomDto.clientName = client.getName();
+        chatRoomDto.counselorProfileImg = counselor.getProfileImg();
+        chatRoomDto.clientProfileImg = client.getProfileImg();
         return chatRoomDto;
     }
 
@@ -39,5 +47,9 @@ public class ChatRoomDto implements Serializable {
         this.chatRoomSeq = chatRoom.getChatRoomSeq();
         this.counselorSeq = chatRoom.getCounselor().getUserSeq();
         this.clientSeq = chatRoom.getClient().getUserSeq();
+        this.counselorName = chatRoom.getCounselor().getName();
+        this.clientName = chatRoom.getClient().getName();
+        this.counselorProfileImg = chatRoom.getCounselor().getProfileImg();
+        this.clientProfileImg = chatRoom.getClient().getProfileImg();
     }
 }
