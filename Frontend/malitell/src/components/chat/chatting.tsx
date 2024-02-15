@@ -2,13 +2,13 @@ import { useEffect, useState, useRef } from "react";
 import * as s from "../../styles/chat/chatting";
 import SockJsClient from "react-stomp";
 import axios from "axios";
+import { Room } from "./list";
 
 interface Message {
   type: string;
   userSeq: string;
   content: string;
 }
-
 
 export default function Chatting() {
   const token = sessionStorage.getItem("Access_Token");
@@ -18,13 +18,23 @@ export default function Chatting() {
   const [messages, setMessages] = useState<Message[]>([]);
   const roomId = useRef(sessionStorage.getItem("wschat.roomId"));
   const clientRef = useRef<any>();
+  const [you, setYou] = useState<{ name: string; image: string }>();
 
   // 이전 채팅내역 불러오기
   const findRoom = async () => {
     if (roomId.current) {
       const response = await axios
         .get("http://localhost:8080/api/chat/room/" + roomId.current)
-        .then((res) => console.log(res));
+        .then((res) => {
+          return res.data;
+        })
+        .then((res: Room) => {
+          if (String(res.clientSeq) === sessionStorage.getItem("mySeq")) {
+            setYou({ name: res.counselorName, image: res.counselorProfileImg });
+          } else {
+            setYou({ name: res.clientName, image: res.clientProfileImg });
+          }
+        });
     }
   };
 
@@ -84,7 +94,12 @@ export default function Chatting() {
         }}
       />
       <s.Wrapper>
-        <s.RoomInfo>상담자 정보가 들어갈 공간</s.RoomInfo>
+        <s.RoomInfo>
+          <s.RoomInfo className="profile">
+            <s.Profile src={you?.image} alt="profile" />
+            <s.Name>{you && you.name}</s.Name>
+          </s.RoomInfo>
+        </s.RoomInfo>
         <s.ChattingBox>
           {messages &&
             messages.map((message, index) => (
@@ -106,7 +121,7 @@ export default function Chatting() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={(event) => {
-              if (event.key === 'Enter') {
+              if (event.key === "Enter") {
                 event.preventDefault();
                 sendMessage();
               }
