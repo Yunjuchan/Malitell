@@ -1,5 +1,6 @@
 package com.ssafy.malitell.domain.chat;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -38,8 +39,12 @@ public class ChatMessage {
     @Indexed
     private ChatRoom chatRoom;
 
+    private String chatRoomSeq;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
+    private int userSeq;
 
     private String content;
 
@@ -47,13 +52,18 @@ public class ChatMessage {
     @JsonDeserialize(using= LocalDateTimeDeserializer.class)
     private LocalDateTime sendTime;
 
-    @ColumnDefault("false")
-    private boolean isRead;
+//    @ColumnDefault("false")
+//    private boolean isRead;
+
+    @ColumnDefault("true")
+    private boolean read;
 
     public ChatMessage(ChatMessageDto chatMessageDto, LocalDateTime sendTime, ChatRoom chatRoom, User user) {
         this.chatRoom = chatRoom;
         this.user = user;
         this.content = chatMessageDto.getContent();
         this.sendTime = sendTime;
+        this.chatRoomSeq = chatRoom.getChatRoomSeq();
+        this.userSeq = user.getUserSeq();
     }
 }
