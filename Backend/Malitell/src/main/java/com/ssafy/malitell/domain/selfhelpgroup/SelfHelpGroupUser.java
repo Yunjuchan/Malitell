@@ -25,6 +25,7 @@ public class SelfHelpGroupUser {
     private User user;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "selfHelpGroup_id")
     private SelfHelpGroup selfHelpGroup;
 

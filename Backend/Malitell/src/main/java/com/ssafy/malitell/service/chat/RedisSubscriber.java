@@ -45,7 +45,7 @@ public class RedisSubscriber implements MessageListener {
             // ChatMessage 객채로 맵핑
             ChatMessageResponseDto chatMessageResponseDto = objectMapper.readValue(publishMessage, ChatMessageResponseDto.class);
             // 채팅방을 구독한 클라이언트에게 메시지 발송
-            messagingTemplate.convertAndSend("/sub/chat/room/" + chatMessageResponseDto.getChatRoomSeq(), chatMessageResponseDto);
+            messagingTemplate.convertAndSend("/api/sub/chat/room/" + chatMessageResponseDto.getChatRoomSeq(), chatMessageResponseDto);
         } catch (Exception e) {
             log.error("Exception {}", e);
         }
