@@ -148,11 +148,6 @@ public class ChatService {
         }
 
 
-        System.out.println("=====================================");
-        for (ChatMessageDto chatMessageDto : messageList) {
-            System.out.println(chatMessageDto);
-        }
-        System.out.println("=====================================");
         return messageList;
     }
 
