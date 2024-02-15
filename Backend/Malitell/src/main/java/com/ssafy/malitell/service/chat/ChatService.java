@@ -112,8 +112,6 @@ public class ChatService {
 
         chatMessageRepository.save(chatMessage);
 
-        System.out.println(chatMessageRepository.findAll());
-
         // 1. 직렬화
         redisTemplateMessage.setValueSerializer(new Jackson2JsonRedisSerializer<>(ChatMessageDto.class));
 
@@ -139,7 +137,7 @@ public class ChatService {
         List<ChatMessageDto> messageList = new ArrayList<>(redisMessageList);
 
         // 4. Redis 에서 가져온 메시지가 없다면, DB 에서 메시지 100개 가져오기
-        if (redisMessageList == null || redisMessageList.isEmpty()) {
+        if (redisMessageList.isEmpty()) {
             // 5.
             List<ChatMessage> dbMessageList = chatMessageRepository.findTop100ByChatRoomChatRoomSeqOrderBySendTimeAsc(chatRoomSeq);
 
