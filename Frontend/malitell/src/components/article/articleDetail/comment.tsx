@@ -1,4 +1,4 @@
-import { Wrapper } from "../../../styles/article/articleDetail/comment";
+import * as s from "../../../styles/article/articleDetail/comment";
 
 interface CommentListProps {
   role: string
@@ -7,7 +7,8 @@ interface CommentListProps {
 export default function Comment({role}:CommentListProps) {
   return (
     <>
-      <Wrapper className={role}></Wrapper>
+      <s.Wrapper className={role}>
+      </s.Wrapper>
     </>
   );
 }

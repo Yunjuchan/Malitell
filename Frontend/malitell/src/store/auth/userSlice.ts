@@ -31,7 +31,7 @@ export const login = (data: loginData) => {
       .post("/login", toFormData(data))
       .then((res) => {
         sessionStorage.setItem("Access_Token", res.headers.access_token);
-        // sessionStorage.setItem("Refresh")
+        sessionStorage.setItem("Refresh_Token", res.headers.refresh_token);
         dispatch(saveUserInfo(res.data));
       })
       .then(() => {

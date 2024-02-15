@@ -6,7 +6,7 @@ import { deleteSHGroup } from "../../../store/article/gatherSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { RootState } from "../../../store/store";
 
-export default function Title({ article }: { article: t.Article }) {
+export default function Title() {
   const navigate = useNavigate();
   const { boardSeq } = useParams();
   const mySeq = Number(sessionStorage.getItem("mySeq")) || 0;
@@ -24,7 +24,7 @@ export default function Title({ article }: { article: t.Article }) {
   return (
     <s.Wrapper>
       <s.TitleBox>
-        {article && (
+        {/* {article && (
           <>
             <s.Username>작성자: {article.name}</s.Username>
             <s.ArticleTitle>{article.title}</s.ArticleTitle>
@@ -37,7 +37,7 @@ export default function Title({ article }: { article: t.Article }) {
               </>
             ) : <s.ButtonBox />}
           </>
-        )}
+        )} */}
       </s.TitleBox>
     </s.Wrapper>
   );
