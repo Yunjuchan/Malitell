@@ -26,7 +26,7 @@ public class MessageController {
 
     private final ChannelTopic channelTopic;
 
-    @MessageMapping("/api/chat/message")
+    @MessageMapping("/chat/message")
     public void message(@RequestBody ChatMessageDto chatMessageDto) {
         chatService.enterMessageRoom(chatMessageDto.getChatRoomSeq());
         chatService.saveMessage(chatMessageDto);
