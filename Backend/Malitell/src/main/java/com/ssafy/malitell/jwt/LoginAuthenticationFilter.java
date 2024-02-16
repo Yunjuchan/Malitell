@@ -1,6 +1,8 @@
 package com.ssafy.malitell.jwt;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.malitell.dto.response.user.CustomUserDetails;
+import com.ssafy.malitell.jwt.JWTUtil;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -13,32 +15,24 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
 
-/**
- * 커스텀 UsernamePasswordAuthentication 필터 작성
- * 로그인 요청이 들어오면 로그인 필터에서 가로챔
- */
-
-public class LoginFilter extends UsernamePasswordAuthenticationFilter {
-
-    private final AuthenticationManager authenticationManager;
-    private final JWTUtil jwtUtil;
-
-    private final UserRepository userRepository;
-
-    public LoginFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil, UserRepository userRepository) {
-        this.authenticationManager = authenticationManager;
+public class LoginAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
+    public LoginAuthenticationFilter(final String defaultFilterProcessesUrl,
+                                     final AuthenticationManager authenticationManager, JWTUtil jwtUtil, UserRepository userRepository) {
+        super(defaultFilterProcessesUrl, authenticationManager);
         this.jwtUtil = jwtUtil;
         this.userRepository = userRepository;
     }
+    private final JWTUtil jwtUtil;
+    private final UserRepository userRepository;
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
         String method = request.getMethod();
 
         if (!method.equals("POST")) {
@@ -48,6 +42,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        ServletInputStream inputStream = request.getInputStream();
 
         LoginRequestDto loginRequestDto = new LoginRequestDto(username, password);
 
@@ -56,7 +51,10 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         System.out.println(loginRequestDto.password);
         System.out.println("==================");
 
-        return this.getAuthenticationManager().authenticate(new UsernamePasswordAuthenticationToken(loginRequestDto.username, loginRequestDto.password));
+        return this.getAuthenticationManager().authenticate(new UsernamePasswordAuthenticationToken(
+                loginRequestDto.username,
+                loginRequestDto.password
+        ));
     }
 
     @Override
@@ -100,5 +98,6 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
             String password
     ) {
     }
-}
 
+
+}
