@@ -85,9 +85,10 @@ public class SecurityConfig {
 
         // 커스텀 필터 등록
         // (생성한 커스텀 필터, 필터를 넣을 위치)
-        http.addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil, userRepository), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterAt(new LoginFilter(defaultFilterProcessesUrl, authenticationManager(authenticationConfiguration), jwtUtil, userRepository), UsernamePasswordAuthenticationFilter.class);
 
-        // /api/login 처리 필터 등록
+
+//        // /api/login 처리 필터 등록
         http.addFilterAt(this.abstractAuthenticationProcessingFilter(authenticationManager(authenticationConfiguration)), LoginFilter.class);
 
         // 세션 설정 (가장 중요!)
@@ -108,9 +109,11 @@ public class SecurityConfig {
             (
                     final AuthenticationManager authenticationManager
             ) {
-        return new LoginAuthenticationFilter(
+        return new LoginFilter(
                 "/api/login",
-                authenticationManager
+                authenticationManager,
+                jwtUtil,
+                userRepository
         );
     }
 

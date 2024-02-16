@@ -26,13 +26,16 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
     private final JWTUtil jwtUtil;
+    private final String defaultFilterProcessesUrl;
 
     private final UserRepository userRepository;
 
-    public LoginFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil, UserRepository userRepository) {
+    public LoginFilter(final String defaultFilterProcessesUrl, AuthenticationManager authenticationManager, JWTUtil jwtUtil, UserRepository userRepository) {
+        this.defaultFilterProcessesUrl = defaultFilterProcessesUrl;
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
         this.userRepository = userRepository;
+        super(defaultFilterProcessesUrl);
     }
 
     @Override
