@@ -10,7 +10,7 @@
 
 - 2024.1.3 ~ 2024.2.16
 
-## 2. 팀원 (표로 만들어서?!)
+## 2. 팀원
 
 🖱 김선욱 (팀장) : Metaverse / 발표/
 
@@ -162,7 +162,8 @@
 
 ## 8. Project Structure
 
-- Backend
+<details>
+<summary>Backend</summary>
     
     ```jsx
     \---src
@@ -453,7 +454,8 @@
             \---resources
                     application.properties
     ```
-    
+    </details>
+
 - Frontend
     
     ```jsx
