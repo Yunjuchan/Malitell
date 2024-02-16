@@ -40,8 +40,12 @@ export default function Nav() {
   };
 
   const openChat = () => {
-    const url = "/chat";
-    window.open(url, "_blank", "width=400, height=530");
+    if (sessionStorage.getItem("Access_Token")) {
+      const url = "/chat";
+      window.open(url, "_blank", "width=400, height=530");
+    } else {
+      window.alert("로그인 후 이용해주세요.")
+    }
   };
 
   const goToCommunity = () => {

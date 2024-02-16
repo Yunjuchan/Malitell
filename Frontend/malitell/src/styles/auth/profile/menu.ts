@@ -15,7 +15,7 @@ export const Title = styled.div`
   align-items: center;
   font-size: 30px;
   font-weight: bold;
-`
+`;
 
 export const Image = styled.img`
   width: 95%;
@@ -24,27 +24,32 @@ export const Image = styled.img`
   border-radius: 10px;
   box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
   background-color: white;
-`
+`;
 
 export const TagBox = styled.div`
-display: flex;
-flex-wrap: wrap;
-width: 95%;
-height: 100px;
-margin: 20px auto;
-border-radius: 10px;
-box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
-background-color: white;
-`
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  height: 100px;
+  margin: 20px auto;
+  margin-right: auto;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
+  background-color: white;
+`;
 
 export const Tag = styled.div`
-width: 40%;
-height: 30px;
-margin: 10px auto;
-border-radius: 10px;
-box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
-background-color: white;
-`
+  width: 70px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  /* box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3); */
+  /* background-color: #fbf3fd; */
+  align-items : center;
+  text-align: center;
+`;
 
 export const Nav = styled.div`
   width: 87%;
@@ -52,9 +57,9 @@ export const Nav = styled.div`
   padding: 10px;
   margin: 0 auto;
   border-radius: 10px;
-  box-shadow:  1.5px 1.5px 1.5px 1.5px lightgray;
+  box-shadow: 1.5px 1.5px 1.5px 1.5px lightgray;
   background-color: white;
-`
+`;
 export const NavItem = styled.div`
   cursor: pointer;
   width: 100%;
@@ -65,4 +70,4 @@ export const NavItem = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
-`
+`;

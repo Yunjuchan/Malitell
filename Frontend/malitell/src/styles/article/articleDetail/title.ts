@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 
 export const TitleBox = styled.div`
   width: 100%;
-  height: 70%;
+  height: 60%;
   margin-top: auto;
   margin-bottom: auto;
   display: flex;
@@ -33,7 +33,7 @@ export const ArticleTitle = styled.div`
 `
 
 export const ButtonBox = styled.div`
-  width: 120px;
+  width: 170px;
   display: flex;
   justify-content: space-around;
 `

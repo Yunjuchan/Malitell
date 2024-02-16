@@ -89,6 +89,9 @@ public class SecurityConfig {
         // /api/login 처리 필터 등록
         http.addFilterAt(this.abstractAuthenticationProcessingFilter(authenticationManager(authenticationConfiguration)), LoginFilter.class);
 
+        // /api/login 처리 필터 등록
+        http.addFilterAt(this.abstractAuthenticationProcessingFilter(authenticationManager(authenticationConfiguration)), LoginFilter.class);
+
         // 세션 설정 (가장 중요!)
         // JWT 방식에서는 세션을 항상 stateless 상태로 유지함
         http.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
