@@ -3,6 +3,7 @@ package com.ssafy.malitell.config;
 import com.ssafy.malitell.handler.StompHandler;
 import com.ssafy.malitell.jwt.JWTFilter;
 import com.ssafy.malitell.jwt.JWTUtil;
+import com.ssafy.malitell.jwt.LoginAuthenticationFilter;
 import com.ssafy.malitell.jwt.LoginFilter;
 import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.servlet.ServletException;
@@ -23,6 +24,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -41,7 +43,6 @@ public class SecurityConfig {
     private final JWTUtil jwtUtil;
     private final UserRepository userRepository;
     private final StompHandler stompHandler;
-
 
     // AuthenticationManager 등록
     @Bean
@@ -86,11 +87,31 @@ public class SecurityConfig {
         // (생성한 커스텀 필터, 필터를 넣을 위치)
         http.addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil, userRepository), UsernamePasswordAuthenticationFilter.class);
 
+        // /api/login 처리 필터 등록
+        http.addFilterAt(this.abstractAuthenticationProcessingFilter(authenticationManager(authenticationConfiguration)), LoginFilter.class);
+
         // 세션 설정 (가장 중요!)
         // JWT 방식에서는 세션을 항상 stateless 상태로 유지함
         http.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return http.build();
+    }
+
+//    public AbstractAuthenticationProcessingFilter abstractAuthenticationProcessingFilter(authenticationManager) {
+//        return new LoginAuthenticationFilter(
+//                "/api/login",
+//                authenticationManager
+//        );
+//    }
+
+    public AbstractAuthenticationProcessingFilter abstractAuthenticationProcessingFilter
+            (
+                    final AuthenticationManager authenticationManager
+            ) {
+        return new LoginAuthenticationFilter(
+                "/api/login",
+                authenticationManager
+        );
     }
 
     @Bean
