@@ -27,6 +27,7 @@ public class SelfHelpGroup {
     private String title;
 
     // 자조모임 설명
+    @Column(columnDefinition = "TEXT")
     private String content;
 
     // 자조모임 회차
@@ -38,7 +39,7 @@ public class SelfHelpGroup {
 
     // 자조모임에 참가하는 사람
     @OneToMany(mappedBy = "selfHelpGroup", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
-    @JsonManagedReference
+    @JsonManagedReference(value = "selfhelpgrouppppppp")
     private List<SelfHelpGroupUser> selfHelpGroupUsers;
 
     public void addSelfHelpGroupUsers(SelfHelpGroupUser selfHelpGroupUser) {
@@ -56,7 +57,7 @@ public class SelfHelpGroup {
         this.content = gatheringCreateRequestDto.getSelfHelpGroupContent();
         this.times = gatheringCreateRequestDto.getTimes();
         this.selfHelpType = SelfHelpType.valueOf(gatheringCreateRequestDto.getSelfHelpType());
-        this.selfHelpGroupUsers = new ArrayList<>(gatheringCreateRequestDto.getSelfHelpGroupHeadCount());
+        this.selfHelpGroupUsers = new ArrayList<>(gatheringCreateRequestDto.getHeadcount());
     }
 
 }

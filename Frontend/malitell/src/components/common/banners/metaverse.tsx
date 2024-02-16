@@ -2,6 +2,9 @@ import metaverse from '../../../assets/images/banner/metaverse.png';
 import * as s from '../../../styles/common/banner';
 
 export default function Metaverse() {
+  const onClick = () => {
+    window.open("https://drive.usercontent.google.com/download?id=1b9IH969nO_SpCOcMlbtBu8nLQpwHUl1T&export=download&authuser=0", )
+  }
   return (
     <s.Wrapper $color='#008FC0'>
       <s.TextBox>

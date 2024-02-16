@@ -1,15 +1,13 @@
-import React from 'react'
-import { Wrapper } from '../../../styles/counsel/reviewList'
-import Review from './review'
+import { Wrapper } from "../../../styles/counsel/reviewList";
+import Review from "./review";
 
-export default function ReviewList() {
+export default function ReviewList({ reviews }: any) {
   return (
     <Wrapper>
-      <Review />
-      <Review />
-      <Review />
-      <Review />
-      <Review />
+      {reviews &&
+        reviews.map((review: any, index: number) => {
+          return <Review key={index} content={review.content} grade={review.grade} />;
+        })}
     </Wrapper>
-  )
+  );
 }

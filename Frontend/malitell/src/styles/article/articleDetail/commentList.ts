@@ -2,16 +2,9 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
 width: 100%;
-height: 100%;
-display: flex;
-`
-
-export const CommentListBox = styled.div`
-width: 95%;
-height: 100%;
-margin-top: 5%;
-margin-left: 4%;
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
+min-height: 0;
+margin: 20px 0;
+background-color: white;
+border-radius: 10px;
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
 `

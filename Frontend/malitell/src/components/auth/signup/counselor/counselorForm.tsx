@@ -45,7 +45,7 @@ export default function CounselorForm({ setSuccess }: SignupProps) {
 
   const onSubmit = (data: FormData) => {
 
-    fetch(`http://localhost:8080/auth/email-certification`, {
+    fetch(`https://i10c208.p.ssafy.io/api/auth/email-certification`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export default function CounselorForm({ setSuccess }: SignupProps) {
       })
       .then((res) => {
         if (res.status === 200) {
-          fetch(`http://localhost:8080/user/join/counselor`, {
+          fetch(`https://i10c208.p.ssafy.io/api/user/join/counselor`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

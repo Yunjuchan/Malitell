@@ -1,26 +1,27 @@
 import { resolveSrv } from "dns/promises";
-import { api, authApi } from "../axiosInstance";
+import { api, authApi, loginApi } from "../axiosInstance";
+import axios, { toFormData } from "axios";
 
 export interface SelfHelpGroupForm {
   selfHelpGroupTitle: string;
   selfHelpGroupContent: string;
   times: Array<number>;
   selfHelpType: string;
-  selfHelpGroupHeadCount: number;
+  headcount: number;
   title: string;
   content: string;
 }
 // 자조모임 모집 게시글 작성
-//SH는 self-helf 귀찮아서 줄였음
 // selfHelpGroupTitle: string, selfHelpGroupContent: string, times: number, selfHelpType:string, selfHelpGroupHeadCount: number, title:string, content:string
 export const createSHGroup = (data: SelfHelpGroupForm) => {
+  console.log(data);
   const res = authApi
     .post("/gathering", {
       selfHelpGroupTitle: data.selfHelpGroupTitle,
       selfHelpGroupContent: data.content,
       times: data.times,
       selfHelpType: data.selfHelpType,
-      selfHelpGroupHeadCount: data.selfHelpGroupHeadCount,
+      selfHelpGroupHeadCount: data.headcount,
       title: data.title,
       content: data.content,
     })
@@ -32,7 +33,6 @@ export const createSHGroup = (data: SelfHelpGroupForm) => {
 };
 
 // 자조모임 모집 게시글 조회
-//SH는 self-helf 귀찮아서 줄였음
 export const fetchSHGroup = () => {
   const res = api.get("/gathering/getBoardList").then((response) => {
     // 응답 데이터 : 자조모임 게시글 번호
@@ -58,7 +58,6 @@ export const editSHGroup = (gatheringSeq: number) => {
 // 자조모임 게시글 상세 조회
 export const sHGroupDetail = (gatheringSeq: number) => {
   const res = api.get(`/gathering/view/${gatheringSeq}`).then((response) => {
-    // 응답 : 자조모임 게시글 번호?? 전체 필요
     return response.data;
   });
   return res;
@@ -66,30 +65,45 @@ export const sHGroupDetail = (gatheringSeq: number) => {
 
 // 자조모임 게시글 삭제
 export const deleteSHGroup = (gatheringSeq: number) => {
-  console.log(gatheringSeq)
-  console.log(sessionStorage.getItem("Access_Token"))
-  const res = authApi.delete(`/gathering/delete/${gatheringSeq}`).then((response) => {
-    // 응답 : 응답 상태만
-    return response.data;
-  });
-  return res
+  const res = authApi
+    .delete(`/gathering/delete/${gatheringSeq}`)
+    .then((response) => {
+      return response.data;
+    });
+  return res;
 };
 
 // 자조모임 참가
 export const joinSHGroup = (gatheringSeq: number) => {
-  api.post("/selfHelpGroup/participate", { gatheringSeq }).then((response) => {
-    return response.data;
-  });
+  const formData = new FormData();
+  formData.append("gatheringSeq", gatheringSeq.toString());
+
+  const res = axios.post("https://i10c208.p.ssafy.io/api/selfHelpGroup/participate", formData, {
+  // const res = axios.post("http://localhost:8080/api/selfHelpGroup/participate", formData, {
+        headers: {
+          Access_Token: sessionStorage.getItem("Access_Token"),
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    )
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => console.error(error));
+
+  return res;
 };
 
 // // 자조모임 탈퇴
-// export const leaveSHGroup = (gatheringSeq: number) => {
-//   api.delete("/selfHelpGroup/leave", {gatheringSeq})
-//   .then((response) => {
-//     // 응답데이터: 상태코드
-//     return response.data
-//   })
-// }
+export const leaveSHGroup = (gatheringSeq: number) => {
+  const res = authApi
+    .delete(`/mypage/selfHelpGroup/leave/${gatheringSeq}`)
+    .then((res) => {
+      // 응답데이터: 상태코드
+      return res.data;
+    });
+  return res;
+};
 
 // 자조모임 스크랩
 export const scrapSHGroup = (gatheringSeq: number) => {

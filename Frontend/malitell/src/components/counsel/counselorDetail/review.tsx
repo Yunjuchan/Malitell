@@ -1,8 +1,16 @@
-import React from 'react'
-import { Wrapper } from '../../../styles/counsel/review'
+import React from "react";
+import * as s from "../../../styles/counsel/review";
 
-export default function Review() {
+interface Props {
+  content: string;
+  grade: number;
+}
+
+export default function Review({ content, grade }: Props) {
   return (
-    <Wrapper>review</Wrapper>
-  )
+    <s.Wrapper>
+      <s.Grade>평가: {grade}점</s.Grade>
+      <s.Content>{content}</s.Content>
+    </s.Wrapper>
+  );
 }

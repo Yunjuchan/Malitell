@@ -5,7 +5,7 @@ export default function Subject() {
   const [subject, setSubject] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/mindLetGo/topic`, {
+    fetch(`https://i10c208.p.ssafy.io/api/mindLetGo/topic`, {
       method: "GET",
     })
       .then((res) => {

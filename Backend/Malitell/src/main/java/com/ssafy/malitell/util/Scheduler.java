@@ -25,7 +25,6 @@ public class Scheduler {
     @Scheduled(fixedDelay = 30000) // 30초 마다
     public void test() {
         userService.sendAlarm();
-        System.out.println("delay 30000");
     }
 
     // MinLetGo 주제 랜덤 변경

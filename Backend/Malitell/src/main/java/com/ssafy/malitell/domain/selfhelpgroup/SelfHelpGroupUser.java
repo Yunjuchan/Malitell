@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.minidev.json.annotate.JsonIgnore;
 
 @Entity
 @NoArgsConstructor
@@ -20,12 +19,12 @@ public class SelfHelpGroupUser {
     private int id;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "userrrrrrrr")
     @JoinColumn(name = "user_seq")
     private User user;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "selfhelpgrouppppppp")
     @JoinColumn(name = "selfHelpGroup_id")
     private SelfHelpGroup selfHelpGroup;
 

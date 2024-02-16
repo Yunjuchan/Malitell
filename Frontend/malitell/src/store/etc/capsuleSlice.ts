@@ -8,6 +8,6 @@ export const capsule = () => {
       // 응답 데이터 명언 phrases, 영상 url videoUrl
       return res.data;
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.error(err));
   return res;
 };

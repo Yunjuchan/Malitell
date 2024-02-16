@@ -17,7 +17,7 @@ export default function Modal({ onClick }: props) {
   } = useForm<FormData>({});
 
   const onSubmit = (data: FormData) => {
-    fetch(`http://localhost:8080/api/mindLetGo`, {
+    fetch(`https://i10c208.p.ssafy.io/api/mindLetGo`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +25,9 @@ export default function Modal({ onClick }: props) {
       },
       body: JSON.stringify(data),
     }).then((res) => {
-      console.log(res);
+      if (res.status === 200) {
+        window.location.reload();
+      }
     });
   };
 

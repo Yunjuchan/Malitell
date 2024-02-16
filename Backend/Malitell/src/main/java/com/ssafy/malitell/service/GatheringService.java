@@ -39,7 +39,7 @@ public class GatheringService {
         User findUser = userRepository.findByUserId(name);
         SelfHelpGroup selfHelpGroup = new SelfHelpGroup(requestDto);
 
-        Gathering gathering = new Gathering(selfHelpGroup, findUser, requestDto.getTitle(), requestDto.getContent());
+        Gathering gathering = new Gathering(selfHelpGroup, findUser, requestDto.getTitle(), requestDto.getContent(), requestDto.getHeadcount());
 
         selfHelpGroupRepository.save(selfHelpGroup);
         gatheringRepository.save(gathering);

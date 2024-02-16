@@ -3,6 +3,7 @@ import * as s from "../../styles/chat/chatting";
 import SockJsClient from "react-stomp";
 import axios from "axios";
 import { Room } from "./list";
+import malitell from "../../assets/images/malitell.png";
 
 interface Message {
   type: string;
@@ -12,7 +13,7 @@ interface Message {
 
 export default function Chatting() {
   const token = sessionStorage.getItem("Access_Token");
-  const url = `http:localhost:8080/api/ws-stomp`;
+  const url = `https://i10c208.p.ssafy.io/api/ws-stomp`;
   const [sender, setSender] = useState<string | null>(null);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
@@ -24,7 +25,11 @@ export default function Chatting() {
   const findRoom = async () => {
     if (roomId.current) {
       const response = await axios
-        .get("http://localhost:8080/api/chat/room/" + roomId.current)
+        .get("https://i10c208.p.ssafy.io/api/chat/room/" + roomId.current, {
+          headers: {
+            Access_Token: token,
+          },
+        })
         .then((res) => {
           return res.data;
         })
@@ -35,6 +40,20 @@ export default function Chatting() {
             setYou({ name: res.clientName, image: res.clientProfileImg });
           }
         });
+    }
+  };
+
+  const prevMessages = async () => {
+    if (roomId.current) {
+      const response = await axios
+        .get(
+          "https://i10c208.p.ssafy.io/api/room/" + roomId.current + "/message",
+          {
+            headers: {
+              Access_Token: token,
+            },
+          }
+        )
     }
   };
 
@@ -50,15 +69,12 @@ export default function Chatting() {
         }),
         { Access_Token: `${sessionStorage.getItem("Access_Token")}` }
       );
-      console.log("보냈다");
       setMessage("");
     }
   };
 
   // 메시지 수신
   const recvMessage = (recv: Message) => {
-    console.log("메시지가 왔어...?!");
-    console.log(recv.content);
     setMessages((prevMessages) => [
       {
         type: recv.type,
@@ -72,7 +88,7 @@ export default function Chatting() {
   useEffect(() => {
     setSender(sessionStorage.getItem("wschat.sender"));
     findRoom();
-    console.log(JSON.stringify({ token }));
+    prevMessages();
   }, []);
 
   return (
@@ -96,7 +112,11 @@ export default function Chatting() {
       <s.Wrapper>
         <s.RoomInfo>
           <s.RoomInfo className="profile">
-            <s.Profile src={you?.image} alt="profile" />
+            {you && you.image ? (
+              <s.Profile src={you.image} alt="profile" />
+            ) : (
+              <s.Profile src={malitell} alt="profile" />
+            )}
             <s.Name>{you && you.name}</s.Name>
           </s.RoomInfo>
         </s.RoomInfo>
@@ -106,9 +126,9 @@ export default function Chatting() {
               <s.MessageBox
                 key={index}
                 $align={
-                  message.userSeq === sessionStorage.getItem("mySeq")
-                    ? ""
-                    : "end"
+                  String(message.userSeq) === sessionStorage.getItem("mySeq")
+                    ? "end"
+                    : "start"
                 }
               >
                 <s.Message>{message.content}</s.Message>

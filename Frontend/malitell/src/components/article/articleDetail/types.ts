@@ -8,18 +8,35 @@ export interface CommonFields {
   userSeq: number;
 }
 
+export interface SelfHelpGroup {
+  selfHelpGroupSeq: number;
+  title: string;
+  content: string;
+  times: string[];
+  selfHelpType: string;
+  selfHelpGroupUsers: number[];
+}
+
+export interface CommentType {
+  username: string;
+  content: string;
+  time: string;
+}
+
 export interface GatherArticle extends CommonFields {
-  selfHelpGroup: any; // 이 부분은 실제 데이터에 맞게 수정해주세요.
-  gatheringComments: any[]; // 이 부분은 실제 데이터에 맞게 수정해주세요.
+  selfHelpGroup: SelfHelpGroup;
+  gatheringComments: CommentType[]; 
+  participants: number[];
+  headcount: number;
 }
 
 export interface CommunityArticle extends CommonFields {
-  communityComments: any[]; // 이 부분은 실제 데이터에 맞게 수정해주세요.
-  worryTag: string;
+  communityComments: CommentType[];
+  worryTag: 'COURSE' | 'EMOTION' | 'RELATIONSHIP' | 'ECONOMY' | 'HEALTH';
 }
 
 export interface OvercomeArticle extends CommonFields {
-  overComingComments: any[]; // 이 부분은 실제 데이터에 맞게 수정해주세요.
+  overComingComments: CommentType[];
 }
 
 

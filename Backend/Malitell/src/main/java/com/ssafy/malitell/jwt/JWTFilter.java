@@ -67,7 +67,6 @@ public class JWTFilter extends OncePerRequestFilter {
 //                    HttpStatus.UNAUTHORIZED, "토큰이 만료되었습니다.");
 //
 //            mapper.writeValue(response.getWriter(), responseStatusException);
-            System.out.println("만료된 토큰입니다.");
             return;
         }
 
@@ -88,8 +87,6 @@ public class JWTFilter extends OncePerRequestFilter {
         // 스프링 시큐리티 인증 토큰 생성
         Authentication authToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities()); // (principal, credentials, authorities)
 
-//        System.out.println("-------------");
-//        System.out.println("Principal : " + authToken);
         // 세션에 사용자 등록 (한번의 요청에 대해 일시적으로 세션 생성)
         SecurityContextHolder.getContext().setAuthentication(authToken);
 

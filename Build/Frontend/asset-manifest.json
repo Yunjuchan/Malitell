@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3ad90a0f.css",
+    "main.js": "/static/js/main.9fdac4b4.js",
+    "static/media/NanumSquareNeo-Variable.woff": "/static/media/NanumSquareNeo-Variable.d80ae48b60611b9cbb57.woff",
+    "static/media/normal.gif": "/static/media/normal.7e5f4fb89738f0347bc1.gif",
+    "static/media/fast.gif": "/static/media/fast.b37cbebc59f16450fa83.gif",
+    "static/media/bamboo.png": "/static/media/bamboo.3098ab40ebd5b736b136.png",
+    "static/media/cardFront.png": "/static/media/cardFront.650244c8e612fc8ab3cb.png",
+    "static/media/counsel.png": "/static/media/counsel.bf80e31499a8bd0633dc.png",
+    "static/media/metaverse.png": "/static/media/metaverse.8db05cb92e72fb360d65.png",
+    "static/media/malitell.png": "/static/media/malitell.3d0be384cbf7853a45ba.png",
+    "static/media/lastFrame.png": "/static/media/lastFrame.06f712e3569ddb93a5d5.png",
+    "static/media/favicon.png": "/static/media/favicon.27d06a45c4a07a384a1e.png",
+    "static/media/worry.png": "/static/media/worry.7870fc25abccd05bde29.png",
+    "static/media/logo.png": "/static/media/logo.c6beb05668750c43e5d1.png",
+    "static/media/cardBack.png": "/static/media/cardBack.ebb296c81af441105764.png",
+    "static/media/explosion.gif": "/static/media/explosion.c9675565732455f6bd9d.gif",
+    "static/media/naver.png": "/static/media/naver.2e7bb2b8dc41b2aca35e.png",
+    "static/media/kakao.png": "/static/media/kakao.cf428903d0dc50fddf48.png",
+    "static/media/client.png": "/static/media/client.327650f5170b111bfd10.png",
+    "index.html": "/index.html",
+    "main.3ad90a0f.css.map": "/static/css/main.3ad90a0f.css.map",
+    "main.9fdac4b4.js.map": "/static/js/main.9fdac4b4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3ad90a0f.css",
+    "static/js/main.9fdac4b4.js"
+  ]
+}
