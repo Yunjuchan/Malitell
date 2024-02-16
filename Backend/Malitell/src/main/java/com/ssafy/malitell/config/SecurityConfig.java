@@ -84,28 +84,13 @@ public class SecurityConfig {
 
         // 커스텀 필터 등록
         // (생성한 커스텀 필터, 필터를 넣을 위치)
-//        http.addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil, userRepository), UsernamePasswordAuthenticationFilter.class);
-
-        // /api/login 처리 필터 등록
-        http.addFilterAt(this.abstractAuthenticationProcessingFilter(authenticationManager(authenticationConfiguration)), LoginFilter.class);
-
-        // /api/login 처리 필터 등록
-        http.addFilterAt(this.abstractAuthenticationProcessingFilter(authenticationManager(authenticationConfiguration)), LoginFilter.class);
+        http.addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil, userRepository), LoginFilter.class);
 
         // 세션 설정 (가장 중요!)
         // JWT 방식에서는 세션을 항상 stateless 상태로 유지함
         http.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return http.build();
-    }
-
-    public AbstractAuthenticationProcessingFilter abstractAuthenticationProcessingFilter(final AuthenticationManager authenticationManager) {
-        return new LoginAuthenticationFilter(
-                "/api/login",
-                authenticationManager,
-                jwtUtil,
-                userRepository
-        );
     }
 
     @Bean
