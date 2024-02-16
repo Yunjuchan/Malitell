@@ -13,6 +13,7 @@ import com.ssafy.malitell.dto.request.user.CounselorJoinRequestDto;
 import com.ssafy.malitell.dto.request.user.CounselorUpdateRequestDto;
 import com.ssafy.malitell.dto.response.board.MyBoardListResponseDto;
 import com.ssafy.malitell.dto.response.user.UserResponseDto;
+import com.ssafy.malitell.jwt.JWTUtil;
 import com.ssafy.malitell.repository.board.community.CommunityRepository;
 import com.ssafy.malitell.repository.board.gathering.GatheringRepository;
 import com.ssafy.malitell.repository.board.overcoming.OverComingRepository;
@@ -44,18 +45,19 @@ public class UserService {
     private final GatheringRepository gatheringRepository;
     private final CommunityRepository communityRepository;
     private final OverComingRepository overComingRepository;
+    private final JWTUtil jwtUtil;
 
 
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Transactional
-    public void joinClient(ClientJoinRequestDto clientJoinRequestDto) {
+    public String joinClient(ClientJoinRequestDto clientJoinRequestDto) {
         String userId = clientJoinRequestDto.getUserId();
 
         Boolean isExist = userRepository.existsByUserId(userId);
 
         if (isExist) {
-            return;
+            return "";
         }
 
         User user = new User();
@@ -74,11 +76,17 @@ public class UserService {
         user.setReadCheck(1);
 
         userRepository.save(user);
+        System.out.println("????????????????????/");
+        String accessToken = jwtUtil.createAccessToken(user.getUserId(), user.getRole());
+        System.out.println(accessToken);
+        System.out.println("????????????????????/");
+
+        return accessToken;
     }
 
     @Transactional
     public void joinCounselor(CounselorJoinRequestDto counselorJoinRequestDto) {
-        
+
         // 중복 검증
         String userId = counselorJoinRequestDto.getUserId();
         Boolean isExist = userRepository.existsByUserId(userId);

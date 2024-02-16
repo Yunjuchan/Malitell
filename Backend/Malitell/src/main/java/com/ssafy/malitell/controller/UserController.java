@@ -11,6 +11,7 @@ import com.ssafy.malitell.repository.user.UserRepository;
 import com.ssafy.malitell.service.UserService;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,9 +42,18 @@ public class UserController {
 
     // 내담자 회원가입
     @PostMapping("/user/join/client")
-    public ResponseEntity<?> joinClient(@RequestBody ClientJoinRequestDto clientJoinRequestDto) {
-        userService.joinClient(clientJoinRequestDto);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<?> joinClient(@RequestBody ClientJoinRequestDto clientJoinRequestDto, HttpServletResponse response) {
+        String token = userService.joinClient(clientJoinRequestDto);
+        System.out.println(token);
+        response.addHeader(JWTUtil.ACCESS_TOKEN, "Bearer " + token);
+        return new ResponseEntity<>(token, HttpStatus.OK);
+    }
+
+    @PostMapping("/publishToken")
+    public ResponseEntity<?> joinClient(String username, HttpServletResponse response) {
+        String token = jwtUtil.createAccessToken(username, "ROLE_CLIENT");
+        response.addHeader(JWTUtil.ACCESS_TOKEN, "Bearer " + token);
+        return new ResponseEntity<>(new TokenResponseDto(), HttpStatus.OK);
     }
 
     // 아이디 중복 검증
