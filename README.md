@@ -164,8 +164,8 @@
 
 <details>
 <summary>Backend</summary>
-    
-    ```jsx
+    ```
+    jsx
     \---src
         \---main
             +---java
@@ -454,11 +454,13 @@
             \---resources
                     application.properties
     ```
-    </details>
+</details>
 
-- Frontend
-    
-    ```jsx
+<details>
+<summary>Frontend</summary>
+
+    ```
+    jsx
     src
     ├─ App.tsx
     ├─ assets
@@ -761,7 +763,7 @@
        │  └─ nav.tsx
        └─ index.css
     ```
-    
+</details>
 
 ## 9. ERD
 
