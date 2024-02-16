@@ -14,7 +14,7 @@ export interface SelfHelpGroupForm {
 // 자조모임 모집 게시글 작성
 // selfHelpGroupTitle: string, selfHelpGroupContent: string, times: number, selfHelpType:string, selfHelpGroupHeadCount: number, title:string, content:string
 export const createSHGroup = (data: SelfHelpGroupForm) => {
-  console.log(data)
+  console.log(data);
   const res = authApi
     .post("/gathering", {
       selfHelpGroupTitle: data.selfHelpGroupTitle,
@@ -65,41 +65,45 @@ export const sHGroupDetail = (gatheringSeq: number) => {
 
 // 자조모임 게시글 삭제
 export const deleteSHGroup = (gatheringSeq: number) => {
-  const res = authApi.delete(`/gathering/delete/${gatheringSeq}`).then((response) => {
-    return response.data;
-  });
-  return res
+  const res = authApi
+    .delete(`/gathering/delete/${gatheringSeq}`)
+    .then((response) => {
+      return response.data;
+    });
+  return res;
 };
-
 
 // 자조모임 참가
 export const joinSHGroup = (gatheringSeq: number) => {
   const formData = new FormData();
-  formData.append('gatheringSeq', gatheringSeq.toString());
+  formData.append("gatheringSeq", gatheringSeq.toString());
 
-  const res = axios.post("https://i10c208.p.ssafy.io:8080/api/selfHelpGroup/participate", formData, {
-    headers: {
-      'Access_Token': sessionStorage.getItem('Access_Token'),
-      'Content-Type': 'multipart/form-data'
-    }
-  })
-  .then((response) => {
-    return response.data;
-  })
-  .catch((error) => console.error(error));
+  const res = axios.post("https://i10c208.p.ssafy.io/api/selfHelpGroup/participate", formData, {
+  // const res = axios.post("http://localhost:8080/api/selfHelpGroup/participate", formData, {
+        headers: {
+          Access_Token: sessionStorage.getItem("Access_Token"),
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    )
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => console.error(error));
 
   return res;
 };
 
 // // 자조모임 탈퇴
 export const leaveSHGroup = (gatheringSeq: number) => {
-  const res = authApi.delete(`/mypage/selfHelpGroup/leave/${gatheringSeq}`)
-  .then((res) => {
-    // 응답데이터: 상태코드
-    return res.data
-  })
+  const res = authApi
+    .delete(`/mypage/selfHelpGroup/leave/${gatheringSeq}`)
+    .then((res) => {
+      // 응답데이터: 상태코드
+      return res.data;
+    });
   return res;
-}
+};
 
 // 자조모임 스크랩
 export const scrapSHGroup = (gatheringSeq: number) => {
