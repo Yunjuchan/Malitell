@@ -5,7 +5,8 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   width: 80%;
   margin: auto;
-  a {
+  a, span {
+    cursor: pointer;
     width: 8%;
     margin: auto;
     color: #bf94e4;
