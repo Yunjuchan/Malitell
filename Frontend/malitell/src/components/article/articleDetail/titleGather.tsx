@@ -75,18 +75,30 @@ export default function TitleGather({
             ) : (
               <s.ButtonBox>
                 {showJoinButton && (
-                  <s.Button onClick={handleJoin} color="skyblue">
-                    참가하기
-                  </s.Button>
+                  <>
+                    <s.Button disabled>
+                      참가인원: {participants.length} / {headcount}{" "}
+                    </s.Button>
+                    <s.Button onClick={handleJoin} color="skyblue">
+                      참가하기
+                    </s.Button>
+                  </>
                 )}
                 {showCancelButton && (
-                  <s.Button onClick={handleLeave} color="tomato">
-                    참가취소
-                  </s.Button>
+                  <>
+                    <s.Button disabled>
+                      참가인원: {participants.length} / {headcount}
+                    </s.Button>
+                    <s.Button onClick={handleLeave} color="tomato">
+                      참가취소
+                    </s.Button>
+                  </>
                 )}
                 {showFullButton && (
                   <>
-                    <span>참가인원: {} </span>
+                    <s.Button>
+                      참가인원: {participants.length} / {headcount}
+                    </s.Button>
                     <s.Button disabled>인원 마감</s.Button>
                   </>
                 )}
