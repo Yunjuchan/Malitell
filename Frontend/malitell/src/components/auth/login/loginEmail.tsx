@@ -43,7 +43,23 @@ export default function LoginEmail({
   } = useForm<FormData>();
   const dispatch = useDispatch<AppDispatch>();
   const onSubmit = (data: FormData) => {
-    dispatch(login(data))
+    // dispatch(login(data))
+    fetch(`https://i10c208.p.ssafy.io/api/publishToken`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res: any) => {
+      sessionStorage.setItem("Access_Token", res.headers.access_token);
+      return res.json()
+    }).then((data :any) => {
+        sessionStorage.setItem("mySeq", data.userSeq);
+        sessionStorage.setItem("myImg", data.profileImg);
+        sessionStorage.setItem("myRole", data.role);
+    }).then(() => {
+      window.location.reload();
+    })
   };
 
   // input CSS용 state 및 함수
