@@ -24,10 +24,10 @@ export default function Nav() {
         <Icon src="./images/home/nav/related-organizations.png" alt="counsel" />
         <Name>관련 사이트</Name>
       </NavLink>
-      <NavLink to={"/chat12"}>
+      <a href="https://heather-entree-15a.notion.site/README-md-90d1210269a84b0ebbb85b6d3dba8305" >
         <Icon src="./images/home/nav/about.png" alt="counsel" />
         <Name>서비스 소개</Name>
-      </NavLink>
+      </a>
     </Wrapper>
   );
 }

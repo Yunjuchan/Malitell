@@ -13,7 +13,7 @@ export const api: AxiosInstance = axios.create({
 });
 
 export const loginApi: AxiosInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: BASE_URL + "/api",
   headers: {
     "Content-type": "multipart/form-data",
   },

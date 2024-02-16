@@ -10,7 +10,7 @@ export default function Carousel() {
           <s.Subscribe>
             사이트를 이용하기 전에 한번 읽어보는건 어떨까요?
             <br />
-            <s.Button>자세히 보기 {'>'} </s.Button>
+            <s.Button><a href="https://heather-entree-15a.notion.site/README-md-90d1210269a84b0ebbb85b6d3dba8305">자세히 보기 {'>'} </a></s.Button>
           </s.Subscribe>
         </s.TextBox>
         <s.Img src={malitell} alt="cat" />
