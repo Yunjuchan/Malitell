@@ -89,8 +89,7 @@ public class SecurityConfig {
         // /api/login 처리 필터 등록
         http.addFilterAt(this.abstractAuthenticationProcessingFilter(authenticationManager(authenticationConfiguration)), LoginFilter.class);
 
-
-//        // /api/login 처리 필터 등록
+        // /api/login 처리 필터 등록
         http.addFilterAt(this.abstractAuthenticationProcessingFilter(authenticationManager(authenticationConfiguration)), LoginFilter.class);
 
         // 세션 설정 (가장 중요!)
