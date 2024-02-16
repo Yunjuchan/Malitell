@@ -1,13 +1,14 @@
 package com.ssafy.malitell.jwt;
 
-import com.ssafy.malitell.dto.CustomUserDetails;
-import com.ssafy.malitell.repository.UserRepository;
-import io.jsonwebtoken.Jwts;
+import com.ssafy.malitell.dto.response.user.CustomUserDetails;
+import com.ssafy.malitell.repository.user.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletInputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -38,34 +39,32 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+        String method = request.getMethod();
 
-        // 클라이언트 요청에서 아이디랑 비밀번호 추출
-        String userId = obtainUsername(request);
-        String password = obtainPassword(request);
+        if (!method.equals("POST")) {
+            throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
+        }
 
-        // 로그인 필터가 가로챈 요청 정보 확인
-        System.out.println("로그인 필터가 가로챈 요청 정보 확인");
-        System.out.println("아이디 : " + userId);
-        System.out.println("비밀번호 : " + password);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
 
-        // 스프링 시큐리티에서 아이디와 비밀번호를 검증하기 위해서는 token에 담아야 함
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userId, password, null);
 
-        // token에 담은 데이터를 검증을 위해 AuthenticationManager로 전달
-        return authenticationManager.authenticate(authToken);
+        LoginRequestDto loginRequestDto = new LoginRequestDto(username, password);
+
+        System.out.println("==================");
+        System.out.println(loginRequestDto.username);
+        System.out.println(loginRequestDto.password);
+        System.out.println("==================");
+
+        return this.getAuthenticationManager().authenticate(new UsernamePasswordAuthenticationToken(loginRequestDto.username, loginRequestDto.password));
     }
 
-    // 로그인 성공시 실행하는 메소드 (여기서 JWT를 발급하면 됨)
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
-
-        System.out.println("JWT 발급 해주자!!");
-
         // 로그인 성공 -> 로그인한 유저의 정보를 가지고 JWT 발급
 
-//        Jwts.parser().
-
         // getPrincipal() : 현재 사용자 정보 가져오기
+
         CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
 
         String userId = customUserDetails.getUsername(); // 아이디
@@ -76,8 +75,8 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         String role = auth.getAuthority(); // 권한
 
         // 사용자 아이디, 권한 입력해서 JWT 발급
-        String accessToken = jwtUtil.createAccessToken(userId, role); // access token (36초)
-        String refreshToken = jwtUtil.createRefreshToken(userId, role); // refresh token (30일)
+        String accessToken = jwtUtil.createAccessToken(userId, role); // access token
+        String refreshToken = jwtUtil.createRefreshToken(userId, role); // refresh token
 
         // Bearer 인증 방식
         // 응답 헤더에 JWT 토큰 값을 넣어 응답
@@ -95,4 +94,11 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         // 로그인 실패 시 401 응답 (Unauthorized)
         response.setStatus(401);
     }
+
+    public record LoginRequestDto(
+            String username,
+            String password
+    ) {
+    }
 }
+

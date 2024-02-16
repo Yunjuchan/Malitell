@@ -2,10 +2,11 @@ package com.ssafy.malitell.service.implement;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ssafy.malitell.domain.CustomOAuth2User;
-import com.ssafy.malitell.domain.User;
-import com.ssafy.malitell.repository.UserRepository;
+import com.ssafy.malitell.domain.auth.CustomOAuth2User;
+import com.ssafy.malitell.domain.user.User;
+import com.ssafy.malitell.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -16,6 +17,7 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class OAuth2UserServiceImplement extends DefaultOAuth2UserService {
 
     private final UserRepository userRepository;
@@ -26,9 +28,9 @@ public class OAuth2UserServiceImplement extends DefaultOAuth2UserService {
         String oauthClientName = request.getClientRegistration().getClientName();
 
         try {
-            System.out.println(new ObjectMapper().writeValueAsString(oAuth2User.getAttributes()));
+            new ObjectMapper().writeValueAsString(oAuth2User.getAttributes());
         } catch (JsonProcessingException exception) {
-            exception.printStackTrace();
+            log.error(exception.getMessage());
         }
 
         User user = null;
@@ -49,7 +51,11 @@ public class OAuth2UserServiceImplement extends DefaultOAuth2UserService {
             Map<Object, Object> kakaoAccount = (Map<Object, Object>) maps.get("kakao_account");
             name = kakaoAccount.get("name") + "";
             email = kakaoAccount.get("email") + "";
-            phone = kakaoAccount.get("phone_number") + "";
+            phone =  "0" + ((String) kakaoAccount
+                    .get("phone_number"))
+                    .substring(4, 16)
+                    .replace("-", "");
+
             birth = kakaoAccount.get("birthyear") + "" + kakaoAccount.get("birthday");
             gender = kakaoAccount.get("gender") + "";
 
@@ -65,13 +71,14 @@ public class OAuth2UserServiceImplement extends DefaultOAuth2UserService {
             userId = "naver_" + responseMap.get("id");
             name = responseMap.get("name");
             email = responseMap.get("email");
-            phone = responseMap.get("mobile");
+            phone = responseMap.get("mobile").replace("-", "");
             gender = responseMap.get("gender");
             birth = responseMap.get("birthyear") + responseMap.get("birthday").substring(0, 2) + responseMap.get("birthday").substring(3, 5);
             type = "naver";
             user = new User(userId, name, nickname, email, phone, birth, gender, role, type);
         }
 
+        assert user != null;
         userRepository.save(user);
         return new CustomOAuth2User(userId);
     }

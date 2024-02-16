@@ -1,15 +1,20 @@
 package com.ssafy.malitell.jwt;
 
-import com.ssafy.malitell.domain.User;
-import com.ssafy.malitell.dto.CustomUserDetails;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ssafy.malitell.domain.user.User;
+import com.ssafy.malitell.dto.response.user.CustomUserDetails;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 
@@ -30,27 +35,41 @@ public class JWTFilter extends OncePerRequestFilter {
         String accessToken = request.getHeader("Access_token");
 
         // accessToken 헤더 검증
-        if(accessToken == null || !accessToken.startsWith("Bearer ")) {
-            System.out.println("token null");
+        if (accessToken == null || !accessToken.startsWith("Bearer ")) {
             filterChain.doFilter(request, response); // authorization 헤더에 토큰이 없으면 다음 필터로 request, response를 넘겨줌
 
             // 조건이 해당되면 메소드 종료(필수)
             return;
         }
 
-        System.out.println("authorization now");
         // Bearer 부분 제거 후 순수 토큰만 획득
         String token = accessToken.split(" ")[1];
-        System.out.println(token);
+
 
         // 토큰 소멸 시간 검증
-        if(jwtUtil.isExpired(token)) {
-            // 토큰 만료 되었으면 401 리턴
-            response.setStatus(401);
-            filterChain.doFilter(request, response);
+//        if (jwtUtil.isExpired(token)) {
+//        토큰 만료 되었으면 401 리턴
+//            response.setStatus(401);
+//            filterChain.doFilter(request, response);
+//
+//            return;
+//        }
 
+        try {
+            jwtUtil.isExpired(token);
+        } catch (ExpiredJwtException exception) {
+//            ObjectMapper mapper = new ObjectMapper();
+            response.setStatus(401);
+            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+            response.setCharacterEncoding("UTF-8");
+
+//            ResponseStatusException responseStatusException = new ResponseStatusException(
+//                    HttpStatus.UNAUTHORIZED, "토큰이 만료되었습니다.");
+//
+//            mapper.writeValue(response.getWriter(), responseStatusException);
             return;
         }
+
 
         // 토큰에서 userId와 role 획득
         String userId = jwtUtil.getUserId(token);
@@ -67,6 +86,7 @@ public class JWTFilter extends OncePerRequestFilter {
 
         // 스프링 시큐리티 인증 토큰 생성
         Authentication authToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities()); // (principal, credentials, authorities)
+
         // 세션에 사용자 등록 (한번의 요청에 대해 일시적으로 세션 생성)
         SecurityContextHolder.getContext().setAuthentication(authToken);
 

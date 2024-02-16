@@ -1,18 +1,18 @@
 package com.ssafy.malitell.service.implement;
 
 
-import com.ssafy.malitell.common.CertificationNumber;
-import com.ssafy.malitell.domain.CertificationEntity;
-import com.ssafy.malitell.domain.User;
+import com.ssafy.malitell.util.CertificationNumber;
+import com.ssafy.malitell.domain.auth.emailAuth;
+import com.ssafy.malitell.domain.user.User;
 import com.ssafy.malitell.dto.request.auth.*;
 import com.ssafy.malitell.dto.response.ResponseDto;
 import com.ssafy.malitell.dto.response.auth.*;
-import com.ssafy.malitell.jwt.JWTUtil;
-import com.ssafy.malitell.repository.CertificationRepository;
-import com.ssafy.malitell.repository.UserRepository;
+import com.ssafy.malitell.repository.user.CertificationRepository;
+import com.ssafy.malitell.repository.user.UserRepository;
 import com.ssafy.malitell.service.AuthService;
 import com.ssafy.malitell.util.EmailUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,12 +20,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AuthServiceImplement implements AuthService {
 
     private final UserRepository userRepository;
     private final CertificationRepository certificationRepository;
 
-    private final JWTUtil jwtUtil;
     private final EmailUtil emailUtil;
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -33,14 +33,14 @@ public class AuthServiceImplement implements AuthService {
     public ResponseEntity<? super IdCheckResponseDto> idCheck(IdCheckRequestDto dto) {
         try {
 
-            String userId = dto.getId();
+            String userId = dto.getUserId();
             boolean isExistId = userRepository.existsByUserId(userId);
 
             if (isExistId) return IdCheckResponseDto.duplicated();
 
 
         } catch (Exception exception) {
-            exception.printStackTrace();
+            log.error(exception.getMessage());
             return ResponseDto.databaseError();
         }
 
@@ -51,7 +51,7 @@ public class AuthServiceImplement implements AuthService {
     public ResponseEntity<? super EmailCertificationResponseDto> emailCertification(EmailCertificationRequestDto dto) {
         try {
 
-            String userId = dto.getId();
+            String userId = dto.getUserId();
             String email = dto.getEmail();
             boolean isExistId = userRepository.existsByUserId(userId);
             if (isExistId) return EmailCertificationResponseDto.duplicateId();
@@ -61,11 +61,11 @@ public class AuthServiceImplement implements AuthService {
             boolean isSuccessed = emailUtil.sendCertificationMail(email, certificationNumber);
             if (!isSuccessed) return EmailCertificationResponseDto.mailSendFail();
 
-            CertificationEntity certificationEntity = new CertificationEntity(userId, email, certificationNumber);
-            certificationRepository.save(certificationEntity);
+            emailAuth emailAuth = new emailAuth(userId, email, certificationNumber);
+            certificationRepository.save(emailAuth);
 
         } catch (Exception exception) {
-            exception.printStackTrace();
+            log.error(exception.getMessage());
             return ResponseDto.databaseError();
         }
 
@@ -76,20 +76,20 @@ public class AuthServiceImplement implements AuthService {
     public ResponseEntity<? super CheckCertificationResponseDto> checkCertification(CheckCertificationRequestDto dto) {
         try {
 
-            String userId = dto.getId();
+            String userId = dto.getUserId();
             String email = dto.getEmail();
             String certificationNumber = dto.getCertificationNumber();
 
-            CertificationEntity certificationEntity = certificationRepository.findByUserId(userId);
-            if (certificationEntity == null) {
+            emailAuth emailAuth = certificationRepository.findByUserId(userId);
+            if (emailAuth == null) {
                 return CheckCertificationResponseDto.certificationFail();
             }
 
-            boolean isMatched = certificationEntity.getEmail().equals(email) && certificationEntity.getCertificationNumber().equals(certificationNumber);
+            boolean isMatched = emailAuth.getEmail().equals(email) && emailAuth.getCertificationNumber().equals(certificationNumber);
             if (!isMatched) return CheckCertificationResponseDto.certificationFail();
 
         } catch (Exception exception) {
-            exception.printStackTrace();
+            log.error(exception.getMessage());
             return ResponseDto.databaseError();
         }
 
@@ -99,7 +99,7 @@ public class AuthServiceImplement implements AuthService {
     @Override
     public ResponseEntity<? super SignUpResponseDto> signUp(SignUpRequestDto dto) {
         try {
-            String userId = dto.getId();
+            String userId = dto.getUserId();
             boolean isExistId = userRepository.existsByUserId(userId);
             if (isExistId) {
                 return SignUpResponseDto.duplicated();
@@ -107,8 +107,8 @@ public class AuthServiceImplement implements AuthService {
 
             String email = dto.getEmail();
             String certificationNumber = dto.getCertificationNumber();
-            CertificationEntity certificationEntity = certificationRepository.findByUserId(userId);
-            boolean isMatched = certificationEntity.getEmail().equals(email) && certificationEntity.getCertificationNumber().equals(certificationNumber);
+            emailAuth emailAuth = certificationRepository.findByUserId(userId);
+            boolean isMatched = emailAuth.getEmail().equals(email) && emailAuth.getCertificationNumber().equals(certificationNumber);
             if (!isMatched) {
                 return SignUpResponseDto.certificationFail();
             }
@@ -122,10 +122,21 @@ public class AuthServiceImplement implements AuthService {
             certificationRepository.deleteByUserId(userId);
 
         } catch (Exception exception) {
-            exception.printStackTrace();
+            log.error(exception.getMessage());
             return ResponseDto.databaseError();
         }
 
         return SignUpResponseDto.success();
+    }
+
+    @Override
+    public FindIdResponseDto findId(FindIdRequestDto findIdRequestDto) {
+        String name = findIdRequestDto.getUserId();
+        String email = findIdRequestDto.getEmail();
+        String userId = userRepository.findIdByNameAndEmail(name, email).getUserId();
+
+        FindIdResponseDto findIdResponseDto = new FindIdResponseDto();
+        findIdResponseDto.setUserId(userId);
+        return findIdResponseDto;
     }
 }
