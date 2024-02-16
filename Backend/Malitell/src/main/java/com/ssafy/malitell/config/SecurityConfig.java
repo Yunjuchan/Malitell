@@ -25,7 +25,6 @@ import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserServ
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -85,7 +84,10 @@ public class SecurityConfig {
 
         // 커스텀 필터 등록
         // (생성한 커스텀 필터, 필터를 넣을 위치)
-        http.addFilterAt(new LoginFilter(defaultFilterProcessesUrl, authenticationManager(authenticationConfiguration), jwtUtil, userRepository), UsernamePasswordAuthenticationFilter.class);
+//        http.addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil, userRepository), UsernamePasswordAuthenticationFilter.class);
+
+        // /api/login 처리 필터 등록
+        http.addFilterAt(this.abstractAuthenticationProcessingFilter(authenticationManager(authenticationConfiguration)), LoginFilter.class);
 
 
 //        // /api/login 처리 필터 등록
@@ -98,18 +100,8 @@ public class SecurityConfig {
         return http.build();
     }
 
-//    public AbstractAuthenticationProcessingFilter abstractAuthenticationProcessingFilter(authenticationManager) {
-//        return new LoginAuthenticationFilter(
-//                "/api/login",
-//                authenticationManager
-//        );
-//    }
-
-    public AbstractAuthenticationProcessingFilter abstractAuthenticationProcessingFilter
-            (
-                    final AuthenticationManager authenticationManager
-            ) {
-        return new LoginFilter(
+    public AbstractAuthenticationProcessingFilter abstractAuthenticationProcessingFilter(final AuthenticationManager authenticationManager) {
+        return new LoginAuthenticationFilter(
                 "/api/login",
                 authenticationManager,
                 jwtUtil,
