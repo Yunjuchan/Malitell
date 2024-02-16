@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-//@Component
+@Component
 @RequiredArgsConstructor
 public class Initializer implements ApplicationRunner {
 
@@ -44,7 +44,7 @@ public class Initializer implements ApplicationRunner {
         // 상담가 더미데이터 추가
         CounselorJoinRequestDto joinDto4 = new CounselorJoinRequestDto("namyoullim", "임남열", "임남열", "1234", "test@naver.com", "010-8211-0108", "19810212", "M", 17, "ROLE_COUNSELOR", "전남대학교 임상심리 전공 박사 수료", "임상심리전문가 정신보건 임상심리사 1급 중독심리전문가");
         CounselorUpdateRequestDto requestDto4 = new CounselorUpdateRequestDto("임남열", "test@naver.com", "010-8211-0108",
-                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/25217589-1e0e-4df2-9da1-c43eaeeb5f93/Untitled.png?id=68007ec4-f95f-481d-bf52-60a2e58364f3&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1707984000000&signature=xr4bAA7yysRomUpxMq8AUaGg59PbKCV7Kh3s8Ip3eJI&downloadName=Untitled.png",
+                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/25217589-1e0e-4df2-9da1-c43eaeeb5f93/Untitled.png?id=68007ec4-f95f-481d-bf52-60a2e58364f3&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1708135200000&signature=JA_Sk57pjZwkdoNgp4du-pycg28uTKjm-8M_WZnRyfI&downloadName=Untitled.png",
                 "임상 심리\n도박 중독 심리\n가정 폭력\n양성 평등\n유가족 상담",
                 "전남대학교 임상심리 전공 박사 수료",
                 "임상심리전문가\n정신보건 임상심리사 1급\n중독심리전문가",
@@ -57,7 +57,7 @@ public class Initializer implements ApplicationRunner {
 
         CounselorJoinRequestDto joinDto5 = new CounselorJoinRequestDto("hwajinlee", "이화진", "이화진", "1234", "test@naver.com", "010-7262-6304", "19800315", "W", 15, "ROLE_COUNSELOR", "서울대학교 심리학 박사 전공 수료", "정신분석 전문가");
         CounselorUpdateRequestDto requestDto5 = new CounselorUpdateRequestDto("이화진", "test@naver.com", "01072626304",
-                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/0b5269a9-22f2-4a4a-9909-9cc1b6635c87/image_(3).png?id=15855ed0-3584-4a59-a105-4ee4272d9db8&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1707998400000&signature=Of0N09YpDzNO3hxWHbTY08n1mwccOJhal8GDJQKH4M4&downloadName=image+%283%29.png",
+                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/0b5269a9-22f2-4a4a-9909-9cc1b6635c87/image_(3).png?id=15855ed0-3584-4a59-a105-4ee4272d9db8&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1708135200000&signature=t2Jg3QBaKbgN2sELWKqZuRop2HYcPztC9s2uFK7mCeE&downloadName=image+%283%29.png",
                 "정신분석학",
                 "서울대학교 심리학 박사 전공 수료",
                 "정신분석 전문가",
@@ -70,7 +70,7 @@ public class Initializer implements ApplicationRunner {
 
         CounselorJoinRequestDto joinDto6 = new CounselorJoinRequestDto("minseokjang", "장민석", "장민석", "1234", "test@naver.com", "010-5678-9012", "19920909", "M", 10, "ROLE_COUNSELOR", "서강대학교 심리학 석사 전공 수료", "스트레스 분석 전문가");
         CounselorUpdateRequestDto requestDto6 = new CounselorUpdateRequestDto("장민석", "test@naver.com", "01056789012",
-                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/8dbfe62c-786f-437c-a101-26d82675cced/Untitled.png?id=bf39d2b5-7284-43e2-9331-90187f73b707&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1708005600000&signature=0nu-x-eiVcpvldAJiPgIXyrWPFkwsUGfDO67J13Rho4&downloadName=Untitled.png",
+                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/12651ef3-81d4-498d-b08d-9b7078bdc150/image_(2).png?id=a2c4c291-7fa0-4fec-90a8-f1971ebc4482&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1708135200000&signature=z6a2PkfC_H-56fpQ9zwuZLAaI8my_1wOHh53Nq8uhLs&downloadName=image+%282%29.png",
                 "직장인의 스트레스 관리",
                 "서강대학교 심리학 석사 전공 수료",
                 "스트레스 분석 전문가",
@@ -83,7 +83,7 @@ public class Initializer implements ApplicationRunner {
 
         CounselorJoinRequestDto joinDto7 = new CounselorJoinRequestDto("seongminlee", "이승민", "이승민", "1234", "test@naver.com", "010-7890-1234", "19881010", "M", 9, "ROLE_COUNSELOR", "한국외국어대학교 심리학 전공", "무의식 분석 전문가");
         CounselorUpdateRequestDto requestDto7 = new CounselorUpdateRequestDto("이승민", "test@naver.com", "01056789012",
-                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/12651ef3-81d4-498d-b08d-9b7078bdc150/image_(2).png?id=a2c4c291-7fa0-4fec-90a8-f1971ebc4482&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1708005600000&signature=M0gUH66z4aQZAlm3XODEqGLRZrMeH1YAmz3tgVI3_ro&downloadName=image+%282%29.png",
+                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/cb6b7baa-9829-4fd1-85b4-d4a19f678762/image_(1).png?id=bb82dea3-fc36-41c3-b224-1749e867238c&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1708135200000&signature=e7A6LFnc4mvhDPBS4wTT5vAz7n5RTG--OfRKVeHCh_s&downloadName=image+%281%29.png",
                 "무의식과 꿈 해석",
                 "한국외국어대학교 심리학 전공",
                 "무의식 분석 전문가",
@@ -96,7 +96,7 @@ public class Initializer implements ApplicationRunner {
 
         CounselorJoinRequestDto joinDto8 = new CounselorJoinRequestDto("jiayoon", "윤지아", "윤지아", "1234", "test@naver.com", "010-6789-0123", "19920909", "W", 7, "ROLE_COUNSELOR", "한양대학교 심리학 석사 전공", "청소년상담 전문가");
         CounselorUpdateRequestDto requestDto8 = new CounselorUpdateRequestDto("윤지아", "test@naver.com", "01056789012",
-                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/6857f37a-38ce-4b36-9db3-cade188daaf1/Untitled.png?id=ce505265-3e97-467d-802f-d31ea0dc791b&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1708005600000&signature=VYzMgPxUeD-OHUtS440ej9nCcAREIJcNloPPJGzegWE&downloadName=Untitled.png",
+                "https://file.notion.so/f/f/22f7e1c7-e82c-4b17-897e-938b069965ee/6857f37a-38ce-4b36-9db3-cade188daaf1/Untitled.png?id=ce505265-3e97-467d-802f-d31ea0dc791b&table=block&spaceId=22f7e1c7-e82c-4b17-897e-938b069965ee&expirationTimestamp=1708135200000&signature=BFOTSXp-Nu3wF15MlTufwt8pRilhN-0kvV78n90O52s&downloadName=Untitled.png",
                 "청소년 상담",
                 "한양대학교 심리학 석사 전공",
                 "청소년상담 전문가",
