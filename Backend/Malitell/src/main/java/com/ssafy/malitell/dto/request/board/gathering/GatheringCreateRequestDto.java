@@ -1,6 +1,5 @@
 package com.ssafy.malitell.dto.request.board.gathering;
 
-import com.ssafy.malitell.domain.tag.WorryTag;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -25,7 +24,7 @@ public class GatheringCreateRequestDto {
     private String selfHelpType;
 
     // 자조모임 인원수 제한
-    private int selfHelpGroupHeadCount;
+    private int headcount;
 
     // 게시물 제목
     private String title;

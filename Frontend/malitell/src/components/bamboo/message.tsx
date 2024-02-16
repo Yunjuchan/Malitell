@@ -1,7 +1,12 @@
-import {Wrapper} from '../../styles/bamboo/message';
+import { Wrapper } from "../../styles/bamboo/message";
+import { useEffect } from "react";
 
-export default function Message() {
-  return (
-    <Wrapper>테스트 메시지</Wrapper>
-  )
+interface props {
+  result: String;
+}
+
+export default function Message({ result }: props) {
+  useEffect(() => {
+  });
+  return <Wrapper>{result}</Wrapper>;
 }

@@ -4,7 +4,7 @@ export const saveState = (state: any) => {
     const serializedState = JSON.stringify(state);
     sessionStorage.setItem('state', serializedState);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 

@@ -28,7 +28,7 @@ public class OAuth2UserServiceImplement extends DefaultOAuth2UserService {
         String oauthClientName = request.getClientRegistration().getClientName();
 
         try {
-            System.out.println(new ObjectMapper().writeValueAsString(oAuth2User.getAttributes()));
+            new ObjectMapper().writeValueAsString(oAuth2User.getAttributes());
         } catch (JsonProcessingException exception) {
             log.error(exception.getMessage());
         }

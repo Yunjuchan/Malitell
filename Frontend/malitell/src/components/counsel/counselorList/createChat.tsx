@@ -12,7 +12,7 @@ interface Props {
 export default function CreateChat({ counselorSeq }: Props) {
   const CreateChat = () => {
     if (window.sessionStorage.getItem("Access_Token")) {
-      fetch(`http://localhost:8080/chat/room`, {
+      fetch(`https://i10c208.p.ssafy.io/api/chat/room`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -22,9 +22,7 @@ export default function CreateChat({ counselorSeq }: Props) {
           "counselorSeq": counselorSeq,
           "clientSeq": window.sessionStorage.getItem("mySeq"),
         }),
-      }).then((res) => {
-        console.log(res);
-      });
+      })
     } else {
       window.alert("로그인 후 이용해주세요.");
     }

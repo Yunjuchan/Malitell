@@ -163,7 +163,6 @@ public class UserService {
             LocalDate today = LocalDate.now();
 
             if (localDateTime.toLocalDate().equals(today)) {
-                System.out.println("현재 Timestamp는 오늘 날짜입니다.");
                 int clientSeq = counseling.getClientSeq();
                 int counselorSeq = counseling.getCounselorSeq();
 
@@ -177,7 +176,6 @@ public class UserService {
                 findCounselor.setReadCheck(1);
 
             } else {
-                System.out.println("현재 Timestamp는 오늘 날짜가 아닙니다.");
                 return;
             }
 
@@ -203,7 +201,6 @@ public class UserService {
 
     public String getProfileImg(String userId) {
         User findUser = userRepository.findByUserId(userId);
-        System.out.println(findUser);
         return findUser.getProfileImg();
     }
 }

@@ -31,7 +31,7 @@ export default function CreateGatherForm() {
   const [selfHelpGroupTitle, setSelfHelpGroupTitle] = useState("");
   const [selfHelpType, setSelfHelpType] = useState("진로");
   const [worryTag, setWorryTag] = useState("")
-  const [selfHelpGroupHeadCount, setSelfHelpGroupHeadCount] = useState(5);
+  const [headcount, setHeadcount] = useState(5);
   const [startDate, setStartDate] = useState(todayStr);
   const [startTime, setStartTime] = useState("00:00");
   const [totalCount, setTotalCount] = useState(1);
@@ -51,7 +51,7 @@ export default function CreateGatherForm() {
   };
 
   const handleHeadCountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelfHelpGroupHeadCount(Number(e.target.value));
+    setHeadcount(Number(e.target.value));
   };
 
   const handleGroupTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -84,7 +84,7 @@ export default function CreateGatherForm() {
       selfHelpGroupContent: content,
       times: times,
       selfHelpType,
-      selfHelpGroupHeadCount,
+      headcount,
       title,
       content,
     });
@@ -129,7 +129,7 @@ export default function CreateGatherForm() {
             <s.DateLabel>인원: </s.DateLabel>
             <input
               type="number"
-              value={selfHelpGroupHeadCount}
+              value={headcount}
               onChange={handleHeadCountChange}
               min="5"
               max="10"

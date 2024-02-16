@@ -62,7 +62,7 @@ public class User {
     private String certificateField; // 자격증
 
     // 참가하고 있는 자조모임
-    @JsonManagedReference
+    @JsonManagedReference(value = "userrrrrrrr")
     @OneToMany(mappedBy = "user")
     private List<SelfHelpGroupUser> selfHelpGroupUsers = new ArrayList<>();
 

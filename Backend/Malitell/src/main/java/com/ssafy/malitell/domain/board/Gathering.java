@@ -48,13 +48,17 @@ public class Gathering {
     // 게시물 조회수
     private int hit;
 
-    public Gathering(SelfHelpGroup selfHelpGroup, User user, String title, String content) {
+    // 자조모임 최대 참가 인원
+    private int headcount;
+
+    public Gathering(SelfHelpGroup selfHelpGroup, User user, String title, String content, int headcount) {
         this.selfHelpGroup = selfHelpGroup;
         this.user = user;
         this.title = title;
         this.content = content;
         this.hit = 0;
         this.time = new Timestamp(System.currentTimeMillis());
+        this.headcount = headcount;
     }
 
     public void update(GatheringUpdateRequestDto requestDto) {

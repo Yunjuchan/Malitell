@@ -35,3 +35,17 @@ export const articleDetail = (boardSeq: number) => {
   })
   return res
 }
+
+export interface CommentData {
+  boardSeq: number;
+  username: string;
+  content: string;
+}
+
+export const createComment = (boardType: string, commentForm: CommentData) => {
+  const res = authApi.post(`/comment/${boardType}`, commentForm)
+  .then((res) => {
+    return res
+  })
+  return res
+}

@@ -55,7 +55,7 @@ export default function ClientForm({ setSuccess, success }: SignupProps) {
   // 폼 제출 체크
   const onSubmit = (data: FormData) => {
 
-    fetch(`http://localhost:8080/auth/email-certification`, {
+    fetch(`https://i10c208.p.ssafy.io/api/auth/email-certification`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +67,7 @@ export default function ClientForm({ setSuccess, success }: SignupProps) {
       })
       .then((res) => {
         if (res.status === 200) {
-          fetch(`http://localhost:8080/user/join/client`, {
+          fetch(`https://i10c208.p.ssafy.io/api/user/join/client`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
