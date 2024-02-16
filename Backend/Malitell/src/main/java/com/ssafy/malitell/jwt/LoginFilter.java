@@ -38,29 +38,21 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     }
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        String method = request.getMethod();
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
 
-        if (!method.equals("POST")) {
-            throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
-        }
+        String userId = obtainUsername(request);
+        String password = obtainPassword(request);
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        // 스프링 시큐리티에서 아이디와 비밀번호를 검증하기 위해서는 token에 담아야 함
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userId, password, null);
 
-
-        LoginRequestDto loginRequestDto = new LoginRequestDto(username, password);
-
-        System.out.println("==================");
-        System.out.println(loginRequestDto.username);
-        System.out.println(loginRequestDto.password);
-        System.out.println("==================");
-
-        return this.getAuthenticationManager().authenticate(new UsernamePasswordAuthenticationToken(loginRequestDto.username, loginRequestDto.password));
+        // token에 담은 데이터를 검증을 위해 AuthenticationManager로 전달
+        return authenticationManager.authenticate(authToken);
     }
 
     @Override
-    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
+    protected void successfulAuthentication (HttpServletRequest request, HttpServletResponse response, FilterChain
+            chain, Authentication authentication) throws IOException, ServletException {
         // 로그인 성공 -> 로그인한 유저의 정보를 가지고 JWT 발급
 
         // getPrincipal() : 현재 사용자 정보 가져오기
@@ -90,15 +82,11 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     // 로그인 실패시 실행하는 메소드
     @Override
-    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
+    protected void unsuccessfulAuthentication (HttpServletRequest request, HttpServletResponse
+            response, AuthenticationException failed) throws IOException, ServletException {
         // 로그인 실패 시 401 응답 (Unauthorized)
         response.setStatus(401);
     }
 
-    public record LoginRequestDto(
-            String username,
-            String password
-    ) {
-    }
 }
 
