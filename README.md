@@ -164,8 +164,8 @@
 
 <details>
 <summary>Backend</summary>
+
     ```
-    jsx
     \---src
         \---main
             +---java
@@ -459,8 +459,7 @@
 <details>
 <summary>Frontend</summary>
 
-    ```
-    jsx
+    ```jsx
     src
     ├─ App.tsx
     ├─ assets
