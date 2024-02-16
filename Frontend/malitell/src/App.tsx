@@ -35,6 +35,7 @@ import MyInfoClient from "./components/auth/profile/myInfoClient";
 import Counselling from "./routes/counselling/counselling";
 import Review from "./routes/counselling/review";
 import Chatting from "./components/chat/chatting";
+import About from "./routes/etc/about";
 
 // 중첩라우팅
 const router = createBrowserRouter([
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
               {
                 path: "passwordChange",
                 element: <PasswordChange />,
+              },
+              {
+                path: "about",
+                element: <About />,
               },
             ],
           },
